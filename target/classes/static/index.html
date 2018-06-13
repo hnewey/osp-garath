@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Osp-Garath</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script>
+    document.onkeypress = function () {
+        window.location.href = "/character_creation.html";
+    };
+    document.onclick = function () {
+        window.location.href = "/character_creation.html";
+    };
+</script>
+<style>
+    @keyframes example {
+        0% {opacity: 0;}
+        100% {opacity: 100;}
+    }
+    #middlePanel {
+        width: 80vw;
+        height: 108vh;
+        text-align: center;
+        margin: 0 auto;
+        background: url(img/cover.jpg) no-repeat;
+        background-size: 110% 90%;
+    }
+    #body {
+        background-color: #3b3d42;
+        overflow-y: hidden;
+    }
+    #text {
+        position: fixed;
+        left: 40vh;
+        top: 20vh;
+        font-size: 20px;
+        font-family: cursive;
+    }
+    #start {
+        position: fixed;
+        left: 44vw;
+        top: 50vh;
+        font-family: cursive;
+        opacity: 0;
+        animation-name: example;
+        animation-duration: 2s;
+        animation-delay: 4s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+</style>
+
+<body id="body">
+    <div id="middlePanel">
+        <div id="text">
+            <h1>Osp-Garath</h1>
+            <h4>Ash and Smoke Trials</h4>
+        </div>
+        <div id="start">
+            <p>(Press any button to start)</p>
+        </div>
+    </div>
+<!--<img src="img/cover.jpg"/>-->
+</body>
+</html>
