@@ -33,6 +33,10 @@ public final class RoomFactory {
         }
     }
 
+    //TODO: We could turn this into the Factory Method Pattern by having a generateRoom abstract method and
+    //subclasses would handle the actual room creation. This may not work best in this case and it may just be best
+    //to allow the Object instantiation method to handle the specifics of room creation.
+
     public static Room generateRandomRoom() {
         Room room = new EntryRoom();
         room.setRoomType(RoomType.generateRandomRoomType());

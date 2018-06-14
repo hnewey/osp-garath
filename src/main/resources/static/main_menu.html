@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Osp-Garath</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rpg-awesome.css">
+</head>
+<style>
+    #middlePanel {
+        width: 80vw;
+        height: 100%;
+        background: url(img/background.jpg) no-repeat;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+        position: fixed;
+        left: 10vw;
+        border-style: none ridge none groove;
+        border-color: antiquewhite;
+        border-width: 5px;
+    }
+    #menu_buttons {
+        display: grid;
+        width: 55%;
+        height: 60%;
+        margin: auto;
+    }
+    #start_menu {
+        height: 60vh;
+        width: 40vw;
+        margin: 35vh auto;
+        display: grid;
+        background: url(img/start_menu.jpg) no-repeat;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+    .start_menu_button {
+        background: url(img/button1.jpg) no-repeat;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+        border: none;
+        box-shadow: 0 0 0 1px darkslategrey;
+        transition: all 100ms ease-out;
+        font-size: 14pt;
+        color: yellow;
+        font-family: 'Marcellus SC', serif;
+        text-shadow: 2px 2px 5px black;
+    }
+    .start_menu_button:hover {
+        box-shadow: 0 0 12px yellow;
+    }
+
+</style>
+<script>
+    function character_creation() {
+        window.location.href = "/character_creation.html";
+    }
+</script>
+<body id="body">
+    <div id="middlePanel">
+        <div id="start_menu">
+            <div id="menu_buttons">
+                <button onclick="character_creation()" class="start_menu_button" style="margin-bottom: 2vh;">New Character</button>
+                <button id="load" class="start_menu_button" style="margin-bottom: 2vh;">Load Character (Coming)</button>
+                <button id="background" class="start_menu_button" style="margin-bottom: 2vh;">Background</button>
+                <button id="records" class="start_menu_button">Records</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

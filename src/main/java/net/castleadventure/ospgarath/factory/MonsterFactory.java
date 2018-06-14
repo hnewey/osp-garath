@@ -34,4 +34,7 @@ public final class MonsterFactory {
         return createdMonster;
     }
 
+    //TODO: Change to Factory Method Pattern by having an abstract createEnemy method here.
+    // Subclasses (MinionFactory, TrooperFactory, etc.) will handle creating that enemy
+
 }
