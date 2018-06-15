@@ -15,7 +15,7 @@
     #middlePanel {
         width: 80vw;
         height: 100%;
-        background: url(img/background.jpg) no-repeat;
+        background: url(img/background7.png) no-repeat;
         -webkit-background-size: 100% 100%;
         background-size: 100% 100%;
         position: fixed;
@@ -34,16 +34,16 @@
         font-size: 30px;
     }
 
-    #welcome_message {
-        margin: 10vh auto;
+    .welcome_message {
+        margin: 0 auto;
         width: 40vw;
         font-family: 'Philosopher', serif;
         font-size: 16pt;
     }
 
-    #accept {
+    .game_button {
         background: url(img/button1.jpg) no-repeat;
-        margin: 0 35%;
+        /*margin: 0 35%;*/
         background-size: 100% 100%;
         border: none;
         box-shadow: 0 0 0 1px darkslategrey;
@@ -54,12 +54,38 @@
         text-shadow: 2px 2px 5px black;
         width: 10vw;
         height: 8vh;
+        outline: none;
     }
 
-    #accept:hover {
+    .game_button:hover {
         box-shadow: 0 0 12px yellow;
     }
 
+    .ability_button {
+        margin: 2vh 1vw 0 10.5vw;
+    }
+
+    .disabled_button {
+        opacity: .6;
+    }
+
+    .disabled_button:hover {
+        box-shadow: none !important;
+    }
+
+    .roll_display {
+        background: url(img/box.jpg) no-repeat;
+        background-size: 100% 100%;
+        border: none;
+        box-shadow: 0 0 0 1px darkslategray;
+        position: fixed;
+        width: 35vw;
+        height: 11vh;
+    }
+
+    .ability_row {
+        height: 14vh;
+    }
 
     .menu_tab {
         background: none;
@@ -67,13 +93,71 @@
         color: yellow;
         margin-top: 6vh;
         margin-left: 6vh;
+        transition: all 200ms ease-in-out;
         font-size: 10pt;
         font-family: 'Marcellus SC', serif;
         outline: none;
     }
 
+    .menu_tab:hover {
+        border-bottom: solid yellow;
+    }
+
     .menu_tab_selected {
         border-bottom: solid yellow;
+    }
+
+    .roll_total {
+        display: inline-block;
+        position: relative;
+        left: 27.5vw;
+        top: .5vh;
+        font-size: 22pt;
+    }
+
+    .ability_select {
+        background: url(img/dropdown.jpg) no-repeat;
+        display: inline-block;
+        position: fixed;
+        left: 68vw;
+        margin-top: 3vh;
+    }
+
+    select {
+        background: url(img/dropdown.jpg);
+        background-size: 100% 100%;
+        width: 14vw;
+        height: 6vh;
+        font-family: 'Marcellus SC', serif;
+        font-size: 12pt;
+        color: yellow;
+        -webkit-appearance: none;
+        padding-left: 1vw;
+        outline:none;
+        box-shadow: 0 0 0 2px black;
+        text-shadow: 2px 2px 5px black;
+    }
+
+    select:hover {
+        box-shadow: 0 0 12px yellow;
+    }
+
+    .roll_numbers {
+        position: relative;
+        left: 2.5vw;
+        top: 3.2vh;
+    }
+
+    .roll_span {
+        font-size: 22pt;
+        margin-left: 1vw;
+    }
+
+    #save {
+        position: fixed;
+        width: fit-content;
+        bottom: 1vh;
+        left: 44vw;
     }
 
 </style>
@@ -81,9 +165,14 @@
     var TABS_ENABLED = false;
     var CURRENT_TAB;
     var CURRENT_TAB_SELECTOR;
+    var STRENGTH;
+    var QUICKNESS;
+    var INTELLIGENCE;
+    var LEADERSHIP;
+    var ENDURANCE;
 
     function startCreation() {
-        document.getElementById("welcome_message").style.display = "none";
+        document.getElementById("welcome_body").style.display = "none";
         document.getElementById("ability_body").style.display = "block";
         CURRENT_TAB = "ability_body";
         CURRENT_TAB_SELECTOR = document.getElementById("ability_selector");
@@ -103,47 +192,254 @@
         CURRENT_TAB_SELECTOR = el;
     }
 
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
+    function saveAbilities() {
+        var validated = validate();
+        if (validated) {
+            changeTab("class_body", document.getElementById("class_selector"));
+        }
+        else {
+            //TODO: Have an error message pop up
+        }
     }
+
+    function validate() {
+        var abilities = [];
+        for (var i = 1; i <= 5; i++) {
+            abilities.push(document.getElementById("select" + i));
+        }
+        for (var j = 0; j < 5; j++) {
+            var element = abilities[j];
+            for (var k = 0; k < 5; k++) {
+                if (j === k) continue;
+                var e = abilities[k];
+                if (e.options[e.selectedIndex].text === element.options[element.selectedIndex].text) {
+                    return false;
+                }
+            }
+        }
+        for (var h = 0; h < 5; h++) {
+            e = abilities[h];
+            if (e.options[e.selectedIndex].text === "Strength") {
+                STRENGTH = document.getElementById("roll_total" + (h+1)).innerText;
+            }
+            if (e.options[e.selectedIndex].text === "Quickness") {
+                QUICKNESS = document.getElementById("roll_total" + (h+1)).innerText;
+            }
+            if (e.options[e.selectedIndex].text === "Intelligence") {
+                INTELLIGENCE = document.getElementById("roll_total" + (h+1)).innerText;
+            }
+            if (e.options[e.selectedIndex].text === "Leadership") {
+                LEADERSHIP = document.getElementById("roll_total" + (h+1)).innerText;
+            }
+            if (e.options[e.selectedIndex].text === "Endurance") {
+                var roll_total = document.getElementById("roll_total" + (h+1)).innerText.split(" ")[0];
+                roll_total = roll_total - document.getElementById("roll" + (h+1) + "-4").innerText;
+                roll_total = roll_total - document.getElementById("roll" + (h+1) + "-5").innerText;
+                ENDURANCE = roll_total;
+            }
+        }
+        return true;
+    }
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max)) + 1 //don't include 0;
+    }
+
+    function rollAttribute(rollNum, el) {
+        el.classList.add("disabled_button");
+        el.disabled = true;
+        var rolls = [];
+        for (var i = 0; i < 5; i++) {
+            rolls.push(getRandomInt(4));
+        }
+        rolls = rolls.sort(function (a, b) {  return b - a;  });
+
+        for (var roll = 1; roll <= 5; roll++) {
+            var element = document.getElementById("roll" + rollNum + "-" + roll).innerText = rolls[roll-1];
+        }
+        var rollTotal = rolls.reduce(add, 0);
+        var modifier = getModifier(rollTotal);
+        if (modifier > 0) {
+            rollTotal = rollTotal + " (+" + modifier + ")";
+        }
+        else {
+            rollTotal = rollTotal + " (" + modifier + ")";
+        }
+        document.getElementById("roll_total" + rollNum).innerText = rollTotal;
+    }
+
+    function add(a, b) {
+        return a + b;
+    }
+
+    function getModifier(num) {
+        if (num > 20) {
+            return 4; //19, 16, 12, 10
+        }
+        if (num >= 19) {
+            return 3;
+        }
+        if (num >= 16) {
+            return 2;
+        }
+        if (num >= 12) {
+            return 1;
+        }
+        if (num >= 10) {
+            return 0;
+        }
+        if (num >= 6) {
+            return -1;
+        }
+        if (num >= 3) {
+            return -2;
+        }
+        return -3;
+    }
+
 </script>
 <body id="body">
 <div id="middlePanel">
     <div id="menu">
         <div id="characterCreationHeader"><span>New Character<br> Creation</span></div>
         <button id="ability_selector" class="menu_tab" onclick="changeTab('ability_body', this)">Ability Scores</button>
+        <button id="class_selector" class="menu_tab" onclick="changeTab('class_body', this)">Class</button>
         <button class="menu_tab" onclick="changeTab('race_body', this)">Race</button>
         <button class="menu_tab" onclick="changeTab('powers_body', this)">Powers</button>
         <button class="menu_tab" onclick="changeTab('name_body', this)">Name</button>
         <button class="menu_tab" onclick="changeTab('start_body', this)">Start</button>
     </div>
-    <div id="welcome_message">
+    <div class="welcome_message" id="welcome_body" style="text-align: center;font-size: 17pt;margin-top: 10vh;">
         <p>While normal Castle Adventure allows you to roll physical dice, Osp-Garath is...different.
             For characters created specifically to enter the tower and once within the tower itself, all rolls
             will be made for you. <i>When</i> you choose to roll is entirely up to you and is your way of
             deciding when random probability and chance will come in to reality.</p>
-        <p>Conforming with standard Castle Adventure rules, you will only have one chance to roll for each
-            ability score. Therefore, choose wisely when to make that roll.</p>
-        <button id="accept" onclick="startCreation()">I Understand</button>
+        <button class="game_button" onclick="startCreation()" style="margin: 0 35%;">I Understand</button>
     </div>
     <div id="ability_body" style="display: none;">
+        <div class="welcome_message" style="font-size:12pt; width:51vw; text-align:center;">
+            <!--<p>Each character will roll 5d4 five times, once for each ability score (Strength, Quickness, Intelligence, and Leadership).-->
+                <!--One of the five rolls will be used for your character's endurance, removing the two lowest dice values-->
+                <!--from that roll. You may choose which roll to assign to each ability.</p>-->
+            <p>Conforming with standard Castle Adventure rules, you will only have one chance to roll for each
+                ability score. Therefore, choose wisely when to make that roll.</p>
+        </div>
         <div id="row1_ability" class="ability_row">
-            <button onclick="rollAttribute(1)">First Roll</button>
-            <img src="img/sword.png">
+            <button class="game_button ability_button" onclick="rollAttribute(1, this)" style="display:inline-block;">First Roll</button>
+            <div class="roll_display" style="display:inline-flex;">
+                <div class="roll_numbers">
+                    <span id="roll1-1" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll1-2" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll1-3" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll1-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll1-5" class="roll_span">0</span><span class="roll_span">=</span>
+                    <span id="roll_total1" class="roll_span">0 (-)</span>
+                </div>
+            </div>
+            <!--<div id="roll_total1" class="roll_total">0 (-)</div>-->
+            <div class="ability_select" style="display:inline-block;">
+                <select id="select1">
+                    <option value="strength">Strength</option>
+                    <option value="quickness">Quickness</option>
+                    <option value="intelligence">Intelligence</option>
+                    <option value="leadership">Leadership</option>
+                    <option value="endurance">Endurance</option>
+                </select>
+            </div>
         </div>
         <div id="row2_ability" class="ability_row">
-            <button onclick="rollAttribute(2)">Second Roll</button>
+            <button class="game_button ability_button" onclick="rollAttribute(2, this)" style="display:inline-block;">Second Roll</button>
+            <div class="roll_display" style="display:inline-flex;">
+                <div class="roll_numbers">
+                    <span id="roll2-1" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll2-2" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll2-3" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll2-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll2-5" class="roll_span">0</span><span class="roll_span">=</span>
+                    <span id="roll_total2" class="roll_span">0 (-)</span>
+                </div>
+            </div>
+            <div class="ability_select">
+                <select id="select2">
+                    <option value="quickness">Quickness</option>
+                    <option value="strength">Strength</option>
+                    <option value="intelligence">Intelligence</option>
+                    <option value="leadership">Leadership</option>
+                    <option value="endurance">Endurance</option>
+                </select>
+            </div>
         </div>
         <div id="row3_ability" class="ability_row">
-            <button onclick="rollAttribute(3)">Third Roll</button>
+            <button class="game_button ability_button" onclick="rollAttribute(3, this)" style="display:inline-block;">Third Roll</button>
+            <div class="roll_display" style="display:inline-flex;">
+                <div class="roll_numbers">
+                    <span id="roll3-1" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll3-2" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll3-3" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll3-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll3-5" class="roll_span">0</span><span class="roll_span">=</span>
+                    <span id="roll_total3" class="roll_span">0 (-)</span>
+                </div>
+            </div>
+            <div class="ability_select">
+                <select id="select3">
+                    <option value="intelligence">Intelligence</option>
+                    <option value="strength">Strength</option>
+                    <option value="quickness">Quickness</option>
+                    <option value="leadership">Leadership</option>
+                    <option value="endurance">Endurance</option>
+                </select>
+            </div>
         </div>
         <div id="row4_ability" class="ability_row">
-            <button onclick="rollAttribute(4)">Fourth Roll</button>
+            <button class="game_button ability_button" onclick="rollAttribute(4, this)" style="display:inline-block;">Fourth Roll</button>
+            <div class="roll_display" style="display:inline-flex;">
+                <div class="roll_numbers">
+                    <span id="roll4-1" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll4-2" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll4-3" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll4-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll4-5" class="roll_span">0</span><span class="roll_span">=</span>
+                    <span id="roll_total4" class="roll_span">0 (-)</span>
+                </div>
+            </div>
+            <div class="ability_select">
+                <select id="select4">
+                    <option value="leadership">Leadership</option>
+                    <option value="strength">Strength</option>
+                    <option value="quickness">Quickness</option>
+                    <option value="intelligence">Intelligence</option>
+                    <option value="endurance">Endurance</option>
+                </select>
+            </div>
         </div>
         <div id="row5_ability" class="ability_row">
-            <button onclick="rollAttribute(5)">Fifth Roll</button>
+            <button class="game_button ability_button" onclick="rollAttribute(5, this)" style="display:inline-block;">Fifth Roll</button>
+            <div class="roll_display" style="display:inline-flex;">
+                <div class="roll_numbers">
+                    <span id="roll5-1" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll5-2" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll5-3" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll5-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll5-5" class="roll_span">0</span><span class="roll_span">=</span>
+                    <span id="roll_total5" class="roll_span">0 (-)</span>
+                </div>
+            </div>
+            <div class="ability_select">
+                <select id="select5">
+                    <option value="endurance">Endurance</option>
+                    <option value="strength">Strength</option>
+                    <option value="quickness">Quickness</option>
+                    <option value="intelligence">Intelligence</option>
+                    <option value="leadership">Leadership</option>
+                </select>
+            </div>
+        </div>
+        <div id="save">
+            <button class="game_button" onclick="saveAbilities()">Save</button>
         </div>
     </div>
+    <div id="class_body" style="display: none;">Class</div>
     <div id="race_body" style="display: none;">Race</div>
     <div id="powers_body" style="display: none;">Powers</div>
     <div id="name_body" style="display: none;">Name</div>
