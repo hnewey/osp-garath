@@ -160,6 +160,28 @@
         left: 44vw;
     }
 
+    .low_end_rolls {
+        text-decoration: line-through;
+        opacity: .6;
+    }
+
+    .last_end_plus {
+        opacity: .6;
+    }
+
+    .error_message {
+        text-shadow: 3px 2px 7px black;
+        padding-left: 5px;
+    }
+
+    .disabled_menu_item {
+        opacity: .6;
+    }
+
+    .disabled_menu_item:hover {
+        border: none !important;
+    }
+
 </style>
 <script>
     var TABS_ENABLED = false;
@@ -177,12 +199,29 @@
         CURRENT_TAB = "ability_body";
         CURRENT_TAB_SELECTOR = document.getElementById("ability_selector");
         CURRENT_TAB_SELECTOR.classList.add("menu_tab_selected");
+    }
+
+    function enableTabs() {
         TABS_ENABLED = true;
+        var tabs = document.getElementsByClassName("menu_tab");
+        for (var i = 0; i < tabs.length; i++) {
+            tabs.item(i).classList.remove("disabled_menu_item");
+        }
+        // tabs.forEach(function enable(item, index) {
+        //     item.classList.remove("disabled_menu_item");
+        // })
     }
 
     function changeTab(id, el) {
         if (!TABS_ENABLED) {
             return;
+        }
+        if (id !== "ability_body") {
+            document.getElementById("ability_scores").style.display = "block";
+            update_ability_scores();
+        }
+        else {
+            document.getElementById("ability_scores").style.display = "none";
         }
         el.classList.add("menu_tab_selected");
         CURRENT_TAB_SELECTOR.classList.remove("menu_tab_selected");
@@ -192,13 +231,61 @@
         CURRENT_TAB_SELECTOR = el;
     }
 
+    function update_ability_scores() {
+        document.getElementById("ability_s").innerText = STRENGTH;
+        document.getElementById("ability_q").innerText = QUICKNESS;
+        document.getElementById("ability_i").innerText = INTELLIGENCE;
+        document.getElementById("ability_l").innerText = LEADERSHIP;
+        document.getElementById("ability_e").innerText = ENDURANCE;
+    }
+
     function saveAbilities() {
         var validated = validate();
         if (validated) {
+            document.getElementById("validate_error").style.display = "none";
+            enableTabs();
             changeTab("class_body", document.getElementById("class_selector"));
         }
         else {
-            //TODO: Have an error message pop up
+            document.getElementById("validate_error").style.display = "block";
+        }
+    }
+
+    function adjustEndurance(rollNum, el) {
+        var lowRoll1 = document.getElementById("roll" + rollNum + "-4");
+        var lowRoll2 = document.getElementById("roll" + rollNum + "-5");
+        if (selectText(el) !== "Endurance") {
+            lowRoll1.classList.remove("low_end_rolls");
+            lowRoll2.classList.remove("low_end_rolls");
+            document.getElementById("last_plus" + rollNum).classList.remove("last_end_plus");
+            addRollTotalModifier(rollNum, lowRoll1, lowRoll2);
+            return;
+        }
+        lowRoll1.classList.add("low_end_rolls");
+        lowRoll2.classList.add("low_end_rolls");
+        document.getElementById("last_plus" + rollNum).classList.add("last_end_plus");
+
+
+        removeRollTotalModifier(rollNum, lowRoll1, lowRoll2);
+    }
+
+    function addRollTotalModifier(rollNum, lowRoll1, lowRoll2) {
+        var rollTotal = document.getElementById("roll_total" + rollNum).innerText;
+        if (rollTotal.indexOf("(") === -1) {
+            rollTotal = (parseInt(rollTotal) + (parseInt(lowRoll1.innerText) + parseInt(lowRoll2.innerText)));
+            var modifier = getModifier(rollTotal);
+            if (rollTotal == 0) modifier = "-";
+            var sign = "";
+            if (modifier > 0) sign = "+";
+            document.getElementById("roll_total" + rollNum).innerText = rollTotal + " (" + sign + modifier + ")";
+        }
+    }
+
+    function removeRollTotalModifier(rollNum, lowRoll1, lowRoll2) {
+        var rollTotal = document.getElementById("roll_total" + rollNum).innerText;
+        if (rollTotal.indexOf("(") !== -1) {
+            rollTotal = (parseInt(rollTotal) - (parseInt(lowRoll1.innerText) + parseInt(lowRoll2.innerText))).toString();
+            document.getElementById("roll_total" + rollNum).innerText = rollTotal.split(" ")[0];
         }
     }
 
@@ -232,13 +319,18 @@
                 LEADERSHIP = document.getElementById("roll_total" + (h+1)).innerText;
             }
             if (e.options[e.selectedIndex].text === "Endurance") {
-                var roll_total = document.getElementById("roll_total" + (h+1)).innerText.split(" ")[0];
-                roll_total = roll_total - document.getElementById("roll" + (h+1) + "-4").innerText;
-                roll_total = roll_total - document.getElementById("roll" + (h+1) + "-5").innerText;
-                ENDURANCE = roll_total;
-            }
+                ENDURANCE = document.getElementById("roll_total" + (h+1)).innerText;
+             }
         }
         return true;
+    }
+
+    function selectText(element) {
+        return element.options[element.selectedIndex].text;
+    }
+
+    function selectValue(element) {
+        return element.options[element.selectedIndex].value;
     }
 
     function getRandomInt(max) {
@@ -303,11 +395,11 @@
     <div id="menu">
         <div id="characterCreationHeader"><span>New Character<br> Creation</span></div>
         <button id="ability_selector" class="menu_tab" onclick="changeTab('ability_body', this)">Ability Scores</button>
-        <button id="class_selector" class="menu_tab" onclick="changeTab('class_body', this)">Class</button>
-        <button class="menu_tab" onclick="changeTab('race_body', this)">Race</button>
-        <button class="menu_tab" onclick="changeTab('powers_body', this)">Powers</button>
-        <button class="menu_tab" onclick="changeTab('name_body', this)">Name</button>
-        <button class="menu_tab" onclick="changeTab('start_body', this)">Start</button>
+        <button id="class_selector" class="menu_tab disabled_menu_item" onclick="changeTab('class_body', this)">Class</button>
+        <button class="menu_tab disabled_menu_item" onclick="changeTab('race_body', this)">Race</button>
+        <button class="menu_tab disabled_menu_item" onclick="changeTab('powers_body', this)">Powers</button>
+        <button class="menu_tab disabled_menu_item" onclick="changeTab('name_body', this)">Name</button>
+        <button class="menu_tab disabled_menu_item" onclick="changeTab('start_body', this)">Start</button>
     </div>
     <div class="welcome_message" id="welcome_body" style="text-align: center;font-size: 17pt;margin-top: 10vh;">
         <p>While normal Castle Adventure allows you to roll physical dice, Osp-Garath is...different.
@@ -331,14 +423,15 @@
                     <span id="roll1-1" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll1-2" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll1-3" class="roll_span">0</span><span class="roll_span">+</span>
-                    <span id="roll1-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll1-4" class="roll_span">0</span><span id="last_plus1" class="roll_span">+</span>
                     <span id="roll1-5" class="roll_span">0</span><span class="roll_span">=</span>
                     <span id="roll_total1" class="roll_span">0 (-)</span>
                 </div>
             </div>
             <!--<div id="roll_total1" class="roll_total">0 (-)</div>-->
             <div class="ability_select" style="display:inline-block;">
-                <select id="select1">
+                <select onchange="adjustEndurance(1, this)" id="select1">
+                    <option value="">Strength</option> <!--TODO: REMOVE-->
                     <option value="strength">Strength</option>
                     <option value="quickness">Quickness</option>
                     <option value="intelligence">Intelligence</option>
@@ -354,15 +447,16 @@
                     <span id="roll2-1" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll2-2" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll2-3" class="roll_span">0</span><span class="roll_span">+</span>
-                    <span id="roll2-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll2-4" class="roll_span">0</span><span id="last_plus2" class="roll_span">+</span>
                     <span id="roll2-5" class="roll_span">0</span><span class="roll_span">=</span>
                     <span id="roll_total2" class="roll_span">0 (-)</span>
                 </div>
             </div>
             <div class="ability_select">
-                <select id="select2">
-                    <option value="quickness">Quickness</option>
+                <select onchange="adjustEndurance(2, this)" id="select2">
+                    <option value="">Quickness</option> <!--TODO: REMOVE-->
                     <option value="strength">Strength</option>
+                    <option value="quickness">Quickness</option>
                     <option value="intelligence">Intelligence</option>
                     <option value="leadership">Leadership</option>
                     <option value="endurance">Endurance</option>
@@ -376,16 +470,17 @@
                     <span id="roll3-1" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll3-2" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll3-3" class="roll_span">0</span><span class="roll_span">+</span>
-                    <span id="roll3-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll3-4" class="roll_span">0</span><span id="last_plus3" class="roll_span">+</span>
                     <span id="roll3-5" class="roll_span">0</span><span class="roll_span">=</span>
                     <span id="roll_total3" class="roll_span">0 (-)</span>
                 </div>
             </div>
             <div class="ability_select">
-                <select id="select3">
-                    <option value="intelligence">Intelligence</option>
+                <select onchange="adjustEndurance(3, this)" id="select3">
+                    <option value="">Intelligence</option> <!--TODO: REMOVE-->
                     <option value="strength">Strength</option>
                     <option value="quickness">Quickness</option>
+                    <option value="intelligence">Intelligence</option>
                     <option value="leadership">Leadership</option>
                     <option value="endurance">Endurance</option>
                 </select>
@@ -398,17 +493,18 @@
                     <span id="roll4-1" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll4-2" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll4-3" class="roll_span">0</span><span class="roll_span">+</span>
-                    <span id="roll4-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll4-4" class="roll_span">0</span><span id="last_plus4" class="roll_span">+</span>
                     <span id="roll4-5" class="roll_span">0</span><span class="roll_span">=</span>
                     <span id="roll_total4" class="roll_span">0 (-)</span>
                 </div>
             </div>
             <div class="ability_select">
-                <select id="select4">
-                    <option value="leadership">Leadership</option>
+                <select onchange="adjustEndurance(4, this)" id="select4">
+                    <option value="">Leadership</option> <!--TODO: REMOVE-->
                     <option value="strength">Strength</option>
                     <option value="quickness">Quickness</option>
                     <option value="intelligence">Intelligence</option>
+                    <option value="leadership">Leadership</option>
                     <option value="endurance">Endurance</option>
                 </select>
             </div>
@@ -420,30 +516,42 @@
                     <span id="roll5-1" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll5-2" class="roll_span">0</span><span class="roll_span">+</span>
                     <span id="roll5-3" class="roll_span">0</span><span class="roll_span">+</span>
-                    <span id="roll5-4" class="roll_span">0</span><span class="roll_span">+</span>
+                    <span id="roll5-4" class="roll_span">0</span><span id="last_plus5" class="roll_span">+</span>
                     <span id="roll5-5" class="roll_span">0</span><span class="roll_span">=</span>
                     <span id="roll_total5" class="roll_span">0 (-)</span>
                 </div>
             </div>
             <div class="ability_select">
-                <select id="select5">
-                    <option value="endurance">Endurance</option>
+                <select onchange="adjustEndurance(5, this)" id="select5">
+                    <option value="">Endurance</option> <!--TODO: REMOVE-->
                     <option value="strength">Strength</option>
                     <option value="quickness">Quickness</option>
                     <option value="intelligence">Intelligence</option>
                     <option value="leadership">Leadership</option>
+                    <option value="endurance">Endurance</option>
                 </select>
             </div>
         </div>
-        <div id="save">
+        <div id="save" style="display: flex;">
             <button class="game_button" onclick="saveAbilities()">Save</button>
+            <p id="validate_error" class="error_message" style="display: none;">
+                Assign an ability to each roll</p>
         </div>
     </div>
-    <div id="class_body" style="display: none;">Class</div>
+    <div id="class_body" style="display: none;">
+    </div>
     <div id="race_body" style="display: none;">Race</div>
     <div id="powers_body" style="display: none;">Powers</div>
     <div id="name_body" style="display: none;">Name</div>
     <div id="start_body" style="display: none;">Start</div>
+    <div id="ability_scores" class="ability_scores_box" style="display: none;">
+        <div><span>Strength: </span><span id="ability_s"></span></div>
+        <div><span>Quickness: </span><span id="ability_q"></span></div>
+        <div><span>Intelligence: </span><span id="ability_i"></span></div>
+        <div><span>Leadership: </span><span id="ability_l"></span></div>
+        <div><span>Endurance: </span><span id="ability_e"></span></div>
+    </div>
+
 </div>
 </body>
 </html>

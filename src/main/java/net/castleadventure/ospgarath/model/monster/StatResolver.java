@@ -65,6 +65,20 @@ public class StatResolver {
         return ClassType.getClassType(possibleClasses.get(classIdx-1));
     }
 
+    public static List<ClassType> getPossibleClasses(int s, int q, int i, int l) {
+        statMapping.put("S", s);
+        statMapping.put("Q", q);
+        statMapping.put("I", i);
+        statMapping.put("L", l);
+
+        List<String> possibleClassSequences = generatePossibleClasses();
+        List<ClassType> possibleClasses = new ArrayList<>();
+        for (String sequence : possibleClassSequences) {
+            possibleClasses.add(ClassType.getClassType(sequence));
+        }
+        return possibleClasses;
+    }
+
     public static List<String> generatePossibleClasses() {
         List<String> possibleClasses = new ArrayList<>();
 
