@@ -1,4 +1,4 @@
-package net.castleadventure.ospgarath.model.ability;
+package net.castleadventure.ospgarath.model.ability.power;
 
-public class Power {
+public abstract class Power {
 }

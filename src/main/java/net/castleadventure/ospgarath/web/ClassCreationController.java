@@ -2,6 +2,7 @@ package net.castleadventure.ospgarath.web;
 
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.characterClass.ClassDescription;
+import net.castleadventure.ospgarath.model.characterClass.trait.TraitManager;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping( value =  "/class" )
-public class ClassController {
+public class ClassCreationController {
 
     @RequestMapping(value = "/classList", method = RequestMethod.GET)
     public List<String> getClassList() {
@@ -22,6 +23,12 @@ public class ClassController {
     public String getClassDescription(
             @PathVariable ("className") String className) {
         return ClassDescription.getClassDescription(className);
+    }
+
+    @RequestMapping(value = "/classTraits/{className}", method = RequestMethod.GET)
+    public List<String> getClassTraits(
+            @PathVariable ("className") String className) {
+        return TraitManager.getClassTraits(className);
     }
 
     @RequestMapping(value = "/validate", method = RequestMethod.POST)

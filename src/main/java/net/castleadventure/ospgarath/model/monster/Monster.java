@@ -1,7 +1,7 @@
 package net.castleadventure.ospgarath.model.monster;
 
-import net.castleadventure.ospgarath.model.ability.Power;
-import net.castleadventure.ospgarath.model.character.ClassType;
+import net.castleadventure.ospgarath.model.ability.power.Power;
+import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.Item;
 import net.castleadventure.ospgarath.game.GameState;
 

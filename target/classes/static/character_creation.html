@@ -5,40 +5,63 @@
     <title>Osp-Garath</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/rpg-awesome.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <style>
     #body {
         color: yellow;
     }
+    /*-------------------------------------------------------------------*/
 
-    #middlePanel {
-        width: 80vw;
-        height: 100%;
-        background: url(img/background7.png) no-repeat;
-        -webkit-background-size: 100% 100%;
-        background-size: 100% 100%;
+    .ability_button {
+        margin: 2vh 1vw 0 10.5vw;
+    }
+
+    #ability_scores {
+        position: absolute;
+        margin-left: 2vw;
+        margin-top: 2vh;
+        opacity: .9;
+    }
+
+    .ability_row {
+        height: 14vh;
+    }
+
+    .ability_select {
+        background: url(img/dropdown.jpg) no-repeat;
+        display: inline-block;
         position: fixed;
-        left: 10vw;
-        border-style: none ridge none groove;
-        border-color: antiquewhite;
-        border-width: 5px;
+        left: 68vw;
+        margin-top: 3vh;
     }
 
-    #menu {
-        display: flex;
-        margin: 0 auto;
-        padding: 10px 20px;
-        background: black;
-        font-family: 'Marcellus SC', serif;
-        font-size: 30px;
+    #class_body {
+        position: absolute;
+        left: 16vw;
+        text-align: center;
+        width: 50vw;
     }
 
-    .welcome_message {
-        margin: 0 auto;
-        width: 40vw;
-        font-family: 'Philosopher', serif;
-        font-size: 16pt;
+    .disabled_button {
+        opacity: .6;
+    }
+
+    .disabled_button:hover {
+        box-shadow: none !important;
+    }
+
+    .disabled_menu_item {
+        opacity: .6;
+    }
+
+    .disabled_menu_item:hover {
+        border: none !important;
+    }
+
+    .error_message {
+        text-shadow: 3px 2px 7px black;
+        padding-left: 5px;
     }
 
     .game_button {
@@ -61,30 +84,22 @@
         box-shadow: 0 0 12px yellow;
     }
 
-    .ability_button {
-        margin: 2vh 1vw 0 10.5vw;
-    }
-
-    .disabled_button {
+    .low_end_rolls {
+        text-decoration: line-through;
         opacity: .6;
     }
 
-    .disabled_button:hover {
-        box-shadow: none !important;
+    .last_end_plus {
+        opacity: .6;
     }
 
-    .roll_display {
-        background: url(img/box.jpg) no-repeat;
-        background-size: 100% 100%;
-        border: none;
-        box-shadow: 0 0 0 1px darkslategray;
-        position: fixed;
-        width: 35vw;
-        height: 11vh;
-    }
-
-    .ability_row {
-        height: 14vh;
+    #menu {
+        display: flex;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background: rgba(0, 0, 0, .5);
+        font-family: 'Marcellus SC', serif;
+        font-size: 30px;
     }
 
     .menu_tab {
@@ -93,7 +108,7 @@
         color: yellow;
         margin-top: 6vh;
         margin-left: 6vh;
-        transition: all 200ms ease-in-out;
+        transition: all 150ms ease-in-out;
         font-size: 10pt;
         font-family: 'Marcellus SC', serif;
         outline: none;
@@ -107,6 +122,40 @@
         border-bottom: solid yellow;
     }
 
+    #middlePanel {
+        width: 80vw;
+        height: 100%;
+        background: url(img/background7.png) no-repeat;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+        position: fixed;
+        left: 10vw;
+        /*border-style: none ridge none groove;*/
+        border-color: antiquewhite;
+        border-width: 5px;
+    }
+
+    .roll_display {
+        background: url(img/box.jpg) no-repeat;
+        background-size: 100% 100%;
+        border: none;
+        box-shadow: 0 0 0 1px darkslategray;
+        position: fixed;
+        width: 35vw;
+        height: 11vh;
+    }
+
+    .roll_numbers {
+        position: relative;
+        left: 2vw;
+        top: 3.2vh;
+    }
+
+    .roll_span {
+        font-size: 22pt;
+        margin-left: 1vw;
+    }
+
     .roll_total {
         display: inline-block;
         position: relative;
@@ -115,12 +164,11 @@
         font-size: 22pt;
     }
 
-    .ability_select {
-        background: url(img/dropdown.jpg) no-repeat;
-        display: inline-block;
+    #save {
         position: fixed;
-        left: 68vw;
-        margin-top: 3vh;
+        width: fit-content;
+        bottom: 1vh;
+        left: 44vw;
     }
 
     select {
@@ -142,49 +190,22 @@
         box-shadow: 0 0 12px yellow;
     }
 
-    .roll_numbers {
-        position: relative;
-        left: 2.5vw;
-        top: 3.2vh;
+    .welcome_message {
+        margin: 0 auto;
+        width: 40vw;
+        font-family: 'Philosopher', serif;
+        font-size: 16pt;
+        text-shadow: 2px 2px 7px black;
     }
 
-    .roll_span {
-        font-size: 22pt;
-        margin-left: 1vw;
-    }
-
-    #save {
-        position: fixed;
-        width: fit-content;
-        bottom: 1vh;
-        left: 44vw;
-    }
-
-    .low_end_rolls {
-        text-decoration: line-through;
-        opacity: .6;
-    }
-
-    .last_end_plus {
-        opacity: .6;
-    }
-
-    .error_message {
-        text-shadow: 3px 2px 7px black;
-        padding-left: 5px;
-    }
-
-    .disabled_menu_item {
-        opacity: .6;
-    }
-
-    .disabled_menu_item:hover {
-        border: none !important;
+    .hidden {
+        display: none;
     }
 
 </style>
 <script>
     var TABS_ENABLED = false;
+    var CLASSES_LOADED = false;
     var CURRENT_TAB;
     var CURRENT_TAB_SELECTOR;
     var STRENGTH;
@@ -207,9 +228,6 @@
         for (var i = 0; i < tabs.length; i++) {
             tabs.item(i).classList.remove("disabled_menu_item");
         }
-        // tabs.forEach(function enable(item, index) {
-        //     item.classList.remove("disabled_menu_item");
-        // })
     }
 
     function changeTab(id, el) {
@@ -232,10 +250,15 @@
     }
 
     function update_ability_scores() {
-        document.getElementById("ability_s").innerText = STRENGTH;
-        document.getElementById("ability_q").innerText = QUICKNESS;
-        document.getElementById("ability_i").innerText = INTELLIGENCE;
-        document.getElementById("ability_l").innerText = LEADERSHIP;
+        var sMod = getModifier(STRENGTH);
+        var qMod = getModifier(QUICKNESS);
+        var iMod = getModifier(INTELLIGENCE);
+        var lMod = getModifier(LEADERSHIP);
+
+        document.getElementById("ability_s").innerText = STRENGTH + " (" + (sMod >= 0 ? '+':'-') + sMod + ")";
+        document.getElementById("ability_q").innerText = QUICKNESS + " (" + (qMod >= 0 ? '+':'-') + qMod + ")";
+        document.getElementById("ability_i").innerText = INTELLIGENCE + " (" + (iMod >= 0 ? '+':'-') + iMod + ")";
+        document.getElementById("ability_l").innerText = LEADERSHIP + " (" + (lMod >= 0 ? '+':'-') + lMod + ")";
         document.getElementById("ability_e").innerText = ENDURANCE;
     }
 
@@ -244,11 +267,29 @@
         if (validated) {
             document.getElementById("validate_error").style.display = "none";
             enableTabs();
+            loadClassList();
             changeTab("class_body", document.getElementById("class_selector"));
         }
         else {
             document.getElementById("validate_error").style.display = "block";
         }
+    }
+
+    function loadClassList() {
+        if (CLASSES_LOADED) {
+            return;
+        }
+        $.get("/class/classList", function(data, status){
+            for (var i=0; i < data.length; i++) {
+                var className = data[i];
+                var classSelect = document.getElementById("class_select");
+                var option = document.createElement("option");
+                option.value = className.toLowerCase();
+                option.innerText = className;
+                classSelect.appendChild(option);
+            }
+        });
+        CLASSES_LOADED = true;
     }
 
     function adjustEndurance(rollNum, el) {
@@ -307,19 +348,19 @@
         for (var h = 0; h < 5; h++) {
             e = abilities[h];
             if (e.options[e.selectedIndex].text === "Strength") {
-                STRENGTH = document.getElementById("roll_total" + (h+1)).innerText;
+                STRENGTH = document.getElementById("roll_total" + (h+1)).innerText.split(" ")[0];
             }
             if (e.options[e.selectedIndex].text === "Quickness") {
-                QUICKNESS = document.getElementById("roll_total" + (h+1)).innerText;
+                QUICKNESS = document.getElementById("roll_total" + (h+1)).innerText.split(" ")[0];
             }
             if (e.options[e.selectedIndex].text === "Intelligence") {
-                INTELLIGENCE = document.getElementById("roll_total" + (h+1)).innerText;
+                INTELLIGENCE = document.getElementById("roll_total" + (h+1)).innerText.split(" ")[0];
             }
             if (e.options[e.selectedIndex].text === "Leadership") {
-                LEADERSHIP = document.getElementById("roll_total" + (h+1)).innerText;
+                LEADERSHIP = document.getElementById("roll_total" + (h+1)).innerText.split(" ")[0];
             }
             if (e.options[e.selectedIndex].text === "Endurance") {
-                ENDURANCE = document.getElementById("roll_total" + (h+1)).innerText;
+                ENDURANCE = document.getElementById("roll_total" + (h+1)).innerText.split(" ")[0];
              }
         }
         return true;
@@ -387,6 +428,52 @@
             return -2;
         }
         return -3;
+    }
+
+    function loadClassDescription(ele) {
+        var selectedClass = selectText(ele).split("(")[0].trim();
+        $.get("/class/classDescription/" + selectedClass, function(data, status) {
+            document.getElementById("class_description").innerText = data;
+            loadClassTraits(selectedClass);
+            var classCombo = selectText(ele).split("(")[1].replace("(", "").replace(")", "").trim();
+            autoAdjustAbilitiesByClass(classCombo);
+        });
+    }
+
+    function loadClassTraits(className) {
+        $.get("/class/classTraits/" + className, function(data, status) {
+            var traitList = document.getElementById("class_traits");
+            traitList.innerHTML = "";
+            for (var i = 0; i < data.length; i++) {
+                var trait = data[i];
+                var listElement = document.createElement("li");
+                listElement.innerText = trait;
+                traitList.appendChild(listElement);
+            }
+            document.getElementById("traits_header").classList.remove("hidden");
+        })
+    }
+
+    function autoAdjustAbilitiesByClass(classCombo) {
+        var abilitiesSorted = [STRENGTH, QUICKNESS, INTELLIGENCE, LEADERSHIP];
+        abilitiesSorted.sort(function (a, b) {  return b - a;  });
+        for (var i = 0; i < 4; i++) {
+            var ability = classCombo.charAt(i);
+            switch (ability) {
+                case 'S':
+                    STRENGTH = abilitiesSorted[i];
+                    break;
+                case 'Q':
+                    QUICKNESS = abilitiesSorted[i];
+                    break;
+                case 'I':
+                    INTELLIGENCE = abilitiesSorted[i];
+                    break;
+                case 'L':
+                    LEADERSHIP = abilitiesSorted[i];
+            }
+        }
+        update_ability_scores();
     }
 
 </script>
@@ -539,12 +626,23 @@
         </div>
     </div>
     <div id="class_body" style="display: none;">
+        <div>
+            <p style="font-size:24pt; margin-bottom:0;">Select a Class:</p>
+            <p style="font-size: 10pt;">(Choosing a class that does not fit your ability layout will cause your scores to be reordered)</p>
+            <select onchange="loadClassDescription(this)" id="class_select" style="width:20vw;padding-left:1.4vw;">
+
+            </select>
+            <p id="class_description"></p>
+            <p id="traits_header" style="font-size:20pt;margin-bottom:-1vh;" class="hidden">Class Traits:</p>
+            <ul id="class_traits" style="text-align: left;"></ul>
+        </div>
     </div>
-    <div id="race_body" style="display: none;">Race</div>
-    <div id="powers_body" style="display: none;">Powers</div>
-    <div id="name_body" style="display: none;">Name</div>
-    <div id="start_body" style="display: none;">Start</div>
+    <div id="race_body" style="display: none;"></div>
+    <div id="powers_body" style="display: none;"></div>
+    <div id="name_body" style="display: none;"></div>
+    <div id="start_body" style="display: none;"></div>
     <div id="ability_scores" class="ability_scores_box" style="display: none;">
+        <h3><u>New Character</u></h3>
         <div><span>Strength: </span><span id="ability_s"></span></div>
         <div><span>Quickness: </span><span id="ability_q"></span></div>
         <div><span>Intelligence: </span><span id="ability_i"></span></div>

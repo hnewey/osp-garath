@@ -1,4 +1,6 @@
 package net.castleadventure.ospgarath.model.ability.power.barbarian;
 
-public class Umbrage {
+import net.castleadventure.ospgarath.model.ability.power.Power;
+
+public class Umbrage extends Power {
 }

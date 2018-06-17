@@ -1,6 +1,6 @@
 package net.castleadventure.ospgarath.model;
 
-import net.castleadventure.ospgarath.model.character.ClassType;
+import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
 import org.junit.Test;
 

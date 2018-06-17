@@ -1,6 +1,6 @@
 package net.castleadventure.ospgarath.model.monster;
 
-import net.castleadventure.ospgarath.model.character.ClassType;
+import net.castleadventure.ospgarath.model.characterClass.ClassType;
 
 import java.util.*;
 

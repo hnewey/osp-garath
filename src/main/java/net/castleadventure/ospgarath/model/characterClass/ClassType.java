@@ -1,4 +1,4 @@
-package net.castleadventure.ospgarath.model.character;
+package net.castleadventure.ospgarath.model.characterClass;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -2,7 +2,6 @@ package net.castleadventure.ospgarath;
 
 import net.castleadventure.ospgarath.model.character.Character;
 import net.castleadventure.ospgarath.game.GameRunner;
-import net.castleadventure.ospgarath.model.character.ClassType;
 import net.castleadventure.ospgarath.game.GameState;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

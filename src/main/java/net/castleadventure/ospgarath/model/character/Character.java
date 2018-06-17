@@ -2,6 +2,7 @@ package net.castleadventure.ospgarath.model.character;
 
 import net.castleadventure.ospgarath.game.Dice;
 import net.castleadventure.ospgarath.model.character.condition.*;
+import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
 import net.castleadventure.ospgarath.model.item.PlayerInventory;
 import net.castleadventure.ospgarath.model.monster.StatResolver;

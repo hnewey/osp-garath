@@ -1,4 +1,4 @@
-package net.castleadventure.ospgarath.model.ability.trait;
+package net.castleadventure.ospgarath.model.characterClass.trait;
 
 public abstract class Trait {
 }

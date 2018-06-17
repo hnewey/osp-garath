@@ -1,4 +1,6 @@
-package net.castleadventure.ospgarath.model.ability.champion;
+package net.castleadventure.ospgarath.model.ability.power.champion;
 
-public class RiposeRemise {
+import net.castleadventure.ospgarath.model.ability.power.Power;
+
+public class RiposeRemise extends Power {
 }

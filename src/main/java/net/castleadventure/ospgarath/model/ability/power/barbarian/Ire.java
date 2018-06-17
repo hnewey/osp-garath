@@ -1,4 +1,6 @@
 package net.castleadventure.ospgarath.model.ability.power.barbarian;
 
-public class Ire {
+import net.castleadventure.ospgarath.model.ability.power.Power;
+
+public class Ire extends Power {
 }

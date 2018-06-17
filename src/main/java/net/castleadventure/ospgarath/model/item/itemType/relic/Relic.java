@@ -1,7 +1,7 @@
 package net.castleadventure.ospgarath.model.item.itemType.relic;
 
-import net.castleadventure.ospgarath.model.ability.Power;
-import net.castleadventure.ospgarath.model.ability.Trait;
+import net.castleadventure.ospgarath.model.ability.power.Power;
+import net.castleadventure.ospgarath.model.characterClass.trait.Trait;
 import net.castleadventure.ospgarath.model.item.Item;
 import net.castleadventure.ospgarath.model.item.itemType.ItemType;
 import net.castleadventure.ospgarath.model.item.itemType.relic.relicBehavior.RelicBehavior;
