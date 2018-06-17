@@ -7,39 +7,41 @@ import java.util.Random;
 
 public enum ClassType {
 
-    CHAMPION(1, "SQIL"),
-    BARBARIAN(2, "SQLI"),
-    OUTRIDER(3, "SIQL"),
-    SKINCHANGER(4, "SILQ"),
-    WEAPON_MASTER(5, "SLQI"),
-    PALADIN(6, "SLIQ"),
-    RANGER(7, "QSIL"),
-    BRAWLER(8, "QSLI"),
-    BOWMAN(9, "QISL"),
-    BURGLAR(10, "QILS"),
-    HUNTER(11, "QLSI"),
-    ASSASSIN(12, "QLIS"),
-    MAGE(13, "ISQL"),
-    NECROMANCER(14, "ISLQ"),
-    SORCERER(15, "IQSL"),
-    ALCHEMIST(16, "IQLS"),
-    CONJURER(17, "ILSQ"),
-    HEALER(18, "ILQS"),
-    CAPTAIN(19, "LSQI"),
-    MARINER(20, "LSIQ"),
-    SOVEREIGN(21, "LQSI"),
-    SHEPHERD(22, "LQIS"),
-    SCHOLAR(23, "LISQ"),
-    BARD(24, "LIQS");
+    CHAMPION(1, "SQIL", "Champion"),
+    BARBARIAN(2, "SQLI", "Barbarian"),
+    OUTRIDER(3, "SIQL", "Outrider"),
+    SKINCHANGER(4, "SILQ", "Skinchanger"),
+    WEAPON_MASTER(5, "SLQI", "Weapon Master"),
+    PALADIN(6, "SLIQ", "Paladin"),
+    RANGER(7, "QSIL", "Ranger"),
+    BRAWLER(8, "QSLI", "Brawler"),
+    BOWMAN(9, "QISL", "Bowman"),
+    BURGLAR(10, "QILS", "Burglar"),
+    HUNTER(11, "QLSI", "Hunter"),
+    ASSASSIN(12, "QLIS", "Assassin"),
+    MAGE(13, "ISQL", "Mage"),
+    NECROMANCER(14, "ISLQ", "Necromancer"),
+    SORCERER(15, "IQSL", "Sorcerer"),
+    ALCHEMIST(16, "IQLS", "Alchemist"),
+    CONJURER(17, "ILSQ", "Conjurer"),
+    HEALER(18, "ILQS", "Healer"),
+    CAPTAIN(19, "LSQI", "Captain"),
+    MARINER(20, "LSIQ", "Mariner"),
+    SOVEREIGN(21, "LQSI", "Sovereign"),
+    SHEPHERD(22, "LQIS", "Shepherd"),
+    SCHOLAR(23, "LISQ", "Scholar"),
+    BARD(24, "LIQS", "Bard");
 
     private int value;
     private String classCombo;
+    private String className;
 
     private static final int NUM_CLASSES = 24;
 
-    ClassType(int value, String classCombo) {
+    ClassType(int value, String classCombo, String className) {
         this.value = value;
         this.classCombo = classCombo;
+        this.className = className;
     }
 
     public int getValue() {
@@ -48,6 +50,10 @@ public enum ClassType {
 
     public String getClassCombo() {
         return classCombo;
+    }
+
+    public String getClassName() {
+        return className;
     }
 
     public static ClassType getClassType(int value) {
@@ -117,6 +123,22 @@ public enum ClassType {
 
     public static List<ClassType> getAllClasses() {
         return Arrays.asList(ClassType.values());
+    }
+
+    public static List<String> getAllClassNames() {
+        List<String> classNames = new ArrayList<>();
+        for (int i = 0; i < ClassType.values().length; i++) {
+            classNames.add(ClassType.values()[i].className);
+        }
+        return classNames;
+    }
+
+    public static List<String> getAllClassNamesWithCombos() {
+        List<String> classNames = new ArrayList<>();
+        for (int i = 0; i < ClassType.values().length; i++) {
+            classNames.add(ClassType.values()[i].className + " (" + ClassType.values()[i].classCombo + ")");
+        }
+        return classNames;
     }
 
 }
