@@ -23,6 +23,30 @@ public class BardTraits {
         }
     }
 
+    private enum BardRestrictions {
+        RESTRICTION_1("Must have a musical instrument equipped in order to use any powers"),
+        RESTRICTION_2("Equipping a one handed musical instrument results in a 25% chance that a power fails but is not lost"),
+        RESTRICTION_3("Cannot wear heavy armor");
+
+        private String restriction;
+
+        BardRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (BardRestrictions restriction : BardRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (BardTraitDescription trait : BardTraitDescription.values()) {

@@ -23,6 +23,28 @@ public class MarinerTraits {
         }
     }
 
+    private enum MarinerRestrictions {
+        RESTRICTION_1("Cannot be dwarf");
+
+        private String restriction;
+
+        MarinerRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (MarinerRestrictions restriction : MarinerRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (MarinerTraitDescription trait : MarinerTraitDescription.values()) {

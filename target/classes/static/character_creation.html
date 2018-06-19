@@ -135,6 +135,13 @@
         border-width: 5px;
     }
 
+    #race_body {
+        position: absolute;
+        left: 16vw;
+        text-align: center;
+        width: 50vw;
+    }
+
     .roll_display {
         background: url(img/box.jpg) no-repeat;
         background-size: 100% 100%;
@@ -206,6 +213,7 @@
 <script>
     var TABS_ENABLED = false;
     var CLASSES_LOADED = false;
+    var RACES_LOADED = false;
     var CURRENT_TAB;
     var CURRENT_TAB_SELECTOR;
     var STRENGTH;
@@ -214,20 +222,60 @@
     var LEADERSHIP;
     var ENDURANCE;
 
-    function startCreation() {
-        document.getElementById("welcome_body").style.display = "none";
-        document.getElementById("ability_body").style.display = "block";
-        CURRENT_TAB = "ability_body";
-        CURRENT_TAB_SELECTOR = document.getElementById("ability_selector");
-        CURRENT_TAB_SELECTOR.classList.add("menu_tab_selected");
+    function add(a, b) {
+        return a + b;
     }
 
-    function enableTabs() {
-        TABS_ENABLED = true;
-        var tabs = document.getElementsByClassName("menu_tab");
-        for (var i = 0; i < tabs.length; i++) {
-            tabs.item(i).classList.remove("disabled_menu_item");
+    function addRollTotalModifier(rollNum, lowRoll1, lowRoll2) {
+        var rollTotal = document.getElementById("roll_total" + rollNum).innerText;
+        if (rollTotal.indexOf("(") === -1) {
+            rollTotal = (parseInt(rollTotal) + (parseInt(lowRoll1.innerText) + parseInt(lowRoll2.innerText)));
+            var modifier = getModifier(rollTotal);
+            if (rollTotal == 0) modifier = "-";
+            var sign = "";
+            if (modifier > 0) sign = "+";
+            document.getElementById("roll_total" + rollNum).innerText = rollTotal + " (" + sign + modifier + ")";
         }
+    }
+
+    function autoAdjustAbilitiesByClass(classCombo) {
+        var abilitiesSorted = [STRENGTH, QUICKNESS, INTELLIGENCE, LEADERSHIP];
+        abilitiesSorted.sort(function (a, b) {  return b - a;  });
+        for (var i = 0; i < 4; i++) {
+            var ability = classCombo.charAt(i);
+            switch (ability) {
+                case 'S':
+                    STRENGTH = abilitiesSorted[i];
+                    break;
+                case 'Q':
+                    QUICKNESS = abilitiesSorted[i];
+                    break;
+                case 'I':
+                    INTELLIGENCE = abilitiesSorted[i];
+                    break;
+                case 'L':
+                    LEADERSHIP = abilitiesSorted[i];
+            }
+        }
+        update_ability_scores();
+    }
+
+    function adjustEndurance(rollNum, el) {
+        var lowRoll1 = document.getElementById("roll" + rollNum + "-4");
+        var lowRoll2 = document.getElementById("roll" + rollNum + "-5");
+        if (selectText(el) !== "Endurance") {
+            lowRoll1.classList.remove("low_end_rolls");
+            lowRoll2.classList.remove("low_end_rolls");
+            document.getElementById("last_plus" + rollNum).classList.remove("last_end_plus");
+            addRollTotalModifier(rollNum, lowRoll1, lowRoll2);
+            return;
+        }
+        lowRoll1.classList.add("low_end_rolls");
+        lowRoll2.classList.add("low_end_rolls");
+        document.getElementById("last_plus" + rollNum).classList.add("last_end_plus");
+
+
+        removeRollTotalModifier(rollNum, lowRoll1, lowRoll2);
     }
 
     function changeTab(id, el) {
@@ -249,30 +297,52 @@
         CURRENT_TAB_SELECTOR = el;
     }
 
-    function update_ability_scores() {
-        var sMod = getModifier(STRENGTH);
-        var qMod = getModifier(QUICKNESS);
-        var iMod = getModifier(INTELLIGENCE);
-        var lMod = getModifier(LEADERSHIP);
-
-        document.getElementById("ability_s").innerText = STRENGTH + " (" + (sMod >= 0 ? '+':'-') + sMod + ")";
-        document.getElementById("ability_q").innerText = QUICKNESS + " (" + (qMod >= 0 ? '+':'-') + qMod + ")";
-        document.getElementById("ability_i").innerText = INTELLIGENCE + " (" + (iMod >= 0 ? '+':'-') + iMod + ")";
-        document.getElementById("ability_l").innerText = LEADERSHIP + " (" + (lMod >= 0 ? '+':'-') + lMod + ")";
-        document.getElementById("ability_e").innerText = ENDURANCE;
+    function enableTabs() {
+        TABS_ENABLED = true;
+        var tabs = document.getElementsByClassName("menu_tab");
+        for (var i = 0; i < tabs.length; i++) {
+            tabs.item(i).classList.remove("disabled_menu_item");
+        }
     }
 
-    function saveAbilities() {
-        var validated = validate();
-        if (validated) {
-            document.getElementById("validate_error").style.display = "none";
-            enableTabs();
-            loadClassList();
-            changeTab("class_body", document.getElementById("class_selector"));
+    function getModifier(num) {
+        if (num > 20) {
+            return 4; //19, 16, 12, 10
         }
-        else {
-            document.getElementById("validate_error").style.display = "block";
+        if (num >= 19) {
+            return 3;
         }
+        if (num >= 16) {
+            return 2;
+        }
+        if (num >= 12) {
+            return 1;
+        }
+        if (num >= 10) {
+            return 0;
+        }
+        if (num >= 6) {
+            return -1;
+        }
+        if (num >= 3) {
+            return -2;
+        }
+        return -3;
+    }
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max)) + 1 //don't include 0;
+    }
+
+    function loadClassDescription(ele) {
+        var selectedClass = selectText(ele).split("(")[0].trim();
+        $.get("/class/classDescription/" + selectedClass, function(data, status) {
+            document.getElementById("class_description").innerText = data;
+            loadClassTraits(selectedClass);
+            loadClassRestrictions(selectedClass);
+            var classCombo = selectText(ele).split("(")[1].replace("(", "").replace(")", "").trim();
+            autoAdjustAbilitiesByClass(classCombo);
+        });
     }
 
     function loadClassList() {
@@ -292,34 +362,81 @@
         CLASSES_LOADED = true;
     }
 
-    function adjustEndurance(rollNum, el) {
-        var lowRoll1 = document.getElementById("roll" + rollNum + "-4");
-        var lowRoll2 = document.getElementById("roll" + rollNum + "-5");
-        if (selectText(el) !== "Endurance") {
-            lowRoll1.classList.remove("low_end_rolls");
-            lowRoll2.classList.remove("low_end_rolls");
-            document.getElementById("last_plus" + rollNum).classList.remove("last_end_plus");
-            addRollTotalModifier(rollNum, lowRoll1, lowRoll2);
-            return;
-        }
-        lowRoll1.classList.add("low_end_rolls");
-        lowRoll2.classList.add("low_end_rolls");
-        document.getElementById("last_plus" + rollNum).classList.add("last_end_plus");
-
-
-        removeRollTotalModifier(rollNum, lowRoll1, lowRoll2);
+    function loadClassRestrictions(className) {
+        $.get("/class/classRestrictions/" + className, function(data, status) {
+            var restrictionList = document.getElementById("class_restrictions");
+            restrictionList.innerHTML = "";
+            for (var i = 0; i < data.length; i++) {
+                var trait = data[i];
+                var listElement = document.createElement("li");
+                listElement.innerText = trait;
+                restrictionList.appendChild(listElement);
+            }
+            document.getElementById("restrictions_header").classList.remove("hidden");
+        })
     }
 
-    function addRollTotalModifier(rollNum, lowRoll1, lowRoll2) {
-        var rollTotal = document.getElementById("roll_total" + rollNum).innerText;
-        if (rollTotal.indexOf("(") === -1) {
-            rollTotal = (parseInt(rollTotal) + (parseInt(lowRoll1.innerText) + parseInt(lowRoll2.innerText)));
-            var modifier = getModifier(rollTotal);
-            if (rollTotal == 0) modifier = "-";
-            var sign = "";
-            if (modifier > 0) sign = "+";
-            document.getElementById("roll_total" + rollNum).innerText = rollTotal + " (" + sign + modifier + ")";
+    function loadClassTraits(className) {
+        $.get("/class/classTraits/" + className, function(data, status) {
+            var traitList = document.getElementById("class_traits");
+            traitList.innerHTML = "";
+            for (var i = 0; i < data.length; i++) {
+                var trait = data[i];
+                var listElement = document.createElement("li");
+                listElement.innerText = trait;
+                traitList.appendChild(listElement);
+            }
+            document.getElementById("traits_header").classList.remove("hidden");
+        })
+    }
+
+    function loadRacialPowers(race) {
+        $.get("/race/racialPowers/" + race, function(data, status) {
+            var powerList = document.getElementById("racial_powers");
+            powerList.innerHTML = data;
+            document.getElementById("racial_powers_header").classList.remove("hidden");
+        })
+    }
+
+    function loadRacialTraits(race) {
+        $.get("/race/racialTraits/" + race, function(data, status) {
+            var traitList = document.getElementById("racial_traits");
+            traitList.innerHTML = "";
+            for (var i = 0; i < data.length; i++) {
+                var trait = data[i];
+                var listElement = document.createElement("li");
+                listElement.innerText = trait;
+                traitList.appendChild(listElement);
+            }
+            document.getElementById("racial_traits_header").classList.remove("hidden");
+        })
+    }
+
+    function loadRaceDescription(ele) {
+        var selectedRace = selectText(ele).split("(")[0].trim();
+        $.get("/race/raceDescription/" + selectedRace, function(data, status) {
+            document.getElementById("race_description").innerText = data;
+            loadRacialTraits(selectedRace);
+            loadRacialPowers(selectedRace);
+            autoAdjustAbilitiesByRace(selectedRace);
+        });
+    }
+
+    function loadRaceList() {
+        if (RACES_LOADED) {
+            return;
         }
+        $.get("/race/raceList", function(data, status){
+            for (var i=0; i < data.length; i++) {
+                var race = data[i];
+                var raceSelect = document.getElementById("race_select");
+                var option = document.createElement("option");
+                option.value = race.toLowerCase();
+                option.innerText = race;
+                raceSelect.appendChild(option);
+            }
+        });
+        RACES_LOADED = true;
     }
 
     function removeRollTotalModifier(rollNum, lowRoll1, lowRoll2) {
@@ -328,6 +445,93 @@
             rollTotal = (parseInt(rollTotal) - (parseInt(lowRoll1.innerText) + parseInt(lowRoll2.innerText))).toString();
             document.getElementById("roll_total" + rollNum).innerText = rollTotal.split(" ")[0];
         }
+    }
+
+    function resetClassSelection() {
+        document.getElementById("class_select").value = "";
+        document.getElementById("class_description").innerText = "";
+        document.getElementById("traits_header").classList.add("hidden");
+        document.getElementById("restrictions_header").classList.add("hidden");
+        document.getElementById("class_traits").innerHTML = "";
+        document.getElementById("class_restrictions").innerHTML = "";
+    }
+
+    function resetRaceSelection() {
+        document.getElementById("race_select").value = "";
+        document.getElementById("race_description").innerText = "";
+        document.getElementById("racial_traits_header").classList.add("hidden");
+        document.getElementById("racial_powers_header").classList.add("hidden");
+        document.getElementById("racial_traits").innerHTML = "";
+        document.getElementById("racial_powers").innerHTML = "";
+    }
+
+    function rollAttribute(rollNum, el) {
+        el.classList.add("disabled_button");
+        el.disabled = true;
+        var rolls = [];
+        for (var i = 0; i < 5; i++) {
+            rolls.push(getRandomInt(4));
+        }
+        rolls = rolls.sort(function (a, b) {  return b - a;  });
+
+        for (var roll = 1; roll <= 5; roll++) {
+            var element = document.getElementById("roll" + rollNum + "-" + roll).innerText = rolls[roll-1];
+        }
+        var rollTotal = rolls.reduce(add, 0);
+        var modifier = getModifier(rollTotal);
+        if (modifier > 0) {
+            rollTotal = rollTotal + " (+" + modifier + ")";
+        }
+        else {
+            rollTotal = rollTotal + " (" + modifier + ")";
+        }
+        document.getElementById("roll_total" + rollNum).innerText = rollTotal;
+    }
+
+    function saveAbilities() {
+        var validated = validate();
+        if (validated) {
+            document.getElementById("validate_error").style.display = "none";
+            enableTabs();
+            loadClassList();
+            resetClassSelection();
+            loadRaceList();
+            resetRaceSelection();
+            //TODO: Reset powers selection
+            changeTab("class_body", document.getElementById("class_selector"));
+        }
+        else {
+            document.getElementById("validate_error").style.display = "block";
+        }
+    }
+
+    function selectText(element) {
+        return element.options[element.selectedIndex].text;
+    }
+
+    function selectValue(element) {
+        return element.options[element.selectedIndex].value;
+    }
+
+    function startCreation() {
+        document.getElementById("welcome_body").style.display = "none";
+        document.getElementById("ability_body").style.display = "block";
+        CURRENT_TAB = "ability_body";
+        CURRENT_TAB_SELECTOR = document.getElementById("ability_selector");
+        CURRENT_TAB_SELECTOR.classList.add("menu_tab_selected");
+    }
+
+    function update_ability_scores() {
+        var sMod = getModifier(STRENGTH);
+        var qMod = getModifier(QUICKNESS);
+        var iMod = getModifier(INTELLIGENCE);
+        var lMod = getModifier(LEADERSHIP);
+
+        document.getElementById("ability_s").innerText = STRENGTH + " (" + (sMod > 0 ? '+':'') + sMod + ")";
+        document.getElementById("ability_q").innerText = QUICKNESS + " (" + (qMod > 0 ? '+':'') + qMod + ")";
+        document.getElementById("ability_i").innerText = INTELLIGENCE + " (" + (iMod > 0 ? '+':'') + iMod + ")";
+        document.getElementById("ability_l").innerText = LEADERSHIP + " (" + (lMod > 0 ? '+':'') + lMod + ")";
+        document.getElementById("ability_e").innerText = ENDURANCE;
     }
 
     function validate() {
@@ -364,116 +568,6 @@
              }
         }
         return true;
-    }
-
-    function selectText(element) {
-        return element.options[element.selectedIndex].text;
-    }
-
-    function selectValue(element) {
-        return element.options[element.selectedIndex].value;
-    }
-
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max)) + 1 //don't include 0;
-    }
-
-    function rollAttribute(rollNum, el) {
-        el.classList.add("disabled_button");
-        el.disabled = true;
-        var rolls = [];
-        for (var i = 0; i < 5; i++) {
-            rolls.push(getRandomInt(4));
-        }
-        rolls = rolls.sort(function (a, b) {  return b - a;  });
-
-        for (var roll = 1; roll <= 5; roll++) {
-            var element = document.getElementById("roll" + rollNum + "-" + roll).innerText = rolls[roll-1];
-        }
-        var rollTotal = rolls.reduce(add, 0);
-        var modifier = getModifier(rollTotal);
-        if (modifier > 0) {
-            rollTotal = rollTotal + " (+" + modifier + ")";
-        }
-        else {
-            rollTotal = rollTotal + " (" + modifier + ")";
-        }
-        document.getElementById("roll_total" + rollNum).innerText = rollTotal;
-    }
-
-    function add(a, b) {
-        return a + b;
-    }
-
-    function getModifier(num) {
-        if (num > 20) {
-            return 4; //19, 16, 12, 10
-        }
-        if (num >= 19) {
-            return 3;
-        }
-        if (num >= 16) {
-            return 2;
-        }
-        if (num >= 12) {
-            return 1;
-        }
-        if (num >= 10) {
-            return 0;
-        }
-        if (num >= 6) {
-            return -1;
-        }
-        if (num >= 3) {
-            return -2;
-        }
-        return -3;
-    }
-
-    function loadClassDescription(ele) {
-        var selectedClass = selectText(ele).split("(")[0].trim();
-        $.get("/class/classDescription/" + selectedClass, function(data, status) {
-            document.getElementById("class_description").innerText = data;
-            loadClassTraits(selectedClass);
-            var classCombo = selectText(ele).split("(")[1].replace("(", "").replace(")", "").trim();
-            autoAdjustAbilitiesByClass(classCombo);
-        });
-    }
-
-    function loadClassTraits(className) {
-        $.get("/class/classTraits/" + className, function(data, status) {
-            var traitList = document.getElementById("class_traits");
-            traitList.innerHTML = "";
-            for (var i = 0; i < data.length; i++) {
-                var trait = data[i];
-                var listElement = document.createElement("li");
-                listElement.innerText = trait;
-                traitList.appendChild(listElement);
-            }
-            document.getElementById("traits_header").classList.remove("hidden");
-        })
-    }
-
-    function autoAdjustAbilitiesByClass(classCombo) {
-        var abilitiesSorted = [STRENGTH, QUICKNESS, INTELLIGENCE, LEADERSHIP];
-        abilitiesSorted.sort(function (a, b) {  return b - a;  });
-        for (var i = 0; i < 4; i++) {
-            var ability = classCombo.charAt(i);
-            switch (ability) {
-                case 'S':
-                    STRENGTH = abilitiesSorted[i];
-                    break;
-                case 'Q':
-                    QUICKNESS = abilitiesSorted[i];
-                    break;
-                case 'I':
-                    INTELLIGENCE = abilitiesSorted[i];
-                    break;
-                case 'L':
-                    LEADERSHIP = abilitiesSorted[i];
-            }
-        }
-        update_ability_scores();
     }
 
 </script>
@@ -633,11 +727,26 @@
 
             </select>
             <p id="class_description"></p>
-            <p id="traits_header" style="font-size:20pt;margin-bottom:-1vh;" class="hidden">Class Traits:</p>
+            <p id="traits_header" style="font-size:16pt;margin-bottom:-1vh;margin-top:-1vh;" class="hidden">Class Traits:</p>
             <ul id="class_traits" style="text-align: left;"></ul>
+            <p id="restrictions_header" style="font-size:16pt;margin-bottom:-1vh;margin-top:-1vh;" class="hidden">Class Restrictions:</p>
+            <ul id="class_restrictions" style="text-align: left;"></ul>
         </div>
     </div>
-    <div id="race_body" style="display: none;"></div>
+    <div id="race_body" style="display: none;">
+        <div>
+            <p style="font-size:24pt; margin-bottom:0;">Select a Race:</p>
+            <p style="font-size: 10pt;">(Ability scores affected by your chosen race will be calculated before character creation)</p>
+            <select onchange="loadRaceDescription(this)" id="race_select" style="width:20vw;padding-left:1.4vw;">
+
+            </select>
+            <p id="race_description"></p>
+            <p id="racial_traits_header" style="font-size:16pt;margin-bottom:-1vh;margin-top:-1vh;" class="hidden">Racial Traits:</p>
+            <ul id="racial_traits" style="text-align: left;width:20vw;padding-left:16vw;"></ul>
+            <p id="racial_powers_header" style="font-size:16pt;margin-bottom:-1vh;margin-top:-1vh;" class="hidden">Racial Power:</p>
+            <p id="racial_powers" style="text-align: left;"></p>
+        </div>
+    </div>
     <div id="powers_body" style="display: none;"></div>
     <div id="name_body" style="display: none;"></div>
     <div id="start_body" style="display: none;"></div>

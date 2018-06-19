@@ -21,6 +21,30 @@ public class WeaponMasterTraits {
         }
     }
 
+    private enum WeaponMasterRestrictions {
+        RESTRICTION_1("Equipping a shield grants no defensive bonus to the weapon master"),
+        RESTRICTION_2("-5 to rolls to heal others"),
+        RESTRICTION_3("Cannot use any class powers if weapon of choice is not equipped, and all attack rolls take a -8 penalty");
+
+        private String restriction;
+
+        WeaponMasterRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (WeaponMasterRestrictions restriction : WeaponMasterRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (WeaponMasterTraitDescription trait : WeaponMasterTraitDescription.values()) {

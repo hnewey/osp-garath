@@ -22,6 +22,29 @@ public class BrawlerTraits {
         }
     }
 
+    private enum BrawlerRestrictions {
+        RESTRICTION_1("Cannot be wood elf"),
+        RESTRICTION_2("When equipping bows, 2-handed weapons or shields, cannot use powers and all rolls are made as though as though hampered");
+
+        private String restriction;
+
+        BrawlerRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (BrawlerRestrictions restriction : BrawlerRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (BrawlerTraitDescription trait : BrawlerTraitDescription.values()) {

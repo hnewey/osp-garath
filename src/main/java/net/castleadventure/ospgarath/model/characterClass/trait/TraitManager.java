@@ -58,4 +58,58 @@ public class TraitManager {
                 return BardTraits.getTraitList();
         }
     }
+
+    public static List<String> getClassRestrictions(String className) {
+        switch (className) {
+            case "Champion":
+                return ChampionTraits.getRestrictionList();
+            case "Barbarian":
+                return BarbarianTraits.getRestrictionList();
+            case "Outrider":
+                return OutriderTraits.getRestrictionList();
+            case "Skinchanger":
+                return SkinchangerTraits.getRestrictionList();
+            case "Weapon Master":
+                return WeaponMasterTraits.getRestrictionList();
+            case "Paladin":
+                return PaladinTraits.getRestrictionList();
+            case "Ranger":
+                return RangerTraits.getRestrictionList();
+            case "Brawler":
+                return BrawlerTraits.getRestrictionList();
+            case "Bowman":
+                return BowmanTraits.getRestrictionList();
+            case "Burglar":
+                return BurglarTraits.getRestrictionList();
+            case "Hunter":
+                return HunterTraits.getRestrictionList();
+            case "Assassin":
+                return AssassinTraits.getRestrictionList();
+            case "Mage":
+                return MageTraits.getRestrictionList();
+            case "Necromancer":
+                return NecromancerTraits.getRestrictionList();
+            case "Sorcerer":
+                return SorcererTraits.getRestrictionList();
+            case "Alchemist":
+                return AlchemistTraits.getRestrictionList();
+            case "Conjurer":
+                return ConjurerTraits.getRestrictionList();
+            case "Healer":
+                return HealerTraits.getRestrictionList();
+            case "Captain":
+                return CaptainTraits.getRestrictionList();
+            case "Mariner":
+                return MarinerTraits.getRestrictionList();
+            case "Sovereign":
+                return SovereignTraits.getRestrictionList();
+            case "Shepherd":
+                return ShepherdTraits.getRestrictionList();
+            case "Scholar":
+                return ScholarTraits.getRestrictionList();
+            default:
+                return BardTraits.getRestrictionList();
+        }
+    }
+
 }

@@ -23,6 +23,28 @@ public class ScholarTraits {
         }
     }
 
+    private enum ScholarRestrictions {
+        RESTRICTION_1("Cannot be orc");
+
+        private String restriction;
+
+        ScholarRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (ScholarRestrictions restriction : ScholarRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (ScholarTraitDescription trait : ScholarTraitDescription.values()) {

@@ -20,10 +20,29 @@ public class SovereignTraits {
             return description;
         }
     }
-/*
- *
- *
- */
+
+    private enum SovereignRestrictions {
+        RESTRICTION_1("Cannot be hobbit"),
+        RESTRICTION_2("While the sovereign is unconscious, all followers gain the hampered and staggered conditions until revived");
+
+        private String restriction;
+
+        SovereignRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (SovereignRestrictions restriction : SovereignRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
 
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();

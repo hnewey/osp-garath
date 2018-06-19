@@ -22,6 +22,29 @@ public class PaladinTraits {
         }
     }
 
+    private enum PaladinRestrictions {
+        RESTRICTION_1("When equipping two weapons, cannot use powers, and rolls attacks as though hampered"),
+        RESTRICTION_2("Cannot use stealth or steal, or make an L roll in conversation with an NPC to lie or deceive");
+
+        private String restriction;
+
+        PaladinRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (PaladinRestrictions restriction : PaladinRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (PaladinTraitDescription trait : PaladinTraitDescription.values()) {

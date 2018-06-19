@@ -23,6 +23,28 @@ public class SorcererTraits {
         }
     }
 
+    private enum SorcererRestrictions {
+        RESTRICTION_1("Cannot be human"),
+        RESTRICTION_2("When a weapon is equipped, may not use powers and all attacks are made as though hampered");
+
+        private String restriction;
+
+        SorcererRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (SorcererRestrictions restriction : SorcererRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
 
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();

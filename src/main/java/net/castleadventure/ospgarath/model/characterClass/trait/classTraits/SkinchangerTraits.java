@@ -22,6 +22,30 @@ public class SkinchangerTraits {
         }
     }
 
+    private enum SkinchangerRestrictions {
+        RESTRICTION_1("Can ONLY be human or orc"),
+        RESTRICTION_2("When wearing heavy armor, cannot use powers and rolls attacks as though hampered"),
+        RESTRICTION_3("If ever kills a beast, loses all skinchanger powers for that game");
+
+        private String restriction;
+
+        SkinchangerRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (SkinchangerRestrictions restriction : SkinchangerRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (SkinchangerTraitDescription trait : SkinchangerTraitDescription.values()) {

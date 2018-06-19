@@ -23,6 +23,30 @@ public class NecromancerTraits {
         }
     }
 
+    private enum NecromancerRestrictions {
+        RESTRICTION_1("May not be wood elf"),
+        RESTRICTION_2("Cannot regain Endurance points as a result of a power, trait, or item with the word “heal” in its title or description."),
+        RESTRICTION_3("Cannot heal others");
+
+        private String restriction;
+
+        NecromancerRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (NecromancerRestrictions restriction : NecromancerRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (NecromancerTraitDescription trait : NecromancerTraitDescription.values()) {

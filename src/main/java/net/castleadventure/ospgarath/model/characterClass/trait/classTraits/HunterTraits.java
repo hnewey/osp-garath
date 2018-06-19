@@ -21,6 +21,28 @@ public class HunterTraits {
         }
     }
 
+    private enum HunterRestrictions {
+        RESTRICTION_1("Cannot be half-elf or half-orc");
+
+        private String restriction;
+
+        HunterRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (HunterRestrictions restriction : HunterRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (HunterTraitDescription trait : HunterTraitDescription.values()) {

@@ -21,6 +21,28 @@ public class CaptainTraits {
         }
     }
 
+    private enum CaptainRestrictions {
+        RESTRICTION_1("-1 to movement");
+
+        private String restriction;
+
+        CaptainRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (CaptainRestrictions restriction : CaptainRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (CaptainTraitDescription trait : CaptainTraitDescription.values()) {

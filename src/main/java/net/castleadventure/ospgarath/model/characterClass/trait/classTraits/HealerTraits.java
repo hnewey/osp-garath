@@ -22,6 +22,29 @@ public class HealerTraits {
         }
     }
 
+    private enum HealerRestrictions {
+        RESTRICTION_1("Must have one hand unequipped and free to use any powers"),
+        RESTRICTION_2("May not willfully cause the death of another creature or else loses powers and class traits for rest of the game");
+
+        private String restriction;
+
+        HealerRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (HealerRestrictions restriction : HealerRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (HealerTraitDescription trait : HealerTraitDescription.values()) {

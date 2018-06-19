@@ -22,6 +22,27 @@ public class ChampionTraits {
         }
     }
 
+    private enum ChampionRestrictions {
+        RESTRICTION_1("-5 to all heal related rolls");
+
+        private String restriction;
+
+        ChampionRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (ChampionRestrictions restriction : ChampionRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
 
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();

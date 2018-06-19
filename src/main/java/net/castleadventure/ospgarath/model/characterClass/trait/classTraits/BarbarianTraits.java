@@ -22,6 +22,29 @@ public class BarbarianTraits {
         }
     }
 
+    private enum BarbarianRestrictions {
+        RESTRICTION_1("Cannot be high elf"),
+        RESTRICTION_2("When wearing heavy armor, cannot use powers and attacks are rolled as though hampered");
+
+        private String restriction;
+
+        BarbarianRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (BarbarianRestrictions restriction : BarbarianRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (BarbarianTraitDescription trait : BarbarianTraitDescription.values()) {

@@ -24,6 +24,28 @@ public class RangerTraits {
         }
     }
 
+    private enum RangerRestrictions {
+        RESTRICTION_1("Cannot be half orc");
+
+        private String restriction;
+
+        RangerRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (RangerRestrictions restriction : RangerRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (RangerTraitDescription trait : RangerTraitDescription.values()) {

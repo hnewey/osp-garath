@@ -24,6 +24,29 @@ public class BurglarTraits {
         }
     }
 
+    private enum BurglarRestrictions {
+        RESTRICTION_1("Cannot be high elf"),
+        RESTRICTION_2("Cannot wear heavy armor");
+
+        private String restriction;
+
+        BurglarRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (BurglarRestrictions restriction : BurglarRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (BurglarTraitDescription trait : BurglarTraitDescription.values()) {

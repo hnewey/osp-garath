@@ -21,6 +21,28 @@ public class ShepherdTraits {
         }
     }
 
+    private enum ShepherdRestrictions {
+        RESTRICTION_1("If the Shepherd\'s trusted pet is killed, the Shepherd gains the shaken condition until the end of the current game. Additionally, the Shepherd also takes -2 to movement and cannot regain health from campfires until the end of the current game.");
+
+        private String restriction;
+
+        ShepherdRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (ShepherdRestrictions restriction : ShepherdRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (ShepherdTraitDescription trait : ShepherdTraitDescription.values()) {

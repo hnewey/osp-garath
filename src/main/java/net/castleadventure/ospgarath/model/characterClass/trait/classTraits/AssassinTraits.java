@@ -21,6 +21,29 @@ public class AssassinTraits {
         }
     }
 
+    private enum AssassinRestrictions {
+        RESTRICTION_1("Cannot use any powers when equipping heavy armor or a shield"),
+        RESTRICTION_2("Cannot be orc");
+
+        private String restriction;
+
+        AssassinRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (AssassinRestrictions restriction : AssassinRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (AssassinTraitDescription trait : AssassinTraitDescription.values()) {

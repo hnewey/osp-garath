@@ -23,6 +23,28 @@ public class MageTraits {
         }
     }
 
+    private enum MageRestrictions {
+        RESTRICTION_1("Cannot be hobbit");
+
+        private String restriction;
+
+        MageRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (MageRestrictions restriction : MageRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (MageTraitDescription trait : MageTraitDescription.values()) {

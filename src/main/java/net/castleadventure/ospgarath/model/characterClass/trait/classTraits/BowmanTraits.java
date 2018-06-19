@@ -22,6 +22,29 @@ public class BowmanTraits {
         }
     }
 
+    private enum BowmanRestrictions {
+        RESTRICTION_1("All attack rolls and grapple maneuvers are made as though hampered unless made with bows or daggers equipped"),
+        RESTRICTION_2("May not use any powers if a bow is not equipped or if wearing heavy armor");
+
+        private String restriction;
+
+        BowmanRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (BowmanRestrictions restriction : BowmanRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (BowmanTraitDescription trait : BowmanTraitDescription.values()) {

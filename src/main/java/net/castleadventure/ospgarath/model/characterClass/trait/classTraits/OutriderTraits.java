@@ -25,6 +25,28 @@ public class OutriderTraits {
         }
     }
 
+    private enum OutriderRestrictions {
+        RESTRICTION_1("Cannot be dwarf");
+
+        private String restriction;
+
+        OutriderRestrictions(String restriction) {
+            this.restriction = restriction;
+        }
+
+        public String getRestriction() {
+            return restriction;
+        }
+    }
+
+    public static List<String> getRestrictionList() {
+        List<String> restrictionList = new ArrayList<>();
+        for (OutriderRestrictions restriction : OutriderRestrictions.values()) {
+            restrictionList.add(restriction.getRestriction());
+        }
+        return restrictionList;
+    }
+
     public static List<String> getTraitList() {
         List<String> traitList = new ArrayList<>();
         for (OutriderTraitDescription trait : OutriderTraitDescription.values()) {
