@@ -5,7 +5,7 @@ import net.castleadventure.ospgarath.model.ability.power.Power;
 public class Wrestler extends Power {
 
     public Wrestler() {
-        name = "";
-        description = "";
+        name = "Wrestler";
+        description = "When unarmed, all rolls made to grapple an enemy are made as though determined (Innate/unlimited).";
     }
 }
