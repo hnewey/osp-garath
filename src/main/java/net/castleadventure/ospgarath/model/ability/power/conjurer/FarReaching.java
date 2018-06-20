@@ -5,7 +5,7 @@ import net.castleadventure.ospgarath.model.ability.power.Power;
 public class FarReaching extends Power {
 
     public FarReaching() {
-        name = "";
-        description = "";
+        name = "Far Reaching";
+        description = "You may double the range of one use of a power (Free Action/once per game).";
     }
 }

@@ -1,6 +1,7 @@
 package net.castleadventure.ospgarath.web;
 
 import net.castleadventure.ospgarath.model.ability.power.Power;
+import net.castleadventure.ospgarath.model.ability.power.PowerManager;
 import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.character.race.RaceManager;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
@@ -38,6 +39,12 @@ public class CharacterCreationController {
     public List<String> getClassRestrictions(
             @PathVariable ("className") String className) {
         return TraitManager.getClassRestrictions(className);
+    }
+
+    @RequestMapping(value = "/class/classPowers/{className}", method = RequestMethod.GET)
+    public List<Power> getClassPowers(
+            @PathVariable ("className") String className) {
+        return PowerManager.getPowerManager(className).getClassPowers();
     }
 
     @RequestMapping(value = "/race/raceList", method = RequestMethod.GET)

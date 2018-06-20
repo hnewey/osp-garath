@@ -5,7 +5,7 @@ import net.castleadventure.ospgarath.model.ability.power.Power;
 public class SteadyingPresence extends Power {
 
     public SteadyingPresence() {
-        name = "";
-        description = "";
+        name = "Steadying Presence Command";
+        description = "You may choose one teammate within 3 spaces to gain the Steadied condition (Quick Action/once per game).";
     }
 }
