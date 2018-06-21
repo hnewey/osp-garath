@@ -4,6 +4,7 @@ public abstract class Power {
 
     protected String name;
     protected String description;
+    protected String imageSrc = "icon/" + this.getClass().getSimpleName();
     //TODO: Make ActionType enum and uses per game variables;
 
     @Override
@@ -17,5 +18,9 @@ public abstract class Power {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getImageSrc() {
+        return imageSrc;
     }
 }

@@ -14,10 +14,10 @@
     <script>
         $(document).ready(function() {
             // $('.tooltip').tooltipster();
-            $('.tooltip').tooltipster({
-                contentCloning: true,
-                theme: 'tooltipster-borderless'
-            });
+            // $('.tooltip').tooltipster({
+            //     contentCloning: true,
+            //     theme: 'tooltipster-borderless'
+            // });
         });
     </script>
 </head>
@@ -239,6 +239,13 @@
     var LEADERSHIP;
     var ENDURANCE;
 
+    function activateTooltipster() {
+        $('.tooltip').tooltipster({
+            contentCloning: true,
+            theme: 'tooltipster-borderless'
+        });
+    }
+
     function add(a, b) {
         return a + b;
     }
@@ -381,15 +388,23 @@
     }
 
     function loadClassPowers(className) {
+        document.getElementById("power_title").innerText = className;
+
         $.get("/class/classPowers/" + className, function(data, status) {
             var powersDisplay = document.getElementById("powers_display");
-            powersDisplay.innerHTML = "";
+            // powersDisplay.innerHTML = "";
             var list = document.createElement("ul");
             for (var i = 0; i < data.length; i++) {
                 var power = data[i];
                 var listItem = document.createElement("li");
                 listItem.innerText = power.description;
                 list.appendChild(listItem);
+                if (power.name === "Black Arrow") {
+                    document.getElementById("power_name").innerText = power.name;
+                    document.getElementById("power_description").innerText = power.description;
+                    document.getElementById("power_icon").src = power.imageSrc + ".jpg";
+                    activateTooltipster();
+                }
             }
             powersDisplay.appendChild(list);
         })
@@ -781,7 +796,14 @@
         </div>
     </div>
     <div id="powers_body" style="display: none;">
-        <div id="powers_display" class="tooltip" data-tooltip-content="#tooltip_content"></div>
+        <div id="power_title_display">
+            <!--<span id="power_title"></span>-->
+            <!--<span id="points_remaining">(You have 2 power points remaining)</span>-->
+        </div>
+        <div id="powers_display" class="tooltip" data-tooltip-content="#tooltip_content">
+            <p style="font-size:24pt; margin-bottom:0; text-align:center;"><span id="power_title"></span> Powers:</p>
+            <p style="font-size: 10pt; text-align: center;">You have <b>2</b> power points remaining</p>
+        </div>
         <span class="tooltip" data-tooltip-content="#tooltip_content">This span has a tooltip with HTML when you hover over it!</span>
     </div>
     <div id="name_body" style="display: none;"></div>
@@ -797,9 +819,14 @@
 
 </div>
 <div class="tooltip_templates">
-    <span id="tooltip_content">
-        <img src="" /> <strong>This is the content of my tooltip!</strong>
-    </span>
+    <div id="tooltip_content">
+        <img src="" id="power_icon">
+        <span id="power_name"></span>
+        <span id="power_description"></span>
+    </div>
+    <!--<span id="tooltip_content">-->
+        <!--<img src="" /> <strong>This is the content of my tooltip!</strong>-->
+    <!--</span>-->
 </div>
 </body>
 </html>
