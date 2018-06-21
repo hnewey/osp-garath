@@ -5,12 +5,29 @@
     <title>Osp-Garath</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/rpg-awesome.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css"/>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // $('.tooltip').tooltipster();
+            $('.tooltip').tooltipster({
+                contentCloning: true,
+                theme: 'tooltipster-borderless'
+            });
+        });
+    </script>
 </head>
 <style>
     #body {
         color: yellow;
     }
+
+    .tooltip_templates { display: none; }
+
     /*-------------------------------------------------------------------*/
 
     .ability_button {
@@ -342,6 +359,7 @@
             loadClassRestrictions(selectedClass);
             var classCombo = selectText(ele).split("(")[1].replace("(", "").replace(")", "").trim();
             autoAdjustAbilitiesByClass(classCombo);
+            loadClassPowers(selectedClass);
         });
     }
 
@@ -360,6 +378,21 @@
             }
         });
         CLASSES_LOADED = true;
+    }
+
+    function loadClassPowers(className) {
+        $.get("/class/classPowers/" + className, function(data, status) {
+            var powersDisplay = document.getElementById("powers_display");
+            powersDisplay.innerHTML = "";
+            var list = document.createElement("ul");
+            for (var i = 0; i < data.length; i++) {
+                var power = data[i];
+                var listItem = document.createElement("li");
+                listItem.innerText = power.description;
+                list.appendChild(listItem);
+            }
+            powersDisplay.appendChild(list);
+        })
     }
 
     function loadClassRestrictions(className) {
@@ -736,7 +769,7 @@
     <div id="race_body" style="display: none;">
         <div>
             <p style="font-size:24pt; margin-bottom:0;">Select a Race:</p>
-            <p style="font-size: 10pt;">(Ability scores affected by your chosen race will be calculated before character creation)</p>
+            <p style="font-size: 10pt;">(Ability scores affected by your chosen race will be calculated at the end of character creation)</p>
             <select onchange="loadRaceDescription(this)" id="race_select" style="width:20vw;padding-left:1.4vw;">
 
             </select>
@@ -747,7 +780,10 @@
             <p id="racial_powers" style="text-align: left;"></p>
         </div>
     </div>
-    <div id="powers_body" style="display: none;"></div>
+    <div id="powers_body" style="display: none;">
+        <div id="powers_display" class="tooltip" data-tooltip-content="#tooltip_content"></div>
+        <span class="tooltip" data-tooltip-content="#tooltip_content">This span has a tooltip with HTML when you hover over it!</span>
+    </div>
     <div id="name_body" style="display: none;"></div>
     <div id="start_body" style="display: none;"></div>
     <div id="ability_scores" class="ability_scores_box" style="display: none;">
@@ -759,6 +795,11 @@
         <div><span>Endurance: </span><span id="ability_e"></span></div>
     </div>
 
+</div>
+<div class="tooltip_templates">
+    <span id="tooltip_content">
+        <img src="" /> <strong>This is the content of my tooltip!</strong>
+    </span>
 </div>
 </body>
 </html>

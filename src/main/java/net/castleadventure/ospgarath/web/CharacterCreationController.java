@@ -8,6 +8,7 @@ import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.characterClass.ClassDescription;
 import net.castleadventure.ospgarath.model.characterClass.trait.TraitManager;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,9 +43,10 @@ public class CharacterCreationController {
     }
 
     @RequestMapping(value = "/class/classPowers/{className}", method = RequestMethod.GET)
-    public List<Power> getClassPowers(
+    public ResponseEntity<List<Power>> getClassPowers(
             @PathVariable ("className") String className) {
-        return PowerManager.getPowerManager(className).getClassPowers();
+        List<Power> powers = PowerManager.getPowerManager(className).getClassPowers();
+        return ResponseEntity.ok().body(powers);
     }
 
     @RequestMapping(value = "/race/raceList", method = RequestMethod.GET)

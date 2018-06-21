@@ -11,4 +11,11 @@ public abstract class Power {
         return "<i><u>" + name + ":</u></i> " + description;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

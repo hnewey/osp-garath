@@ -124,5 +124,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.3.14.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:4.3.14.RELEASE" level="project" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-1.10.0" level="application" />
   </component>
 </module>
