@@ -9,7 +9,7 @@ public class BardManager extends PowerManager {
         classPowers.add(new ClairvoyantChorus());
         classPowers.add(new DescantDusk());
         classPowers.add(new InspiringAnthem());
-        classPowers.add(new SensitiveBallard());
+        classPowers.add(new SensitiveBallad());
         classPowers.add(new SilverLining());
         classPowers.add(new StoicSong());
         classPowers.add(new SweetMelody());

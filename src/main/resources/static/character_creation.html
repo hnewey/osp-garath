@@ -10,6 +10,7 @@
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <script type="text/javascript" src="js/tooltipster-discovery.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -152,6 +153,24 @@
         border-width: 5px;
     }
 
+    .power_div {
+        display: inline-flex;
+    }
+
+    .power_div:hover {
+        box-shadow: 0 0 12px yellow;
+    }
+
+    .power_selected {
+        box-shadow: 0 0 12px yellow;
+    }
+
+    .power_name {
+        height: min-content;
+        margin: auto;
+        padding-left: 1vw;
+    }
+
     #race_body {
         position: absolute;
         left: 16vw;
@@ -214,6 +233,16 @@
         box-shadow: 0 0 12px yellow;
     }
 
+    table {
+        margin-left: 21vw;
+        margin-top: 5vh;
+    }
+
+    td {
+        width: 28vw;
+        padding-bottom: 1vh;
+    }
+
     .welcome_message {
         margin: 0 auto;
         width: 40vw;
@@ -239,10 +268,17 @@
     var LEADERSHIP;
     var ENDURANCE;
 
+    var POWERS_ARRAY;
+    var SELECTED_POWERS = [];
+    var POWER_POINTS = 2;
+
     function activateTooltipster() {
         $('.tooltip').tooltipster({
             contentCloning: true,
-            theme: 'tooltipster-borderless'
+            theme: 'tooltipster-borderless',
+            updateAnimation: 'null',
+            side: ['bottom', 'top'],
+            animationDuration: '0'
         });
     }
 
@@ -392,21 +428,69 @@
 
         $.get("/class/classPowers/" + className, function(data, status) {
             var powersDisplay = document.getElementById("powers_display");
-            // powersDisplay.innerHTML = "";
-            var list = document.createElement("ul");
-            for (var i = 0; i < data.length; i++) {
-                var power = data[i];
-                var listItem = document.createElement("li");
-                listItem.innerText = power.description;
-                list.appendChild(listItem);
-                if (power.name === "Black Arrow") {
-                    document.getElementById("power_name").innerText = power.name;
-                    document.getElementById("power_description").innerText = power.description;
-                    document.getElementById("power_icon").src = power.imageSrc + ".jpg";
-                    activateTooltipster();
-                }
+            var powerTable = document.getElementById("power_table");
+            if (data.length > 8) {
+                document.getElementById("points_remaining").innerHTML = "You have <b>2</b> power points remaining"
             }
-            powersDisplay.appendChild(list);
+            else {
+                document.getElementById("points_remaining").innerHTML = "Select <b>2</b> powers";
+            }
+            powerTable.innerHTML = "";
+            POWERS_ARRAY = data;
+            for (var i = 0; i < data.length; i+=2) {
+                var powerRow = document.createElement("tr");
+                var cell1 = document.createElement("td");
+                var cell2 = document.createElement("td");
+                var div1 = document.createElement("div");
+                var div2 = document.createElement("div");
+
+                var powerName = data[i].name;
+                var powerDescription = data[i].description;
+                var imgSrc = data[i].imageSrc;
+                var powerName2 = data[i+1].name;
+                var powerDescription2 = data[i+1].description;
+                var imgSrc2 = data[i+1].imageSrc;
+
+                div1.id = "power-" + i;
+                div2.id = "power-" + (i+1);
+                div1.classList.add("power_div");
+                div2.classList.add("power_div");
+                div1.classList.add("tooltip");
+                div2.classList.add("tooltip");
+                div1.setAttribute("data-tooltip-content", "#tooltip_content");
+                div2.setAttribute("data-tooltip-content", "#tooltip_content");
+                div1.setAttribute("onmouseover", "update_tooltip(" + i + ")");
+                div2.setAttribute("onmouseover", "update_tooltip(" + (i+1) + ")");
+                div1.setAttribute("onclick", "powerSelected(this, " + i + ")");
+                div2.setAttribute("onclick", "powerSelected(this, " + (i+1) + ")");
+
+                var power = data[i];
+                var power2 = data[i+1];
+
+                var powerIcon = document.createElement("img");
+                powerIcon.src = power.imageSrc;
+                var powerTitle = document.createElement("p");
+                powerTitle.classList.add("power_name");
+                powerTitle.innerText = power.name;
+                div1.appendChild(powerIcon);
+                div1.appendChild(powerTitle);
+
+                powerIcon = document.createElement("img");
+                powerIcon.src = power2.imageSrc;
+                powerTitle = document.createElement("p");
+                powerTitle.classList.add("power_name");
+                powerTitle.innerText = power2.name;
+                div2.appendChild(powerIcon);
+                div2.appendChild(powerTitle);
+
+                cell1.appendChild(div1);
+                cell2.appendChild(div2);
+
+                powerRow.appendChild(cell1);
+                powerRow.appendChild(cell2);
+                powerTable.appendChild(powerRow);
+            }
+            activateTooltipster();
         })
     }
 
@@ -485,6 +569,27 @@
             }
         });
         RACES_LOADED = true;
+    }
+
+    function powerSelected(ele, position) {
+        var powerCost = POWERS_ARRAY[position].powerCost;
+        var powerName = POWERS_ARRAY[position].name;
+        if (ele.classList.contains("power_selected")) {
+            ele.classList.remove("power_selected");
+            POWER_POINTS = (parseInt(POWER_POINTS) + parseInt(powerCost));
+            var index = SELECTED_POWERS.indexOf(powerName);
+            if (index > -1) {
+                SELECTED_POWERS.splice(index, 1);
+            }
+        }
+        else {
+            if (POWER_POINTS < powerCost) {
+                return; //don't do anything. Player has already selected too many skills;
+            }
+            ele.classList.add("power_selected");
+            SELECTED_POWERS.push(powerName);
+            POWER_POINTS = (parseInt(POWER_POINTS) - parseInt(powerCost));
+        }
     }
 
     function removeRollTotalModifier(rollNum, lowRoll1, lowRoll2) {
@@ -580,6 +685,40 @@
         document.getElementById("ability_i").innerText = INTELLIGENCE + " (" + (iMod > 0 ? '+':'') + iMod + ")";
         document.getElementById("ability_l").innerText = LEADERSHIP + " (" + (lMod > 0 ? '+':'') + lMod + ")";
         document.getElementById("ability_e").innerText = ENDURANCE;
+    }
+
+    function update_tooltip(position) {
+        var div = document.createElement("div");
+        div.style = "width:35vw;";
+        div.id = "power_container";
+
+        var powerIcon = document.createElement("img");
+        powerIcon.id = "power_icon";
+
+        var powerName = document.createElement("span");
+        powerName.style = "font-size:14pt;vertical-align:top;padding-left: 1vw;";
+        powerName.id = "tooltip_power_name";
+
+        var powerDescription = document.createElement("p");
+        powerDescription.style = "margin-top:0;font-size:10pt;";
+        powerDescription.id = "tooltip_power_description";
+
+        var currentPower = POWERS_ARRAY[position];
+        powerIcon.src = currentPower.imageSrc;
+        powerName.innerText = currentPower.name;
+        powerDescription.innerText = currentPower.description;
+        div.appendChild(powerIcon);
+        div.appendChild(powerName);
+        div.appendChild(powerDescription);
+
+        updateTootipster(div, position);
+    }
+
+    function updateTootipster(div, position) {
+        var divId = "#power-" + position;
+        $(divId).tooltipster('content', div)
+                .tooltipster('open');
+        $.tooltipster.group('power_div');
     }
 
     function validate() {
@@ -796,15 +935,11 @@
         </div>
     </div>
     <div id="powers_body" style="display: none;">
-        <div id="power_title_display">
-            <!--<span id="power_title"></span>-->
-            <!--<span id="points_remaining">(You have 2 power points remaining)</span>-->
-        </div>
-        <div id="powers_display" class="tooltip" data-tooltip-content="#tooltip_content">
+        <div id="powers_display" style="position:absolute;">
             <p style="font-size:24pt; margin-bottom:0; text-align:center;"><span id="power_title"></span> Powers:</p>
-            <p style="font-size: 10pt; text-align: center;">You have <b>2</b> power points remaining</p>
+            <p style="font-size: 10pt; text-align: center;" id="points_remaining"></p>
+            <table id="power_table"></table>
         </div>
-        <span class="tooltip" data-tooltip-content="#tooltip_content">This span has a tooltip with HTML when you hover over it!</span>
     </div>
     <div id="name_body" style="display: none;"></div>
     <div id="start_body" style="display: none;"></div>
@@ -820,9 +955,11 @@
 </div>
 <div class="tooltip_templates">
     <div id="tooltip_content">
-        <img src="" id="power_icon">
-        <span id="power_name"></span>
-        <span id="power_description"></span>
+        <div id="power_container" style="width: 30vw;">
+            <img src="" id="power_icon">
+            <span id="tooltip_power_name" style="font-size:16pt;vertical-align:top;padding-left: 1vw;"></span>
+            <p id="tooltip_power_description" style="margin-top:0;font-size:10pt;"></p>
+        </div>
     </div>
     <!--<span id="tooltip_content">-->
         <!--<img src="" /> <strong>This is the content of my tooltip!</strong>-->

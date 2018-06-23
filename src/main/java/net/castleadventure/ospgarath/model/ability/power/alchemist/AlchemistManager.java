@@ -6,7 +6,7 @@ public class AlchemistManager extends PowerManager {
 
     public AlchemistManager() {
         classPowers.add(new BolsteringPotion());
-        classPowers.add(new CorosivePotion());
+        classPowers.add(new CorrosivePotion());
         classPowers.add(new DuplicatedPotion());
         classPowers.add(new ExplodingPotion());
         classPowers.add(new FieldAlchemy());
