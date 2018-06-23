@@ -54,6 +54,25 @@
         margin-top: 3vh;
     }
 
+    .char_input {
+        background: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: solid black;
+        margin-bottom: 4vh;
+        outline: none;
+        text-blink: yellow;
+        width: 20vw;
+        font-size: 16pt;
+        color: yellow;
+        text-shadow: 1pt 1pt 5pt black;
+    }
+
+    .char_input:focus {
+        border-bottom: solid yellow;
+    }
+
     #class_body {
         position: absolute;
         left: 16vw;
@@ -162,7 +181,7 @@
     }
 
     .power_selected {
-        box-shadow: 0 0 12px yellow;
+        border-bottom: solid yellow;
     }
 
     .power_name {
@@ -269,11 +288,22 @@
     var ENDURANCE;
 
     var POWERS_ARRAY;
+    var RACIAL_POWER;
     var SELECTED_POWERS = [];
     var POWER_POINTS = 2;
 
     function activateTooltipster() {
         $('.tooltip').tooltipster({
+            contentCloning: true,
+            theme: 'tooltipster-borderless',
+            updateAnimation: 'null',
+            side: ['bottom', 'top'],
+            animationDuration: '0'
+        });
+    }
+
+    function activateRacialTooltipster() {
+        $("#racial_power_container").tooltipster({
             contentCloning: true,
             theme: 'tooltipster-borderless',
             updateAnimation: 'null',
@@ -425,6 +455,7 @@
 
     function loadClassPowers(className) {
         document.getElementById("power_title").innerText = className;
+        document.getElementById("power_title_container").classList.remove("hidden");
 
         $.get("/class/classPowers/" + className, function(data, status) {
             var powersDisplay = document.getElementById("powers_display");
@@ -524,9 +555,20 @@
 
     function loadRacialPowers(race) {
         $.get("/race/racialPowers/" + race, function(data, status) {
+            RACIAL_POWER = data;
+
+            var div = document.getElementById("racial_power_container");
+            var powerIcon = document.createElement("img");
+            powerIcon.src = data.imageSrc;
             var powerList = document.getElementById("racial_powers");
-            powerList.innerHTML = data;
+            powerList.innerHTML = data.name;
             document.getElementById("racial_powers_header").classList.remove("hidden");
+
+            div.innerHTML = "";
+            div.appendChild(powerIcon);
+            div.appendChild(powerList);
+
+            activateRacialTooltipster();
         })
     }
 
@@ -687,6 +729,38 @@
         document.getElementById("ability_e").innerText = ENDURANCE;
     }
 
+    function update_character_name(ele) {
+        document.getElementById("char_name").innerHTML = "<u>" + ele.value + "</u>";
+    }
+
+    function update_racial_tooltip() {
+        var div = document.createElement("div");
+        div.style = "width:35vw;";
+        div.id = "power_container";
+
+        var powerIcon = document.createElement("img");
+        powerIcon.id = "power_icon";
+
+        var powerName = document.createElement("span");
+        powerName.style = "font-size:14pt;vertical-align:top;padding-left: 1vw;";
+        powerName.id = "tooltip_power_name";
+
+        var powerDescription = document.createElement("p");
+        powerDescription.style = "margin-top:0;font-size:10pt;";
+        powerDescription.id = "tooltip_power_description";
+
+        var currentPower = RACIAL_POWER;
+        powerIcon.src = currentPower.imageSrc;
+        powerName.innerText = currentPower.name;
+        powerDescription.innerText = currentPower.description;
+        div.appendChild(powerIcon);
+        div.appendChild(powerName);
+        div.appendChild(powerDescription);
+
+        updateRacialTooltipster(div);
+
+    }
+
     function update_tooltip(position) {
         var div = document.createElement("div");
         div.style = "width:35vw;";
@@ -712,6 +786,11 @@
         div.appendChild(powerDescription);
 
         updateTootipster(div, position);
+    }
+
+    function updateRacialTooltipster(div) {
+        $("#racial_power_container").tooltipster('content', div)
+            .tooltipster('open');
     }
 
     function updateTootipster(div, position) {
@@ -929,22 +1008,35 @@
             </select>
             <p id="race_description"></p>
             <p id="racial_traits_header" style="font-size:16pt;margin-bottom:-1vh;margin-top:-1vh;" class="hidden">Racial Traits:</p>
-            <ul id="racial_traits" style="text-align: left;width:20vw;padding-left:16vw;"></ul>
+            <ul id="racial_traits" style="text-align: left;width:25vw;padding-left:16vw;"></ul>
             <p id="racial_powers_header" style="font-size:16pt;margin-bottom:-1vh;margin-top:-1vh;" class="hidden">Racial Power:</p>
-            <p id="racial_powers" style="text-align: left;"></p>
+            <div id="racial_power_container" data-tooltip-content="#tooltip_content" onmouseover="update_racial_tooltip()"
+                            style="display: inline-flex;margin-top: 3vh;width: 17vw;">
+                <p id="racial_powers" style="text-align: center;width:10vw;"></p>
+            </div>
         </div>
     </div>
     <div id="powers_body" style="display: none;">
         <div id="powers_display" style="position:absolute;">
-            <p style="font-size:24pt; margin-bottom:0; text-align:center;"><span id="power_title"></span> Powers:</p>
+            <p id="power_title_container" style="font-size:24pt; margin-bottom:0; text-align:center;" class="hidden"><span id="power_title"></span> Powers:</p>
             <p style="font-size: 10pt; text-align: center;" id="points_remaining"></p>
             <table id="power_table"></table>
         </div>
     </div>
-    <div id="name_body" style="display: none;"></div>
+    <div id="name_body" style="display: none;">
+        <div style="position:absolute;left:25vw;top:30vh;font-size:16pt;">
+            <form id="character_info" title="Character Information">
+                Character Name: <input class="char_input" name="character_name" onkeyup="update_character_name(this)"><br>
+                Player Screen Name: <input class="char_input" name="player_name"><br>
+                Homeland: <input class="char_input" name="homeland"><br>
+                <input type="radio" name="gender" value="male">Male
+                <input type="radio" name="gender" value="female">Female<br>
+            </form>
+        </div>
+    </div>
     <div id="start_body" style="display: none;"></div>
     <div id="ability_scores" class="ability_scores_box" style="display: none;">
-        <h3><u>New Character</u></h3>
+        <h3 id="char_name"><u>New Character</u></h3>
         <div><span>Strength: </span><span id="ability_s"></span></div>
         <div><span>Quickness: </span><span id="ability_q"></span></div>
         <div><span>Intelligence: </span><span id="ability_i"></span></div>

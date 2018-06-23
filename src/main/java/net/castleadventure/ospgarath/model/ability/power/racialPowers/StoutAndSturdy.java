@@ -7,5 +7,6 @@ public class StoutAndSturdy extends Power {
     public StoutAndSturdy() {
         name = "Stout and Sturdy";
         description = "Whenever a negative condition is applied to you, immediately roll a 20 sided die. If a prime number is rolled, the condition fails and does not take effect (Free Action/unlimited).";
+        powerCost = "0";
     }
 }

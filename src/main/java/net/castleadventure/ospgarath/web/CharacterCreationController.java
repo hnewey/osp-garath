@@ -69,9 +69,10 @@ public class CharacterCreationController {
     }
 
     @RequestMapping(value = "/race/racialPowers/{race}", method = RequestMethod.GET)
-    public String getRacialPowers(
+    public ResponseEntity<Power> getRacialPowers(
             @PathVariable ("race") String race) {
-        return RaceManager.getRacialPower(race).toString();
+        Power racialPower = RaceManager.getRacialPower(race);
+        return ResponseEntity.ok().body(racialPower);
     }
 
     @RequestMapping(value = "/class/validate", method = RequestMethod.POST)

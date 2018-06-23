@@ -2,19 +2,75 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54051d29-35e7-497e-8776-2029d38b5ba6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/Power.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/Power.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/AlchemistManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/AlchemistManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/CorosivePotion.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/CorrosivePotion.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/BardManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/BardManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/SensitiveBallard.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/SensitiveBallad.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/Bloodlust.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/Bloodlust.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HalfElfChoice.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HalfElfChoice.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HighFortune.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HighFortune.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HobbitLuck.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HobbitLuck.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/MansResolve.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/MansResolve.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/SavageResilience.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/SavageResilience.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/SilvanAccuracy.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/SilvanAccuracy.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/StoutAndSturdy.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/StoutAndSturdy.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/character_creation.html" afterPath="$PROJECT_DIR$/src/main/resources/static/character_creation.html" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/BlackArrow.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/bowman/BlackArrow.jpg" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/Power.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/Power.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/CorosivePotion.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/bard/SensitiveBallard.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/character_creation.html" afterPath="$PROJECT_DIR$/target/classes/static/character_creation.html" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/icon/BlackArrow.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/CorrosivePotion.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/CorrosivePotion.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/ShadowFacade.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/ShadowFacade.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/SmokeBomb.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/SmokeBomb.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/WateredDown.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/WateredDown.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Animosity.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Animosity.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Frenzy.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Frenzy.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Hotblooded.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Hotblooded.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Indignation.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Indignation.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Ire.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Ire.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/bard/AirEpicaricacy.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/bard/AirEpicaricacy.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/bard/SensitiveBallad.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/bard/SensitiveBallad.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/bard/SensitiveBallad2.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/bard/SensitiveBallad2.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/bard/SweetMelody.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/bard/SweetMelody.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/bowman/BlackArrow.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/bowman/BlackArrow.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/bowman/Overdraw.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/bowman/Overdraw.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/bowman/SwiftPrecision.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/bowman/SwiftPrecision.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/brawler/Armbar.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/brawler/Armbar.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/brawler/Haymaker.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/brawler/Haymaker.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/brawler/Lariat.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/brawler/Lariat.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/brawler/ShoulderThrow.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/brawler/ShoulderThrow.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/burglar/Scoundrel.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/burglar/Scoundrel.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/burglar/Thief.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/burglar/Thief.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/captain/Counter.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/captain/Counter.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/captain/PervasiveLeadership.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/captain/PervasiveLeadership.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/captain/ShelterStorm.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/captain/ShelterStorm.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/captain/SteadyingPresence.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/captain/SteadyingPresence.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/champion/MercurialDefense.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/champion/MercurialDefense.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/conjurer/Counterspell.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/conjurer/Counterspell.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/conjurer/DissonantSymphony.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/conjurer/DissonantSymphony.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/conjurer/FarReaching.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/conjurer/FarReaching.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/conjurer/Quickened.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/conjurer/Quickened.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/healer/HeroicRevive.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/healer/HeroicRevive.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/hunter/DangerousGame.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/hunter/DangerousGame.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/mage/EndGame.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/mage/EndGame.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/mage/StunAttack.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/mage/StunAttack.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/mage/WitchHunter.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/mage/WitchHunter.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/mage/WizardBane.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/mage/WizardBane.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/mariner/CorsairsDice.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/mariner/CorsairsDice.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/mariner/Courage.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/mariner/Courage.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/mariner/DevastatingBlow.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/mariner/DevastatingBlow.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/necromancer/Decay.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/necromancer/Decay.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/necromancer/LifeSap.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/necromancer/LifeSap.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/necromancer/ShadowServant.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/necromancer/ShadowServant.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/BornToRide.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/BornToRide.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/Forceful_Blow.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/Forceful_Blow.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/LightCharge.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/LightCharge.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/NobleSteed.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/NobleSteed.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/OpportunistOffensive.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/outrider/OpportunistOffensive.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/ranger/OffHandStrike.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/ranger/OffHandStrike.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/ranger/WoundWatcher.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/ranger/WoundWatcher.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/scholar/Antiquarian.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/scholar/Antiquarian.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/scholar/Economist.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/scholar/Economist.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/skinchanger/PackTactics.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/skinchanger/PackTactics.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/skinchanger/Primal.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/skinchanger/Primal.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/skinchanger/Wereform.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/skinchanger/Wereform.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/sorcerer/AstralBurst.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/sorcerer/AstralBurst.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/sorcerer/MindFlayer.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/sorcerer/MindFlayer.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/sovereign/FaithfulFollowers.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/sovereign/FaithfulFollowers.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/main_menu.html" afterPath="$PROJECT_DIR$/src/main/resources/static/main_menu.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,11 +95,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StrategicSteward.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/sovereign/StrategicSteward.java">
+      <file leaf-file-name="CharacterCreationController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="473">
+              <caret line="74" column="53" lean-forward="false" selection-start-line="74" selection-start-column="53" selection-end-line="74" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -52,68 +108,74 @@
       <file leaf-file-name="character_creation.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/character_creation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="280" column="32" lean-forward="false" selection-start-line="280" selection-start-column="32" selection-end-line="280" selection-end-column="32" />
+            <state relative-caret-position="191">
+              <caret line="457" column="84" lean-forward="false" selection-start-line="457" selection-start-column="84" selection-end-line="457" selection-end-column="84" />
               <folding>
                 <element signature="e#1012#1042#0" expanded="false" />
                 <element signature="e#1184#1225#0" expanded="false" />
                 <element signature="e#1247#1354#0" expanded="false" />
                 <element signature="e#1373#1402#0" expanded="false" />
                 <element signature="e#1424#1585#0" expanded="false" />
-                <element signature="e#1603#1707#0" expanded="false" />
-                <element signature="e#1730#1758#0" expanded="false" />
-                <element signature="e#1787#1831#0" expanded="false" />
-                <element signature="e#1857#1885#0" expanded="false" />
-                <element signature="e#1917#1957#0" expanded="false" />
-                <element signature="e#1978#2052#0" expanded="false" />
-                <element signature="e#2071#2497#0" expanded="false" />
-                <element signature="e#2587#2654#0" expanded="false" />
-                <element signature="e#2675#2703#0" expanded="false" />
-                <element signature="e#2715#2905#0" expanded="false" />
-                <element signature="e#2921#3185#0" expanded="false" />
-                <element signature="e#3207#3251#0" expanded="false" />
-                <element signature="e#3276#3320#0" expanded="false" />
-                <element signature="e#3339#3683#0" expanded="false" />
-                <element signature="e#3888#3973#0" expanded="false" />
-                <element signature="e#3990#4094#0" expanded="false" />
-                <element signature="e#4114#4340#0" expanded="false" />
-                <element signature="e#4360#4434#0" expanded="false" />
-                <element signature="e#4451#4509#0" expanded="false" />
-                <element signature="e#4527#4659#0" expanded="false" />
-                <element signature="e#4671#4772#0" expanded="false" />
-                <element signature="e#4785#5165#0" expanded="false" />
-                <element signature="e#5184#5228#0" expanded="false" />
-                <element signature="e#5388#5548#0" expanded="false" />
-                <element signature="e#6236#6265#0" expanded="false" />
-                <element signature="e#6330#6868#0" expanded="false" />
-                <element signature="e#6922#7645#0" expanded="false" />
-                <element signature="e#7689#8436#0" expanded="false" />
-                <element signature="e#8469#9107#0" expanded="false" />
-                <element signature="e#9135#9358#0" expanded="false" />
-                <element signature="e#9390#9831#0" expanded="false" />
-                <element signature="e#9864#9953#0" expanded="false" />
-                <element signature="e#9994#10528#0" expanded="false" />
-                <element signature="e#10559#11121#0" expanded="false" />
-                <element signature="e#11163#14349#0" expanded="false" />
-                <element signature="e#14397#14979#0" expanded="false" />
-                <element signature="e#15021#15567#0" expanded="false" />
-                <element signature="e#15605#15890#0" expanded="false" />
-                <element signature="e#15928#16477#0" expanded="false" />
-                <element signature="e#16517#16896#0" expanded="false" />
-                <element signature="e#16926#17464#0" expanded="false" />
-                <element signature="e#17508#18315#0" expanded="false" />
-                <element signature="e#18383#18747#0" expanded="false" />
-                <element signature="e#18784#19208#0" expanded="false" />
-                <element signature="e#19244#19670#0" expanded="false" />
-                <element signature="e#19712#20491#0" expanded="false" />
-                <element signature="e#20522#21057#0" expanded="false" />
-                <element signature="e#21092#21159#0" expanded="false" />
-                <element signature="e#21195#21263#0" expanded="false" />
-                <element signature="e#21294#21625#0" expanded="false" />
-                <element signature="e#21664#22358#0" expanded="false" />
-                <element signature="e#22398#23355#0" expanded="false" />
-                <element signature="e#23402#23576#0" expanded="false" />
-                <element signature="e#23602#25135#0" expanded="false" />
+                <element signature="e#2027#2131#0" expanded="false" />
+                <element signature="e#2154#2182#0" expanded="false" />
+                <element signature="e#2211#2255#0" expanded="false" />
+                <element signature="e#2281#2309#0" expanded="false" />
+                <element signature="e#2341#2381#0" expanded="false" />
+                <element signature="e#2402#2476#0" expanded="false" />
+                <element signature="e#2495#2921#0" expanded="false" />
+                <element signature="e#2946#2990#0" expanded="false" />
+                <element signature="e#3011#3078#0" expanded="false" />
+                <element signature="e#3099#3127#0" expanded="false" />
+                <element signature="e#3139#3329#0" expanded="false" />
+                <element signature="e#3345#3609#0" expanded="false" />
+                <element signature="e#3631#3675#0" expanded="false" />
+                <element signature="e#3700#3744#0" expanded="false" />
+                <element signature="e#3763#4107#0" expanded="false" />
+                <element signature="e#4124#4161#0" expanded="false" />
+                <element signature="e#4184#4228#0" expanded="false" />
+                <element signature="e#4250#4294#0" expanded="false" />
+                <element signature="e#4312#4397#0" expanded="false" />
+                <element signature="e#4414#4518#0" expanded="false" />
+                <element signature="e#4538#4764#0" expanded="false" />
+                <element signature="e#4784#4858#0" expanded="false" />
+                <element signature="e#4875#4933#0" expanded="false" />
+                <element signature="e#4951#5083#0" expanded="false" />
+                <element signature="e#5095#5196#0" expanded="false" />
+                <element signature="e#5209#5589#0" expanded="false" />
+                <element signature="e#5608#5652#0" expanded="false" />
+                <element signature="e#5664#5723#0" expanded="false" />
+                <element signature="e#5732#5789#0" expanded="false" />
+                <element signature="e#5812#5972#0" expanded="false" />
+                <element signature="e#6983#7012#0" expanded="false" />
+                <element signature="e#7077#7615#0" expanded="false" />
+                <element signature="e#7669#8392#0" expanded="false" />
+                <element signature="e#8436#9183#0" expanded="false" />
+                <element signature="e#9216#9854#0" expanded="false" />
+                <element signature="e#9882#10105#0" expanded="false" />
+                <element signature="e#10137#10578#0" expanded="false" />
+                <element signature="e#10611#10700#0" expanded="false" />
+                <element signature="e#10741#11275#0" expanded="false" />
+                <element signature="e#11306#11868#0" expanded="false" />
+                <element signature="e#15229#15811#0" expanded="false" />
+                <element signature="e#15853#16399#0" expanded="false" />
+                <element signature="e#17129#17678#0" expanded="false" />
+                <element signature="e#17718#18097#0" expanded="false" />
+                <element signature="e#18127#18665#0" expanded="false" />
+                <element signature="e#18709#19516#0" expanded="false" />
+                <element signature="e#19584#19948#0" expanded="false" />
+                <element signature="e#19985#20409#0" expanded="false" />
+                <element signature="e#20445#20871#0" expanded="false" />
+                <element signature="e#20913#21692#0" expanded="false" />
+                <element signature="e#21723#22258#0" expanded="false" />
+                <element signature="e#22293#22360#0" expanded="false" />
+                <element signature="e#22396#22464#0" expanded="false" />
+                <element signature="e#22495#22826#0" expanded="false" />
+                <element signature="e#22865#23559#0" expanded="false" />
+                <element signature="e#23732#24677#0" expanded="false" />
+                <element signature="e#24717#25674#0" expanded="false" />
+                <element signature="e#25718#25824#0" expanded="false" />
+                <element signature="e#25871#26045#0" expanded="false" />
+                <element signature="e#26071#27604#0" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -127,7 +189,21 @@
                 <element signature="n#select#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#select#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#ul#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Power.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/Power.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -167,6 +243,11 @@
       <find>activateTooltipster</find>
       <find>POWERS_ARRAY</find>
       <find>power_icon</find>
+      <find>SELECTED_POWERS</find>
+      <find>updateTootipster</find>
+      <find>update_tooltip</find>
+      <find>url</find>
+      <find>power_title</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -187,15 +268,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Phrenologist.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Philologist.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Pathologist.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Linguist.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/SweetMelody.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/StoicSong.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/SilverLining.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/SensitiveBallard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/InspiringAnthem.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/DescantDusk.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/ClairvoyantChorus.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bard/AirEpicaricacy.java" />
@@ -225,7 +297,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/weaponmaster/WeaponMasterManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/AbilityManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/PowerManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bowman/RelooseRetort.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bowman/Overdraw.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bowman/MeleeArcher.java" />
@@ -237,6 +308,16 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/bowman/BlackArrow.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/Power.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/Bloodlust.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HighFortune.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HalfElfChoice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/SavageResilience.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/MansResolve.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HobbitLuck.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/StoutAndSturdy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/SilvanAccuracy.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/main_menu.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/character_creation.html" />
       </list>
     </option>
@@ -408,6 +489,17 @@
               <item name="ospgarath" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="power" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OspGarath" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ospgarath" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="power" type="462c0819:PsiDirectoryNode" />
+              <item name="racialPowers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
@@ -798,7 +890,7 @@
       <workItem from="1528524648533" duration="15427000" />
       <workItem from="1528759590210" duration="28123000" />
       <workItem from="1528936253829" duration="76846000" />
-      <workItem from="1529366066405" duration="75891000" />
+      <workItem from="1529366066405" duration="84638000" />
     </task>
     <servers />
   </component>
@@ -835,7 +927,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="322820000" />
+    <option name="totallyTimeSpent" value="331567000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -888,134 +980,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/ranger/DualAssault.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/ranger/OffHandStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Anthropologist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Antiquarian.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Apothecary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Archaeologist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Demographer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Economist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Recanteur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Pathologist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Linguist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Statistician.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Phrenologist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Philologist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/shepherd/ShepherdManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/shepherd/AnimalExtrasensory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/shepherd/AnimalStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1288,70 +1252,198 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/RaceManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="32" column="36" lean-forward="false" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/Dwarf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding>
+            <element signature="e#902#903#0" expanded="false" />
+            <element signature="e#945#946#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="74" column="53" lean-forward="false" selection-start-line="74" selection-start-column="53" selection-end-line="74" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/Power.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/Bloodlust.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HighFortune.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HalfElfChoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/SavageResilience.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/MansResolve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/HobbitLuck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/StoutAndSturdy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/SilvanAccuracy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Animosity.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Frenzy.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/icon/barbarian/Hotblooded.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/main_menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="33" column="43" lean-forward="true" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/character_creation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="280" column="32" lean-forward="false" selection-start-line="280" selection-start-column="32" selection-end-line="280" selection-end-column="32" />
+        <state relative-caret-position="191">
+          <caret line="457" column="84" lean-forward="false" selection-start-line="457" selection-start-column="84" selection-end-line="457" selection-end-column="84" />
           <folding>
             <element signature="e#1012#1042#0" expanded="false" />
             <element signature="e#1184#1225#0" expanded="false" />
             <element signature="e#1247#1354#0" expanded="false" />
             <element signature="e#1373#1402#0" expanded="false" />
             <element signature="e#1424#1585#0" expanded="false" />
-            <element signature="e#1603#1707#0" expanded="false" />
-            <element signature="e#1730#1758#0" expanded="false" />
-            <element signature="e#1787#1831#0" expanded="false" />
-            <element signature="e#1857#1885#0" expanded="false" />
-            <element signature="e#1917#1957#0" expanded="false" />
-            <element signature="e#1978#2052#0" expanded="false" />
-            <element signature="e#2071#2497#0" expanded="false" />
-            <element signature="e#2587#2654#0" expanded="false" />
-            <element signature="e#2675#2703#0" expanded="false" />
-            <element signature="e#2715#2905#0" expanded="false" />
-            <element signature="e#2921#3185#0" expanded="false" />
-            <element signature="e#3207#3251#0" expanded="false" />
-            <element signature="e#3276#3320#0" expanded="false" />
-            <element signature="e#3339#3683#0" expanded="false" />
-            <element signature="e#3888#3973#0" expanded="false" />
-            <element signature="e#3990#4094#0" expanded="false" />
-            <element signature="e#4114#4340#0" expanded="false" />
-            <element signature="e#4360#4434#0" expanded="false" />
-            <element signature="e#4451#4509#0" expanded="false" />
-            <element signature="e#4527#4659#0" expanded="false" />
-            <element signature="e#4671#4772#0" expanded="false" />
-            <element signature="e#4785#5165#0" expanded="false" />
-            <element signature="e#5184#5228#0" expanded="false" />
-            <element signature="e#5388#5548#0" expanded="false" />
-            <element signature="e#6236#6265#0" expanded="false" />
-            <element signature="e#6330#6868#0" expanded="false" />
-            <element signature="e#6922#7645#0" expanded="false" />
-            <element signature="e#7689#8436#0" expanded="false" />
-            <element signature="e#8469#9107#0" expanded="false" />
-            <element signature="e#9135#9358#0" expanded="false" />
-            <element signature="e#9390#9831#0" expanded="false" />
-            <element signature="e#9864#9953#0" expanded="false" />
-            <element signature="e#9994#10528#0" expanded="false" />
-            <element signature="e#10559#11121#0" expanded="false" />
-            <element signature="e#11163#14349#0" expanded="false" />
-            <element signature="e#14397#14979#0" expanded="false" />
-            <element signature="e#15021#15567#0" expanded="false" />
-            <element signature="e#15605#15890#0" expanded="false" />
-            <element signature="e#15928#16477#0" expanded="false" />
-            <element signature="e#16517#16896#0" expanded="false" />
-            <element signature="e#16926#17464#0" expanded="false" />
-            <element signature="e#17508#18315#0" expanded="false" />
-            <element signature="e#18383#18747#0" expanded="false" />
-            <element signature="e#18784#19208#0" expanded="false" />
-            <element signature="e#19244#19670#0" expanded="false" />
-            <element signature="e#19712#20491#0" expanded="false" />
-            <element signature="e#20522#21057#0" expanded="false" />
-            <element signature="e#21092#21159#0" expanded="false" />
-            <element signature="e#21195#21263#0" expanded="false" />
-            <element signature="e#21294#21625#0" expanded="false" />
-            <element signature="e#21664#22358#0" expanded="false" />
-            <element signature="e#22398#23355#0" expanded="false" />
-            <element signature="e#23402#23576#0" expanded="false" />
-            <element signature="e#23602#25135#0" expanded="false" />
+            <element signature="e#2027#2131#0" expanded="false" />
+            <element signature="e#2154#2182#0" expanded="false" />
+            <element signature="e#2211#2255#0" expanded="false" />
+            <element signature="e#2281#2309#0" expanded="false" />
+            <element signature="e#2341#2381#0" expanded="false" />
+            <element signature="e#2402#2476#0" expanded="false" />
+            <element signature="e#2495#2921#0" expanded="false" />
+            <element signature="e#2946#2990#0" expanded="false" />
+            <element signature="e#3011#3078#0" expanded="false" />
+            <element signature="e#3099#3127#0" expanded="false" />
+            <element signature="e#3139#3329#0" expanded="false" />
+            <element signature="e#3345#3609#0" expanded="false" />
+            <element signature="e#3631#3675#0" expanded="false" />
+            <element signature="e#3700#3744#0" expanded="false" />
+            <element signature="e#3763#4107#0" expanded="false" />
+            <element signature="e#4124#4161#0" expanded="false" />
+            <element signature="e#4184#4228#0" expanded="false" />
+            <element signature="e#4250#4294#0" expanded="false" />
+            <element signature="e#4312#4397#0" expanded="false" />
+            <element signature="e#4414#4518#0" expanded="false" />
+            <element signature="e#4538#4764#0" expanded="false" />
+            <element signature="e#4784#4858#0" expanded="false" />
+            <element signature="e#4875#4933#0" expanded="false" />
+            <element signature="e#4951#5083#0" expanded="false" />
+            <element signature="e#5095#5196#0" expanded="false" />
+            <element signature="e#5209#5589#0" expanded="false" />
+            <element signature="e#5608#5652#0" expanded="false" />
+            <element signature="e#5664#5723#0" expanded="false" />
+            <element signature="e#5732#5789#0" expanded="false" />
+            <element signature="e#5812#5972#0" expanded="false" />
+            <element signature="e#6983#7012#0" expanded="false" />
+            <element signature="e#7077#7615#0" expanded="false" />
+            <element signature="e#7669#8392#0" expanded="false" />
+            <element signature="e#8436#9183#0" expanded="false" />
+            <element signature="e#9216#9854#0" expanded="false" />
+            <element signature="e#9882#10105#0" expanded="false" />
+            <element signature="e#10137#10578#0" expanded="false" />
+            <element signature="e#10611#10700#0" expanded="false" />
+            <element signature="e#10741#11275#0" expanded="false" />
+            <element signature="e#11306#11868#0" expanded="false" />
+            <element signature="e#15229#15811#0" expanded="false" />
+            <element signature="e#15853#16399#0" expanded="false" />
+            <element signature="e#17129#17678#0" expanded="false" />
+            <element signature="e#17718#18097#0" expanded="false" />
+            <element signature="e#18127#18665#0" expanded="false" />
+            <element signature="e#18709#19516#0" expanded="false" />
+            <element signature="e#19584#19948#0" expanded="false" />
+            <element signature="e#19985#20409#0" expanded="false" />
+            <element signature="e#20445#20871#0" expanded="false" />
+            <element signature="e#20913#21692#0" expanded="false" />
+            <element signature="e#21723#22258#0" expanded="false" />
+            <element signature="e#22293#22360#0" expanded="false" />
+            <element signature="e#22396#22464#0" expanded="false" />
+            <element signature="e#22495#22826#0" expanded="false" />
+            <element signature="e#22865#23559#0" expanded="false" />
+            <element signature="e#23732#24677#0" expanded="false" />
+            <element signature="e#24717#25674#0" expanded="false" />
+            <element signature="e#25718#25824#0" expanded="false" />
+            <element signature="e#25871#26045#0" expanded="false" />
+            <element signature="e#26071#27604#0" expanded="false" />
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1365,6 +1457,10 @@
             <element signature="n#select#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#select#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
