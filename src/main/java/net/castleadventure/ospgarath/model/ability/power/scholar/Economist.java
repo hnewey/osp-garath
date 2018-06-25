@@ -7,5 +7,6 @@ public class Economist extends Power {
     public Economist() {
         name = "Economist";
         description = "You may pay half price for any one purchasable item (Free Action/once per game).";
+        powerCost = ".5";
     }
 }

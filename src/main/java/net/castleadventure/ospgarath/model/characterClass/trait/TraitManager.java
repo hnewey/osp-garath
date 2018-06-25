@@ -112,4 +112,39 @@ public class TraitManager {
         }
     }
 
+    public static Boolean validateRaceAndClass(String race, String className) {
+        switch (className) {
+            case "Barbarian":
+                return !race.equalsIgnoreCase("High Elf");
+            case "Outrider":
+                return !race.equalsIgnoreCase("Dwarf");
+            case "Skinchanger":
+                return race.equalsIgnoreCase("Human") || race.equalsIgnoreCase("Orc");
+            case "Ranger":
+                return !race.equalsIgnoreCase("Half-orc");
+            case "Brawler":
+                return !race.equalsIgnoreCase("Wood Elf");
+            case "Burglar":
+                return !race.equalsIgnoreCase("High Elf");
+            case "Hunter":
+                return !(race.equalsIgnoreCase("Half-elf") || race.equalsIgnoreCase("Half-orc"));
+            case "Assassin":
+                return !race.equalsIgnoreCase("Orc");
+            case "Mage":
+                return !race.equalsIgnoreCase("Hobbit");
+            case "Necromancer":
+                return !race.equalsIgnoreCase("Wood Elf");
+            case "Sorcerer":
+                return !race.equalsIgnoreCase("Human");
+            case "Mariner":
+                return !race.equalsIgnoreCase("Dwarf");
+            case "Sovereign":
+                return !race.equalsIgnoreCase("Hobbit");
+            case "Scholar":
+                return !race.equalsIgnoreCase("Orc");
+            default:
+                return true;
+        }
+    }
+
 }

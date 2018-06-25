@@ -7,5 +7,6 @@ public class Antiquarian extends Power {
     public Antiquarian() {
         name = "Antiquarian";
         description = "When identifying an unidentified relic, you may learn an additional trait or power of the GM’s choice (Free Action/once per game).";
+        powerCost = ".5";
     }
 }

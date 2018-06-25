@@ -6,6 +6,7 @@ import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.character.race.RaceManager;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.characterClass.ClassDescription;
+import net.castleadventure.ospgarath.model.characterClass.trait.SelectedRaceAndClass;
 import net.castleadventure.ospgarath.model.characterClass.trait.TraitManager;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping( value =  "" )
 public class CharacterCreationController {
+
+    private ClassType selectedClassType;
 
     @RequestMapping(value = "/class/classList", method = RequestMethod.GET)
     public List<String> getClassList() {
@@ -53,6 +56,7 @@ public class CharacterCreationController {
     public List<String> getRaces() {
         List<String> raceList = Race.getRaces();
         raceList.add(0, "");
+//        raceList = restrictRacesByClass();
         return raceList;
     }
 
@@ -88,4 +92,17 @@ public class CharacterCreationController {
 
         return possibleClasses.contains(selectedClass);
     }
+
+    @RequestMapping(value = "/race/validate", method = RequestMethod.POST, consumes = "application/json")
+    @ResponseBody
+    public Boolean areRaceAndClassValid(
+            @RequestBody SelectedRaceAndClass selectedRaceAndClass) {
+        Boolean isValid = TraitManager.validateRaceAndClass(selectedRaceAndClass.getSelectedRace(), selectedRaceAndClass.getSelectedClass());
+        return isValid;
+    }
+
+//    private List<String> restrictRacesByClass() {
+//        List<String> restrictions = TraitManager.getClassRestrictions(selectedClassType.toString());
+//    }
+
 }

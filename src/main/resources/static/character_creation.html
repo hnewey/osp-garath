@@ -252,6 +252,13 @@
         box-shadow: 0 0 12px yellow;
     }
 
+    #select_class_first {
+        position: absolute;
+        left: 25vw;
+        top: 10vh;
+        width: 30vw;
+    }
+
     table {
         margin-left: 21vw;
         margin-top: 5vh;
@@ -279,6 +286,7 @@
     var TABS_ENABLED = false;
     var CLASSES_LOADED = false;
     var RACES_LOADED = false;
+    var DISPLAY_POWER_COSTS = false;
     var CURRENT_TAB;
     var CURRENT_TAB_SELECTOR;
     var STRENGTH;
@@ -287,10 +295,18 @@
     var LEADERSHIP;
     var ENDURANCE;
 
+    var STRENGTH_MODIFIERS = [];
+    var QUICKNESS_MODIFIERS = [];
+    var INTELLIGENCE_MODIFIERS = [];
+    var LEADERSHIP_MODIFIERS = [];
+
     var POWERS_ARRAY;
     var RACIAL_POWER;
     var SELECTED_POWERS = [];
-    var POWER_POINTS = 2;
+    var POWER_POINTS = 2.0;
+
+    var CHARACTER_CLASS;
+    var CHARACTER_RACE;
 
     function activateTooltipster() {
         $('.tooltip').tooltipster({
@@ -432,7 +448,7 @@
             loadClassRestrictions(selectedClass);
             var classCombo = selectText(ele).split("(")[1].replace("(", "").replace(")", "").trim();
             autoAdjustAbilitiesByClass(classCombo);
-            loadClassPowers(selectedClass);
+            // loadClassPowers(selectedClass);
         });
     }
 
@@ -445,7 +461,7 @@
                 var className = data[i];
                 var classSelect = document.getElementById("class_select");
                 var option = document.createElement("option");
-                option.value = className.toLowerCase();
+                option.value = className;
                 option.innerText = className;
                 classSelect.appendChild(option);
             }
@@ -454,18 +470,17 @@
     }
 
     function loadClassPowers(className) {
+        SELECTED_POWERS = [];
+        POWER_POINTS = 2.0;
+        document.getElementById("power_warning").classList.add("hidden");
         document.getElementById("power_title").innerText = className;
         document.getElementById("power_title_container").classList.remove("hidden");
+        document.getElementById("select_class_first").classList.add("hidden");
 
         $.get("/class/classPowers/" + className, function(data, status) {
             var powersDisplay = document.getElementById("powers_display");
             var powerTable = document.getElementById("power_table");
-            if (data.length > 8) {
-                document.getElementById("points_remaining").innerHTML = "You have <b>2</b> power points remaining"
-            }
-            else {
-                document.getElementById("points_remaining").innerHTML = "Select <b>2</b> powers";
-            }
+            document.getElementById("points_remaining").innerHTML = "You have <b id='points'>2</b> power point(s) remaining";
             powerTable.innerHTML = "";
             POWERS_ARRAY = data;
             for (var i = 0; i < data.length; i+=2) {
@@ -536,6 +551,7 @@
                 restrictionList.appendChild(listElement);
             }
             document.getElementById("restrictions_header").classList.remove("hidden");
+            document.getElementById("save_class").classList.remove("hidden");
         })
     }
 
@@ -594,6 +610,7 @@
             loadRacialPowers(selectedRace);
             autoAdjustAbilitiesByRace(selectedRace);
         });
+        document.getElementById("save_race").classList.remove("hidden");
     }
 
     function loadRaceList() {
@@ -605,7 +622,7 @@
                 var race = data[i];
                 var raceSelect = document.getElementById("race_select");
                 var option = document.createElement("option");
-                option.value = race.toLowerCase();
+                option.value = race;
                 option.innerText = race;
                 raceSelect.appendChild(option);
             }
@@ -618,20 +635,25 @@
         var powerName = POWERS_ARRAY[position].name;
         if (ele.classList.contains("power_selected")) {
             ele.classList.remove("power_selected");
-            POWER_POINTS = (parseInt(POWER_POINTS) + parseInt(powerCost));
+            POWER_POINTS = (parseFloat(POWER_POINTS) + parseFloat(powerCost));
+            document.getElementById("power_warning").classList.add("hidden");
             var index = SELECTED_POWERS.indexOf(powerName);
             if (index > -1) {
                 SELECTED_POWERS.splice(index, 1);
             }
+            document.getElementById("points").innerText = POWER_POINTS.toString();
         }
         else {
             if (POWER_POINTS < powerCost) {
+                document.getElementById("power_warning").classList.remove("hidden");
                 return; //don't do anything. Player has already selected too many skills;
             }
             ele.classList.add("power_selected");
             SELECTED_POWERS.push(powerName);
-            POWER_POINTS = (parseInt(POWER_POINTS) - parseInt(powerCost));
+            POWER_POINTS = (parseFloat(POWER_POINTS) - parseFloat(powerCost));
+            document.getElementById("points").innerText = POWER_POINTS.toString();
         }
+        showSelectedPowers();
     }
 
     function removeRollTotalModifier(rollNum, lowRoll1, lowRoll2) {
@@ -649,6 +671,9 @@
         document.getElementById("restrictions_header").classList.add("hidden");
         document.getElementById("class_traits").innerHTML = "";
         document.getElementById("class_restrictions").innerHTML = "";
+
+        document.getElementById("char_class").innerText = "";
+        document.getElementById("char_class").classList.add("hidden");
     }
 
     function resetRaceSelection() {
@@ -658,6 +683,9 @@
         document.getElementById("racial_powers_header").classList.add("hidden");
         document.getElementById("racial_traits").innerHTML = "";
         document.getElementById("racial_powers").innerHTML = "";
+
+        document.getElementById("char_race").innerText = "";
+        document.getElementById("char_race").classList.add("hidden");
     }
 
     function rollAttribute(rollNum, el) {
@@ -700,12 +728,65 @@
         }
     }
 
+    function saveClass() {
+        var selectedClass = document.getElementById("class_select").value.split("(")[0].trim();
+        var selectedRace = CHARACTER_RACE;
+        var validClass = validate_class(selectedRace, selectedClass);
+        if (validClass) {
+            CHARACTER_CLASS = selectedClass;
+            document.getElementById("class_validate_error").style.display = "none";
+            document.getElementById("char_class").innerText = selectedClass;
+            document.getElementById("char_class").classList.remove("hidden");
+            changeTab("race_body", document.getElementById("race_selector"));
+            loadClassPowers(selectedClass);
+        }
+        else {
+            var errorMessage = document.getElementById("class_validate_error");
+            errorMessage.innerText = selectedRace + "s cannot be " + selectedClass + "s. Select a different class or a different race.";
+            document.getElementById("class_validate_error").style.display = "block";
+        }
+    }
+
+    function saveRace() {
+        var selectedClass = CHARACTER_CLASS;
+        var selectedRace = document.getElementById("race_select").value;
+        var validRace = validate_race(selectedRace, selectedClass);
+        if (validRace) {
+            CHARACTER_RACE = selectedRace;
+            document.getElementById("race_validate_error").style.display = "none";
+            document.getElementById("char_race").innerText = selectedRace;
+            document.getElementById("char_race").classList.remove("hidden");
+            changeTab("powers_body", document.getElementById("power_selector"));
+        }
+        else {
+            var errorMessage = document.getElementById("race_validate_error");
+            errorMessage.innerText = selectedRace + "s cannot be " + selectedClass + "s. Select a different class or a different race.";
+            document.getElementById("race_validate_error").style.display = "block";
+        }
+    }
+
     function selectText(element) {
         return element.options[element.selectedIndex].text;
     }
 
     function selectValue(element) {
         return element.options[element.selectedIndex].value;
+    }
+
+    function showSelectedPowers() {
+        var powersContainer = document.getElementById("char_powers_container");
+        powersContainer.innerHTML = "";
+        var powersHeader = document.createElement("span");
+        powersHeader.innerHTML = "<b>Powers: </b>";
+        powersContainer.appendChild(powersHeader);
+
+        for (var i = 0; i < SELECTED_POWERS.length; i++) {
+            var powerDiv = document.createElement("div");
+            var powerName = document.createElement("span");
+            powerName.innerText = SELECTED_POWERS[i];
+            powerDiv.appendChild(powerName);
+            powersContainer.appendChild(powerDiv);
+        }
     }
 
     function startCreation() {
@@ -773,6 +854,9 @@
         powerName.style = "font-size:14pt;vertical-align:top;padding-left: 1vw;";
         powerName.id = "tooltip_power_name";
 
+        var pointsRemaining = document.createElement("span");
+        pointsRemaining.style.color = "yellow";
+
         var powerDescription = document.createElement("p");
         powerDescription.style = "margin-top:0;font-size:10pt;";
         powerDescription.id = "tooltip_power_description";
@@ -781,8 +865,15 @@
         powerIcon.src = currentPower.imageSrc;
         powerName.innerText = currentPower.name;
         powerDescription.innerText = currentPower.description;
+
+        var costPrefix = "";
+        if (currentPower.powerCost == .5) {
+            costPrefix = "0";
+        }
+        pointsRemaining.innerHTML = "<br>Power Cost: " + costPrefix + currentPower.powerCost;
         div.appendChild(powerIcon);
         div.appendChild(powerName);
+        div.appendChild(pointsRemaining);
         div.appendChild(powerDescription);
 
         updateTootipster(div, position);
@@ -836,6 +927,47 @@
         return true;
     }
 
+    function validate_class(race, className) {
+        if (race === undefined) {
+            return true;
+        }
+        var data = {"selectedRace": race, "selectedClass": className};
+        var json = JSON.stringify(data);
+        var isValid = false;
+        $.ajax({
+            url:"/race/validate",
+            type:"POST",
+            data:json,
+            async: false,
+            contentType:"application/json; charset=utf-8",
+            dataType:"json",
+            success: function(response){
+                isValid = response;
+            }
+        });
+        return isValid;
+    }
+
+    function validate_race(race, className) {
+        if (className === undefined) {
+            return true;
+        }
+        var json = JSON.stringify({"selectedRace": race, "selectedClass": className});
+        var isValid = false;
+        $.ajax({
+            url:"/race/validate",
+            type:"POST",
+            data:json,
+            async: false,
+            contentType:"application/json; charset=utf-8",
+            dataType:"json",
+            success: function(response){
+                isValid = response;
+            }
+        });
+        return isValid;
+    }
+
 </script>
 <body id="body">
 <div id="middlePanel">
@@ -843,10 +975,10 @@
         <div id="characterCreationHeader"><span>New Character<br> Creation</span></div>
         <button id="ability_selector" class="menu_tab" onclick="changeTab('ability_body', this)">Ability Scores</button>
         <button id="class_selector" class="menu_tab disabled_menu_item" onclick="changeTab('class_body', this)">Class</button>
-        <button class="menu_tab disabled_menu_item" onclick="changeTab('race_body', this)">Race</button>
-        <button class="menu_tab disabled_menu_item" onclick="changeTab('powers_body', this)">Powers</button>
-        <button class="menu_tab disabled_menu_item" onclick="changeTab('name_body', this)">Name</button>
-        <button class="menu_tab disabled_menu_item" onclick="changeTab('start_body', this)">Start</button>
+        <button id="race_selector" class="menu_tab disabled_menu_item" onclick="changeTab('race_body', this)">Race</button>
+        <button id="power_selector" class="menu_tab disabled_menu_item" onclick="changeTab('powers_body', this)">Powers</button>
+        <button id="name_selector" class="menu_tab disabled_menu_item" onclick="changeTab('name_body', this)">Name</button>
+        <button id="start_selector" class="menu_tab disabled_menu_item" onclick="changeTab('start_body', this)">Start</button>
     </div>
     <div class="welcome_message" id="welcome_body" style="text-align: center;font-size: 17pt;margin-top: 10vh;">
         <p>While normal Castle Adventure allows you to roll physical dice, Osp-Garath is...different.
@@ -989,9 +1121,18 @@
         <div>
             <p style="font-size:24pt; margin-bottom:0;">Select a Class:</p>
             <p style="font-size: 10pt;">(Choosing a class that does not fit your ability layout will cause your scores to be reordered)</p>
-            <select onchange="loadClassDescription(this)" id="class_select" style="width:20vw;padding-left:1.4vw;">
-
-            </select>
+            <div>
+                <select onchange="loadClassDescription(this)" id="class_select" style="width:20vw;padding-left:1.4vw;"></select>
+                <button id="save_class" class="game_button hidden" style="
+                                    position: absolute;
+                                    left: 36vw;
+                                    top: 16vh;
+                                    width: 5vw;
+                                    height: 4vh;
+                                    font-size: 10pt;
+                " onclick="saveClass()">Save</button>
+            </div>
+            <span id="class_validate_error" class="hidden error_message" style="color:rgb(255, 187, 22); font-weight:bold; padding-top:1vh;"></span>
             <p id="class_description"></p>
             <p id="traits_header" style="font-size:16pt;margin-bottom:-1vh;margin-top:-1vh;" class="hidden">Class Traits:</p>
             <ul id="class_traits" style="text-align: left;"></ul>
@@ -1003,9 +1144,18 @@
         <div>
             <p style="font-size:24pt; margin-bottom:0;">Select a Race:</p>
             <p style="font-size: 10pt;">(Ability scores affected by your chosen race will be calculated at the end of character creation)</p>
-            <select onchange="loadRaceDescription(this)" id="race_select" style="width:20vw;padding-left:1.4vw;">
-
-            </select>
+            <div>
+                <select onchange="loadRaceDescription(this)" id="race_select" style="width:20vw;padding-left:1.4vw;"></select>
+                <button id="save_race" class="game_button hidden" style="
+                                        position: absolute;
+                                        left: 36vw;
+                                        top: 16vh;
+                                        width: 5vw;
+                                        height: 4vh;
+                                        font-size: 10pt;
+                    " onclick="saveRace()">Save</button>
+            </div>
+            <span id="race_validate_error" class="hidden error_message" style="color:rgb(255, 187, 22); font-weight:bold; padding-top:1vh;"></span>
             <p id="race_description"></p>
             <p id="racial_traits_header" style="font-size:16pt;margin-bottom:-1vh;margin-top:-1vh;" class="hidden">Racial Traits:</p>
             <ul id="racial_traits" style="text-align: left;width:25vw;padding-left:16vw;"></ul>
@@ -1018,8 +1168,12 @@
     </div>
     <div id="powers_body" style="display: none;">
         <div id="powers_display" style="position:absolute;">
+            <h3 id="select_class_first">Save your class selection to view available powers</h3>
             <p id="power_title_container" style="font-size:24pt; margin-bottom:0; text-align:center;" class="hidden"><span id="power_title"></span> Powers:</p>
             <p style="font-size: 10pt; text-align: center;" id="points_remaining"></p>
+            <p id="power_warning" style="font-size:10pt;text-align:center;color:yellow;margin-bottom:-3vh;" class="hidden">
+                *Not enough power points remaining. Deselect a power by clicking it again*
+            </p>
             <table id="power_table"></table>
         </div>
     </div>
@@ -1041,7 +1195,10 @@
         <div><span>Quickness: </span><span id="ability_q"></span></div>
         <div><span>Intelligence: </span><span id="ability_i"></span></div>
         <div><span>Leadership: </span><span id="ability_l"></span></div>
-        <div><span>Endurance: </span><span id="ability_e"></span></div>
+        <div><span>Endurance: </span><span id="ability_e"></span></div><br>
+        <div><span>Race: </span><span id="char_race" class="hidden"></span></div>
+        <div><span>Class: </span><span id="char_class" class="hidden"></span></div><br>
+        <div id="char_powers_container"><span><u>Powers: </u></span></div>
     </div>
 
 </div>
