@@ -54,6 +54,10 @@
         margin-top: 3vh;
     }
 
+    .center_cell {
+        text-align: center;
+    }
+
     .char_input {
         background: none;
         border-top: none;
@@ -78,6 +82,10 @@
         left: 16vw;
         text-align: center;
         width: 50vw;
+    }
+
+    .currentScore {
+        color: #de0606;
     }
 
     .disabled_button {
@@ -172,6 +180,107 @@
         border-width: 5px;
     }
 
+    .newScore {
+        color: #3bbb53;
+    }
+
+    /*----------------------------------------------------------*/
+    /* Modal Styling */
+    /*----------------------------------------------------------*/
+
+    .modal {
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Header */
+    .modal-header {
+        padding: 2px 16px;
+        background-color: rgba(0,0,0,0.7);
+        color: yellow;
+        font-family: 'Marcellus SC', serif;
+    }
+
+    /* Modal Body */
+    .modal-body {
+        padding: 2px 16px;
+    }
+
+    /* Modal Footer */
+    .modal-footer {
+        padding: 2px 16px;
+        background-color: rgba(0,0,0,0);
+        color: yellow;
+        text-align: center;
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        margin: 9vh auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 50%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+        background: url(img/background2.jpg) no-repeat;
+        background-size: cover;
+    }
+
+    /* Add Animation */
+    @keyframes animatetop {
+        from {top: -300px; opacity: 0}
+        to {top: 0; opacity: 1}
+    }
+
+    /* The Close Button */
+    .close {
+        color: yellow;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #f2e540;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal_button {
+        width: 6vw;
+        height: 5vh;
+        font-size: 10pt;
+        margin: 1vw;
+    }
+
+    #accept_modal_button {
+        width: 6vw;
+        height: 5vh;
+        font-size: 10pt;
+        margin: 1vw;
+    }
+
+    #cancel_modal_button {
+        width: 6vw;
+        height: 5vh;
+        font-size: 10pt;
+        margin: 1vw;
+    }
+
+    /*----------------------------------------------------------*/
+    /* End Modal Styling */
+    /*----------------------------------------------------------*/
+
     .power_div {
         display: inline-flex;
     }
@@ -195,6 +304,30 @@
         left: 16vw;
         text-align: center;
         width: 50vw;
+    }
+
+    .race_table {
+        width: 100%;
+        margin: 2vh auto;
+        color: black;
+        text-shadow: 0 0 0;
+    }
+
+    .race_table_header {
+        border-bottom: 1pt solid black;
+        width:50%;
+    }
+
+    .race_cell {
+        padding: 2vw;
+
+    }
+
+    .race_left_cell {
+    }
+
+    .racial_modifier {
+
     }
 
     .roll_display {
@@ -286,6 +419,8 @@
     var TABS_ENABLED = false;
     var CLASSES_LOADED = false;
     var RACES_LOADED = false;
+    var RACE_VALIDATED = false;
+    var RACIAL_BONUSES_APPLIED = false;
     var DISPLAY_POWER_COSTS = false;
     var CURRENT_TAB;
     var CURRENT_TAB_SELECTOR;
@@ -295,10 +430,17 @@
     var LEADERSHIP;
     var ENDURANCE;
 
+    var MODIFIED_STRENGTH;
+    var MODIFIED_QUICKNESS;
+    var MODIFIED_INTELLIGENCE;
+    var MODIFIED_LEADERSHIP;
+    var MODIFIED_ENDURANCE;
+
     var STRENGTH_MODIFIERS = [];
     var QUICKNESS_MODIFIERS = [];
     var INTELLIGENCE_MODIFIERS = [];
     var LEADERSHIP_MODIFIERS = [];
+    var ENDURANCE_MODIFIERS = [];
 
     var POWERS_ARRAY;
     var RACIAL_POWER;
@@ -342,6 +484,112 @@
             if (modifier > 0) sign = "+";
             document.getElementById("roll_total" + rollNum).innerText = rollTotal + " (" + sign + modifier + ")";
         }
+    }
+
+    function applyHalfElfBonus(ele) {
+        var currentScore = getCurrentScore(ele);
+        var newScore = (parseInt(currentScore) + 3);
+        var newMod = getModifier(newScore);
+        var display = document.getElementById("half_elf_bonus");
+        display.innerHTML = currentScore + " + 3  = " +
+            "<span id='half_elf_bonus_total'>" + newScore + "</span>" + getModifierText(newMod);
+    }
+
+    function applyHalfElfPenalty(ele) {
+        var currentScore = getCurrentScore(ele);
+        var newScore = (parseInt(currentScore) - 3);
+        var newMod = getModifier(newScore);
+        var display = document.getElementById("half_elf_penalty");
+        display.innerHTML = currentScore + " - 3  = " +
+            "<span id='half_elf_penalty_total'>" + newScore + "</span>" + getModifierText(newMod);
+    }
+
+    function applyHalfOrcBonus(ele) {
+        var currentScore = getCurrentScore(ele);
+        var newScore = (parseInt(currentScore) + 4);
+        var newMod = getModifier(newScore);
+        var display = document.getElementById("half_orc_bonus");
+        display.innerHTML = currentScore + " + 4  = " +
+            "<span id='half_orc_bonus_total'>" + newScore + "</span>" + getModifierText(newMod);
+
+        var abilities = ["Strength", "Quickness", "Intelligence", "Leadership"];
+        var index = abilities.indexOf(selectText(ele));
+        if (index > -1) {
+            abilities.splice(index, 1);
+        }
+
+        var bonusScore = getCurrentScore(ele);
+        var penalty1 = abilities[0];
+        var penaltyScore1 = getScore(penalty1);
+        var penalty2 = abilities[1];
+        var penaltyScore2 = getScore(penalty2);
+        var penalty3 = abilities[2];
+        var penaltyScore3 = getScore(penalty3);
+
+        var penalty1Container = document.getElementById("penalty_1");
+        var penalty2Container = document.getElementById("penalty_2");
+        var penalty3Container = document.getElementById("penalty_3");
+
+        newScore = (parseInt(penaltyScore1) - 2);
+        newMod = getModifier(newScore);
+        penalty1Container.innerHTML = penalty1 + ": " + penaltyScore1 + " - 2 = " +
+            "<span id='penalty_total1'>" + newScore + "</span>" + getModifierText(newMod);
+
+        newScore = (parseInt(penaltyScore2) - 2);
+        newMod = getModifier(newScore);
+        penalty2Container.innerHTML = penalty2 + ": " + penaltyScore2 + " - 2 = " +
+            "<span id='penalty_total2'>" + newScore + "</span>" + getModifierText(newMod);
+
+        newScore = (parseInt(penaltyScore3) - 2);
+        newMod = getModifier(newScore);
+        penalty3Container.innerHTML = penalty3 + ": " + penaltyScore3 + " - 2 = " +
+            "<span id='penalty_total3'>" + newScore + "</span>" + getModifierText(newMod);
+
+    }
+
+    function applyHighElfBonus(ele) {
+        var currentScore = getCurrentScore(ele);
+        var newScore = (parseInt(currentScore) + 3);
+        var newMod = getModifier(newScore);
+        var display = document.getElementById("high_elf_bonus");
+        display.innerHTML = currentScore + " + 3  = " +
+            "<span id='high_elf_bonus_total'>" + newScore + "</span>" + getModifierText(newMod);
+    }
+
+    function applyHumanBonus(ele) {
+        var currentScore = getCurrentScore(ele);
+        var newScore = (parseInt(currentScore) + 2);
+        var newMod = getModifier(newScore);
+        var display = document.getElementById("human_bonus");
+        display.innerHTML = currentScore + " + 2  = " +
+            "<span id='human_bonus_total'>" + newScore + "</span>" + getModifierText(newMod);
+    }
+
+    function applyHumanPenalty(ele) {
+        var currentScore = getCurrentScore(ele);
+        var newScore = (parseInt(currentScore) - 2);
+        var newMod = getModifier(newScore);
+        var display = document.getElementById("human_penalty");
+        display.innerHTML = currentScore + " - 2  = " +
+            "<span id='human_penalty_total'>" + newScore + "</span>" + getModifierText(newMod);
+    }
+
+    function applyOrcPenalty(ele) {
+        var currentScore = getCurrentScore(ele);
+        var newScore = (parseInt(currentScore) - 6);
+        var newMod = getModifier(newScore);
+        var display = document.getElementById("orc_penalty");
+        display.innerHTML = currentScore + " - 6  = " +
+            "<span id='orc_penalty_total'>" + newScore + "</span>" + getModifierText(newMod);
+    }
+
+    function applyWoodElfBonus(ele) {
+        var currentScore = getCurrentScore(ele);
+        var newScore = (parseInt(currentScore) + 3);
+        var newMod = getModifier(newScore);
+        var display = document.getElementById("wood_elf_bonus");
+        display.innerHTML = currentScore + " + 3  = " +
+            "<span id='wood_elf_bonus_total'>" + newScore + "</span>" + getModifierText(newMod);
     }
 
     function autoAdjustAbilitiesByClass(classCombo) {
@@ -436,8 +684,16 @@
         return -3;
     }
 
+    function getModifierText(num) {
+        return " (" + (num > 0 ? '+':'') + num + ")";
+    }
+
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max)) + 1 //don't include 0;
+    }
+
+    function hide_modal() {
+        document.getElementById("race_modal").classList.add("hidden");
     }
 
     function loadClassDescription(ele) {
@@ -608,7 +864,7 @@
             document.getElementById("race_description").innerText = data;
             loadRacialTraits(selectedRace);
             loadRacialPowers(selectedRace);
-            autoAdjustAbilitiesByRace(selectedRace);
+            // autoAdjustAbilitiesByRace(selectedRace);
         });
         document.getElementById("save_race").classList.remove("hidden");
     }
@@ -656,12 +912,27 @@
         showSelectedPowers();
     }
 
+    function racialModifier(sum, total) {
+        if (sum == 0) {
+            return "";
+        }
+        return "<span class='racial_modifier'>" + sum + " = " + "<span><u>" + total + "</u></span>"
+    }
+
     function removeRollTotalModifier(rollNum, lowRoll1, lowRoll2) {
         var rollTotal = document.getElementById("roll_total" + rollNum).innerText;
         if (rollTotal.indexOf("(") !== -1) {
             rollTotal = (parseInt(rollTotal) - (parseInt(lowRoll1.innerText) + parseInt(lowRoll2.innerText))).toString();
             document.getElementById("roll_total" + rollNum).innerText = rollTotal.split(" ")[0];
         }
+    }
+
+    function resetAbilityModifiers() {
+        STRENGTH_MODIFIERS = [];
+        QUICKNESS_MODIFIERS = [];
+        INTELLIGENCE_MODIFIERS = [];
+        LEADERSHIP_MODIFIERS = [];
+        ENDURANCE_MODIFIERS = [];
     }
 
     function resetClassSelection() {
@@ -737,7 +1008,12 @@
             document.getElementById("class_validate_error").style.display = "none";
             document.getElementById("char_class").innerText = selectedClass;
             document.getElementById("char_class").classList.remove("hidden");
-            changeTab("race_body", document.getElementById("race_selector"));
+            if (CHARACTER_RACE !== undefined) {
+                changeTab("powers_body", document.getElementById("power_selector"));
+            }
+            else {
+                changeTab("race_body", document.getElementById("race_selector"));
+            }
             loadClassPowers(selectedClass);
         }
         else {
@@ -745,23 +1021,32 @@
             errorMessage.innerText = selectedRace + "s cannot be " + selectedClass + "s. Select a different class or a different race.";
             document.getElementById("class_validate_error").style.display = "block";
         }
+        showSelectedPowers();
     }
 
     function saveRace() {
         var selectedClass = CHARACTER_CLASS;
         var selectedRace = document.getElementById("race_select").value;
-        var validRace = validate_race(selectedRace, selectedClass);
-        if (validRace) {
-            CHARACTER_RACE = selectedRace;
-            document.getElementById("race_validate_error").style.display = "none";
-            document.getElementById("char_race").innerText = selectedRace;
-            document.getElementById("char_race").classList.remove("hidden");
-            changeTab("powers_body", document.getElementById("power_selector"));
+        RACE_VALIDATED = validate_race(selectedRace, selectedClass);
+        if (RACE_VALIDATED) {
+            showRaceModal(selectedRace);
         }
         else {
             var errorMessage = document.getElementById("race_validate_error");
             errorMessage.innerText = selectedRace + "s cannot be " + selectedClass + "s. Select a different class or a different race.";
             document.getElementById("race_validate_error").style.display = "block";
+        }
+    }
+
+    function saveRace2(selectedRace) {
+        RACIAL_BONUSES_APPLIED = true;
+        document.getElementById("race_modal").classList.add("hidden");
+        if (RACE_VALIDATED) {
+            CHARACTER_RACE = selectedRace;
+            document.getElementById("race_validate_error").style.display = "none";
+            document.getElementById("char_race").innerText = selectedRace;
+            document.getElementById("char_race").classList.remove("hidden");
+            changeTab("powers_body", document.getElementById("power_selector"));
         }
     }
 
@@ -771,6 +1056,118 @@
 
     function selectValue(element) {
         return element.options[element.selectedIndex].value;
+    }
+
+    function showRaceModal(race) {
+        var selectedRace = race;
+        race = race.toLowerCase();
+        race = race.replace("-", "_");
+        race = race.replace(" ", "_");
+
+        var acceptButton = document.getElementById("accept_modal_button");
+        acceptButton.setAttribute("onclick", "validate_"+race+"('"+selectedRace+"')")
+
+        var raceModal = document.getElementById("race_modal");
+        var raceModalBody = document.getElementById("race_modal_body");
+        var raceModalContent = document.getElementById(race + "_modal_content");
+        var contentClone = raceModalContent.cloneNode(true);
+        var raceModalHeader = document.getElementById("race_modal_header");
+
+        raceModalHeader.innerText = selectedRace + " Racial Bonuses";
+        raceModalBody.innerHTML = "";
+        raceModalBody.appendChild(contentClone);
+        raceModal.classList.remove("hidden");
+
+        switch(selectedRace) {
+            case "Dwarf":
+                showDwarfAdjustments();
+                break;
+            case "High Elf":
+                showHighElfAdjustments();
+                break;
+            case "Hobbit":
+                showHobbitAdjustments();
+                break;
+            case "Orc":
+                showOrcAdjustments();
+                break;
+            case "Wood Elf":
+                showWoodElfAdjustments();
+                break;
+        }
+    }
+
+    function showDwarfAdjustments() {
+        var currentS = STRENGTH;
+        var currentE = ENDURANCE;
+        var currentI = INTELLIGENCE;
+
+        var newS = (parseInt(currentS) + 2);
+        var newE = (parseInt(currentE) + 2);
+        var newI = (parseInt(currentI) - 4);
+
+        var sSpan = document.getElementById("dwarf_s");
+        var eSpan = document.getElementById("dwarf_e");
+        var iSpan = document.getElementById("dwarf_i");
+
+        var newMod = getModifier(newS);
+        sSpan.innerText = currentS + " + 2 = " + newS + getModifierText(newMod);
+
+        newMod = getModifier(newE);
+        eSpan.innerText = currentE + " + 2 = " + newE;
+
+        newMod = getModifier(newI);
+        iSpan.innerText = currentI + " - 4 = " + newI + getModifierText(newMod);
+    }
+
+    function showHighElfAdjustments() {
+        var currentS = STRENGTH;
+        var newS = (parseInt(currentS) - 2);
+        var sSpan = document.getElementById("high_elf_s");
+
+        var newMod = getModifier(newS);
+        sSpan.innerText = currentS + " - 2 = " + newS + getModifierText(newMod);
+    }
+
+    function showHobbitAdjustments() {
+        var currentQ = STRENGTH;
+        var currentI = ENDURANCE;
+        var currentS = INTELLIGENCE;
+
+        var newQ = (parseInt(currentQ) + 2);
+        var newI = (parseInt(currentI) + 2);
+        var newS = (parseInt(currentS) - 4);
+
+        var qSpan = document.getElementById("hobbit_q");
+        var iSpan = document.getElementById("hobbit_i");
+        var sSpan = document.getElementById("hobbit_s");
+
+        var newMod = getModifier(newQ);
+        qSpan.innerText = currentQ + " + 2 = " + newQ + getModifierText(newMod);
+
+        newMod = getModifier(newI);
+        iSpan.innerText = currentI + " + 2 = " + newI + getModifierText(newMod);
+
+        newMod = getModifier(newS);
+        sSpan.innerText = currentS + " - 4 = " + newS + getModifierText(newMod);
+    }
+
+    function showOrcAdjustments() {
+        var currentS = STRENGTH;
+        var newS = (parseInt(currentS) + 4);
+        var sSpan = document.getElementById("orc_s");
+
+        var newMod = getModifier(newS);
+        sSpan.innerText = currentS + " + 4 = " + newS + getModifierText(newMod);
+    }
+
+    function showWoodElfAdjustments() {
+        var currentS = STRENGTH;
+        var newS = (parseInt(currentS) - 2);
+        var sSpan = document.getElementById("wood_elf_s");
+
+        var newMod = getModifier(newS);
+        sSpan.innerText = currentS + " - 2 = " + newS + getModifierText(newMod);
     }
 
     function showSelectedPowers() {
@@ -797,17 +1194,31 @@
         CURRENT_TAB_SELECTOR.classList.add("menu_tab_selected");
     }
 
-    function update_ability_scores() {
-        var sMod = getModifier(STRENGTH);
-        var qMod = getModifier(QUICKNESS);
-        var iMod = getModifier(INTELLIGENCE);
-        var lMod = getModifier(LEADERSHIP);
+    function sumArray(array) {
+        var sum = 0;
+        for(var i = 0; i < array.length; i++) {
+            sum += parseInt(array[i]);
+        }
+        return sum;
+    }
 
-        document.getElementById("ability_s").innerText = STRENGTH + " (" + (sMod > 0 ? '+':'') + sMod + ")";
-        document.getElementById("ability_q").innerText = QUICKNESS + " (" + (qMod > 0 ? '+':'') + qMod + ")";
-        document.getElementById("ability_i").innerText = INTELLIGENCE + " (" + (iMod > 0 ? '+':'') + iMod + ")";
-        document.getElementById("ability_l").innerText = LEADERSHIP + " (" + (lMod > 0 ? '+':'') + lMod + ")";
-        document.getElementById("ability_e").innerText = ENDURANCE;
+    function update_ability_scores() {
+        var sTotal = parseInt(STRENGTH) + parseInt(sumArray(STRENGTH_MODIFIERS));
+        var qTotal = parseInt(QUICKNESS) + parseInt(sumArray(QUICKNESS_MODIFIERS));
+        var iTotal = parseInt(INTELLIGENCE) + parseInt(sumArray(INTELLIGENCE_MODIFIERS));
+        var lTotal = parseInt(LEADERSHIP) + parseInt(sumArray(LEADERSHIP_MODIFIERS));
+        var eTotal = parseInt(ENDURANCE) + parseInt(sumArray(ENDURANCE_MODIFIERS));
+
+        var sMod = getModifier(sTotal);
+        var qMod = getModifier(qTotal);
+        var iMod = getModifier(iTotal);
+        var lMod = getModifier(lTotal);
+
+        document.getElementById("ability_s").innerHTML = sTotal + getModifierText(sMod);
+        document.getElementById("ability_q").innerHTML = qTotal + getModifierText(qMod);
+        document.getElementById("ability_i").innerHTML = iTotal + getModifierText(iMod);
+        document.getElementById("ability_l").innerHTML = lTotal + getModifierText(lMod);
+        document.getElementById("ability_e").innerHTML = eTotal;
     }
 
     function update_character_name(ele) {
@@ -948,6 +1359,105 @@
         return isValid;
     }
 
+    function validate_dwarf(race) {
+        resetAbilityModifiers();
+        STRENGTH_MODIFIERS.push(2);
+        ENDURANCE_MODIFIERS.push(2);
+        INTELLIGENCE_MODIFIERS.push(-4);
+        update_ability_scores();
+        saveRace2(race);
+    }
+
+    function validate_half_elf(race) {
+        resetAbilityModifiers();
+        var bonus = document.getElementById("half_elf_bonus_total").innerText;
+        var penalty = document.getElementById("half_elf_penalty_total").innerText;
+
+        var bonusAbility = selectText(document.getElementById("half_elf_bonus_select"));
+        var penaltyAbility = selectText(document.getElementById("half_elf_penalty_select"));
+
+        add_to_modifiers(bonusAbility, 3);
+        add_to_modifiers(penaltyAbility, -3);
+        update_ability_scores();
+        saveRace2(race);
+    }
+
+    function validate_half_orc(race) {
+        resetAbilityModifiers();
+        var penaltyAbilities = ["Strength", "Quickness", "Intelligence", "Leadership"];
+        var bonusAbility = selectText(document.getElementById("half_orc_bonus_select"));
+
+        var index = penaltyAbilities.indexOf(bonusAbility);
+        if (index > -1) {
+            penaltyAbilities.splice(index, 1);
+        }
+
+        add_to_modifiers(bonusAbility, 4);
+        for (var i; i < penaltyAbilities.length; i++) {
+            add_to_modifiers(penaltyAbilities[i], -2);
+        }
+        update_ability_scores();
+        saveRace2(race);
+    }
+
+    function validate_high_elf(race) {
+        resetAbilityModifiers();
+
+        var bonusAbility = selectText(document.getElementById("high_elf_bonus_select"));
+        add_to_modifiers(bonusAbility, 3);
+        STRENGTH_MODIFIERS.push(-2);
+
+        update_ability_scores();
+        saveRace2(race);
+    }
+
+    function validate_hobbit(race) {
+        resetAbilityModifiers();
+        QUICKNESS_MODIFIERS.push(2);
+        INTELLIGENCE_MODIFIERS.push(2);
+        STRENGTH_MODIFIERS.push(-4);
+        update_ability_scores();
+        saveRace2(race);
+    }
+
+    function validate_human(race) {
+        resetAbilityModifiers();
+
+        var bonusAbility = selectText(document.getElementById("human_bonus_select"));
+        var penaltyAbility = selectText(document.getElementById("human_penalty_select"));
+        if (bonusAbility.contains("changes") || penaltyAbility.contains("changes")) {
+            saveRace2(race);
+            return;
+        }
+
+        add_to_modifiers(bonusAbility, 2);
+        add_to_modifiers(penaltyAbility, -2);
+        update_ability_scores();
+        saveRace2(race);
+    }
+
+    function validate_orc(race) {
+        resetAbilityModifiers();
+
+        STRENGTH_MODIFIERS.push(4);
+        var penaltyAbility = selectText(document.getElementById("orc_penalty_select"));
+
+        add_to_modifiers(penaltyAbility, -6);
+        update_ability_scores();
+        saveRace2(race);
+    }
+
+    function validate_wood_elf(race) {
+        resetAbilityModifiers();
+
+        var bonusAbility = selectText(document.getElementById("wood_elf_bonus_select"));
+        add_to_modifiers(bonusAbility, 3);
+        STRENGTH_MODIFIERS.push(-2);
+
+        update_ability_scores();
+        saveRace2(race);
+    }
+
     function validate_race(race, className) {
         if (className === undefined) {
             return true;
@@ -966,6 +1476,59 @@
             }
         });
         return isValid;
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById("race_modal");
+        if (event.target == modal) {
+            modal.classList.add("hidden");
+        }
+    };
+
+    function add_to_modifiers(mod, value) {
+        switch (mod) {
+            case "Strength":
+                STRENGTH_MODIFIERS.push(value);
+                break;
+            case "Quickness":
+                QUICKNESS_MODIFIERS.push(value);
+                break;
+            case "Intelligence":
+                INTELLIGENCE_MODIFIERS.push(value);
+                break;
+            case "Leadership":
+                LEADERSHIP_MODIFIERS.push(value);
+                break;
+            case "Endurance":
+                ENDURANCE_MODIFIERS.push(value);
+                break;
+        }
+    }
+
+    function getCurrentScore(ele) {
+        switch (selectText(ele)) {
+            case "Strength":
+                return STRENGTH;
+            case "Quickness":
+                return QUICKNESS;
+            case "Intelligence":
+                return INTELLIGENCE;
+            case "Leadership":
+                return LEADERSHIP;
+        }
+    }
+
+    function getScore(ability) {
+        switch (ability) {
+            case "Strength":
+                return STRENGTH;
+            case "Quickness":
+                return QUICKNESS;
+            case "Intelligence":
+                return INTELLIGENCE;
+            case "Leadership":
+                return LEADERSHIP;
+        }
     }
 
 </script>
@@ -1112,7 +1675,8 @@
             </div>
         </div>
         <div id="save" style="display: flex;">
-            <button class="game_button" onclick="saveAbilities()">Save</button>
+            <button class="game_button" onclick="saveAbilities()"
+                    style="height: 5vh;font-size: 10pt;margin-top: -7vh;">Save</button>
             <p id="validate_error" class="error_message" style="display: none;">
                 Assign an ability to each roll</p>
         </div>
@@ -1210,9 +1774,237 @@
             <p id="tooltip_power_description" style="margin-top:0;font-size:10pt;"></p>
         </div>
     </div>
-    <!--<span id="tooltip_content">-->
-        <!--<img src="" /> <strong>This is the content of my tooltip!</strong>-->
-    <!--</span>-->
+</div>
+<div id="race_modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span onclick="hide_modal()" class="close">&times;</span>
+            <h2 id="race_modal_header"></h2>
+        </div>
+        <div id="race_modal_body" class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button id="cancel_modal_button" class="game_button">Cancel</button>
+            <button id="accept_modal_button" class="game_button">Save</button>
+        </div>
+    </div>
+</div>
+<div id="race_modal_templates" style="display:none;">
+    <div id="dwarf_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table">
+                <tr>
+                    <th class="race_table_header">Bonuses: +2 to Strength and Endurance</th>
+                    <th class="race_table_header">Penalties: -4 to Intelligence</th>
+                </tr>
+                <tr>
+                    <td class="race_cell center_cell">Strength: <span id="dwarf_s"></span></td>
+                    <td class="race_cell center_cell">Intelligence: <span id="dwarf_i"></span></td>
+                </tr>
+                <tr>
+                    <td class="race_cell center_cell">Endurance: <span id="dwarf_e"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="half_elf_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table">
+                <tr>
+                    <th class="race_table_header">Bonuses: +3 to one ability</th>
+                    <th class="race_table_header">Penalties: -3 to one ability</th>
+                </tr>
+                <tr>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="half_elf_bonus_select" onchange="applyHalfElfBonus(this)">
+                            <option></option>
+                            <option>Strength</option>
+                            <option>Quickness</option>
+                            <option>Intelligence</option>
+                            <option>Leadership</option>
+                        </select>
+                    </td>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="half_elf_penalty_select" onchange="applyHalfElfPenalty(this)">
+                            <option></option>
+                            <option>Strength</option>
+                            <option>Quickness</option>
+                            <option>Intelligence</option>
+                            <option>Leadership</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><span id="half_elf_bonus"></span></td>
+                    <td style="text-align: center;"><span id="half_elf_penalty"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="half_orc_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table">
+                <tr>
+                    <th class="race_table_header">Bonuses: +4 to one ability</th>
+                    <th class="race_table_header">Penalties: -2 to all other abilities</th>
+                </tr>
+                <tr>
+                    <td class="race_cell center_cell">
+                        <select id="half_orc_bonus_select" onchange="applyHalfOrcBonus(this)">
+                            <option></option>
+                            <option>Strength</option>
+                            <option>Quickness</option>
+                            <option>Intelligence</option>
+                            <option>Leadership</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div class="center_cell">
+                            <span id="penalty_1"></span>
+                        </div>
+                        <div class="center_cell">
+                            <span id="penalty_2"></span>
+                        </div>
+                        <div class="center_cell">
+                            <span id="penalty_3"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="center_cell"><span id="half_orc_bonus"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="high_elf_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table">
+                <tr>
+                    <th class="race_table_header">Bonuses: +3 to Quickness or Leadership</th>
+                    <th class="race_table_header">Penalties: -2 to Strength</th>
+                </tr>
+                <tr>
+                    <td class="race_cell center_cell">
+                        <select id="high_elf_bonus_select" onchange="applyHighElfBonus(this)">
+                            <option></option>
+                            <option>Quickness</option>
+                            <option>Leadership</option>
+                        </select>
+                    </td>
+                    <td class="race_cell center_cell">Strength: <span id="high_elf_s"></span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><span id="high_elf_bonus"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="hobbit_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table">
+                <tr>
+                    <th class="race_table_header">Bonuses: +2 to Quickness and Intelligence</th>
+                    <th class="race_table_header">Penalties: -4 to Strength</th>
+                </tr>
+                <tr>
+                    <td class="race_cell center_cell">Quickness: <span id="hobbit_q"></span></td>
+                    <td class="race_cell center_cell">Strength: <span id="hobbit_s"></span></td>
+                </tr>
+                <tr>
+                    <td class="race_cell center_cell">Intelligence: <span id="hobbit_i"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="human_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table">
+                <tr>
+                    <th class="race_table_header">Bonuses: +2 to one ability </th>
+                    <th class="race_table_header">Penalties: -2 to another ability</th>
+                </tr>
+                <tr>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="human_bonus_select" onchange="applyHumanBonus(this)">
+                            <option></option>
+                            <option>Strength</option>
+                            <option>Quickness</option>
+                            <option>Intelligence</option>
+                            <option>Leadership</option>
+                            <option>No ability changes</option>
+                        </select>
+                    </td>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="human_penalty_select" onchange="applyHumanPenalty(this)">
+                            <option></option>
+                            <option>Strength</option>
+                            <option>Quickness</option>
+                            <option>Intelligence</option>
+                            <option>Leadership</option>
+                            <option>No ability changes</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="race_cell center_cell"><span id="human_bonus"></span></td>
+                    <td class="race_cell center_cell"><span id="human_penalty"></span></td>
+                </tr>
+            </table>
+            <table class="race_table">
+                <tr>
+                    <th>OR select 'No ability changes'</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="orc_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table">
+                <tr>
+                    <th class="race_table_header">Bonuses: +4 to Strength</th>
+                    <th class="race_table_header">Penalties: -6 to Intelligence or Leadership</th>
+                </tr>
+                <tr>
+                    <td class="race_cell center_cell">Strength: <span id="orc_s"></span></td>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="orc_penalty_select" onchange="applyOrcPenalty(this)">
+                            <option></option>
+                            <option>Intelligence</option>
+                            <option>Leadership</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="race_cell center_cell"><span id="orc_penalty"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="wood_elf_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table">
+                <tr>
+                    <th class="race_table_header">Bonuses: +3 to Quickness or Intelligence</th>
+                    <th class="race_table_header">Penalties: -2 to Strength</th>
+                </tr>
+                <tr>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="wood_elf_bonus_select" onchange="applyWoodElfBonus(this)">
+                            <option></option>
+                            <option>Quickness</option>
+                            <option>Intelligence</option>
+                        </select>
+                    </td>
+                    <td class="race_cell center_cell">Strength: <span id="wood_elf_s"></span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><span id="wood_elf_bonus"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

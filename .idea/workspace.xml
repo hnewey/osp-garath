@@ -2,124 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54051d29-35e7-497e-8776-2029d38b5ba6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/Ferocious.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/Infection.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/Maul.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/PackAnimal.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/Pester.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/SneakThief.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/Snuggling.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/Spur.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/Stoop.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/Versatile.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/trait/SelectedRaceAndClass.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/BolsteringPotion.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/BolsteringPotion.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/CorrosivePotion.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/CorrosivePotion.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/DuplicatedPotion.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/DuplicatedPotion.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/FieldBrew.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/FieldBrew.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/FluidFortune.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/FluidFortune.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/PotionConversion.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/PotionConversion.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/ShadowFacade.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/ShadowFacade.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/SmokeBomb.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/SmokeBomb.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/ArmBar.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/ArmBar.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/BearHug.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/BearHug.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/GroundPound.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/GroundPound.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/Lariat.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/Lariat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/Overwhelm.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/Overwhelm.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/Scrapper.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/Scrapper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/ShoulderThrow.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/ShoulderThrow.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/Tactical.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/brawler/Tactical.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Charlatan.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Charlatan.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Knave.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Knave.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Miscreant.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Miscreant.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Rapscallion.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Rapscallion.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Rascal.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Rascal.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Scalawag.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Scalawag.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Scoundrel.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Scoundrel.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Varlet.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/burglar/Varlet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/BattlefieldManeuvers.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/BattlefieldManeuvers.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/EncouragingCall.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/EncouragingCall.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/LeadCharge.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/LeadCharge.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/MenacingThreat.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/MenacingThreat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/PressAdvantage.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/PressAdvantage.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/SagelyWisdom.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/SagelyWisdom.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/ShelterStorm.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/ShelterStorm.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/SteadyingPresence.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/captain/SteadyingPresence.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Bitter.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Bitter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Devastating.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Devastating.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Disarming.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Disarming.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Echo.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Echo.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/FarReaching.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/FarReaching.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Incendiary.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Incendiary.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Quickened.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Quickened.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Spontaneous.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/conjurer/Spontaneous.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Antiquarian.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Antiquarian.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Apothecary.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Apothecary.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Demographer.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Demographer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Economist.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Economist.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Linguist.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Linguist.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Pathologist.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Pathologist.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Philologist.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Philologist.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Recanteur.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/scholar/Recanteur.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/trait/TraitManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/trait/TraitManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/character_creation.html" afterPath="$PROJECT_DIR$/src/main/resources/static/character_creation.html" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/ExplodingPotion.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/alchemist/ExplodingPotion.jpg" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/icon/ranger/BeleagueringCompanion.jpg" afterPath="$PROJECT_DIR$/src/main/resources/static/icon/ranger/BeleagueringCompanion.jpg" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/BolsteringPotion.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/BolsteringPotion.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/CorrosivePotion.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/CorrosivePotion.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/DuplicatedPotion.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/DuplicatedPotion.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/FieldBrew.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/FieldBrew.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/FluidFortune.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/FluidFortune.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/PotionConversion.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/PotionConversion.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/ShadowFacade.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/ShadowFacade.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/SmokeBomb.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/alchemist/SmokeBomb.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/ArmBar.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/ArmBar.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/BearHug.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/BearHug.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/GroundPound.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/GroundPound.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/Lariat.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/Lariat.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/Overwhelm.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/Overwhelm.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/Scrapper.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/Scrapper.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/ShoulderThrow.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/ShoulderThrow.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/Tactical.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/brawler/Tactical.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Charlatan.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Charlatan.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Knave.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Knave.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Miscreant.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Miscreant.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Rapscallion.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Rapscallion.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Rascal.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Rascal.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Scalawag.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Scalawag.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Scoundrel.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Scoundrel.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Varlet.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/burglar/Varlet.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/BattlefieldManeuvers.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/BattlefieldManeuvers.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/EncouragingCall.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/EncouragingCall.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/LeadCharge.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/LeadCharge.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/MenacingThreat.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/MenacingThreat.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/PressAdvantage.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/PressAdvantage.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/SagelyWisdom.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/SagelyWisdom.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/ShelterStorm.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/ShelterStorm.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/SteadyingPresence.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/captain/SteadyingPresence.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Bitter.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Bitter.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Devastating.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Devastating.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Disarming.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Disarming.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Echo.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Echo.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/FarReaching.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/FarReaching.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Incendiary.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Incendiary.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Quickened.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Quickened.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Spontaneous.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/conjurer/Spontaneous.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Antiquarian.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Antiquarian.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Apothecary.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Apothecary.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Demographer.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Demographer.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Economist.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Economist.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Linguist.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Linguist.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Pathologist.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Pathologist.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Philologist.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Philologist.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Recanteur.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/ability/power/scholar/Recanteur.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/characterClass/trait/TraitManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/web/CharacterCreationController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/character_creation.html" afterPath="$PROJECT_DIR$/target/classes/static/character_creation.html" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/icon/alchemist/ExplodingPotion.jpg" afterPath="$PROJECT_DIR$/target/classes/static/icon/alchemist/ExplodingPotion.jpg" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/icon/ranger/BeleagueringCompanion.jpg" afterPath="$PROJECT_DIR$/target/classes/static/icon/ranger/BeleagueringCompanion.jpg" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -148,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/trait/TraitManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="117" column="58" lean-forward="true" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="58" />
+              <caret line="117" column="58" lean-forward="false" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="58" />
               <folding>
                 <element signature="method#getClassTraits#0;class#TraitManager#0" expanded="false" />
                 <element signature="method#getClassRestrictions#0;class#TraitManager#0" expanded="false" />
@@ -170,89 +53,127 @@
       <file leaf-file-name="character_creation.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/character_creation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="1199" column="87" lean-forward="false" selection-start-line="1199" selection-start-column="87" selection-end-line="1199" selection-end-column="87" />
+            <state relative-caret-position="116">
+              <caret line="1676" column="46" lean-forward="true" selection-start-line="1676" selection-start-column="46" selection-end-line="1676" selection-end-column="46" />
               <folding>
                 <element signature="e#1012#1042#0" expanded="false" />
                 <element signature="e#1184#1225#0" expanded="false" />
                 <element signature="e#1247#1354#0" expanded="false" />
                 <element signature="e#1373#1402#0" expanded="false" />
                 <element signature="e#1424#1585#0" expanded="false" />
-                <element signature="e#1603#1941#0" expanded="false" />
-                <element signature="e#1965#2009#0" expanded="false" />
-                <element signature="e#2027#2131#0" expanded="false" />
-                <element signature="e#2154#2182#0" expanded="false" />
-                <element signature="e#2211#2255#0" expanded="false" />
-                <element signature="e#2281#2309#0" expanded="false" />
-                <element signature="e#2341#2381#0" expanded="false" />
-                <element signature="e#2946#2990#0" expanded="false" />
-                <element signature="e#3011#3078#0" expanded="false" />
-                <element signature="e#3099#3127#0" expanded="false" />
-                <element signature="e#3139#3329#0" expanded="false" />
-                <element signature="e#3345#3609#0" expanded="false" />
-                <element signature="e#3631#3675#0" expanded="false" />
-                <element signature="e#3700#3744#0" expanded="false" />
-                <element signature="e#3763#4107#0" expanded="false" />
-                <element signature="e#4124#4161#0" expanded="false" />
-                <element signature="e#4184#4228#0" expanded="false" />
-                <element signature="e#4250#4294#0" expanded="false" />
-                <element signature="e#4312#4397#0" expanded="false" />
-                <element signature="e#4414#4518#0" expanded="false" />
-                <element signature="e#4538#4764#0" expanded="false" />
-                <element signature="e#4784#4858#0" expanded="false" />
-                <element signature="e#4875#4933#0" expanded="false" />
-                <element signature="e#4951#5083#0" expanded="false" />
-                <element signature="e#5095#5196#0" expanded="false" />
-                <element signature="e#5209#5589#0" expanded="false" />
-                <element signature="e#5608#5652#0" expanded="false" />
-                <element signature="e#5785#5844#0" expanded="false" />
-                <element signature="e#5853#5910#0" expanded="false" />
-                <element signature="e#5933#6093#0" expanded="false" />
-                <element signature="e#6764#7007#0" expanded="false" />
-                <element signature="e#7050#7308#0" expanded="false" />
-                <element signature="e#7333#7362#0" expanded="false" />
-                <element signature="e#7427#7965#0" expanded="false" />
-                <element signature="e#8019#8742#0" expanded="false" />
-                <element signature="e#8786#9533#0" expanded="false" />
-                <element signature="e#9566#10204#0" expanded="false" />
-                <element signature="e#10232#10455#0" expanded="false" />
-                <element signature="e#10487#10928#0" expanded="false" />
-                <element signature="e#10961#11050#0" expanded="false" />
-                <element signature="e#11091#11628#0" expanded="false" />
-                <element signature="e#11659#12207#0" expanded="false" />
-                <element signature="e#15610#16270#0" expanded="false" />
-                <element signature="e#16312#16858#0" expanded="false" />
-                <element signature="e#16896#17550#0" expanded="false" />
-                <element signature="e#17588#18137#0" expanded="false" />
-                <element signature="e#18177#18629#0" expanded="false" />
-                <element signature="e#18659#19183#0" expanded="false" />
-                <element signature="e#20469#20833#0" expanded="false" />
-                <element signature="e#20870#21428#0" expanded="false" />
-                <element signature="e#21464#22022#0" expanded="false" />
-                <element signature="e#22064#22843#0" expanded="false" />
-                <element signature="e#22874#23409#0" expanded="false" />
-                <element signature="e#24447#25359#0" expanded="false" />
-                <element signature="e#25394#25461#0" expanded="false" />
-                <element signature="e#25497#25565#0" expanded="false" />
-                <element signature="e#26259#26590#0" expanded="false" />
-                <element signature="e#26629#27323#0" expanded="false" />
-                <element signature="e#27365#27457#0" expanded="false" />
-                <element signature="e#27496#28441#0" expanded="false" />
-                <element signature="e#28481#29799#0" expanded="false" />
-                <element signature="e#29843#29949#0" expanded="false" />
-                <element signature="e#29996#30170#0" expanded="false" />
-                <element signature="e#30196#31729#0" expanded="false" />
-                <element signature="e#31776#32333#0" expanded="false" />
-                <element signature="e#32379#32916#0" expanded="false" />
+                <element signature="e#1657#1995#0" expanded="false" />
+                <element signature="e#2019#2063#0" expanded="false" />
+                <element signature="e#2081#2185#0" expanded="false" />
+                <element signature="e#2259#2287#0" expanded="false" />
+                <element signature="e#2316#2360#0" expanded="false" />
+                <element signature="e#2386#2414#0" expanded="false" />
+                <element signature="e#2446#2486#0" expanded="false" />
+                <element signature="e#2507#2581#0" expanded="false" />
+                <element signature="e#2600#3026#0" expanded="false" />
+                <element signature="e#3051#3095#0" expanded="false" />
+                <element signature="e#3116#3183#0" expanded="false" />
+                <element signature="e#3204#3232#0" expanded="false" />
+                <element signature="e#3244#3434#0" expanded="false" />
+                <element signature="e#3450#3714#0" expanded="false" />
+                <element signature="e#3736#3780#0" expanded="false" />
+                <element signature="e#3805#3849#0" expanded="false" />
+                <element signature="e#3868#4212#0" expanded="false" />
+                <element signature="e#4228#4259#0" expanded="false" />
+                <element signature="e#6588#6625#0" expanded="false" />
+                <element signature="e#6648#6692#0" expanded="false" />
+                <element signature="e#6714#6758#0" expanded="false" />
+                <element signature="e#6776#6861#0" expanded="false" />
+                <element signature="e#6878#6982#0" expanded="false" />
+                <element signature="e#7322#7548#0" expanded="false" />
+                <element signature="e#7568#7642#0" expanded="false" />
+                <element signature="e#7659#7717#0" expanded="false" />
+                <element signature="e#7735#7867#0" expanded="false" />
+                <element signature="e#7879#7980#0" expanded="false" />
+                <element signature="e#7993#8373#0" expanded="false" />
+                <element signature="e#8392#8436#0" expanded="false" />
+                <element signature="e#8462#8557#0" expanded="false" />
+                <element signature="e#8569#8628#0" expanded="false" />
+                <element signature="e#8637#8694#0" expanded="false" />
+                <element signature="e#8717#8877#0" expanded="false" />
+                <element signature="e#8891#8921#0" expanded="false" />
+                <element signature="e#9798#10041#0" expanded="false" />
+                <element signature="e#10084#10342#0" expanded="false" />
+                <element signature="e#10367#10396#0" expanded="false" />
+                <element signature="e#10461#10999#0" expanded="false" />
+                <element signature="e#11037#11408#0" expanded="false" />
+                <element signature="e#11448#11823#0" expanded="false" />
+                <element signature="e#11861#13759#0" expanded="false" />
+                <element signature="e#13797#14168#0" expanded="false" />
+                <element signature="e#14204#14569#0" expanded="false" />
+                <element signature="e#14607#14976#0" expanded="false" />
+                <element signature="e#15012#15377#0" expanded="false" />
+                <element signature="e#15415#15786#0" expanded="false" />
+                <element signature="e#15840#16563#0" expanded="false" />
+                <element signature="e#16607#17354#0" expanded="false" />
+                <element signature="e#17387#18025#0" expanded="false" />
+                <element signature="e#18053#18276#0" expanded="false" />
+                <element signature="e#18308#18749#0" expanded="false" />
+                <element signature="e#18879#18968#0" expanded="false" />
+                <element signature="e#18996#19074#0" expanded="false" />
+                <element signature="e#19115#19652#0" expanded="false" />
+                <element signature="e#19683#20231#0" expanded="false" />
+                <element signature="e#20273#23586#0" expanded="false" />
+                <element signature="e#23634#24294#0" expanded="false" />
+                <element signature="e#24336#24882#0" expanded="false" />
+                <element signature="e#24920#25574#0" expanded="false" />
+                <element signature="e#25612#26161#0" expanded="false" />
+                <element signature="e#26686#27210#0" expanded="false" />
+                <element signature="e#27254#28428#0" expanded="false" />
+                <element signature="e#28702#29066#0" expanded="false" />
+                <element signature="e#29105#29285#0" expanded="false" />
+                <element signature="e#29322#29880#0" expanded="false" />
+                <element signature="e#29916#30474#0" expanded="false" />
+                <element signature="e#30516#31295#0" expanded="false" />
+                <element signature="e#31326#31861#0" expanded="false" />
+                <element signature="e#33113#33713#0" expanded="false" />
+                <element signature="e#33752#34268#0" expanded="false" />
+                <element signature="e#34303#34370#0" expanded="false" />
+                <element signature="e#34406#34474#0" expanded="false" />
+                <element signature="e#34509#35877#0" expanded="false" />
+                <element signature="e#35386#35871#0" expanded="false" />
+                <element signature="e#35915#36663#0" expanded="false" />
+                <element signature="e#36703#36969#0" expanded="false" />
+                <element signature="e#37008#37785#0" expanded="false" />
+                <element signature="e#37821#38082#0" expanded="false" />
+                <element signature="e#38122#38388#0" expanded="false" />
+                <element signature="e#38424#39051#0" expanded="false" />
+                <element signature="e#39082#39413#0" expanded="false" />
+                <element signature="e#39444#39589#0" expanded="false" />
+                <element signature="e#39628#40644#0" expanded="false" />
+                <element signature="e#40686#40778#0" expanded="false" />
+                <element signature="e#40817#41762#0" expanded="false" />
+                <element signature="e#41802#43120#0" expanded="false" />
+                <element signature="e#43164#43270#0" expanded="false" />
+                <element signature="e#43317#43491#0" expanded="false" />
+                <element signature="e#43517#45050#0" expanded="false" />
+                <element signature="e#45097#45654#0" expanded="false" />
+                <element signature="e#45690#45902#0" expanded="false" />
+                <element signature="e#45941#46474#0" expanded="false" />
+                <element signature="e#46513#47097#0" expanded="false" />
+                <element signature="e#47136#47405#0" expanded="false" />
+                <element signature="e#47442#47654#0" expanded="false" />
+                <element signature="e#47690#48200#0" expanded="false" />
+                <element signature="e#48234#48504#0" expanded="false" />
+                <element signature="e#48543#48812#0" expanded="false" />
+                <element signature="e#48858#49395#0" expanded="false" />
+                <element signature="e#49434#49590#0" expanded="false" />
+                <element signature="e#49635#50191#0" expanded="false" />
+                <element signature="e#50227#50541#0" expanded="false" />
+                <element signature="e#50574#50880#0" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#div#4;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#div#5;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#button#0;n#div#6;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -262,9 +183,31 @@
                 <element signature="n#style#0;n#ul#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#p#2;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#67230#67237#1" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#3;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#4;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#6;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#6;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#7;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#7;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#7;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -306,16 +249,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>loadClassList</find>
-      <find>loadClassTraits</find>
-      <find>race_</find>
-      <find>racial_powers</find>
-      <find>img</find>
-      <find>powers_display</find>
-      <find>.jpg</find>
-      <find>power_name</find>
-      <find>activateTooltipster</find>
-      <find>POWERS_ARRAY</find>
       <find>power_icon</find>
       <find>SELECTED_POWERS</find>
       <find>updateTootipster</find>
@@ -335,6 +268,16 @@
       <find>loadClassPowers</find>
       <find>split</find>
       <find>powerSelected</find>
+      <find>hidden</find>
+      <find>ability_q</find>
+      <find>race_cell</find>
+      <find>accept_modal_button</find>
+      <find>high_elf_s</find>
+      <find>RACE_VALIDATED</find>
+      <find>dwarf_e</find>
+      <find>CHARACTER_RACE</find>
+      <find>changeTab</find>
+      <find>char_powers_container</find>
       <find>showSelectedPowers</find>
     </findStrings>
     <replaceStrings>
@@ -423,10 +366,11 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="853" />
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="877" />
+    <option name="width" value="1707" />
+    <option name="height" value="1002" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -621,15 +565,6 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OspGarath" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="icon" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
@@ -935,7 +870,7 @@
       <workItem from="1528524648533" duration="15427000" />
       <workItem from="1528759590210" duration="28123000" />
       <workItem from="1528936253829" duration="76846000" />
-      <workItem from="1529366066405" duration="105788000" />
+      <workItem from="1529366066405" duration="141448000" />
     </task>
     <servers />
   </component>
@@ -972,10 +907,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="352717000" />
+    <option name="totallyTimeSpent" value="388377000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="853" y="23" width="1707" height="1002" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -988,7 +923,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39769822" sideWeight="0.49713877" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34288865" sideWeight="0.49713877" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286445" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -999,7 +934,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22762148" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26824033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22522523" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286445" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1020,7 +955,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="47" />
+      <option name="time" value="48" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
@@ -1038,14 +973,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/FieldBrew.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/alchemist/DuplicatedPotion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1419,13 +1346,13 @@
         <state relative-caret-position="240">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#208#209#0" expanded="true" />
-            <element signature="e#243#244#0" expanded="true" />
-            <element signature="e#299#300#0" expanded="true" />
-            <element signature="e#347#348#0" expanded="true" />
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#481#482#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
+            <element signature="e#208#209#0" expanded="false" />
+            <element signature="e#243#244#0" expanded="false" />
+            <element signature="e#299#300#0" expanded="false" />
+            <element signature="e#347#348#0" expanded="false" />
+            <element signature="e#423#424#0" expanded="false" />
+            <element signature="e#481#482#0" expanded="false" />
+            <element signature="e#531#532#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1441,7 +1368,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/trait/TraitManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="117" column="58" lean-forward="true" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="58" />
+          <caret line="117" column="58" lean-forward="false" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="58" />
           <folding>
             <element signature="method#getClassTraits#0;class#TraitManager#0" expanded="false" />
             <element signature="method#getClassRestrictions#0;class#TraitManager#0" expanded="false" />
@@ -1449,91 +1376,137 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/character_creation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="1199" column="87" lean-forward="false" selection-start-line="1199" selection-start-column="87" selection-end-line="1199" selection-end-column="87" />
+        <state relative-caret-position="116">
+          <caret line="1676" column="46" lean-forward="true" selection-start-line="1676" selection-start-column="46" selection-end-line="1676" selection-end-column="46" />
           <folding>
             <element signature="e#1012#1042#0" expanded="false" />
             <element signature="e#1184#1225#0" expanded="false" />
             <element signature="e#1247#1354#0" expanded="false" />
             <element signature="e#1373#1402#0" expanded="false" />
             <element signature="e#1424#1585#0" expanded="false" />
-            <element signature="e#1603#1941#0" expanded="false" />
-            <element signature="e#1965#2009#0" expanded="false" />
-            <element signature="e#2027#2131#0" expanded="false" />
-            <element signature="e#2154#2182#0" expanded="false" />
-            <element signature="e#2211#2255#0" expanded="false" />
-            <element signature="e#2281#2309#0" expanded="false" />
-            <element signature="e#2341#2381#0" expanded="false" />
-            <element signature="e#2946#2990#0" expanded="false" />
-            <element signature="e#3011#3078#0" expanded="false" />
-            <element signature="e#3099#3127#0" expanded="false" />
-            <element signature="e#3139#3329#0" expanded="false" />
-            <element signature="e#3345#3609#0" expanded="false" />
-            <element signature="e#3631#3675#0" expanded="false" />
-            <element signature="e#3700#3744#0" expanded="false" />
-            <element signature="e#3763#4107#0" expanded="false" />
-            <element signature="e#4124#4161#0" expanded="false" />
-            <element signature="e#4184#4228#0" expanded="false" />
-            <element signature="e#4250#4294#0" expanded="false" />
-            <element signature="e#4312#4397#0" expanded="false" />
-            <element signature="e#4414#4518#0" expanded="false" />
-            <element signature="e#4538#4764#0" expanded="false" />
-            <element signature="e#4784#4858#0" expanded="false" />
-            <element signature="e#4875#4933#0" expanded="false" />
-            <element signature="e#4951#5083#0" expanded="false" />
-            <element signature="e#5095#5196#0" expanded="false" />
-            <element signature="e#5209#5589#0" expanded="false" />
-            <element signature="e#5608#5652#0" expanded="false" />
-            <element signature="e#5785#5844#0" expanded="false" />
-            <element signature="e#5853#5910#0" expanded="false" />
-            <element signature="e#5933#6093#0" expanded="false" />
-            <element signature="e#6764#7007#0" expanded="false" />
-            <element signature="e#7050#7308#0" expanded="false" />
-            <element signature="e#7333#7362#0" expanded="false" />
-            <element signature="e#7427#7965#0" expanded="false" />
-            <element signature="e#8019#8742#0" expanded="false" />
-            <element signature="e#8786#9533#0" expanded="false" />
-            <element signature="e#9566#10204#0" expanded="false" />
-            <element signature="e#10232#10455#0" expanded="false" />
-            <element signature="e#10487#10928#0" expanded="false" />
-            <element signature="e#10961#11050#0" expanded="false" />
-            <element signature="e#11091#11628#0" expanded="false" />
-            <element signature="e#11659#12207#0" expanded="false" />
-            <element signature="e#15610#16270#0" expanded="false" />
-            <element signature="e#16312#16858#0" expanded="false" />
-            <element signature="e#16896#17550#0" expanded="false" />
-            <element signature="e#17588#18137#0" expanded="false" />
-            <element signature="e#18177#18629#0" expanded="false" />
-            <element signature="e#18659#19183#0" expanded="false" />
-            <element signature="e#20469#20833#0" expanded="false" />
-            <element signature="e#20870#21428#0" expanded="false" />
-            <element signature="e#21464#22022#0" expanded="false" />
-            <element signature="e#22064#22843#0" expanded="false" />
-            <element signature="e#22874#23409#0" expanded="false" />
-            <element signature="e#24447#25359#0" expanded="false" />
-            <element signature="e#25394#25461#0" expanded="false" />
-            <element signature="e#25497#25565#0" expanded="false" />
-            <element signature="e#26259#26590#0" expanded="false" />
-            <element signature="e#26629#27323#0" expanded="false" />
-            <element signature="e#27365#27457#0" expanded="false" />
-            <element signature="e#27496#28441#0" expanded="false" />
-            <element signature="e#28481#29799#0" expanded="false" />
-            <element signature="e#29843#29949#0" expanded="false" />
-            <element signature="e#29996#30170#0" expanded="false" />
-            <element signature="e#30196#31729#0" expanded="false" />
-            <element signature="e#31776#32333#0" expanded="false" />
-            <element signature="e#32379#32916#0" expanded="false" />
+            <element signature="e#1657#1995#0" expanded="false" />
+            <element signature="e#2019#2063#0" expanded="false" />
+            <element signature="e#2081#2185#0" expanded="false" />
+            <element signature="e#2259#2287#0" expanded="false" />
+            <element signature="e#2316#2360#0" expanded="false" />
+            <element signature="e#2386#2414#0" expanded="false" />
+            <element signature="e#2446#2486#0" expanded="false" />
+            <element signature="e#2507#2581#0" expanded="false" />
+            <element signature="e#2600#3026#0" expanded="false" />
+            <element signature="e#3051#3095#0" expanded="false" />
+            <element signature="e#3116#3183#0" expanded="false" />
+            <element signature="e#3204#3232#0" expanded="false" />
+            <element signature="e#3244#3434#0" expanded="false" />
+            <element signature="e#3450#3714#0" expanded="false" />
+            <element signature="e#3736#3780#0" expanded="false" />
+            <element signature="e#3805#3849#0" expanded="false" />
+            <element signature="e#3868#4212#0" expanded="false" />
+            <element signature="e#4228#4259#0" expanded="false" />
+            <element signature="e#6588#6625#0" expanded="false" />
+            <element signature="e#6648#6692#0" expanded="false" />
+            <element signature="e#6714#6758#0" expanded="false" />
+            <element signature="e#6776#6861#0" expanded="false" />
+            <element signature="e#6878#6982#0" expanded="false" />
+            <element signature="e#7322#7548#0" expanded="false" />
+            <element signature="e#7568#7642#0" expanded="false" />
+            <element signature="e#7659#7717#0" expanded="false" />
+            <element signature="e#7735#7867#0" expanded="false" />
+            <element signature="e#7879#7980#0" expanded="false" />
+            <element signature="e#7993#8373#0" expanded="false" />
+            <element signature="e#8392#8436#0" expanded="false" />
+            <element signature="e#8462#8557#0" expanded="false" />
+            <element signature="e#8569#8628#0" expanded="false" />
+            <element signature="e#8637#8694#0" expanded="false" />
+            <element signature="e#8717#8877#0" expanded="false" />
+            <element signature="e#8891#8921#0" expanded="false" />
+            <element signature="e#9798#10041#0" expanded="false" />
+            <element signature="e#10084#10342#0" expanded="false" />
+            <element signature="e#10367#10396#0" expanded="false" />
+            <element signature="e#10461#10999#0" expanded="false" />
+            <element signature="e#11037#11408#0" expanded="false" />
+            <element signature="e#11448#11823#0" expanded="false" />
+            <element signature="e#11861#13759#0" expanded="false" />
+            <element signature="e#13797#14168#0" expanded="false" />
+            <element signature="e#14204#14569#0" expanded="false" />
+            <element signature="e#14607#14976#0" expanded="false" />
+            <element signature="e#15012#15377#0" expanded="false" />
+            <element signature="e#15415#15786#0" expanded="false" />
+            <element signature="e#15840#16563#0" expanded="false" />
+            <element signature="e#16607#17354#0" expanded="false" />
+            <element signature="e#17387#18025#0" expanded="false" />
+            <element signature="e#18053#18276#0" expanded="false" />
+            <element signature="e#18308#18749#0" expanded="false" />
+            <element signature="e#18879#18968#0" expanded="false" />
+            <element signature="e#18996#19074#0" expanded="false" />
+            <element signature="e#19115#19652#0" expanded="false" />
+            <element signature="e#19683#20231#0" expanded="false" />
+            <element signature="e#20273#23586#0" expanded="false" />
+            <element signature="e#23634#24294#0" expanded="false" />
+            <element signature="e#24336#24882#0" expanded="false" />
+            <element signature="e#24920#25574#0" expanded="false" />
+            <element signature="e#25612#26161#0" expanded="false" />
+            <element signature="e#26686#27210#0" expanded="false" />
+            <element signature="e#27254#28428#0" expanded="false" />
+            <element signature="e#28702#29066#0" expanded="false" />
+            <element signature="e#29105#29285#0" expanded="false" />
+            <element signature="e#29322#29880#0" expanded="false" />
+            <element signature="e#29916#30474#0" expanded="false" />
+            <element signature="e#30516#31295#0" expanded="false" />
+            <element signature="e#31326#31861#0" expanded="false" />
+            <element signature="e#33113#33713#0" expanded="false" />
+            <element signature="e#33752#34268#0" expanded="false" />
+            <element signature="e#34303#34370#0" expanded="false" />
+            <element signature="e#34406#34474#0" expanded="false" />
+            <element signature="e#34509#35877#0" expanded="false" />
+            <element signature="e#35386#35871#0" expanded="false" />
+            <element signature="e#35915#36663#0" expanded="false" />
+            <element signature="e#36703#36969#0" expanded="false" />
+            <element signature="e#37008#37785#0" expanded="false" />
+            <element signature="e#37821#38082#0" expanded="false" />
+            <element signature="e#38122#38388#0" expanded="false" />
+            <element signature="e#38424#39051#0" expanded="false" />
+            <element signature="e#39082#39413#0" expanded="false" />
+            <element signature="e#39444#39589#0" expanded="false" />
+            <element signature="e#39628#40644#0" expanded="false" />
+            <element signature="e#40686#40778#0" expanded="false" />
+            <element signature="e#40817#41762#0" expanded="false" />
+            <element signature="e#41802#43120#0" expanded="false" />
+            <element signature="e#43164#43270#0" expanded="false" />
+            <element signature="e#43317#43491#0" expanded="false" />
+            <element signature="e#43517#45050#0" expanded="false" />
+            <element signature="e#45097#45654#0" expanded="false" />
+            <element signature="e#45690#45902#0" expanded="false" />
+            <element signature="e#45941#46474#0" expanded="false" />
+            <element signature="e#46513#47097#0" expanded="false" />
+            <element signature="e#47136#47405#0" expanded="false" />
+            <element signature="e#47442#47654#0" expanded="false" />
+            <element signature="e#47690#48200#0" expanded="false" />
+            <element signature="e#48234#48504#0" expanded="false" />
+            <element signature="e#48543#48812#0" expanded="false" />
+            <element signature="e#48858#49395#0" expanded="false" />
+            <element signature="e#49434#49590#0" expanded="false" />
+            <element signature="e#49635#50191#0" expanded="false" />
+            <element signature="e#50227#50541#0" expanded="false" />
+            <element signature="e#50574#50880#0" expanded="false" />
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#div#4;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#div#5;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#button#0;n#div#6;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1543,9 +1516,31 @@
             <element signature="n#style#0;n#ul#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#p#2;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#67230#67237#1" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#table#0;n#div#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#3;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#4;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#5;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#6;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#0;n#div#6;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#7;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#div#7;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#div#7;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
