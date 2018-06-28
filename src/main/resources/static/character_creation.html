@@ -391,6 +391,10 @@
         padding-right: 4vw;
     }
 
+    .start_power_div {
+        display: inline-flex;
+    }
+
     table {
         margin-left: 21vw;
         margin-top: 5vh;
@@ -437,6 +441,7 @@
 
     var POWERS_ARRAY;
     var RACIAL_POWER;
+    var CLASS_POWER_DETAILS = [];
     var SELECTED_POWERS = [];
     var SELECTED_POWERS_ICONS = [];
     var POWER_POINTS = 2.0;
@@ -451,7 +456,8 @@
             theme: 'tooltipster-borderless',
             updateAnimation: 'null',
             side: ['bottom', 'top'],
-            animationDuration: '0'
+            animationDuration: '0',
+            delay: '0'
         });
     }
 
@@ -461,7 +467,19 @@
             theme: 'tooltipster-borderless',
             updateAnimation: 'null',
             side: ['bottom', 'top'],
-            animationDuration: '0'
+            animationDuration: '0',
+            delay: '0'
+        });
+    }
+
+    function activiateStartPageTooltipster() {
+        $('.start_tooltip').tooltipster({
+            contentCloning: true,
+            theme: 'tooltipster-borderless',
+            updateAnimation: 'null',
+            side: ['bottom', 'top'],
+            animationDuration: '0',
+            delay: '0'
         });
     }
 
@@ -650,6 +668,7 @@
         else {
             if (id === "start_body") {
                 displaySummary();
+                activiateStartPageTooltipster();
             }
             document.getElementById("ability_scores").style.display = "none";
         }
@@ -677,12 +696,18 @@
 
         document.getElementById("start_race").innerText = CHARACTER_RACE;
         document.getElementById("start_class").innerText = CHARACTER_CLASS;
-        
+
         document.getElementById("start_powers_div").innerHTML = "";
         for (var i = 0; i < SELECTED_POWERS_ICONS.length; i++) {
             var power = SELECTED_POWERS_ICONS[i];
+            power.setAttribute("data-tooltip-content", "#tooltip_content");
+            power.setAttribute("onmouseover", "update_start_tooltip(this)");
+
             power.classList.remove("power_selected");
+            power.classList.remove("power_div");
+            power.classList.add("start_power_div");
             power.classList.add("start_power_display");
+            power.classList.add("start_tooltip");
             document.getElementById("start_powers_div").appendChild(power);
         }
     }
@@ -776,7 +801,10 @@
             document.getElementById("points_remaining").innerHTML = "You have <b id='points'>2</b> power point(s) remaining";
             powerTable.innerHTML = "";
             POWERS_ARRAY = data;
+            CLASS_POWER_DETAILS = [];
             for (var i = 0; i < data.length; i+=2) {
+                CLASS_POWER_DETAILS.push(data[i]);
+                CLASS_POWER_DETAILS.push(data[i+1]);
                 var powerRow = document.createElement("tr");
                 var cell1 = document.createElement("td");
                 var cell2 = document.createElement("td");
@@ -944,7 +972,10 @@
             }
             ele.classList.add("power_selected");
             SELECTED_POWERS.push(powerName);
-            SELECTED_POWERS_ICONS.push(ele.cloneNode(true));
+            var clonedIcon = ele.cloneNode(true);
+            clonedIcon.id = clonedIcon.id + "_cloned";
+            clonedIcon.classList.remove("tooltip");
+            SELECTED_POWERS_ICONS.push(clonedIcon);
             POWER_POINTS = (parseFloat(POWER_POINTS) - parseFloat(powerCost));
             document.getElementById("points").innerText = POWER_POINTS.toString();
         }
@@ -1293,6 +1324,44 @@
 
     }
 
+    function update_start_tooltip(ele) {
+        var powerDivName = ele.childNodes[1].innerText;
+        var powerInfo = searchPowerInfo(powerDivName);
+
+        var div = document.createElement("div");
+        div.style = "width:35vw;";
+        div.id = "start_power_container_";
+
+        var powerIcon = document.createElement("img");
+        powerIcon.id = "start_power_icon_";
+
+        var powerName = document.createElement("span");
+        powerName.style = "font-size:14pt;vertical-align:top;padding-left: 1vw;";
+        powerName.id = "start_tooltip_power_name_";
+
+        var powerDescription = document.createElement("p");
+        powerDescription.style = "margin-top:0;font-size:10pt;";
+        powerDescription.id = "start_tooltip_power_description_";
+
+        powerIcon.src = powerInfo.imageSrc;
+        powerName.innerText = powerInfo.name;
+        powerDescription.innerText = powerInfo.description;
+        div.appendChild(powerIcon);
+        div.appendChild(powerName);
+        div.appendChild(powerDescription);
+
+        updateStartTooltipster(ele, div);
+    }
+
+    function searchPowerInfo(powerName) {
+        for (var i = 0; i < CLASS_POWER_DETAILS.length; i++) {
+            var power = CLASS_POWER_DETAILS[i];
+            if (power.name === powerName.trim()) {
+                return power;
+            }
+        }
+    }
+
     function update_tooltip(position) {
         var div = document.createElement("div");
         div.style = "width:35vw;";
@@ -1332,6 +1401,12 @@
 
     function updateRacialTooltipster(div) {
         $("#racial_power_container").tooltipster('content', div)
+            .tooltipster('open');
+    }
+
+    function updateStartTooltipster(power, div) {
+        var id = "#" + power.id;
+        $(id).tooltipster('content', div)
             .tooltipster('open');
     }
 
