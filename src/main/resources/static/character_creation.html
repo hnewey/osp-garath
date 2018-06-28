@@ -11,16 +11,6 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script type="text/javascript" src="js/tooltipster-discovery.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            // $('.tooltip').tooltipster();
-            // $('.tooltip').tooltipster({
-            //     contentCloning: true,
-            //     theme: 'tooltipster-borderless'
-            // });
-        });
-    </script>
 </head>
 <style>
     #body {
@@ -28,6 +18,103 @@
     }
 
     .tooltip_templates { display: none; }
+
+    /*----------------------------------------------------------*/
+    /* Modal Styling */
+    /*----------------------------------------------------------*/
+
+    .modal {
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Header */
+    .modal-header {
+        padding: 2px 16px;
+        background-color: rgba(0,0,0,0.7);
+        color: yellow;
+        font-family: 'Marcellus SC', serif;
+    }
+
+    /* Modal Body */
+    .modal-body {
+        padding: 2px 16px;
+    }
+
+    /* Modal Footer */
+    .modal-footer {
+        padding: 2px 16px;
+        background-color: rgba(0,0,0,0);
+        color: yellow;
+        text-align: center;
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        margin: 9vh auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 50%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+        background: url(img/background2.jpg) no-repeat;
+        background-size: cover;
+    }
+
+    /* Add Animation */
+    @keyframes animatetop {
+        from {top: -300px; opacity: 0}
+        to {top: 0; opacity: 1}
+    }
+
+    /* The Close Button */
+    .close {
+        color: yellow;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #f2e540;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal_button {
+        width: 6vw;
+        height: 5vh;
+        font-size: 10pt;
+        margin: 1vw;
+    }
+
+    #accept_modal_button {
+        width: 6vw;
+        height: 5vh;
+        font-size: 10pt;
+        margin: 1vw;
+    }
+
+    #cancel_modal_button {
+        width: 6vw;
+        height: 5vh;
+        font-size: 10pt;
+        margin: 1vw;
+    }
+
+    /*----------------------------------------------------------*/
+    /* End Modal Styling */
+    /*----------------------------------------------------------*/
 
     /*-------------------------------------------------------------------*/
 
@@ -184,103 +271,6 @@
         color: #3bbb53;
     }
 
-    /*----------------------------------------------------------*/
-    /* Modal Styling */
-    /*----------------------------------------------------------*/
-
-    .modal {
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-
-    /* Modal Header */
-    .modal-header {
-        padding: 2px 16px;
-        background-color: rgba(0,0,0,0.7);
-        color: yellow;
-        font-family: 'Marcellus SC', serif;
-    }
-
-    /* Modal Body */
-    .modal-body {
-        padding: 2px 16px;
-    }
-
-    /* Modal Footer */
-    .modal-footer {
-        padding: 2px 16px;
-        background-color: rgba(0,0,0,0);
-        color: yellow;
-        text-align: center;
-    }
-
-    /* Modal Content */
-    .modal-content {
-        position: relative;
-        margin: 9vh auto;
-        padding: 0;
-        border: 1px solid #888;
-        width: 50%;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        animation-name: animatetop;
-        animation-duration: 0.4s;
-        background: url(img/background2.jpg) no-repeat;
-        background-size: cover;
-    }
-
-    /* Add Animation */
-    @keyframes animatetop {
-        from {top: -300px; opacity: 0}
-        to {top: 0; opacity: 1}
-    }
-
-    /* The Close Button */
-    .close {
-        color: yellow;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #f2e540;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .modal_button {
-        width: 6vw;
-        height: 5vh;
-        font-size: 10pt;
-        margin: 1vw;
-    }
-
-    #accept_modal_button {
-        width: 6vw;
-        height: 5vh;
-        font-size: 10pt;
-        margin: 1vw;
-    }
-
-    #cancel_modal_button {
-        width: 6vw;
-        height: 5vh;
-        font-size: 10pt;
-        margin: 1vw;
-    }
-
-    /*----------------------------------------------------------*/
-    /* End Modal Styling */
-    /*----------------------------------------------------------*/
-
     .power_div {
         display: inline-flex;
     }
@@ -392,6 +382,15 @@
         width: 30vw;
     }
 
+    .start_text {
+        font-size: 16pt;
+    }
+
+    .start_power_display {
+        padding-top: 1vh;
+        padding-right: 4vw;
+    }
+
     table {
         margin-left: 21vw;
         margin-top: 5vh;
@@ -430,12 +429,6 @@
     var LEADERSHIP;
     var ENDURANCE;
 
-    var MODIFIED_STRENGTH;
-    var MODIFIED_QUICKNESS;
-    var MODIFIED_INTELLIGENCE;
-    var MODIFIED_LEADERSHIP;
-    var MODIFIED_ENDURANCE;
-
     var STRENGTH_MODIFIERS = [];
     var QUICKNESS_MODIFIERS = [];
     var INTELLIGENCE_MODIFIERS = [];
@@ -445,9 +438,11 @@
     var POWERS_ARRAY;
     var RACIAL_POWER;
     var SELECTED_POWERS = [];
+    var SELECTED_POWERS_ICONS = [];
     var POWER_POINTS = 2.0;
 
     var CHARACTER_CLASS;
+    var CHARACTER_NAME;
     var CHARACTER_RACE;
 
     function activateTooltipster() {
@@ -557,19 +552,31 @@
     }
 
     function applyHumanBonus(ele) {
+        var display = document.getElementById("human_bonus");
+        if (selectText(ele).includes("changes")) {
+            document.getElementById("human_penalty_select").value = "No ability changes";
+            document.getElementById("human_penalty").innerHTML = "";
+            display.innerHTML = "";
+            return;
+        }
         var currentScore = getCurrentScore(ele);
         var newScore = (parseInt(currentScore) + 2);
         var newMod = getModifier(newScore);
-        var display = document.getElementById("human_bonus");
         display.innerHTML = currentScore + " + 2  = " +
             "<span id='human_bonus_total'>" + newScore + "</span>" + getModifierText(newMod);
     }
 
     function applyHumanPenalty(ele) {
+        var display = document.getElementById("human_penalty");
+        if (selectText(ele).includes("changes")) {
+            document.getElementById("human_bonus_select").value = "No ability changes";
+            document.getElementById("human_bonus").innerHTML = "";
+            display.innerHTML = "";
+            return;
+        }
         var currentScore = getCurrentScore(ele);
         var newScore = (parseInt(currentScore) - 2);
         var newMod = getModifier(newScore);
-        var display = document.getElementById("human_penalty");
         display.innerHTML = currentScore + " - 2  = " +
             "<span id='human_penalty_total'>" + newScore + "</span>" + getModifierText(newMod);
     }
@@ -636,11 +643,14 @@
         if (!TABS_ENABLED) {
             return;
         }
-        if (id !== "ability_body") {
+        if (id !== "ability_body" && id !== "start_body") {
             document.getElementById("ability_scores").style.display = "block";
             update_ability_scores();
         }
         else {
+            if (id === "start_body") {
+                displaySummary();
+            }
             document.getElementById("ability_scores").style.display = "none";
         }
         el.classList.add("menu_tab_selected");
@@ -649,6 +659,32 @@
         document.getElementById(id).style.display = "block";
         CURRENT_TAB = id;
         CURRENT_TAB_SELECTOR = el;
+    }
+
+    function displaySummary() {
+        var sTotal = parseInt(STRENGTH) + parseInt(sumArray(STRENGTH_MODIFIERS));
+        var qTotal = parseInt(QUICKNESS) + parseInt(sumArray(QUICKNESS_MODIFIERS));
+        var iTotal = parseInt(INTELLIGENCE) + parseInt(sumArray(INTELLIGENCE_MODIFIERS));
+        var lTotal = parseInt(LEADERSHIP) + parseInt(sumArray(LEADERSHIP_MODIFIERS));
+        var eTotal = parseInt(ENDURANCE) + parseInt(sumArray(ENDURANCE_MODIFIERS));
+
+        document.getElementById("start_char_name").innerText = CHARACTER_NAME;
+        document.getElementById("start_s").innerText = sTotal + getModifierText(getModifier(sTotal));
+        document.getElementById("start_q").innerText = qTotal + getModifierText(getModifier(qTotal));
+        document.getElementById("start_i").innerText = iTotal + getModifierText(getModifier(iTotal));
+        document.getElementById("start_l").innerText = lTotal + getModifierText(getModifier(lTotal));
+        document.getElementById("start_e").innerText = eTotal;
+
+        document.getElementById("start_race").innerText = CHARACTER_RACE;
+        document.getElementById("start_class").innerText = CHARACTER_CLASS;
+        
+        document.getElementById("start_powers_div").innerHTML = "";
+        for (var i = 0; i < SELECTED_POWERS_ICONS.length; i++) {
+            var power = SELECTED_POWERS_ICONS[i];
+            power.classList.remove("power_selected");
+            power.classList.add("start_power_display");
+            document.getElementById("start_powers_div").appendChild(power);
+        }
     }
 
     function enableTabs() {
@@ -727,6 +763,7 @@
 
     function loadClassPowers(className) {
         SELECTED_POWERS = [];
+        SELECTED_POWERS_ICONS = [];
         POWER_POINTS = 2.0;
         document.getElementById("power_warning").classList.add("hidden");
         document.getElementById("power_title").innerText = className;
@@ -896,6 +933,7 @@
             var index = SELECTED_POWERS.indexOf(powerName);
             if (index > -1) {
                 SELECTED_POWERS.splice(index, 1);
+                SELECTED_POWERS_ICONS.splice(index, 1);
             }
             document.getElementById("points").innerText = POWER_POINTS.toString();
         }
@@ -906,6 +944,7 @@
             }
             ele.classList.add("power_selected");
             SELECTED_POWERS.push(powerName);
+            SELECTED_POWERS_ICONS.push(ele.cloneNode(true));
             POWER_POINTS = (parseFloat(POWER_POINTS) - parseFloat(powerCost));
             document.getElementById("points").innerText = POWER_POINTS.toString();
         }
@@ -1222,6 +1261,7 @@
     }
 
     function update_character_name(ele) {
+        CHARACTER_NAME = ele.value;
         document.getElementById("char_name").innerHTML = "<u>" + ele.value + "</u>";
     }
 
@@ -1375,6 +1415,13 @@
 
         var bonusAbility = selectText(document.getElementById("half_elf_bonus_select"));
         var penaltyAbility = selectText(document.getElementById("half_elf_penalty_select"));
+        if (bonusAbility === penaltyAbility) {
+            document.getElementById("race_error").classList.remove("hidden");
+            return;
+        }
+        else {
+            document.getElementById("race_error").classList.add("hidden");
+        }
 
         add_to_modifiers(bonusAbility, 3);
         add_to_modifiers(penaltyAbility, -3);
@@ -1425,7 +1472,15 @@
 
         var bonusAbility = selectText(document.getElementById("human_bonus_select"));
         var penaltyAbility = selectText(document.getElementById("human_penalty_select"));
-        if (bonusAbility.contains("changes") || penaltyAbility.contains("changes")) {
+        if (bonusAbility === penaltyAbility) {
+            document.getElementById("race_error").classList.remove("hidden");
+            return;
+        }
+        else {
+            document.getElementById("race_error").classList.add("hidden");
+        }
+
+        if (bonusAbility.includes("changes") || penaltyAbility.includes("changes")) {
             saveRace2(race);
             return;
         }
@@ -1713,7 +1768,7 @@
                 <button id="save_race" class="game_button hidden" style="
                                         position: absolute;
                                         left: 36vw;
-                                        top: 16vh;
+                                        top: 15vh;
                                         width: 5vw;
                                         height: 4vh;
                                         font-size: 10pt;
@@ -1752,7 +1807,22 @@
             </form>
         </div>
     </div>
-    <div id="start_body" style="display: none;"></div>
+    <div id="start_body" style="display: none;">
+        <div style="width:70%;margin:8vh auto;">
+            <span class="start_text">Character Name: <span id="start_char_name"></span></span><br>
+            <span class="start_text">Player: <span id="start_player"></span></span><br><br>
+            <span class="start_text">Strength: <span id="start_s"></span></span><br>
+            <span class="start_text">Quickness: <span id="start_q"></span></span><br>
+            <span class="start_text">Intelligence: <span id="start_i"></span></span><br>
+            <span class="start_text">Leadership: <span id="start_l"></span></span><br>
+            <span class="start_text">Endurance: <span id="start_e"></span></span><br><br>
+            <span class="start_text">Race: <span id="start_race"></span><span id="start_gender"></span></span><br>
+            <span class="start_text">Class: <span id="start_class"></span></span><br><br>
+            <span class="start_text">Powers: </span><br>
+            <div id="start_powers_div"></div>
+            <!--TODO:Add inventory summary and followers/pets-->
+        </div>
+    </div>
     <div id="ability_scores" class="ability_scores_box" style="display: none;">
         <h3 id="char_name"><u>New Character</u></h3>
         <div><span>Strength: </span><span id="ability_s"></span></div>
@@ -1784,8 +1854,13 @@
         <div id="race_modal_body" class="modal-body">
         </div>
         <div class="modal-footer">
-            <button id="cancel_modal_button" class="game_button">Cancel</button>
-            <button id="accept_modal_button" class="game_button">Save</button>
+            <div>
+                <button id="cancel_modal_button" class="game_button" onclick="hide_modal()">Cancel</button>
+                <button id="accept_modal_button" class="game_button">Save</button>
+            </div>
+            <div id="race_error" class="hidden" style="padding-bottom: 1vh;">
+                <span>*Bonuses and Penalties cannot be applied to the same ability*</span>
+            </div>
         </div>
     </div>
 </div>
