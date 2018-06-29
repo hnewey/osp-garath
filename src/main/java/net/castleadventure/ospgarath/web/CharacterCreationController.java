@@ -12,6 +12,7 @@ import net.castleadventure.ospgarath.model.monster.StatResolver;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -77,6 +78,20 @@ public class CharacterCreationController {
             @PathVariable ("race") String race) {
         Power racialPower = RaceManager.getRacialPower(race);
         return ResponseEntity.ok().body(racialPower);
+    }
+
+    @RequestMapping(value = "/race/HalfElfChoice", method = RequestMethod.GET)
+    public ResponseEntity<List<Power>> getHalfElfChoicePowers() {
+        Power human = RaceManager.getRacialPower("Human");
+        Power highElf = RaceManager.getRacialPower("High Elf");
+        Power woodElf = RaceManager.getRacialPower("Wood Elf");
+
+        List<Power> powers = new ArrayList<>();
+        powers.add(human);
+        powers.add(highElf);
+        powers.add(woodElf);
+
+        return ResponseEntity.ok().body(powers);
     }
 
     @RequestMapping(value = "/class/validate", method = RequestMethod.POST)
