@@ -92,10 +92,10 @@
     }
 
     .modal_button {
-        width: 6vw;
-        height: 5vh;
-        font-size: 10pt;
-        margin: 1vw;
+        width: 6vw !important;
+        height: 5vh !important;
+        font-size: 10pt !important;
+        margin: 1vw !important;
     }
 
     .modal_button:hover {
@@ -143,6 +143,12 @@
         position: fixed;
         left: 68vw;
         margin-top: 3vh;
+    }
+
+    .animal_stats {
+        text-align: center;
+        color: black;
+        text-shadow: none;
     }
 
     .center_cell {
@@ -402,6 +408,10 @@
         margin: 1vw;
     }
 
+    .start_button:hover {
+        box-shadow: 0 0 12px yellow;
+    }
+
     .start_text {
         font-size: 12pt;
     }
@@ -445,6 +455,7 @@
     var RACE_VALIDATED = false;
     var RACIAL_BONUSES_APPLIED = false;
     var DISPLAY_POWER_COSTS = false;
+    var CAN_SAVE_CLASS = true;
     var CURRENT_TAB;
     var CURRENT_TAB_SELECTOR;
     var STRENGTH;
@@ -462,6 +473,8 @@
     var POWERS_ARRAY;
     var RACIAL_POWER;
     var RACIAL_POWER_ICON;
+    var RACIAL_POWER_SAVED;
+    var RACIAL_POWER_ICON_SAVED;
     var HALF_ELF_CHOICES = [];
     var CLASS_POWER_DETAILS = [];
     var SELECTED_POWERS = [];
@@ -469,9 +482,21 @@
     var POWER_POINTS = 2.0;
 
     var CHARACTER_CLASS;
+    var CHARACTER_CLASS_DETAILS;
     var CHARACTER_NAME;
     var PLAYER_NAME;
     var CHARACTER_RACE;
+
+    function activateAnimalTooltipster() {
+        $('.animal_tooltip').tooltipster({
+            contentCloning: true,
+            theme: 'tooltipster-borderless',
+            updateAnimation: 'null',
+            side: ['bottom', 'top'],
+            animationDuration: '0',
+            delay: '0'
+        });
+    }
 
     function activiateHalfElfTooltipster() {
         $('.half_elf_tooltip').tooltipster({
@@ -767,13 +792,14 @@
         document.getElementById("start_e").innerText = eTotal;
 
         document.getElementById("start_racial_powers_div").innerHTML = "";
-        if (RACIAL_POWER_ICON !== undefined) {
-            var racialPower = RACIAL_POWER_ICON;
+        if (RACIAL_POWER_ICON_SAVED !== undefined && CHARACTER_RACE !== undefined) {
+            var racialPower = RACIAL_POWER_ICON_SAVED;
             racialPower.id = racialPower.id + "_cloned";
             racialPower.setAttribute("data-tooltip-content", "#tooltip_content");
             racialPower.setAttribute("onmouseover", "update_start_racial_tooltip(this)");
 
             racialPower.style.marginLeft = "";
+            racialPower.style.marginTop = "";
             racialPower.classList.remove("power_selected");
             racialPower.classList.remove("power_div");
             racialPower.classList.add("start_power_div");
@@ -1168,24 +1194,38 @@
         var selectedRace = CHARACTER_RACE;
         var validClass = validate_class(selectedRace, selectedClass);
         if (validClass) {
-            CHARACTER_CLASS = selectedClass;
-            document.getElementById("class_validate_error").style.display = "none";
-            document.getElementById("char_class").innerText = selectedClass;
-            document.getElementById("char_class").classList.remove("hidden");
-            if (CHARACTER_RACE !== undefined) {
-                changeTab("powers_body", document.getElementById("powers_selector"));
-            }
-            else {
-                changeTab("race_body", document.getElementById("race_selector"));
-            }
-            loadClassPowers(selectedClass);
+            showClassModal(selectedClass);
         }
         else {
             var errorMessage = document.getElementById("class_validate_error");
             errorMessage.innerText = selectedRace + "s cannot be " + selectedClass + "s. Select a different class or a different race.";
             document.getElementById("class_validate_error").style.display = "block";
         }
-        showSelectedPowers();
+    }
+
+    function saveClassFinal() {
+        if(!CAN_SAVE_CLASS) {
+            showClassError();
+            return;
+        }
+        var selectedClass = document.getElementById("class_select").value.split("(")[0].trim();
+        CHARACTER_CLASS = selectedClass;
+        document.getElementById("class_validate_error").style.display = "none";
+        document.getElementById("char_class").innerText = selectedClass;
+        document.getElementById("char_class").classList.remove("hidden");
+        if (CHARACTER_RACE !== undefined) {
+            hide_class_modal();
+            changeTab("powers_body", document.getElementById("powers_selector"));
+        }
+        else {
+            hide_class_modal();
+            changeTab("race_body", document.getElementById("race_selector"));
+        }
+        loadClassPowers(selectedClass);
+    }
+
+    function showClassError() {
+        document.getElementById("class_error").classList.remove("hidden");
     }
 
     function saveRace() {
@@ -1203,6 +1243,8 @@
     }
 
     function saveRace2(selectedRace) {
+        RACIAL_POWER_SAVED = RACIAL_POWER;
+        RACIAL_POWER_ICON_SAVED = RACIAL_POWER_ICON;
         RACIAL_BONUSES_APPLIED = true;
         document.getElementById("race_modal").classList.add("hidden");
         if (RACE_VALIDATED) {
@@ -1220,6 +1262,177 @@
 
     function selectValue(element) {
         return element.options[element.selectedIndex].value;
+    }
+
+    function createAnimalDisplay(animalInfo) {
+        var abilitiesDiv = document.createElement("div");
+        var powerDiv = document.createElement("div");
+
+        abilitiesDiv.classList.add("animal_stats");
+        abilitiesDiv.style.paddingBottom = "2vh";
+
+        abilitiesDiv.innerHTML = "<span>Strength: " + animalInfo.strength + " " + getModifierText(getModifier(animalInfo.strength)) + "</span><br>" +
+            "<span>Quickness: " + animalInfo.quickness + " " + getModifierText(getModifier(animalInfo.quickness)) + "</span><br>" +
+            "<span>Intelligence: " + animalInfo.intelligence + " " + getModifierText(getModifier(animalInfo.intelligence)) + "</span><br>" +
+            "<span>Leadership: " + animalInfo.leadership + " " + getModifierText(getModifier(animalInfo.leadership)) + "</span><br>" +
+            "<span>Endurance: " + animalInfo.endurance + "</span><br><br>" +
+            "<span>Speed: " + animalInfo.speed + "</span><br>" +
+            "<span>Damage: " + (animalInfo.damage > 1 ? "1-" + animalInfo.damage : animalInfo.damage) + "</span><br>";
+
+        abilitiesDiv.appendChild(createAnimalPowerDisplay(animalInfo.powers));
+
+        return abilitiesDiv;
+    }
+
+    function createAnimalPowerDisplay(powerList) {
+        var powersContainer = document.createElement("div");
+
+        for (var i = 0; i < powerList.length; i++) {
+            var powerInfo = powerList[i];
+            var powerDiv = document.createElement("div");
+            powerDiv.style.display = "inline-flex";
+            powerDiv.style.marginTop = "2vh";
+            powerDiv.id = "animal-"+i;
+            powerDiv.classList.add("animal_tooltip");
+            var powerInfoArray = [powerInfo.name, powerInfo.description, powerInfo.imageSrc];
+            powerDiv.setAttribute("onmouseover", "update_animal_tooltip(" + JSON.stringify(powerInfo) + ", \"" + powerDiv.id + "\")");
+            powerDiv.setAttribute("data-tooltip-content", "#tooltip_content");
+
+            var powerImage = document.createElement("img");
+            powerImage.style.marginRight = "1vw";
+            powerImage.src = powerInfo.imageSrc;
+
+            var powerName = document.createElement("p");
+            powerName.innerText = powerInfo.name;
+
+            powerDiv.appendChild(powerImage);
+            powerDiv.appendChild(powerName);
+
+            powersContainer.appendChild(powerDiv);
+        }
+        return powersContainer;
+    }
+
+    function animalSingle(ele) {
+        var selectedAnimal = selectText(ele);
+        if (selectedAnimal !== "") {
+            CAN_SAVE_CLASS = true;
+        }
+
+        $.get("/beast/nonMounts", function (data, status) {
+            var animalInfo = searchBeasts(data, selectedAnimal);
+            var animalDiv = createAnimalDisplay(animalInfo);
+            animalDiv.id = "animal_div";
+            if (document.getElementById("animal_div") == null) {
+                document.getElementById("class_modal_body").appendChild(animalDiv);
+            }
+            else {
+                document.getElementById("animal_div").innerHTML = animalDiv.innerHTML;
+            }
+            activateAnimalTooltipster();
+        });
+    }
+
+    function animalConjurer(ele) {
+        var selectedAnimal = selectText(ele);
+        if (selectedAnimal !== "") {
+            CAN_SAVE_CLASS = true;
+        }
+
+        $.get("/beast/conjurer", function (data, status) {
+            var animalInfo = searchBeasts(data, selectedAnimal);
+            var animalDiv = createAnimalDisplay(animalInfo);
+            animalDiv.id = "animal_div";
+            if (document.getElementById("animal_div") == null) {
+                document.getElementById("class_modal_body").appendChild(animalDiv);
+            }
+            else {
+                document.getElementById("animal_div").innerHTML = animalDiv.innerHTML;
+            }
+            activateAnimalTooltipster();
+        });
+    }
+
+    function populateViper() {
+        $.get("/beast/viper", function (data, status) {
+            var animalInfo = searchBeasts(data, "Viper");
+            var animalDiv = createAnimalDisplay(animalInfo);
+            animalDiv.id = "animal_div";
+            animalDiv.style.paddingTop = "5vh";
+            if (document.getElementById("animal_div") == null) {
+                document.getElementById("class_modal_body").appendChild(animalDiv);
+            }
+            else {
+                document.getElementById("animal_div").innerHTML = animalDiv.innerHTML;
+            }
+            activateAnimalTooltipster();
+        });
+    }
+
+    function hunterDetails(ele) {
+        var selectedRace = selectText(ele);
+        if (selectedRace !== "") {
+            CAN_SAVE_CLASS = true;
+        }
+    }
+
+    function weaponMasterDetails(ele) {
+        document.getElementById("class_error").innerText = "*Please select your weapon type of choice to continue*";
+        var weapon = selectText(ele);
+        if (weapon !== "") {
+            if (weapon === "Dagger") {
+                var one = document.getElementById("1H");
+                document.getElementById("class_error").innerText = "*Daggers cannot be 2-Handed*";
+                CAN_SAVE_CLASS = one.checked;
+            }
+            else {
+                CAN_SAVE_CLASS = true;
+            }
+        }
+    }
+
+    function showClassModal(className) {
+        switch(className) {
+            case "Ranger":
+                showRequestedModal("single_animal", "*Please select an animal companion to continue*");
+                break;
+            case "Skinchanger":
+                showRequestedModal("single_animal", "*Please select an animal companion to continue*");
+                break;
+            case "Conjurer":
+                showRequestedModal("conjurer", "*Please select an animal companion to continue*");
+                break;
+            case "Hunter":
+                showRequestedModal("hunter", "*Please select an enemy race to continue*");
+                break;
+            case "Weapon Master":
+                showRequestedModal("weapon_master", "*Please select your weapon type of choice to continue*");
+                break;
+            case "Sorcerer":
+                populateViper();
+                showRequestedModal("sorcerer", "");
+                CAN_SAVE_CLASS = true;
+                break;
+            default:
+                saveClassFinal();
+        }
+    }
+
+    function showRequestedModal(modal_type, class_error_message) {
+        document.getElementById("class_error").innerText = class_error_message;
+        CAN_SAVE_CLASS = false;
+        var saveButton = document.getElementById("class_save_modal");
+        save.setAttribute("onclick", "validate_"+modal_type+"()");
+
+        var classModalBody = document.getElementById("class_modal_body");
+        var classModalContent = document.getElementById(modal_type + "_modal_content");
+        var contentClone = classModalContent.cloneNode(true);
+
+        document.getElementById("class_modal_header").innerText = "Additional Class Choices";
+        classModalBody.innerHTML = "";
+        classModalBody.appendChild(contentClone);
+
+        document.getElementById("class_modal").classList.remove("hidden");
     }
 
     function showRaceModal(race) {
@@ -1293,8 +1506,8 @@
     }
 
     function showHalfElfPowerChoices() {
-        RACIAL_POWER = undefined;
-        RACIAL_POWER_ICON = undefined;
+        // RACIAL_POWER = undefined;
+        // RACIAL_POWER_ICON = undefined;
         var humanPower;
         var highElfPower;
         var woodElfPower;
@@ -1308,7 +1521,6 @@
             var highElfDiv = createPower(highElfPower, 1);
             var woodElfDiv = createPower(woodElfPower, 2);
 
-            // var powerDiv = document.createElement("half_elf_modal_content");
             var powerDiv = document.getElementById("half_elf_powers_div");
             powerDiv.appendChild(humanDiv);
             powerDiv.appendChild(highElfDiv);
@@ -1404,7 +1616,7 @@
         var powersContainer = document.getElementById("char_powers_container");
         powersContainer.innerHTML = "";
         var powersHeader = document.createElement("span");
-        powersHeader.innerHTML = "<b>Powers: </b>";
+        powersHeader.innerHTML = "<u>Powers: </u>";
         powersContainer.appendChild(powersHeader);
 
         for (var i = 0; i < SELECTED_POWERS.length; i++) {
@@ -1460,6 +1672,35 @@
     function update_player_name(ele) {
         PLAYER_NAME = ele.value;
         document.getElementById("player_name").innerHTML = "<u>" + ele.value + "</u>";
+    }
+
+    function update_animal_tooltip(powerInfo, powerDivId) {
+        var div = document.createElement("div");
+        div.style = "width:35vw;";
+        div.id = "start_power_container_";
+
+        var powerIcon = document.createElement("img");
+        powerIcon.id = "start_power_icon_";
+
+        var powerName = document.createElement("span");
+        powerName.style = "font-size:14pt;vertical-align:top;padding-left: 1vw;";
+        powerName.id = "start_tooltip_power_name_";
+
+        var powerDescription = document.createElement("p");
+        powerDescription.style = "margin-top:0;font-size:10pt;";
+        powerDescription.id = "start_tooltip_power_description_";
+
+        powerIcon.src = powerInfo.imageSrc;
+        powerName.innerText = powerInfo.name;
+        powerDescription.innerText = powerInfo.description;
+        div.appendChild(powerIcon);
+        div.appendChild(powerName);
+        div.appendChild(powerDescription);
+
+        powerDivId = "#" + powerDivId;
+        $(powerDivId).tooltipster('content', div)
+            .tooltipster('open');
+
     }
 
     function update_half_elf_tooltip(ele, index) {
@@ -1520,7 +1761,7 @@
     }
 
     function update_start_racial_tooltip(ele) {
-        var powerInfo = RACIAL_POWER;
+        var powerInfo = RACIAL_POWER_SAVED;
 
         var div = document.createElement("div");
         div.style = "width:35vw;";
@@ -1582,6 +1823,15 @@
             var power = CLASS_POWER_DETAILS[i];
             if (power.name === powerName.trim()) {
                 return power;
+            }
+        }
+    }
+
+    function searchBeasts(data, animalSelected) {
+        for (var i = 0; i < data.length; i++) {
+            var temp = data[i];
+            if (temp.type === animalSelected) {
+                return temp;
             }
         }
     }
@@ -1715,7 +1965,15 @@
 
     function validate_half_elf(race) {
         resetAbilityModifiers();
-        if (RACIAL_POWER === undefined) {
+        var powerSelected = false;
+        for (var i = 0; i < 3; i++) {
+            var power = document.getElementById("half_elf-"+i);
+            if (power.classList.contains("power_selected")) {
+                powerSelected = true;
+                break;
+            }
+        }
+        if (!powerSelected) {
             document.getElementById("race_error").innerText = "*Select a racial power*";
             document.getElementById("race_error").classList.remove("hidden");
             return;
@@ -1723,11 +1981,19 @@
         else {
             document.getElementById("race_error").classList.add("hidden");
         }
-        var bonus = document.getElementById("half_elf_bonus_total").innerText;
-        var penalty = document.getElementById("half_elf_penalty_total").innerText;
 
         var bonusAbility = selectText(document.getElementById("half_elf_bonus_select"));
         var penaltyAbility = selectText(document.getElementById("half_elf_penalty_select"));
+
+        if (bonusAbility === "" || penaltyAbility === "") {
+            document.getElementById("race_error").innerText = "*Select an ability bonus and abilty penalty*";
+            document.getElementById("race_error").classList.remove("hidden");
+            return;
+        }
+        else {
+            document.getElementById("race_error").classList.add("hidden");
+        }
+
         if (bonusAbility === penaltyAbility) {
             document.getElementById("race_error").innerText = "*Bonuses and Penalties cannot be applied to the same ability*";
             document.getElementById("race_error").classList.remove("hidden");
@@ -2405,8 +2671,8 @@
         </div>
         <div class="modal-footer">
             <div>
-                <button id="" class="modal_button game_button" onclick="hide_class_modal()">Cancel</button>
-                <button id="" class="modal_button game_button">Save</button>
+                <button class="game_button modal_button" onclick="hide_class_modal()">Cancel</button>
+                <button id="class_save_modal" class="game_button modal_button" onclick="saveClassFinal()">Save</button>
             </div>
             <div id="class_error" class="hidden" style="padding-bottom: 1vh;">
                 <span>*Bonuses and Penalties cannot be applied to the same ability*</span>
@@ -2415,13 +2681,138 @@
     </div>
 </div>
 <div id="class_modal_templates" style="display: none;">
-    <div id="hunter_modal_content"></div>
-    <div id="weapon_master_modal_content"></div>
+    <div id="hunter_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table" style="margin-bottom: -3vh;">
+                <tr>
+                    <th class="race_table_header">Select your enemy race</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><div>Against this race, the hunter gets a +2 to all attack, grapple,
+                        or evaluate rolls, adds +1 to max damage, and increases the range of its critical successes to 19-20.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="hunter_select" onchange="hunterDetails(this)">
+                            <option></option>
+                            <option>Dwarf</option>
+                            <option>Half-Elf</option>
+                            <option>Half-Crc</option>
+                            <option>High Elf</option>
+                            <option>Hobbit</option>
+                            <option>Human</option>
+                            <option>Orc</option>
+                            <option>Wood Elf</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="weapon_master_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table" style="margin-bottom: -3vh;">
+                <tr>
+                    <th class="race_table_header">Select your weapon type of choice
+                        <span><br>(You will begin with a weapon of this type as your weapon of choice)</span>
+                    </th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><div>Get +1 to attack rolls with that specific weapon. The specific
+                        weapon itself may change at the beginning of each game, but must be of the same selected weapon type.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="weapon_master_select" onchange="weaponMasterDetails(this)">
+                            <option></option>
+                            <option>Sword</option>
+                            <option>Mace</option>
+                            <option>Axe</option>
+                            <option>Hammer</option>
+                            <option>Polearm</option>
+                            <option>Bow</option>
+                            <option>Dagger</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">
+                        <input id="1H" type="radio" checked="true">1-Handed<br>
+                        <input id="2H" type="radio">2-Handed
+                        <div style="width:35vw;margin:0 auto;">
+                            <span><br><u>2-H weapons:</u>
+                                <div style="text-align:left;margin-left:12vw;">
+                                    <span style="display: list-item;">+1 to max damage</span>
+                                    <span style="display: list-item;">+1 damage roll on a critical hit</span>
+                                    <span style="display: list-item;">-2 to defense</span><br>
+                                </div>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
     <div id="outrider_modal_content"></div>
-    <div id="ranger_modal_content"></div>
-    <div id="conjurer_modal_content"></div>
-    <div id="skinchanger_modal_content"></div>
-    <div id="sorcerer_modal_content"></div>
+    <div id="single_animal_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table" style="margin-bottom: -3vh;">
+                <tr>
+                    <th class="race_table_header">Select one non-mount animal as a companion</th>
+                </tr>
+                <tr>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="single_animal_select" onchange="animalSingle(this)">
+                            <option></option>
+                            <option>Dog</option>
+                            <option>Cat</option>
+                            <option>Weasel</option>
+                            <option>Bird</option>
+                            <option>Falcon</option>
+                            <option>Viper</option>
+                            <option>Bear</option>
+                            <option>Wolf</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><div id="single_animal_info"></div></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="conjurer_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table" style="border-bottom:1pt solid black;">
+                <tr>
+                    <th class="race_table_header">Select a bird or a falcon as your animal companion</th>
+                </tr>
+                <tr>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="conjurer_animal_select" onchange="animalConjurer(this)">
+                            <option></option>
+                            <option>Bird</option>
+                            <option>Falcon</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><div id="conjurer_animal_info"></div></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="sorcerer_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table" style="margin-bottom: -3vh;">
+                <tr>
+                    <th class="race_table_header">Sorcerers begin with a viper companion</th>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>

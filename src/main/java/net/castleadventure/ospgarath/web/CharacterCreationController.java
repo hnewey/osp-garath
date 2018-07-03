@@ -9,10 +9,15 @@ import net.castleadventure.ospgarath.model.characterClass.ClassDescription;
 import net.castleadventure.ospgarath.model.characterClass.trait.SelectedRaceAndClass;
 import net.castleadventure.ospgarath.model.characterClass.trait.TraitManager;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
+import net.castleadventure.ospgarath.model.monster.beast.Beast;
+import net.castleadventure.ospgarath.model.monster.beast.BeastManager;
+import net.castleadventure.ospgarath.model.monster.beast.Viper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.GET;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -115,6 +120,34 @@ public class CharacterCreationController {
         Boolean isValid = TraitManager.validateRaceAndClass(selectedRaceAndClass.getSelectedRace(), selectedRaceAndClass.getSelectedClass());
         return isValid;
     }
+
+    @RequestMapping(value = "/beast/nonMounts", method = RequestMethod.GET)
+    public List<Beast> getNonMounts() {
+        return BeastManager.getNonMounts();
+    }
+
+    @RequestMapping(value = "/beast/all", method = RequestMethod.GET)
+    public List<Beast> getAllBeasts() {
+        return BeastManager.getAllBeasts();
+    }
+
+    @RequestMapping(value = "/beast/mounts", method = RequestMethod.GET)
+    public List<Beast> getMounts() {
+        return BeastManager.getMounts();
+    }
+
+    @RequestMapping(value = "/beast/conjurer", method = RequestMethod.GET)
+    public List<Beast> getConjurerBeasts() {
+        return BeastManager.getConjurerBeasts();
+    }
+
+    @RequestMapping(value = "/beast/viper", method = RequestMethod.GET)
+    public List<Beast> getViper() {
+        List<Beast> beasts = new ArrayList<>();
+        beasts.add(new Viper());
+        return beasts;
+    }
+
 
 //    private List<String> restrictRacesByClass() {
 //        List<String> restrictions = TraitManager.getClassRestrictions(selectedClassType.toString());
