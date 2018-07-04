@@ -6,6 +6,6 @@ public class PackAnimal extends Power {
 
     public PackAnimal() {
         name = "Pack Animal";
-        description = "has 5 inventory slots (Innate/unlimited).";
+        description = "Has 5 inventory slots (Innate/unlimited).";
     }
 }

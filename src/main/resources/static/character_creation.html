@@ -366,6 +366,10 @@
         left: 44vw;
     }
 
+    .scholar_button {
+
+    }
+
     select {
         background: url(img/dropdown.jpg);
         background-size: 100% 100%;
@@ -469,6 +473,12 @@
     var INTELLIGENCE_MODIFIERS = [];
     var LEADERSHIP_MODIFIERS = [];
     var ENDURANCE_MODIFIERS = [];
+
+    var CLASS_S_MODIFIERS = [];
+    var CLASS_Q_MODIFIERS = [];
+    var CLASS_I_MODIFIERS = [];
+    var CLASS_L_MODIFIERS = [];
+    var CLASS_E_MODIFIERS = [];
 
     var POWERS_ARRAY;
     var RACIAL_POWER;
@@ -677,6 +687,7 @@
     }
 
     function autoAdjustAbilitiesByClass(classCombo) {
+        // resetClassModifiers();
         var abilitiesSorted = [STRENGTH, QUICKNESS, INTELLIGENCE, LEADERSHIP];
         abilitiesSorted.sort(function (a, b) {  return b - a;  });
         for (var i = 0; i < 4; i++) {
@@ -882,9 +893,6 @@
             document.getElementById("class_description").innerText = data;
             loadClassTraits(selectedClass);
             loadClassRestrictions(selectedClass);
-            var classCombo = selectText(ele).split("(")[1].replace("(", "").replace(")", "").trim();
-            autoAdjustAbilitiesByClass(classCombo);
-            // loadClassPowers(selectedClass);
         });
     }
 
@@ -1125,6 +1133,14 @@
         ENDURANCE_MODIFIERS = [];
     }
 
+    function resetClassModifiers() {
+        CLASS_S_MODIFIERS = [];
+        CLASS_Q_MODIFIERS = [];
+        CLASS_I_MODIFIERS = [];
+        CLASS_L_MODIFIERS = [];
+        CLASS_E_MODIFIERS = [];
+    }
+
     function resetClassSelection() {
         document.getElementById("class_select").value = "";
         document.getElementById("class_description").innerText = "";
@@ -1208,8 +1224,14 @@
             showClassError();
             return;
         }
+        update_ability_scores();
         var selectedClass = document.getElementById("class_select").value.split("(")[0].trim();
         CHARACTER_CLASS = selectedClass;
+
+        var classSelect = document.getElementById("class_select");
+        var classCombo = selectText(classSelect).split("(")[1].replace("(", "").replace(")", "").trim();
+        autoAdjustAbilitiesByClass(classCombo);
+
         document.getElementById("class_validate_error").style.display = "none";
         document.getElementById("char_class").innerText = selectedClass;
         document.getElementById("char_class").classList.remove("hidden");
@@ -1292,9 +1314,16 @@
             var powerDiv = document.createElement("div");
             powerDiv.style.display = "inline-flex";
             powerDiv.style.marginTop = "2vh";
-            powerDiv.id = "animal-"+i;
+            powerDiv.id = "animal-"+(powerInfo.name.replace(" ", "_"));
             powerDiv.classList.add("animal_tooltip");
-            var powerInfoArray = [powerInfo.name, powerInfo.description, powerInfo.imageSrc];
+            if (powerList.length > 1) {
+                if (i===0) {
+                    powerDiv.style.marginLeft = "7vw";
+                }
+                else {
+                    powerDiv.style.marginLeft = "3vw";
+                }
+            }
             powerDiv.setAttribute("onmouseover", "update_animal_tooltip(" + JSON.stringify(powerInfo) + ", \"" + powerDiv.id + "\")");
             powerDiv.setAttribute("data-tooltip-content", "#tooltip_content");
 
@@ -1311,6 +1340,87 @@
             powersContainer.appendChild(powerDiv);
         }
         return powersContainer;
+    }
+
+    function createExtraAnimalPowerDisplay(currentPowers) {
+        var powerList;
+        $.get("/beast/powers", function (data, status) {
+            for (var i = 0; i < currentPowers.length; i++) {
+                data = removeAnimalPower(data, currentPowers[i]);
+            }
+            if (data[0].name === "Versatile"){
+                data.splice(0, 1);
+            }
+            var powerDisplay = createExtraAnimalPowers(data);
+            // var powerDisplay = createAnimalPowerDisplay(data);
+            // powerDisplay.style.paddingLeft = "4vw";
+            document.getElementById("class_modal_body").appendChild(powerDisplay);
+            activateAnimalTooltipster();
+        });
+    }
+
+    function createExtraAnimalPowers(powerList) {
+        var powersContainer = document.createElement("div");
+        // powersContainer.appendChild(info);
+
+        var powerTable = document.createElement("table");
+        powerTable.style = "border-top:1pt solid black; padding-left:1vw;margin:0;color:black;text-shadow:none;";
+        var info = document.createElement("th");
+        info.innerText = "Select an additional power for your mount";
+        info.colSpan = "4";
+        info.style.paddingRight = "4vw";
+        powerTable.appendChild(info);
+
+        var row;
+
+        for (var i = 0; i < powerList.length; i++) {
+            if (i % 4 === 0) {
+                //new row
+                row  = document.createElement("tr");
+                powerTable.appendChild(row);
+            }
+            var cell = document.createElement("td");
+            var powerInfo = powerList[i];
+            var powerDiv = document.createElement("div");
+            powerDiv.style.display = "inline-flex";
+            powerDiv.style.marginTop = "2vh";
+            powerDiv.style.paddingRight = "2vw";
+            powerDiv.id = "animal-"+(powerInfo.name.replace(" ", "_"));
+            powerDiv.classList.add("animal_tooltip");
+            powerDiv.setAttribute("onmouseover", "update_animal_tooltip(" + JSON.stringify(powerInfo) + ", \"" + powerDiv.id + "\")");
+            powerDiv.setAttribute("data-tooltip-content", "#tooltip_content");
+
+            var powerImage = document.createElement("img");
+            powerImage.style.marginRight = "1vw";
+            powerImage.src = powerInfo.imageSrc;
+
+            var powerName = document.createElement("p");
+            powerName.innerText = powerInfo.name;
+
+            powerDiv.appendChild(powerImage);
+            powerDiv.appendChild(powerName);
+
+            cell.appendChild(powerDiv);
+            row.appendChild(cell);
+        }
+        powersContainer.appendChild(powerTable);
+        return powersContainer;
+
+    }
+
+    function removeAnimalPower(powersList, power) {
+        var index = -1;
+        for (var i = 0; i < powersList.length; i++) {
+            if (powersList[i].name === power.name) {
+                index = i;
+                break;
+            }
+        }
+        if (index > -1) {
+            powersList.splice(index, 1);
+            return powersList;
+        }
+        return powersList;
     }
 
     function animalSingle(ele) {
@@ -1369,6 +1479,35 @@
         });
     }
 
+    function populateMount() {
+        var isHobbit = (CHARACTER_RACE === "Hobbit");
+        $.get("/beast/mounts", function (data, status) {
+            var animalInfo = (isHobbit ? data[1] : data[0]);
+            var animalTitle = document.createElement("p");
+            animalTitle.classList.add("animal_stats");
+            animalTitle.innerHTML = "<u>" + animalInfo.type + ":</u>";
+            animalTitle.id = "animal_title";
+            animalTitle.style.paddingTop = "4vh";
+            animalTitle.style.marginBottom = "4px";
+            if (document.getElementById("animal_title") == null) {
+                document.getElementById("class_modal_body").appendChild(animalTitle);
+            }
+            else {
+                document.getElementById("animal_title").innerHTML = animalTitle.innerHTML;
+            }
+
+            var animalDiv = createAnimalDisplay(animalInfo);
+            animalDiv.id = "animal_div";
+            if (document.getElementById("animal_div") == null) {
+                document.getElementById("class_modal_body").appendChild(animalDiv);
+            }
+            else {
+                document.getElementById("animal_div").innerHTML = animalDiv.innerHTML;
+            }
+            createExtraAnimalPowerDisplay(animalInfo.powers);
+        });
+    }
+
     function hunterDetails(ele) {
         var selectedRace = selectText(ele);
         if (selectedRace !== "") {
@@ -1391,7 +1530,27 @@
         }
     }
 
+    function scholarDetails(ele) {
+        CAN_SAVE_CLASS = true;
+        var decision = ele.innerText;
+        if (decision === "Pass") {
+            saveClassFinal();
+        }
+        else {
+            var intelligence = INTELLIGENCE;
+            var leadership = LEADERSHIP;
+            var iDiff = intelligence - leadership;
+            var lDiff = leadership - intelligence;
+            CLASS_I_MODIFIERS.push(lDiff);
+            CLASS_L_MODIFIERS.push(iDiff);
+            saveClassFinal();
+        }
+    }
+
     function showClassModal(className) {
+        // CHARACTER_CLASS = undefined;
+        resetClassModifiers();
+        showModalButtons();
         switch(className) {
             case "Ranger":
                 showRequestedModal("single_animal", "*Please select an animal companion to continue*");
@@ -1413,9 +1572,38 @@
                 showRequestedModal("sorcerer", "");
                 CAN_SAVE_CLASS = true;
                 break;
+            case "Outrider":
+                populateMount();
+                showRequestedModal("outrider", "*Select one additional power for your mount*");
+                CAN_SAVE_CLASS = true;
+                break;
+            case "Scholar":
+                hideModalButtons();
+                showRequestedModal("scholar", "*Please select whether to swap Intelligence and Leadership scores or not*");
+                break;
+            case "Necromancer":
+                if (CHARACTER_CLASS === "Necromancer") {
+                    CAN_SAVE_CLASS = true;
+                    saveClassFinal();
+                    return;
+                }
+                CLASS_E_MODIFIERS.push(2);
+                showRequestedModal("necromancer", "");
+                CAN_SAVE_CLASS = true;
+                break;
             default:
                 saveClassFinal();
         }
+    }
+
+    function showModalButtons() {
+        document.getElementById("class_save_modal").classList.remove("hidden");
+        document.getElementById("class_cancel_modal").classList.remove("hidden");
+    }
+
+    function hideModalButtons() {
+        document.getElementById("class_save_modal").classList.add("hidden");
+        document.getElementById("class_cancel_modal").classList.add("hidden");
     }
 
     function showRequestedModal(modal_type, class_error_message) {
@@ -1646,11 +1834,11 @@
     }
 
     function update_ability_scores() {
-        var sTotal = parseInt(STRENGTH) + parseInt(sumArray(STRENGTH_MODIFIERS));
-        var qTotal = parseInt(QUICKNESS) + parseInt(sumArray(QUICKNESS_MODIFIERS));
-        var iTotal = parseInt(INTELLIGENCE) + parseInt(sumArray(INTELLIGENCE_MODIFIERS));
-        var lTotal = parseInt(LEADERSHIP) + parseInt(sumArray(LEADERSHIP_MODIFIERS));
-        var eTotal = parseInt(ENDURANCE) + parseInt(sumArray(ENDURANCE_MODIFIERS));
+        var sTotal = parseInt(STRENGTH) + parseInt(sumArray(STRENGTH_MODIFIERS) + parseInt(sumArray(CLASS_S_MODIFIERS)));
+        var qTotal = parseInt(QUICKNESS) + parseInt(sumArray(QUICKNESS_MODIFIERS) + parseInt(sumArray(CLASS_Q_MODIFIERS)));
+        var iTotal = parseInt(INTELLIGENCE) + parseInt(sumArray(INTELLIGENCE_MODIFIERS) + parseInt(sumArray(CLASS_I_MODIFIERS)));
+        var lTotal = parseInt(LEADERSHIP) + parseInt(sumArray(LEADERSHIP_MODIFIERS) + parseInt(sumArray(CLASS_L_MODIFIERS)));
+        var eTotal = parseInt(ENDURANCE) + parseInt(sumArray(ENDURANCE_MODIFIERS) + parseInt(sumArray(CLASS_E_MODIFIERS)));
 
         var sMod = getModifier(sTotal);
         var qMod = getModifier(qTotal);
@@ -1733,6 +1921,9 @@
     }
 
     function update_racial_tooltip() {
+        if (RACIAL_POWER === undefined) {
+            return;
+        }
         var div = document.createElement("div");
         div.style = "width:35vw;";
         div.id = "power_container";
@@ -2671,7 +2862,7 @@
         </div>
         <div class="modal-footer">
             <div>
-                <button class="game_button modal_button" onclick="hide_class_modal()">Cancel</button>
+                <button id="class_cancel_modal" class="game_button modal_button" onclick="hide_class_modal()">Cancel</button>
                 <button id="class_save_modal" class="game_button modal_button" onclick="saveClassFinal()">Save</button>
             </div>
             <div id="class_error" class="hidden" style="padding-bottom: 1vh;">
@@ -2755,7 +2946,16 @@
             </table>
         </div>
     </div>
-    <div id="outrider_modal_content"></div>
+    <div id="outrider_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table" style="margin-bottom: -3vh;">
+                <tr>
+                    <th class="race_table_header">Outriders begin with either a Horse or a Pony (if character is a Hobbit)</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="shepherd_modal_content"></div>
     <div id="single_animal_modal_content">
         <div class="racial_bonuses">
             <table class="race_table" style="margin-bottom: -3vh;">
@@ -2809,6 +3009,33 @@
             <table class="race_table" style="margin-bottom: -3vh;">
                 <tr>
                     <th class="race_table_header">Sorcerers begin with a viper companion</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="scholar_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table" style="margin-bottom: -3vh;">
+                <tr>
+                    <th class="race_table_header" colspan="2">Scholars can switch their Intelligence and Leadership scores at
+                        character creation</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">
+                        <button class="start_button" style="width:8vw;height:6vh;" onclick="scholarDetails(this)">Pass</button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="start_button" style="width:8vw;height:6vh;" onclick="scholarDetails(this)">Swap</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="necromancer_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table">
+                <tr>
+                    <th class="race_table_header" colspan="2">Necromancers gain +2 to Endurance</th>
                 </tr>
             </table>
         </div>

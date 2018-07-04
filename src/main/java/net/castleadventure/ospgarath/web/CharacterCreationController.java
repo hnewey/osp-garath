@@ -11,6 +11,7 @@ import net.castleadventure.ospgarath.model.characterClass.trait.TraitManager;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
 import net.castleadventure.ospgarath.model.monster.beast.Beast;
 import net.castleadventure.ospgarath.model.monster.beast.BeastManager;
+import net.castleadventure.ospgarath.model.monster.beast.Pony;
 import net.castleadventure.ospgarath.model.monster.beast.Viper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -146,6 +147,19 @@ public class CharacterCreationController {
         List<Beast> beasts = new ArrayList<>();
         beasts.add(new Viper());
         return beasts;
+    }
+
+    @RequestMapping(value = "/beast/powers", method = RequestMethod.GET)
+    public List<Power> getBeastPowers() {
+        List<Beast> beasts = BeastManager.getAllBeasts();
+        List<Power> beastPowers = new ArrayList<>();
+        for (Beast beast : beasts) {
+            if (beast.getType().equalsIgnoreCase("Pony")){
+                continue;
+            }
+            beastPowers.addAll(beast.getPowers());
+        }
+        return beastPowers;
     }
 
 
