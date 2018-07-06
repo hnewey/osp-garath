@@ -2,6 +2,8 @@ package net.castleadventure.ospgarath.web;
 
 import net.castleadventure.ospgarath.model.ability.power.Power;
 import net.castleadventure.ospgarath.model.ability.power.PowerManager;
+import net.castleadventure.ospgarath.model.character.Character;
+import net.castleadventure.ospgarath.model.character.CharacterManager;
 import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.character.race.RaceManager;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
@@ -59,11 +61,15 @@ public class CharacterCreationController {
         return ResponseEntity.ok().body(powers);
     }
 
+    @RequestMapping(value = "/class/steward", method = RequestMethod.GET)
+    public ResponseEntity<Character> getSteward() {
+        return ResponseEntity.ok().body(CharacterManager.createRandomSteward());
+    }
+
     @RequestMapping(value = "/race/raceList", method = RequestMethod.GET)
     public List<String> getRaces() {
         List<String> raceList = Race.getRaces();
         raceList.add(0, "");
-//        raceList = restrictRacesByClass();
         return raceList;
     }
 

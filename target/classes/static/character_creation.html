@@ -1591,6 +1591,9 @@
                 showRequestedModal("necromancer", "");
                 CAN_SAVE_CLASS = true;
                 break;
+            case "Shepherd":
+                showRequestedModal("shepherd", "*Please select your three animal companions to continue*");
+                break;
             default:
                 saveClassFinal();
         }
@@ -2955,7 +2958,57 @@
             </table>
         </div>
     </div>
-    <div id="shepherd_modal_content"></div>
+    <div id="shepherd_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table" style="margin-bottom: -3vh;">
+                <tr>
+                    <th class="race_table_header">Select one non-mount animal as a companion</th>
+                </tr>
+                <tr>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="trusted_animal_select" onchange="animalSingle(this)">
+                            <option></option>
+                            <option>Dog</option>
+                            <option>Cat</option>
+                            <option>Weasel</option>
+                            <option>Bird</option>
+                            <option>Falcon</option>
+                            <option>Viper</option>
+                            <option>Bear</option>
+                            <option>Wolf</option>
+                        </select>
+                    </td>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="second_animal_select" onchange="animalSingle(this)">
+                            <option></option>
+                            <option>Dog</option>
+                            <option>Cat</option>
+                            <option>Weasel</option>
+                            <option>Bird</option>
+                            <option>Falcon</option>
+                            <option>Viper</option>
+                            <option>Bear</option>
+                            <option>Wolf</option>
+                        </select>
+                    </td>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="third_animal_select" onchange="animalSingle(this)">
+                            <option></option>
+                            <option>Dog</option>
+                            <option>Cat</option>
+                            <option>Weasel</option>
+                            <option>Bird</option>
+                            <option>Falcon</option>
+                            <option>Viper</option>
+                            <option>Bear</option>
+                            <option>Wolf</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
     <div id="single_animal_modal_content">
         <div class="racial_bonuses">
             <table class="race_table" style="margin-bottom: -3vh;">
@@ -3036,6 +3089,24 @@
             <table class="race_table">
                 <tr>
                     <th class="race_table_header" colspan="2">Necromancers gain +2 to Endurance</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="sovereign_modal_content">
+        <div class="racial_bonuses">
+            <table class="race_table" style="border-bottom:1pt solid black;">
+                <tr>
+                    <th class="race_table_header">Select a bird or a falcon as your animal companion</th>
+                </tr>
+                <tr>
+                    <td class="race_cell" style="text-align: center;">
+                        <select id="sovereign_select" onchange="animalConjurer(this)">
+                            <option></option>
+                            <option>Bird</option>
+                            <option>Falcon</option>
+                        </select>
+                    </td>
                 </tr>
             </table>
         </div>

@@ -42,4 +42,18 @@ public enum Race {
         }
         throw new IllegalArgumentException();
     }
+
+    public static Race getRace(Integer index) {
+        int i = 0;
+        if (index > Race.values().length) {
+            throw new RuntimeException("Unsupported Race");
+        }
+        for (Race race : Race.values()) {
+            if (index == i) {
+                return race;
+            }
+            i++;
+        }
+        throw new RuntimeException("Unsupported Race");
+    }
 }

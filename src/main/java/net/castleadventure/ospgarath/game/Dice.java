@@ -6,6 +6,10 @@ public class Dice {
 
     private static Random random = new Random();
 
+    public static Integer d24() {
+        return random.nextInt(24) + 1;
+    }
+
     public static Integer d20() {
         return random.nextInt(20) + 1;
     }
@@ -28,5 +32,9 @@ public class Dice {
 
     public static Integer d2() {
         return random.nextInt(2) + 1;
+    }
+
+    public static Integer dynamic(Integer input) {
+        return random.nextInt(input) + 1;
     }
 }

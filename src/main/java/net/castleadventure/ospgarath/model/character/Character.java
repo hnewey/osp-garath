@@ -1,12 +1,15 @@
 package net.castleadventure.ospgarath.model.character;
 
 import net.castleadventure.ospgarath.game.Dice;
+import net.castleadventure.ospgarath.model.ability.power.Power;
 import net.castleadventure.ospgarath.model.character.condition.*;
+import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
 import net.castleadventure.ospgarath.model.item.PlayerInventory;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Character {
@@ -27,6 +30,10 @@ public class Character {
     private Boolean conscious;
 
     private ClassType characterClass;
+    private Race characterRace;
+
+    private List<Power> powers;
+
     private PlayerEquippedItems playerEquippedItems;
     private PlayerInventory playerInventory;
 
@@ -52,6 +59,7 @@ public class Character {
         playerInventory = new PlayerInventory();
 
         characterClass = StatResolver.getClass(s, q, i, l);
+        powers = new ArrayList<>();
     }
 
     public void startTurn() {
@@ -263,5 +271,13 @@ public class Character {
 
     public void setMovement(Integer movement) {
         this.movement = movement;
+    }
+
+    public void setCharacterRace(Race characterRace) {
+        this.characterRace = characterRace;
+    }
+
+    public void addPower(Power power) {
+        this.powers.add(power);
     }
 }
