@@ -1,5 +1,7 @@
 package net.castleadventure.ospgarath.model.characterClass;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,6 +54,7 @@ public enum ClassType {
         return classCombo;
     }
 
+    @JsonValue
     public String getClassName() {
         return className;
     }

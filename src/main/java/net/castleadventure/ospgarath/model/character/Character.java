@@ -1,5 +1,6 @@
 package net.castleadventure.ospgarath.model.character;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import net.castleadventure.ospgarath.game.Dice;
 import net.castleadventure.ospgarath.model.ability.power.Power;
 import net.castleadventure.ospgarath.model.character.condition.*;
@@ -31,10 +32,15 @@ public class Character {
 
     private ClassType characterClass;
     private Race characterRace;
+    private Gender gender;
+
+    private String name;
 
     private List<Power> powers;
 
+    @JsonIgnore
     private PlayerEquippedItems playerEquippedItems;
+    @JsonIgnore
     private PlayerInventory playerInventory;
 
     private List<PositiveCondition> positiveConditions;
@@ -213,6 +219,50 @@ public class Character {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Integer getDamageTaken() {
+        return damageTaken;
+    }
+
+    public Integer getAttackDice() {
+        return attackDice;
+    }
+
+    public Boolean getConscious() {
+        return conscious;
+    }
+
+    public Race getCharacterRace() {
+        return characterRace;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public List<Power> getPowers() {
+        return powers;
+    }
+
+    public PlayerEquippedItems getPlayerEquippedItems() {
+        return playerEquippedItems;
+    }
+
+    public PlayerInventory getPlayerInventory() {
+        return playerInventory;
+    }
+
+    public List<PositiveCondition> getPositiveConditions() {
+        return positiveConditions;
+    }
+
+    public List<NegativeCondition> getNegativeConditions() {
+        return negativeConditions;
+    }
+
     //-----------------------------------------------------------
     // Setters
     //-----------------------------------------------------------
@@ -279,5 +329,13 @@ public class Character {
 
     public void addPower(Power power) {
         this.powers.add(power);
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

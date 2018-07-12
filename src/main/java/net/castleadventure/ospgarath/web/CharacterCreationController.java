@@ -61,9 +61,10 @@ public class CharacterCreationController {
         return ResponseEntity.ok().body(powers);
     }
 
-    @RequestMapping(value = "/class/steward", method = RequestMethod.GET)
-    public ResponseEntity<Character> getSteward() {
-        return ResponseEntity.ok().body(CharacterManager.createRandomSteward());
+    @RequestMapping(value = "/class/steward/{amount}", method = RequestMethod.GET)
+    public ResponseEntity<List<Character>> getSteward(
+            @PathVariable ("amount") Integer amount) {
+        return ResponseEntity.ok().body(CharacterManager.createRandomStewards(3));
     }
 
     @RequestMapping(value = "/race/raceList", method = RequestMethod.GET)

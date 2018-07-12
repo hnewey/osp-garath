@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Osp-Garath</title>
+    <link rel="stylesheet" href="css/char_creation_style.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/rpg-awesome.css">
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
@@ -429,6 +430,14 @@
         display: inline-flex;
     }
 
+    .steward_cell:hover {
+        border: 2pt solid yellow;
+    }
+
+    .steward_cell_selected {
+        border: 2pt solid yellow;
+    }
+
     table {
         margin-left: 21vw;
         margin-top: 5vh;
@@ -510,6 +519,17 @@
 
     function activiateHalfElfTooltipster() {
         $('.half_elf_tooltip').tooltipster({
+            contentCloning: true,
+            theme: 'tooltipster-borderless',
+            updateAnimation: 'null',
+            side: ['bottom', 'top'],
+            animationDuration: '0',
+            delay: '0'
+        });
+    }
+
+    function activateStewardTooltipster() {
+        $('.steward_tooltip').tooltipster({
             contentCloning: true,
             theme: 'tooltipster-borderless',
             updateAnimation: 'null',
@@ -754,6 +774,7 @@
         var button = document.createElement("button");
         button.innerText = "Set";
         button.classList.add("start_button");
+        button.classList.add("can_save");
         button.setAttribute("onclick", "changeTabTo(\"" + tab + "\")");
         return button;
     }
@@ -1408,6 +1429,35 @@
 
     }
 
+    function createStewardPowerDisplay(powerList, index) {
+        var powersContainer = document.createElement("div");
+
+        for (var i = 0; i < powerList.length; i++) {
+            var powerInfo = powerList[i];
+            var powerDiv = document.createElement("div");
+            powerDiv.style.display = "inline-flex";
+            powerDiv.style.marginTop = "2vh";
+            powerDiv.id = "steward-"+index;
+            powerDiv.classList.add("steward_tooltip");
+            powerDiv.setAttribute("onmouseover", "update_animal_tooltip(" + JSON.stringify(powerInfo) + ", \"" + powerDiv.id + "\")");
+            powerDiv.setAttribute("data-tooltip-content", "#tooltip_content");
+
+            var powerImage = document.createElement("img");
+            powerImage.style.marginRight = "1vw";
+            powerImage.src = powerInfo.imageSrc;
+
+            var powerName = document.createElement("p");
+            powerName.innerText = powerInfo.name;
+            powerName.style.textAlign = "left";
+
+            powerDiv.appendChild(powerImage);
+            powerDiv.appendChild(powerName);
+
+            powersContainer.appendChild(powerDiv);
+        }
+        return powersContainer;
+    }
+
     function removeAnimalPower(powersList, power) {
         var index = -1;
         for (var i = 0; i < powersList.length; i++) {
@@ -1441,6 +1491,47 @@
             }
             activateAnimalTooltipster();
         });
+    }
+
+    function animalShepherd(ele) {
+        checkCanSave();
+        var selectedAnimal = selectText(ele);
+        var cell;
+        switch (ele.id) {
+            case "trusted_pet_select":
+                cell = document.getElementById("trusted_pet");
+                break;
+            case "pet_2_select":
+                cell = document.getElementById("pet_2");
+                break;
+            case "pet_3_select":
+                cell = document.getElementById("pet_3");
+                break;
+        }
+        cell.innerHTML = "";
+
+        $.get("/beast/nonMounts", function (data, status) {
+            var animalInfo = searchBeasts(data, selectedAnimal);
+            var animalDiv = createAnimalDisplay(animalInfo);
+            cell.appendChild(animalDiv);
+            activateAnimalTooltipster();
+        });
+    }
+
+    function checkCanSave() {
+        var canSave = true;
+        if (selectText(document.getElementById("trusted_pet_select")) === "") {
+            canSave = false;
+        }
+        if (selectText(document.getElementById("pet_2_select")) === "") {
+            canSave = false;
+        }
+        if (selectText(document.getElementById("pet_3_select")) === "") {
+            canSave = false;
+        }
+        if (canSave) {
+            CAN_SAVE_CLASS = true;
+        }
     }
 
     function animalConjurer(ele) {
@@ -1508,6 +1599,67 @@
         });
     }
 
+    function populateStewards() {
+        var amount = 3;
+        var abilities = ["Strength: ", "Quickness: ", "Intelligence: ", "Leadership: ", "Endurance: "];
+        $.get("/class/steward/"+amount, function (data, status) {
+            var row = document.getElementById("steward_container");
+            row.innerHTML = "";
+            for (var i = 0; i < amount; i++) {
+                var steward = data[i];
+                var container = document.createElement("td");
+                container.style.textAlign = "center";
+                container.classList.add("steward_cell");
+                container.setAttribute("onclick", "setStewardSelected(this)");
+
+                var name = document.createElement("span");
+                name.innerHTML = "<u>" + steward.name + "<br></u>";
+                name.style = "font-size:14pt;font-family:'Marcellus SC', serif;";
+                var info = document.createElement("span");
+                info.innerHTML = steward.gender.value + " - " + steward.characterClass + "<br>";
+
+                container.appendChild(name);
+                container.appendChild(info);
+                for (var j=0; j < 5; j++) {
+                    var ability = document.createElement("span");
+                    var cur;
+                    switch (j) {
+                        case 0:
+                            cur = steward.strength.baseValue;
+                            break;
+                        case 1:
+                            cur = steward.quickness.baseValue;
+                            break;
+                        case 2:
+                            cur = steward.intelligence.baseValue;
+                            break;
+                        case 3:
+                            cur = steward.leadership.baseValue;
+                            break;
+                        case 4:
+                            cur = steward.endurance;
+                            break;
+                    }
+                    ability.innerHTML = abilities[j] + cur + "<br>";
+                    container.appendChild(ability);
+                }
+                var powerDisplay = createStewardPowerDisplay(steward.powers, i);
+                container.appendChild(powerDisplay);
+                row.appendChild(container);
+            }
+            activateStewardTooltipster();
+        });
+    }
+
+    function setStewardSelected(ele) {
+        CAN_SAVE_CLASS = true;
+        var cells = document.getElementsByClassName("steward_cell");
+        for (var i = 0; i < cells.length; i++) {
+            cells[i].classList.remove("steward_cell_selected");
+        }
+        ele.classList.add("steward_cell_selected");
+    }
+
     function hunterDetails(ele) {
         var selectedRace = selectText(ele);
         if (selectedRace !== "") {
@@ -1548,9 +1700,9 @@
     }
 
     function showClassModal(className) {
-        // CHARACTER_CLASS = undefined;
         resetClassModifiers();
         showModalButtons();
+        document.getElementById("class_modal_content").style = "";
         switch(className) {
             case "Ranger":
                 showRequestedModal("single_animal", "*Please select an animal companion to continue*");
@@ -1592,7 +1744,12 @@
                 CAN_SAVE_CLASS = true;
                 break;
             case "Shepherd":
+                document.getElementById("class_modal_content").style = "width:60%;";
                 showRequestedModal("shepherd", "*Please select your three animal companions to continue*");
+                break;
+            case "Sovereign":
+                populateStewards();
+                showRequestedModal("sovereign", "*Please select a steward to continue*");
                 break;
             default:
                 saveClassFinal();
@@ -2362,6 +2519,15 @@
         }
     }
 
+    function startGame() {
+        var unsetFields = document.getElementsByClassName("can_save");
+        if (unsetFields.length > 0) {
+            document.getElementById("start_error").classList.remove("hidden");
+            return;
+        }
+        window.location.href = "/opening_sequence.html";
+    }
+
 </script>
 <body id="body">
 <div id="middlePanel">
@@ -2594,7 +2760,11 @@
             <span class="start_text">Class: <u><span id="start_class"></span></u></span><br>
             <span class="start_text">Class Powers: </span><br>
             <div id="start_powers_div"></div>
-            <!--TODO:Add inventory summary and followers/pets-->
+            <!--TODO:Add inventory summary-->
+        </div>
+        <div style="position:absolute; width:100%; text-align:center;" >
+            <button class="game_button" onclick="startGame()">Start Game</button>
+            <br><span id="start_error" class="hidden">Set all required fields to start game</span>
         </div>
     </div>
     <div id="ability_scores" class="ability_scores_box" style="display: none;">
@@ -2856,7 +3026,7 @@
     </div>
 </div>
 <div id="class_modal" class="modal hidden">
-    <div class="modal-content">
+    <div id="class_modal_content" class="modal-content">
         <div class="modal-header">
             <span onclick="hide_class_modal()" class="close">&times;</span>
             <h2 id="class_modal_header"></h2>
@@ -2962,11 +3132,11 @@
         <div class="racial_bonuses">
             <table class="race_table" style="margin-bottom: -3vh;">
                 <tr>
-                    <th class="race_table_header">Select one non-mount animal as a companion</th>
+                    <th class="race_table_header" colspan="3">Select one non-mount animal as a companion</th>
                 </tr>
                 <tr>
                     <td class="race_cell" style="text-align: center;">
-                        <select id="trusted_animal_select" onchange="animalSingle(this)">
+                        <select id="trusted_pet_select" onchange="animalShepherd(this)">
                             <option></option>
                             <option>Dog</option>
                             <option>Cat</option>
@@ -2979,7 +3149,7 @@
                         </select>
                     </td>
                     <td class="race_cell" style="text-align: center;">
-                        <select id="second_animal_select" onchange="animalSingle(this)">
+                        <select id="pet_2_select" onchange="animalShepherd(this)">
                             <option></option>
                             <option>Dog</option>
                             <option>Cat</option>
@@ -2992,7 +3162,7 @@
                         </select>
                     </td>
                     <td class="race_cell" style="text-align: center;">
-                        <select id="third_animal_select" onchange="animalSingle(this)">
+                        <select id="pet_3_select" onchange="animalShepherd(this)">
                             <option></option>
                             <option>Dog</option>
                             <option>Cat</option>
@@ -3004,6 +3174,11 @@
                             <option>Wolf</option>
                         </select>
                     </td>
+                </tr>
+                <tr>
+                    <td id="trusted_pet"></td>
+                    <td id="pet_2"></td>
+                    <td id="pet_3"></td>
                 </tr>
             </table>
         </div>
@@ -3095,18 +3270,11 @@
     </div>
     <div id="sovereign_modal_content">
         <div class="racial_bonuses">
-            <table class="race_table" style="border-bottom:1pt solid black;">
+            <table id="sovereign_table" class="race_table" style="border-bottom:1pt solid black;">
                 <tr>
-                    <th class="race_table_header">Select a bird or a falcon as your animal companion</th>
+                    <th class="race_table_header" colspan="3">Select one of the following as your Steward follower</th>
                 </tr>
-                <tr>
-                    <td class="race_cell" style="text-align: center;">
-                        <select id="sovereign_select" onchange="animalConjurer(this)">
-                            <option></option>
-                            <option>Bird</option>
-                            <option>Falcon</option>
-                        </select>
-                    </td>
+                <tr id="steward_container">
                 </tr>
             </table>
         </div>
