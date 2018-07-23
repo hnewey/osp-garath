@@ -3,13 +3,18 @@ package net.castleadventure.ospgarath.model.character;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import net.castleadventure.ospgarath.game.Dice;
 import net.castleadventure.ospgarath.model.ability.power.Power;
+import net.castleadventure.ospgarath.model.ability.power.PowerManager;
 import net.castleadventure.ospgarath.model.character.condition.*;
 import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
 import net.castleadventure.ospgarath.model.item.PlayerInventory;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import javax.ws.rs.DefaultValue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,13 +51,22 @@ public class Character {
     private List<PositiveCondition> positiveConditions;
     private List<NegativeCondition> negativeConditions;
 
-    public Character(Integer s, Integer q, Integer i, Integer l, Integer e) {
+    public Character() {
+        damageTaken = 0;
+        attackDice = 1;
+        conscious = true;
+        playerEquippedItems = new PlayerEquippedItems();
+        playerInventory = new PlayerInventory();
+        powers = new ArrayList<>();
+    }
+
+    public Character(Integer s, Integer q, Integer i, Integer l, Integer e, Integer m) {
         strength = new Stat(s);
         quickness = new Stat(q);
         intelligence = new Stat(i);
         leadership = new Stat(l);
         endurance = e;
-        movement = 6;
+        movement = m;
         defense = q;
 
         damageTaken = 0;
@@ -66,6 +80,35 @@ public class Character {
 
         characterClass = StatResolver.getClass(s, q, i, l);
         powers = new ArrayList<>();
+    }
+
+    public void setDefaultValues() {
+        defense = quickness.getValue();
+        damageTaken = 0;
+        maxDamage = calcMaxDamage();
+        attackDice = 1;
+        conscious = true;
+        playerEquippedItems = new PlayerEquippedItems();
+        playerInventory = new PlayerInventory();
+        characterClass = StatResolver.getClass(strength.getValue(), quickness.getValue(), intelligence.getValue(), leadership.getValue());
+        powers = new ArrayList<>();
+    }
+
+    public static Character createFromJson(net.minidev.json.JSONObject json) throws Exception {
+        JSONObject newJson = new JSONObject(json.toString());
+        JSONObject abilities = newJson.getJSONObject("abilities");
+        Integer s = abilities.getInt("strength"), q = abilities.getInt("quickness"), i = abilities.getInt("intelligence"),
+                l = abilities.getInt("leadership"), e = abilities.getInt("endurance"), m = abilities.getInt("movement");
+        Character character = new Character(s, q, i, l, e, m);
+        character.setCharacterClass(ClassType.getClassByName(abilities.getString("class")));
+        character.setCharacterRace(Race.getRace(abilities.getString("race")));
+
+        String[] powers = newJson.getJSONArray("powers").getString(0).split(",");
+        String className = character.getCharacterClass().getClassName();
+        for (String power : powers) {
+            character.addPower(PowerManager.getClassPower(className, power.trim()));
+        }
+        return character;
     }
 
     public void startTurn() {
@@ -337,5 +380,9 @@ public class Character {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setCharacterClass(ClassType characterClass) {
+        this.characterClass = characterClass;
     }
 }

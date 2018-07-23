@@ -77,6 +77,15 @@ public enum ClassType {
         throw new IllegalArgumentException();
     }
 
+    public static ClassType getClassByName(String name) {
+        for (ClassType classType : ClassType.values()) {
+            if (classType.className.equalsIgnoreCase(name)) {
+                return classType;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
     public static ClassType generateRandomClass() {
         Random random = new Random();
         int value = random.nextInt(NUM_CLASSES) + 1;

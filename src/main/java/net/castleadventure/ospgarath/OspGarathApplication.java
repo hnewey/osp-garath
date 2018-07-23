@@ -17,7 +17,7 @@ public class OspGarathApplication {
         System.out.println("\n");
         System.out.println("Enter Player's Stats:");
 
-        Character playerCharacter = new Character(15, 15, 15, 15, 8);
+        Character playerCharacter = new Character(15, 15, 15, 15, 8, 6);
 
         GameState.getInstance().setCharacter(playerCharacter);
         GameRunner.start();

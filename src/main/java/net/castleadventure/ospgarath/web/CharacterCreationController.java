@@ -1,5 +1,7 @@
 package net.castleadventure.ospgarath.web;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import net.castleadventure.ospgarath.game.GameState;
 import net.castleadventure.ospgarath.model.ability.power.Power;
 import net.castleadventure.ospgarath.model.ability.power.PowerManager;
 import net.castleadventure.ospgarath.model.character.Character;
@@ -15,13 +17,19 @@ import net.castleadventure.ospgarath.model.monster.beast.Beast;
 import net.castleadventure.ospgarath.model.monster.beast.BeastManager;
 import net.castleadventure.ospgarath.model.monster.beast.Pony;
 import net.castleadventure.ospgarath.model.monster.beast.Viper;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import net.minidev.json.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
 import javax.ws.rs.GET;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping( value =  "" )
@@ -29,6 +37,29 @@ public class CharacterCreationController {
 
     private ClassType selectedClassType;
 
+    @RequestMapping(value = "/character/create")
+    public void createCharacter(@RequestBody net.minidev.json.JSONObject json) throws Exception {
+        if (json == null) {
+            System.out.println("json is null");
+        }
+        Character newCharacter;
+        try {
+            newCharacter = Character.createFromJson(json);
+        } catch (JSONException e) {
+            throw new Exception(String.format("Invalid json for character creation provided: %s", json.toString()));
+        }
+        GameState.getInstance().setCharacter(newCharacter);
+    }
+
+//    @RequestMapping(value = "/character/create")
+//    public void createCharacter(@RequestBody Character newCharacter, @RequestBody List<String> powersList) throws Exception {
+//        if (newCharacter == null) {
+//            throw new Exception("Character can't be null");
+//        }
+//        newCharacter.setDefaultValues();
+//        GameState.getInstance().setCharacter(newCharacter);
+//    }
+//
     @RequestMapping(value = "/class/classList", method = RequestMethod.GET)
     public List<String> getClassList() {
         List<String> classList = ClassType.getAllClassNamesWithCombos();

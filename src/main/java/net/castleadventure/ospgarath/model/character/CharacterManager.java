@@ -34,7 +34,7 @@ public class CharacterManager {
                     break;
             }
         }
-        Character steward = new Character(strength, quickness, intelligence, leadership, 3+Dice.d3());
+        Character steward = new Character(strength, quickness, intelligence, leadership, 3+Dice.d3(), 6);
 
         PowerManager manager = PowerManager.getPowerManager(classType.getClassName());
         Integer powerIndex = Dice.dynamic(manager.getClassPowers().size());

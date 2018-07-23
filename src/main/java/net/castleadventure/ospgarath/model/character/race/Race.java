@@ -56,4 +56,13 @@ public enum Race {
         }
         throw new RuntimeException("Unsupported Race");
     }
+
+    public static Race getRace(String raceName) {
+        for (Race race : Race.values()) {
+            if (race.race.equalsIgnoreCase(raceName)) {
+                return race;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
 }

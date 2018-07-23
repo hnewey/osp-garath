@@ -14,6 +14,18 @@ public class Stat {
         this.currentModifier = calcModifier(currentValue);
     }
 
+    public Stat(String value) throws Exception {
+        try {
+            Integer val = Integer.valueOf(value);
+            this.baseValue = val;
+            this.currentValue = val;
+            this.baseModifier = calcModifier(baseValue);
+            this.currentModifier = calcModifier(currentValue);
+        } catch (IllegalArgumentException e) {
+            throw new Exception("Invalid ability stat input");
+        }
+    }
+
     public void changePermanent(Integer change) {
         baseValue += change;
     }
@@ -73,5 +85,8 @@ public class Stat {
             return -3;
     }
 
-
+    @Override
+    public String toString() {
+        return baseValue + (baseValue > 9 ? " (+" : " (") + baseModifier + ")";
+    }
 }

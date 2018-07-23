@@ -17,6 +17,7 @@ import net.castleadventure.ospgarath.model.ability.power.mariner.MarinerManager;
 import net.castleadventure.ospgarath.model.ability.power.necromancer.NecromancerManager;
 import net.castleadventure.ospgarath.model.ability.power.outrider.OutriderManager;
 import net.castleadventure.ospgarath.model.ability.power.paladin.PaladinManager;
+import net.castleadventure.ospgarath.model.ability.power.racialPowers.RacialPowersManager;
 import net.castleadventure.ospgarath.model.ability.power.ranger.RangerManager;
 import net.castleadventure.ospgarath.model.ability.power.scholar.ScholarManager;
 import net.castleadventure.ospgarath.model.ability.power.shepherd.ShepherdManager;
@@ -42,6 +43,22 @@ public class PowerManager {
             powerDescriptions.add(power.toString());
         }
         return powerDescriptions;
+    }
+
+    public static Power getClassPower(String className, String powerName) throws Exception {
+        PowerManager manager = getPowerManager(className);
+        RacialPowersManager racialPowers = new RacialPowersManager();
+        for (Power power : manager.getClassPowers()) {
+            if (power.getName().equalsIgnoreCase(powerName)) {
+                return power;
+            }
+        }
+        for (Power power : racialPowers.getRacialPowers()) {
+            if (power.getName().equalsIgnoreCase(powerName)) {
+                return power;
+            }
+        }
+        throw new Exception(String.format("Invalid power name provided: %s", powerName));
     }
 
     public static PowerManager getPowerManager(String className) {
