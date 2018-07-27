@@ -1,72 +1,62 @@
 package net.castleadventure.ospgarath.model.character;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Stat {
 
-    private Integer baseValue;
-    private Integer currentValue;
-    private Integer baseModifier;
-    private Integer currentModifier;
+    private Integer value;
+    private Integer rollModifier;
+    private Map<String, Integer> modifiers = new HashMap<>();
 
     public Stat(Integer value) {
-        this.baseValue = value;
-        this.currentValue = value;
-        this.baseModifier = calcModifier(baseValue);
-        this.currentModifier = calcModifier(currentValue);
+        this.value = value;
+        this.rollModifier = calcRollModifier(this.value);
     }
 
     public Stat(String value) throws Exception {
         try {
-            Integer val = Integer.valueOf(value);
-            this.baseValue = val;
-            this.currentValue = val;
-            this.baseModifier = calcModifier(baseValue);
-            this.currentModifier = calcModifier(currentValue);
+            this.value = Integer.valueOf(value);
+            this.rollModifier = calcRollModifier(this.value);
         } catch (IllegalArgumentException e) {
             throw new Exception("Invalid ability stat input");
         }
     }
 
     public void changePermanent(Integer change) {
-        baseValue += change;
+        value += change;
+        resetRollModifier();
     }
 
-    public void changeTemp(Integer change) {
-        currentValue += change;
+    public void addModifier(Integer change, String reason) {
+        modifiers.put(reason, change);
+        resetRollModifier();
     }
 
-    public void setBaseValue(Integer baseValue) {
-        this.baseValue = baseValue;
+    public void removeModifier(String reason) {
+        modifiers.remove(reason);
+        resetRollModifier();
     }
 
-    public void setCurrentValue(Integer currentValue) {
-        this.currentValue = currentValue;
-    }
-
-    public Integer getBaseValue() {
-        return baseValue;
+    public void setValue(Integer value) {
+        this.value = value;
+        resetRollModifier();
     }
 
     public Integer getValue() {
-        return currentValue;
+        return value + sumModifiers();
     }
 
-    public Integer getBaseModifier() {
-        return baseModifier;
+    public Integer getRollModifier() {
+        return rollModifier;
     }
 
-    public Integer getCurrentModifier() {
-        return currentModifier;
+    private void resetRollModifier() {
+        rollModifier = calcRollModifier(value);
     }
 
-    public void resetBaseModifier() {
-        baseModifier = calcModifier(baseValue);
-    }
-
-    public void resetCurrentModifier() {
-        currentModifier = calcModifier(currentValue);
-    }
-
-    private Integer calcModifier(Integer statValue) {
+    private Integer calcRollModifier(Integer statValue) {
+        statValue += sumModifiers();
         if (statValue > 20)
             return 4;
         if (statValue >= 19)
@@ -85,8 +75,16 @@ public class Stat {
             return -3;
     }
 
+    private Integer sumModifiers() {
+        Integer sum = 0;
+        for (String reason : modifiers.keySet()) {
+            sum += modifiers.get(reason);
+        }
+        return sum;
+    }
+
     @Override
     public String toString() {
-        return baseValue + (baseValue > 9 ? " (+" : " (") + baseModifier + ")";
+        return value + (value > 9 ? " (+" : " (") + rollModifier + ")";
     }
 }

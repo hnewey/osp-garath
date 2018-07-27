@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Osp-Garath</title>
 
-    <link rel="stylesheet" href="css/char_creation_style.css">
+    <link rel="stylesheet" href="css/ospgarath_style.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/rpg-awesome.css">
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
@@ -13,7 +13,104 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 </head>
-<body>
+<style>
+    body {
+        background: url("img/game_background2.jpg"), no-repeat;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+    }
+    #board_container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 101vh;
+        height: 100vh;
+        margin-top: -50vh;
+        margin-left: -50vh;
+        /*-webkit-box-shadow: 0px 0px 50px black;*/
+        /*-moz-box-shadow: 0px 0px 50px black ;*/
+        /*box-shadow: 0px 0px 50px black ;*/
+    }
 
+    #current_board {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 92vh;
+        height: 92vh;
+        margin-top: -45.75vh;
+        margin-left: -45.75vh;
+        box-shadow: 0 0 50px white;
+    }
+
+    .attribute_bar {
+        position: absolute;
+        width: 30vh;
+        height: 3vh;
+    }
+
+    #health {
+        position: absolute;
+        left: 2.45vh;
+        top: 15vh;
+        width: 29.3vh;
+        height: 2.3vh;
+    }
+
+    #experience {
+        position: absolute;
+        left: 2.45vh;
+        top: 18.3vh;
+        width: 29.3vh;
+        height: 2.4vh;
+    }
+
+    .ability_score {
+        padding-left: .5vh;
+    }
+
+    #end_overlay {
+        position: absolute;
+        font-size: 10pt;
+        left: 13vh;
+        top: 15.1vh;
+    }
+
+    #exp_overlay {
+        position: absolute;
+        font-size: 10pt;
+        left: 14vh;
+        top: 18.5vh;
+    }
+
+</style>
+<script>
+
+</script>
+<body>
+    <img id="board_container" src="img/game_board.png">
+    <img id="current_board" src="img/board1.png">
+    <div id="character_info" style="display: inline-flex;">
+        <img src="img/char_border2.png" style="width:10vh;height:13vh;">
+        <div id="char_name_container" class="header_font" style="margin-left:1vh;">
+            <span id="char_name" style="font-size: 16pt;">New Character</span><br>
+            <span id="player_name">Player Name</span><br><br>
+            <span id="race_class">Race - Class</span>
+        </div>
+    </div>
+    <div id="abilities_container" class="body_font" style="padding-left: 1vh;display: grid;">
+        <img src="img/health_bar.png" class="attribute_bar" style="left:2vh; top:14.6vh;">
+        <img src="img/health_bar.png" class="attribute_bar" style="left:2vh; top:17.9vh;">
+        <img id="health" src="img/health_bar_fill.png">
+        <img id="experience" src="img/exp_bar_fill.png">
+        <span id="end_overlay">Endurance</span>
+        <span id="exp_overlay">Level: <span id="char_level">1</span></span>
+        <div style="position: absolute; left:2vh; top:22vh;">
+            <div class="ability_score"><span>S: </span><span id="ability_s">10 (+0)</span></div>
+            <div class="ability_score"><span>Q: </span><span id="ability_q">10 (+0)</span></div>
+            <div class="ability_score"><span>I: </span><span id="ability_i">10 (+0)</span></div>
+            <div class="ability_score"><span>L: </span><span id="ability_l">10 (+0)</span></div>
+        </div>
+    </div>
 </body>
 </html>

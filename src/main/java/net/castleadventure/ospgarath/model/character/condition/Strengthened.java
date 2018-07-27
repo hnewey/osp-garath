@@ -8,18 +8,19 @@ public class Strengthened extends PositiveCondition {
 
     private Stat effectedStat;
     private Integer strengthenedAmount;
+    private String reason = "Strengthened";
 
     @Override
     public void doEffect() {
         effectedStat = GameState.getInstance().getCharacter().getHighestStat();
 
         strengthenedAmount = Dice.d3() + Dice.d3();
-        effectedStat.changeTemp(strengthenedAmount);
+        effectedStat.addModifier(strengthenedAmount, reason);
     }
 
     @Override
     public void endEffect() {
-        effectedStat.changeTemp(strengthenedAmount * -1);
+        effectedStat.removeModifier(reason);
     }
 
 }

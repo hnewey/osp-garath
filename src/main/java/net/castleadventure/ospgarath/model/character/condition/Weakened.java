@@ -8,17 +8,18 @@ public class Weakened extends NegativeCondition {
 
     private Stat effectedStat;
     private Integer weakenedAmount;
+    private String reason = "Weakened";
 
     @Override
     public void doEffect() {
         effectedStat = GameState.getInstance().getCharacter().getHighestStat();
 
         weakenedAmount = Dice.d3() + Dice.d3();
-        effectedStat.changeTemp(weakenedAmount * -1);
+        effectedStat.addModifier(weakenedAmount * -1, reason);
     }
 
     @Override
     public void endEffect() {
-        effectedStat.changeTemp(weakenedAmount);
+        effectedStat.removeModifier(reason);
     }
 }

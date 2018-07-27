@@ -10,11 +10,8 @@ import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
 import net.castleadventure.ospgarath.model.item.PlayerInventory;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.ws.rs.DefaultValue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -164,7 +161,7 @@ public class Character {
                 }
             }
         }
-        attackRoll += strength.getCurrentModifier();
+        attackRoll += strength.getRollModifier();
         return attackRoll;
     }
 
@@ -311,10 +308,10 @@ public class Character {
     //-----------------------------------------------------------
 
     public void updateStats() {
-        strength.setCurrentValue(strength.getBaseValue());
-        quickness.setCurrentValue(quickness.getBaseValue());
-        intelligence.setCurrentValue(intelligence.getBaseValue());
-        leadership.setCurrentValue(leadership.getBaseValue());
+        strength.setValue(strength.getValue());
+        quickness.setValue(quickness.getValue());
+        intelligence.setValue(intelligence.getValue());
+        leadership.setValue(leadership.getValue());
         playerEquippedItems.addEffects();
         for (Condition condition : positiveConditions) {
             condition.doEffect();
@@ -326,12 +323,14 @@ public class Character {
 
     public void changeStatPermanent(Stat stat, Integer value) {
         stat.changePermanent(value);
-        stat.resetBaseModifier();
     }
 
-    public void changeStatTemp(Stat stat, Integer value) {
-        stat.changeTemp(value);
-        stat.resetCurrentModifier();
+    public void addStatModifier(Stat stat, Integer value, String reason) {
+        stat.addModifier(value, reason);
+    }
+
+    public void removeStatModifier(Stat stat, String reason) {
+        stat.removeModifier(reason);
     }
 
     public void changeEndurance(Integer change) {
