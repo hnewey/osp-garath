@@ -33,6 +33,16 @@
         /*box-shadow: 0px 0px 50px black ;*/
     }
 
+    #board_border {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 101vh;
+        height: 100vh;
+        margin-top: -50vh;
+        margin-left: -50vh;
+    }
+
     #current_board {
         position: absolute;
         top: 50%;
@@ -86,18 +96,29 @@
 
     #character_icon {
         position: absolute;
-        left: 96vh;
+        left: 47.2vh;
         top: 89.6vh;
-        width:6.85vh;
-        height:6.5vh;
+        width: 6.85vh;
+        height: 6.5vh;
         box-shadow: 0 2px 15px 3px black;
     }
 
     #actions_status {
         position: absolute;
-        left: 54vh;
-        top: 85vh;
+        left: 5vh;
+        top: 87vh;
         font-size: 14pt;
+    }
+
+    #movement_arrows {
+        position: absolute;
+        left: 78vh;
+        top: 85vh;
+    }
+
+    .arrows {
+        width: 4.5vh;
+        height: 4.5vh;
     }
 
 </style>
@@ -112,44 +133,42 @@
     var MOVEMENT = 6;
 
     document.addEventListener('keydown', function(event) {
-        var char_icon = document.getElementById("character_icon"),
-            style = window.getComputedStyle(char_icon);
-
-        var current_left = getViewHeight(style.getPropertyValue('left'));
-        var current_top = getViewHeight(style.getPropertyValue('top'));
         //left
         if (event.keyCode === 37) {
-            if (!canMoveLeft()) {
-                return;
-            }
-            CHAR_X--;
-            char_icon.style.left = (parseFloat(current_left - HORIZONTAL_INCREASE)) + "vh";
+            moveCharacter("left");
         }
         //up
         if (event.keyCode === 38) {
-            if (!canMoveUp()) {
-                return;
-            }
-            CHAR_Y++;
-            char_icon.style.top = (parseFloat(current_top - VERTICAL_INCREASE)) + "vh";
+            moveCharacter("up");
         }
         //right
         if (event.keyCode === 39) {
-            if (!canMoveRight()) {
-                return;
-            }
-            CHAR_X++;
-            char_icon.style.left = (parseFloat(current_left + HORIZONTAL_INCREASE)) + "vh";
+            moveCharacter("right");
         }
         //down
         if (event.keyCode === 40) {
-            if (!canMoveDown()) {
-                return;
-            }
-            CHAR_Y--;
-            char_icon.style.top = (parseFloat(current_top + VERTICAL_INCREASE)) + "vh";
+            moveCharacter("down");
         }
-        document.getElementById("movement_remaining").innerText = movementRemaining();
+    });
+
+    document.addEventListener('keyup', function(event){
+        //left
+        if (event.keyCode === 37) {
+            arrow_button_up("left");
+        }
+        //up
+        if (event.keyCode === 38) {
+            arrow_button_up("up");
+        }
+        //right
+        if (event.keyCode === 39) {
+            arrow_button_up("right");
+        }
+        //down
+        if (event.keyCode === 40) {
+            arrow_button_up("down");
+        }
+
     });
 
     function getViewHeight(input) {
@@ -231,10 +250,93 @@
         return MOVEMENT - (vert+hor);
     }
 
+    function moveCharacter(direction) {
+        var char_icon = document.getElementById("character_icon"),
+            style = window.getComputedStyle(char_icon);
+
+        var current_left = getViewHeight(style.getPropertyValue('left'));
+        var current_top = getViewHeight(style.getPropertyValue('top'));
+
+        switch (direction) {
+            case "left":
+                if (!canMoveLeft()) {
+                    return;
+                }
+                CHAR_X--;
+                char_icon.style.left = (parseFloat(current_left - HORIZONTAL_INCREASE)) + "vh";
+                break;
+            case "up":
+                if (!canMoveUp()) {
+                    return;
+                }
+                CHAR_Y++;
+                char_icon.style.top = (parseFloat(current_top - VERTICAL_INCREASE)) + "vh";
+                break;
+            case "right":
+                if (!canMoveRight()) {
+                    return;
+                }
+                CHAR_X++;
+                char_icon.style.left = (parseFloat(current_left + HORIZONTAL_INCREASE)) + "vh";
+                break;
+            case "down":
+                if (!canMoveDown()) {
+                    return;
+                }
+                CHAR_Y--;
+                char_icon.style.top = (parseFloat(current_top + VERTICAL_INCREASE)) + "vh";
+                break;
+        }
+        arrow_button_down(direction);
+        document.getElementById("movement_remaining").innerText = movementRemaining();
+    }
+
+    function arrow_button_down(direction) {
+        var arrow_button = document.getElementById(direction + "_arrow");
+        arrow_button.src = "img/" + direction + "_button_pressed.jpg";
+    }
+
+    function arrow_button_up(direction) {
+        var arrow_button = document.getElementById(direction + "_arrow");
+        arrow_button.src = "img/" + direction + "_button.jpg";
+    }
+
+    function arrow_clicked(direction) {
+        moveCharacter(direction);
+    }
+
+    function arrow_released(direction) {
+        arrow_button_up(direction);
+    }
+
 </script>
 <body>
-    <img id="board_container" src="img/game_board.png">
-    <img id="current_board" src="img/board1.png">
+    <div id="board_container">
+        <img id="board_border" src="img/game_board.png">
+        <img id="current_board" src="img/board1.png">
+        <div id="character_icon">
+            <img src="img/char_icon.jpg" style="width:6.85vh; height:6.85vh;">
+        </div>
+        <div id="actions_status" class="body_font">
+            <span>Movement: <span id="movement_remaining">6</span></span><br>
+            <span>Quick: <span id="quick_action_description">unused</span></span><br>
+            <span>Standard: <span id="std_action_description">unused</span></span><br>
+        </div>
+        <div id="movement_arrows">
+            <table>
+                <tr>
+                    <td></td>
+                    <td><img id="up_arrow" class="arrows" draggable="false" src="img/up_button.jpg" onmousedown="arrow_clicked('up')" onmouseup="arrow_released('up')"> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><img id="left_arrow" class="arrows" draggable="false" src="img/left_button.jpg" onmousedown="arrow_clicked('left')" onmouseup="arrow_released('left')"></td>
+                    <td><img id="down_arrow" class="arrows" draggable="false" src="img/down_button.jpg" onmousedown="arrow_clicked('down')" onmouseup="arrow_released('down')"></td>
+                    <td><img id="right_arrow" class="arrows" draggable="false" src="img/right_button.jpg" onmousedown="arrow_clicked('right')" onmouseup="arrow_released('right')"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
     <div id="character_info" style="display: inline-flex;">
         <img src="img/char_border2.png" style="width:10vh;height:13vh;">
         <div id="char_name_container" class="header_font" style="margin-left:1vh;">
@@ -256,14 +358,6 @@
             <div class="ability_score"><span>I: </span><span id="ability_i">10 (+0)</span></div>
             <div class="ability_score"><span>L: </span><span id="ability_l">10 (+0)</span></div>
         </div>
-    </div>
-    <div id="character_icon">
-        <img src="img/char_icon.jpg" style="width:6.85vh; height:6.85vh;">
-    </div>
-    <div id="actions_status" class="body_font">
-        <span>Movement: <span id="movement_remaining">6</span></span><br>
-        <span>Quick: </span><br>
-        <span>Standard: </span><br>
     </div>
 </body>
 </html>

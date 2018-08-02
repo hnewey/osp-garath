@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54051d29-35e7-497e-8776-2029d38b5ba6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ospgarath.js" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" afterPath="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -296,27 +295,32 @@
       <file leaf-file-name="ospgarath.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/ospgarath.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-245">
-              <caret line="113" column="57" lean-forward="false" selection-start-line="113" selection-start-column="57" selection-end-line="113" selection-end-column="57" />
+            <state relative-caret-position="189">
+              <caret line="132" column="20" lean-forward="true" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
               <folding>
-                <element signature="e#2659#4001#0" expanded="false" />
-                <element signature="e#4039#4160#0" expanded="false" />
-                <element signature="e#4202#4273#0" expanded="false" />
-                <element signature="e#4302#4701#0" expanded="false" />
-                <element signature="e#4731#5126#0" expanded="false" />
-                <element signature="e#5153#5548#0" expanded="false" />
-                <element signature="e#5577#5976#0" expanded="false" />
-                <element signature="e#6038#6187#0" expanded="false" />
-                <element signature="e#6222#6360#0" expanded="false" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#3017#3406#0" expanded="false" />
+                <element signature="e#3464#3862#0" expanded="false" />
+                <element signature="e#3900#4021#0" expanded="false" />
+                <element signature="e#4063#4134#0" expanded="false" />
+                <element signature="e#4163#4562#0" expanded="false" />
+                <element signature="e#4592#4987#0" expanded="false" />
+                <element signature="e#5014#5409#0" expanded="false" />
+                <element signature="e#5438#5837#0" expanded="false" />
+                <element signature="e#5899#6048#0" expanded="false" />
+                <element signature="e#6083#6221#0" expanded="false" />
+                <element signature="e#6261#7709#0" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -445,7 +449,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>half_elf_powers_div</find>
       <find>start_racial_powers_div</find>
       <find>RACIAL_POWER</find>
       <find>showSelectedPowers</find>
@@ -475,6 +478,7 @@
       <find>value</find>
       <find>START_OBJ</find>
       <find>menu</find>
+      <find>MOVEMENT</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -544,8 +548,8 @@
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Weakened.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Strengthened.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/ospgarath_style.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/ospgarath.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" />
       </list>
     </option>
   </component>
@@ -1035,7 +1039,7 @@
       <workItem from="1528759590210" duration="28123000" />
       <workItem from="1528936253829" duration="76846000" />
       <workItem from="1529366066405" duration="256904000" />
-      <workItem from="1531927797155" duration="44852000" />
+      <workItem from="1531927797155" duration="51408000" />
     </task>
     <servers />
   </component>
@@ -1072,7 +1076,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="548685000" />
+    <option name="totallyTimeSpent" value="555241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="853" y="23" width="1707" height="1001" extended-state="0" />
@@ -1096,7 +1100,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28807947" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28807947" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22822823" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1138,6 +1142,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="124" column="18" lean-forward="false" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1868,27 +1873,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/ospgarath.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-245">
-          <caret line="113" column="57" lean-forward="false" selection-start-line="113" selection-start-column="57" selection-end-line="113" selection-end-column="57" />
+        <state relative-caret-position="189">
+          <caret line="132" column="20" lean-forward="true" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
           <folding>
-            <element signature="e#2659#4001#0" expanded="false" />
-            <element signature="e#4039#4160#0" expanded="false" />
-            <element signature="e#4202#4273#0" expanded="false" />
-            <element signature="e#4302#4701#0" expanded="false" />
-            <element signature="e#4731#5126#0" expanded="false" />
-            <element signature="e#5153#5548#0" expanded="false" />
-            <element signature="e#5577#5976#0" expanded="false" />
-            <element signature="e#6038#6187#0" expanded="false" />
-            <element signature="e#6222#6360#0" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3017#3406#0" expanded="false" />
+            <element signature="e#3464#3862#0" expanded="false" />
+            <element signature="e#3900#4021#0" expanded="false" />
+            <element signature="e#4063#4134#0" expanded="false" />
+            <element signature="e#4163#4562#0" expanded="false" />
+            <element signature="e#4592#4987#0" expanded="false" />
+            <element signature="e#5014#5409#0" expanded="false" />
+            <element signature="e#5438#5837#0" expanded="false" />
+            <element signature="e#5899#6048#0" expanded="false" />
+            <element signature="e#6083#6221#0" expanded="false" />
+            <element signature="e#6261#7709#0" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
