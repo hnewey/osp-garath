@@ -1,5 +1,4 @@
-//TODO: remove to enable custom character creation
-var ADMIN = true;
+var ADMIN = true; //TODO: remove to enable custom character creation
 var TABS_ENABLED = false;
 var CLASSES_LOADED = false;
 var RACES_LOADED = false;

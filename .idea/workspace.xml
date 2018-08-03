@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54051d29-35e7-497e-8776-2029d38b5ba6" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/char_creation.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/char_creation.js" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" afterPath="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,8 +31,8 @@
       <file leaf-file-name="character_creation.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/character_creation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="13" column="45" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -50,7 +51,6 @@
                 <element signature="n#style#0;n#p#0;n#div#6;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#ul#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -63,7 +63,6 @@
                 <element signature="n#style#0;n#div#1;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#8;n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="e#18770#18777#1" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -169,16 +168,16 @@
       <file leaf-file-name="char_creation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/char_creation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="2115" column="33" lean-forward="false" selection-start-line="2115" selection-start-column="33" selection-end-line="2115" selection-end-column="33" />
+            <state relative-caret-position="39">
+              <caret line="448" column="46" lean-forward="false" selection-start-line="448" selection-start-column="32" selection-end-line="448" selection-end-column="46" />
               <folding>
-                <element signature="n#!!block;n#activateAnimalTooltipster#0" expanded="false" />
                 <element signature="n#!!block;n#activiateHalfElfTooltipster#0" expanded="false" />
                 <element signature="n#!!block;n#activateRacialTooltipster#0" expanded="false" />
                 <element signature="n#!!block;n#activiateStartPageTooltipster#0" expanded="false" />
                 <element signature="n#!!block;n#activateStewardTooltipster#0" expanded="false" />
                 <element signature="n#!!block;n#activateTooltipster#0" expanded="false" />
                 <element signature="n#!!block;n#add#0" expanded="false" />
+                <element signature="n#!!block;n#addRollTotalModifier#0" expanded="false" />
                 <element signature="n#!!block;n#animalSingle#0" expanded="false" />
                 <element signature="n#!!block;n#animalShepherd#0" expanded="false" />
                 <element signature="n#!!block;n#animalConjurer#0" expanded="false" />
@@ -197,7 +196,6 @@
                 <element signature="n#!!block;n#checkCanSave#0" expanded="false" />
                 <element signature="n#!!block;n#createButton#0" expanded="false" />
                 <element signature="n#!!block;n#createAnimalDisplay#0" expanded="false" />
-                <element signature="n#!!block;n#createAnimalPowerDisplay#0" expanded="false" />
                 <element signature="n#!!block;n#createExtraAnimalPowerDisplay#0" expanded="false" />
                 <element signature="n#!!block;n#createExtraAnimalPowers#0" expanded="false" />
                 <element signature="n#!!block;n#createStewardPowerDisplay#0" expanded="false" />
@@ -261,7 +259,6 @@
                 <element signature="n#!!block;n#update_character_name#0" expanded="false" />
                 <element signature="n#!!block;n#update_player_name#0" expanded="false" />
                 <element signature="n#!!block;n#update_animal_tooltip#0" expanded="false" />
-                <element signature="n#!!block;n#update_half_elf_tooltip#0" expanded="false" />
                 <element signature="n#!!block;n#update_racial_tooltip#0" expanded="false" />
                 <element signature="n#!!block;n#update_start_racial_tooltip#0" expanded="false" />
                 <element signature="n#!!block;n#update_start_tooltip#0" expanded="false" />
@@ -295,21 +292,24 @@
       <file leaf-file-name="ospgarath.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/ospgarath.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="132" column="20" lean-forward="true" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
+            <state relative-caret-position="358">
+              <caret line="239" column="32" lean-forward="true" selection-start-line="239" selection-start-column="32" selection-end-line="239" selection-end-column="32" />
               <folding>
-                <element signature="e#3017#3406#0" expanded="false" />
-                <element signature="e#3464#3862#0" expanded="false" />
-                <element signature="e#3900#4021#0" expanded="false" />
-                <element signature="e#4063#4134#0" expanded="false" />
-                <element signature="e#4163#4562#0" expanded="false" />
-                <element signature="e#4592#4987#0" expanded="false" />
-                <element signature="e#5014#5409#0" expanded="false" />
-                <element signature="e#5438#5837#0" expanded="false" />
-                <element signature="e#5899#6048#0" expanded="false" />
-                <element signature="e#6083#6221#0" expanded="false" />
-                <element signature="e#6261#7709#0" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#6781#7170#0" expanded="false" />
+                <element signature="e#7228#7626#0" expanded="false" />
+                <element signature="e#7664#7785#0" expanded="false" />
+                <element signature="e#7827#7898#0" expanded="false" />
+                <element signature="e#7927#8326#0" expanded="false" />
+                <element signature="e#8356#8751#0" expanded="false" />
+                <element signature="e#8778#9173#0" expanded="false" />
+                <element signature="e#9202#9601#0" expanded="false" />
+                <element signature="e#9663#9812#0" expanded="false" />
+                <element signature="e#9847#9985#0" expanded="false" />
+                <element signature="e#10025#11508#0" expanded="false" />
+                <element signature="e#11552#11704#0" expanded="false" />
+                <element signature="e#11746#11890#0" expanded="false" />
+                <element signature="e#11930#11971#0" expanded="false" />
+                <element signature="e#12012#12055#0" expanded="false" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -321,6 +321,7 @@
                 <element signature="n#style#0;n#img#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -426,8 +427,8 @@
       <file leaf-file-name="ospgarath_style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/ospgarath_style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -449,15 +450,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>start_racial_powers_div</find>
-      <find>RACIAL_POWER</find>
-      <find>showSelectedPowers</find>
-      <find>class_modal_body</find>
       <find>search</find>
       <find>saveClassFinal</find>
       <find>hide_class_modal</find>
       <find>onmouseover</find>
-      <find>animal_tooltip</find>
       <find>single_animal_info</find>
       <find>validate_</find>
       <find>single_animal</find>
@@ -478,6 +474,11 @@
       <find>value</find>
       <find>START_OBJ</find>
       <find>menu</find>
+      <find>power_container</find>
+      <find>tooltip_content</find>
+      <find>half_elf_tooltip</find>
+      <find>animal_tooltip</find>
+      <find>data-</find>
       <find>MOVEMENT</find>
     </findStrings>
     <replaceStrings>
@@ -538,7 +539,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/OspGarathApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/ClassType.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/char_creation.js" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/Race.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/RacialPowersManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/PowerManager.java" />
@@ -549,6 +549,7 @@
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Strengthened.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/ospgarath_style.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/ospgarath.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/char_creation.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" />
       </list>
     </option>
@@ -1039,7 +1040,7 @@
       <workItem from="1528759590210" duration="28123000" />
       <workItem from="1528936253829" duration="76846000" />
       <workItem from="1529366066405" duration="256904000" />
-      <workItem from="1531927797155" duration="51408000" />
+      <workItem from="1531927797155" duration="60918000" />
     </task>
     <servers />
   </component>
@@ -1076,7 +1077,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="555241000" />
+    <option name="totallyTimeSpent" value="564751000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="853" y="23" width="1707" height="1001" extended-state="0" />
@@ -1508,130 +1509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/char_creation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="2115" column="33" lean-forward="false" selection-start-line="2115" selection-start-column="33" selection-end-line="2115" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!block;n#activateAnimalTooltipster#0" expanded="false" />
-            <element signature="n#!!block;n#activiateHalfElfTooltipster#0" expanded="false" />
-            <element signature="n#!!block;n#activateRacialTooltipster#0" expanded="false" />
-            <element signature="n#!!block;n#activiateStartPageTooltipster#0" expanded="false" />
-            <element signature="n#!!block;n#activateStewardTooltipster#0" expanded="false" />
-            <element signature="n#!!block;n#activateTooltipster#0" expanded="false" />
-            <element signature="n#!!block;n#add#0" expanded="false" />
-            <element signature="n#!!block;n#animalSingle#0" expanded="false" />
-            <element signature="n#!!block;n#animalShepherd#0" expanded="false" />
-            <element signature="n#!!block;n#animalConjurer#0" expanded="false" />
-            <element signature="n#!!block;n#applyHalfElfBonus#0" expanded="false" />
-            <element signature="n#!!block;n#applyHalfElfPenalty#0" expanded="false" />
-            <element signature="n#!!block;n#applyHalfOrcBonus#0" expanded="false" />
-            <element signature="n#!!block;n#applyHighElfBonus#0" expanded="false" />
-            <element signature="n#!!block;n#applyHumanBonus#0" expanded="false" />
-            <element signature="n#!!block;n#applyHumanPenalty#0" expanded="false" />
-            <element signature="n#!!block;n#applyOrcPenalty#0" expanded="false" />
-            <element signature="n#!!block;n#applyWoodElfBonus#0" expanded="false" />
-            <element signature="n#!!block;n#autoAdjustAbilitiesByClass#0" expanded="false" />
-            <element signature="n#!!block;n#adjustEndurance#0" expanded="false" />
-            <element signature="n#!!block;n#changeTab#0" expanded="false" />
-            <element signature="n#!!block;n#changeTabTo#0" expanded="false" />
-            <element signature="n#!!block;n#checkCanSave#0" expanded="false" />
-            <element signature="n#!!block;n#createButton#0" expanded="false" />
-            <element signature="n#!!block;n#createAnimalDisplay#0" expanded="false" />
-            <element signature="n#!!block;n#createAnimalPowerDisplay#0" expanded="false" />
-            <element signature="n#!!block;n#createExtraAnimalPowerDisplay#0" expanded="false" />
-            <element signature="n#!!block;n#createExtraAnimalPowers#0" expanded="false" />
-            <element signature="n#!!block;n#createStewardPowerDisplay#0" expanded="false" />
-            <element signature="n#!!block;n#displaySummary#0" expanded="false" />
-            <element signature="n#!!block;n#enableTabs#0" expanded="false" />
-            <element signature="n#!!block;n#getModifier#0" expanded="false" />
-            <element signature="n#!!block;n#getModifierText#0" expanded="false" />
-            <element signature="n#!!block;n#getRandomInt#0" expanded="false" />
-            <element signature="n#!!block;n#hide_class_modal#0" expanded="false" />
-            <element signature="n#!!block;n#hide_race_modal#0" expanded="false" />
-            <element signature="n#!!block;n#loadClassDescription#0" expanded="false" />
-            <element signature="n#!!block;n#loadClassList#0" expanded="false" />
-            <element signature="n#!!block;n#loadClassPowers#0" expanded="false" />
-            <element signature="n#!!block;n#loadClassRestrictions#0" expanded="false" />
-            <element signature="n#!!block;n#loadClassTraits#0" expanded="false" />
-            <element signature="n#!!block;n#loadRacialPowers#0" expanded="false" />
-            <element signature="n#!!block;n#loadRacialTraits#0" expanded="false" />
-            <element signature="n#!!block;n#loadRaceDescription#0" expanded="false" />
-            <element signature="n#!!block;n#loadRaceList#0" expanded="false" />
-            <element signature="n#!!block;n#populateViper#0" expanded="false" />
-            <element signature="n#!!block;n#populateMount#0" expanded="false" />
-            <element signature="n#!!block;n#populateStewards#0" expanded="false" />
-            <element signature="n#!!block;n#powerSelected#0" expanded="false" />
-            <element signature="n#!!block;n#racialModifier#0" expanded="false" />
-            <element signature="n#!!block;n#removeAnimalPower#0" expanded="false" />
-            <element signature="n#!!block;n#removeRollTotalModifier#0" expanded="false" />
-            <element signature="n#!!block;n#resetAbilityModifiers#0" expanded="false" />
-            <element signature="n#!!block;n#resetClassModifiers#0" expanded="false" />
-            <element signature="n#!!block;n#resetClassSelection#0" expanded="false" />
-            <element signature="n#!!block;n#resetRaceSelection#0" expanded="false" />
-            <element signature="n#!!block;n#rollAttribute#0" expanded="false" />
-            <element signature="n#!!block;n#saveAbilities#0" expanded="false" />
-            <element signature="n#!!block;n#saveClass#0" expanded="false" />
-            <element signature="n#!!block;n#saveRace#0" expanded="false" />
-            <element signature="n#!!block;n#adjustClassMovementSpeed#0" expanded="false" />
-            <element signature="n#!!block;n#adjustRacialMovementSpeed#0" expanded="false" />
-            <element signature="n#!!block;n#selectText#0" expanded="false" />
-            <element signature="n#!!block;n#selectValue#0" expanded="false" />
-            <element signature="n#!!block;n#setStewardSelected#0" expanded="false" />
-            <element signature="n#!!block;n#showClassError#0" expanded="false" />
-            <element signature="n#!!block;n#hunterDetails#0" expanded="false" />
-            <element signature="n#!!block;n#weaponMasterDetails#0" expanded="false" />
-            <element signature="n#!!block;n#scholarDetails#0" expanded="false" />
-            <element signature="n#!!block;n#showClassModal#0" expanded="false" />
-            <element signature="n#!!block;n#showModalButtons#0" expanded="false" />
-            <element signature="n#!!block;n#hideModalButtons#0" expanded="false" />
-            <element signature="n#!!block;n#showRequestedModal#0" expanded="false" />
-            <element signature="n#!!block;n#showRaceModal#0" expanded="false" />
-            <element signature="e#49896#50400#0" expanded="false" />
-            <element signature="n#!!block;n#showDwarfAdjustments#0" expanded="false" />
-            <element signature="n#!!block;n#showHalfElfPowerChoices#0" expanded="false" />
-            <element signature="n#!!block;n#createPower#0" expanded="false" />
-            <element signature="n#!!block;n#select_race_power#0" expanded="false" />
-            <element signature="n#!!block;n#showHighElfAdjustments#0" expanded="false" />
-            <element signature="n#!!block;n#showHobbitAdjustments#0" expanded="false" />
-            <element signature="n#!!block;n#showOrcAdjustments#0" expanded="false" />
-            <element signature="n#!!block;n#showWoodElfAdjustments#0" expanded="false" />
-            <element signature="n#!!block;n#showSelectedPowers#0" expanded="false" />
-            <element signature="n#!!block;n#startCreation#0" expanded="false" />
-            <element signature="n#!!block;n#sumArray#0" expanded="false" />
-            <element signature="n#!!block;n#update_character_name#0" expanded="false" />
-            <element signature="n#!!block;n#update_player_name#0" expanded="false" />
-            <element signature="n#!!block;n#update_animal_tooltip#0" expanded="false" />
-            <element signature="n#!!block;n#update_half_elf_tooltip#0" expanded="false" />
-            <element signature="n#!!block;n#update_racial_tooltip#0" expanded="false" />
-            <element signature="n#!!block;n#update_start_racial_tooltip#0" expanded="false" />
-            <element signature="n#!!block;n#update_start_tooltip#0" expanded="false" />
-            <element signature="n#!!block;n#searchPowerInfo#0" expanded="false" />
-            <element signature="n#!!block;n#searchBeasts#0" expanded="false" />
-            <element signature="n#!!block;n#update_tooltip#0" expanded="false" />
-            <element signature="n#!!block;n#updateHalfElfTooltipster#0" expanded="false" />
-            <element signature="n#!!block;n#updateRacialTooltipster#0" expanded="false" />
-            <element signature="n#!!block;n#updateStartTooltipster#0" expanded="false" />
-            <element signature="n#!!block;n#updateTootipster#0" expanded="false" />
-            <element signature="n#!!block;n#validate#0" expanded="false" />
-            <element signature="n#!!block;n#validate_class#0" expanded="false" />
-            <element signature="n#!!block;n#validate_dwarf#0" expanded="false" />
-            <element signature="n#!!block;n#validate_half_elf#0" expanded="false" />
-            <element signature="n#!!block;n#validate_half_orc#0" expanded="false" />
-            <element signature="n#!!block;n#validate_high_elf#0" expanded="false" />
-            <element signature="n#!!block;n#validate_hobbit#0" expanded="false" />
-            <element signature="n#!!block;n#validate_human#0" expanded="false" />
-            <element signature="n#!!block;n#validate_orc#0" expanded="false" />
-            <element signature="n#!!block;n#validate_wood_elf#0" expanded="false" />
-            <element signature="n#!!block;n#validate_race#0" expanded="false" />
-            <element signature="e#71106#71365#0" expanded="false" />
-            <element signature="n#!!block;n#add_to_modifiers#0" expanded="false" />
-            <element signature="n#!!block;n#getCurrentScore#0" expanded="false" />
-            <element signature="n#!!block;n#getScore#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/game_background2.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1743,18 +1620,140 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/ospgarath_style.css">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ospgarath.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/char_creation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="448" column="46" lean-forward="false" selection-start-line="448" selection-start-column="32" selection-end-line="448" selection-end-column="46" />
+          <folding>
+            <element signature="n#!!block;n#activiateHalfElfTooltipster#0" expanded="false" />
+            <element signature="n#!!block;n#activateRacialTooltipster#0" expanded="false" />
+            <element signature="n#!!block;n#activiateStartPageTooltipster#0" expanded="false" />
+            <element signature="n#!!block;n#activateStewardTooltipster#0" expanded="false" />
+            <element signature="n#!!block;n#activateTooltipster#0" expanded="false" />
+            <element signature="n#!!block;n#add#0" expanded="false" />
+            <element signature="n#!!block;n#addRollTotalModifier#0" expanded="false" />
+            <element signature="n#!!block;n#animalSingle#0" expanded="false" />
+            <element signature="n#!!block;n#animalShepherd#0" expanded="false" />
+            <element signature="n#!!block;n#animalConjurer#0" expanded="false" />
+            <element signature="n#!!block;n#applyHalfElfBonus#0" expanded="false" />
+            <element signature="n#!!block;n#applyHalfElfPenalty#0" expanded="false" />
+            <element signature="n#!!block;n#applyHalfOrcBonus#0" expanded="false" />
+            <element signature="n#!!block;n#applyHighElfBonus#0" expanded="false" />
+            <element signature="n#!!block;n#applyHumanBonus#0" expanded="false" />
+            <element signature="n#!!block;n#applyHumanPenalty#0" expanded="false" />
+            <element signature="n#!!block;n#applyOrcPenalty#0" expanded="false" />
+            <element signature="n#!!block;n#applyWoodElfBonus#0" expanded="false" />
+            <element signature="n#!!block;n#autoAdjustAbilitiesByClass#0" expanded="false" />
+            <element signature="n#!!block;n#adjustEndurance#0" expanded="false" />
+            <element signature="n#!!block;n#changeTab#0" expanded="false" />
+            <element signature="n#!!block;n#changeTabTo#0" expanded="false" />
+            <element signature="n#!!block;n#checkCanSave#0" expanded="false" />
+            <element signature="n#!!block;n#createButton#0" expanded="false" />
+            <element signature="n#!!block;n#createAnimalDisplay#0" expanded="false" />
+            <element signature="n#!!block;n#createExtraAnimalPowerDisplay#0" expanded="false" />
+            <element signature="n#!!block;n#createExtraAnimalPowers#0" expanded="false" />
+            <element signature="n#!!block;n#createStewardPowerDisplay#0" expanded="false" />
+            <element signature="n#!!block;n#displaySummary#0" expanded="false" />
+            <element signature="n#!!block;n#enableTabs#0" expanded="false" />
+            <element signature="n#!!block;n#getModifier#0" expanded="false" />
+            <element signature="n#!!block;n#getModifierText#0" expanded="false" />
+            <element signature="n#!!block;n#getRandomInt#0" expanded="false" />
+            <element signature="n#!!block;n#hide_class_modal#0" expanded="false" />
+            <element signature="n#!!block;n#hide_race_modal#0" expanded="false" />
+            <element signature="n#!!block;n#loadClassDescription#0" expanded="false" />
+            <element signature="n#!!block;n#loadClassList#0" expanded="false" />
+            <element signature="n#!!block;n#loadClassPowers#0" expanded="false" />
+            <element signature="n#!!block;n#loadClassRestrictions#0" expanded="false" />
+            <element signature="n#!!block;n#loadClassTraits#0" expanded="false" />
+            <element signature="n#!!block;n#loadRacialPowers#0" expanded="false" />
+            <element signature="n#!!block;n#loadRacialTraits#0" expanded="false" />
+            <element signature="n#!!block;n#loadRaceDescription#0" expanded="false" />
+            <element signature="n#!!block;n#loadRaceList#0" expanded="false" />
+            <element signature="n#!!block;n#populateViper#0" expanded="false" />
+            <element signature="n#!!block;n#populateMount#0" expanded="false" />
+            <element signature="n#!!block;n#populateStewards#0" expanded="false" />
+            <element signature="n#!!block;n#powerSelected#0" expanded="false" />
+            <element signature="n#!!block;n#racialModifier#0" expanded="false" />
+            <element signature="n#!!block;n#removeAnimalPower#0" expanded="false" />
+            <element signature="n#!!block;n#removeRollTotalModifier#0" expanded="false" />
+            <element signature="n#!!block;n#resetAbilityModifiers#0" expanded="false" />
+            <element signature="n#!!block;n#resetClassModifiers#0" expanded="false" />
+            <element signature="n#!!block;n#resetClassSelection#0" expanded="false" />
+            <element signature="n#!!block;n#resetRaceSelection#0" expanded="false" />
+            <element signature="n#!!block;n#rollAttribute#0" expanded="false" />
+            <element signature="n#!!block;n#saveAbilities#0" expanded="false" />
+            <element signature="n#!!block;n#saveClass#0" expanded="false" />
+            <element signature="n#!!block;n#saveRace#0" expanded="false" />
+            <element signature="n#!!block;n#adjustClassMovementSpeed#0" expanded="false" />
+            <element signature="n#!!block;n#adjustRacialMovementSpeed#0" expanded="false" />
+            <element signature="n#!!block;n#selectText#0" expanded="false" />
+            <element signature="n#!!block;n#selectValue#0" expanded="false" />
+            <element signature="n#!!block;n#setStewardSelected#0" expanded="false" />
+            <element signature="n#!!block;n#showClassError#0" expanded="false" />
+            <element signature="n#!!block;n#hunterDetails#0" expanded="false" />
+            <element signature="n#!!block;n#weaponMasterDetails#0" expanded="false" />
+            <element signature="n#!!block;n#scholarDetails#0" expanded="false" />
+            <element signature="n#!!block;n#showClassModal#0" expanded="false" />
+            <element signature="n#!!block;n#showModalButtons#0" expanded="false" />
+            <element signature="n#!!block;n#hideModalButtons#0" expanded="false" />
+            <element signature="n#!!block;n#showRequestedModal#0" expanded="false" />
+            <element signature="n#!!block;n#showRaceModal#0" expanded="false" />
+            <element signature="e#49896#50400#0" expanded="false" />
+            <element signature="n#!!block;n#showDwarfAdjustments#0" expanded="false" />
+            <element signature="n#!!block;n#showHalfElfPowerChoices#0" expanded="false" />
+            <element signature="n#!!block;n#createPower#0" expanded="false" />
+            <element signature="n#!!block;n#select_race_power#0" expanded="false" />
+            <element signature="n#!!block;n#showHighElfAdjustments#0" expanded="false" />
+            <element signature="n#!!block;n#showHobbitAdjustments#0" expanded="false" />
+            <element signature="n#!!block;n#showOrcAdjustments#0" expanded="false" />
+            <element signature="n#!!block;n#showWoodElfAdjustments#0" expanded="false" />
+            <element signature="n#!!block;n#showSelectedPowers#0" expanded="false" />
+            <element signature="n#!!block;n#startCreation#0" expanded="false" />
+            <element signature="n#!!block;n#sumArray#0" expanded="false" />
+            <element signature="n#!!block;n#update_character_name#0" expanded="false" />
+            <element signature="n#!!block;n#update_player_name#0" expanded="false" />
+            <element signature="n#!!block;n#update_animal_tooltip#0" expanded="false" />
+            <element signature="n#!!block;n#update_racial_tooltip#0" expanded="false" />
+            <element signature="n#!!block;n#update_start_racial_tooltip#0" expanded="false" />
+            <element signature="n#!!block;n#update_start_tooltip#0" expanded="false" />
+            <element signature="n#!!block;n#searchPowerInfo#0" expanded="false" />
+            <element signature="n#!!block;n#searchBeasts#0" expanded="false" />
+            <element signature="n#!!block;n#update_tooltip#0" expanded="false" />
+            <element signature="n#!!block;n#updateHalfElfTooltipster#0" expanded="false" />
+            <element signature="n#!!block;n#updateRacialTooltipster#0" expanded="false" />
+            <element signature="n#!!block;n#updateStartTooltipster#0" expanded="false" />
+            <element signature="n#!!block;n#updateTootipster#0" expanded="false" />
+            <element signature="n#!!block;n#validate#0" expanded="false" />
+            <element signature="n#!!block;n#validate_class#0" expanded="false" />
+            <element signature="n#!!block;n#validate_dwarf#0" expanded="false" />
+            <element signature="n#!!block;n#validate_half_elf#0" expanded="false" />
+            <element signature="n#!!block;n#validate_half_orc#0" expanded="false" />
+            <element signature="n#!!block;n#validate_high_elf#0" expanded="false" />
+            <element signature="n#!!block;n#validate_hobbit#0" expanded="false" />
+            <element signature="n#!!block;n#validate_human#0" expanded="false" />
+            <element signature="n#!!block;n#validate_orc#0" expanded="false" />
+            <element signature="n#!!block;n#validate_wood_elf#0" expanded="false" />
+            <element signature="n#!!block;n#validate_race#0" expanded="false" />
+            <element signature="e#71106#71365#0" expanded="false" />
+            <element signature="n#!!block;n#add_to_modifiers#0" expanded="false" />
+            <element signature="n#!!block;n#getCurrentScore#0" expanded="false" />
+            <element signature="n#!!block;n#getScore#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/character_creation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="13" column="45" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1773,7 +1772,6 @@
             <element signature="n#style#0;n#p#0;n#div#6;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1786,7 +1784,6 @@
             <element signature="n#style#0;n#div#1;n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#8;n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="e#18770#18777#1" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1863,31 +1860,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ospgarath.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/ospgarath_style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/ospgarath.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="132" column="20" lean-forward="true" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
+        <state relative-caret-position="358">
+          <caret line="239" column="32" lean-forward="true" selection-start-line="239" selection-start-column="32" selection-end-line="239" selection-end-column="32" />
           <folding>
-            <element signature="e#3017#3406#0" expanded="false" />
-            <element signature="e#3464#3862#0" expanded="false" />
-            <element signature="e#3900#4021#0" expanded="false" />
-            <element signature="e#4063#4134#0" expanded="false" />
-            <element signature="e#4163#4562#0" expanded="false" />
-            <element signature="e#4592#4987#0" expanded="false" />
-            <element signature="e#5014#5409#0" expanded="false" />
-            <element signature="e#5438#5837#0" expanded="false" />
-            <element signature="e#5899#6048#0" expanded="false" />
-            <element signature="e#6083#6221#0" expanded="false" />
-            <element signature="e#6261#7709#0" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#6781#7170#0" expanded="false" />
+            <element signature="e#7228#7626#0" expanded="false" />
+            <element signature="e#7664#7785#0" expanded="false" />
+            <element signature="e#7827#7898#0" expanded="false" />
+            <element signature="e#7927#8326#0" expanded="false" />
+            <element signature="e#8356#8751#0" expanded="false" />
+            <element signature="e#8778#9173#0" expanded="false" />
+            <element signature="e#9202#9601#0" expanded="false" />
+            <element signature="e#9663#9812#0" expanded="false" />
+            <element signature="e#9847#9985#0" expanded="false" />
+            <element signature="e#10025#11508#0" expanded="false" />
+            <element signature="e#11552#11704#0" expanded="false" />
+            <element signature="e#11746#11890#0" expanded="false" />
+            <element signature="e#11930#11971#0" expanded="false" />
+            <element signature="e#12012#12055#0" expanded="false" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1899,6 +1899,7 @@
             <element signature="n#style#0;n#img#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

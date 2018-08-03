@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css"/>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <script type="text/javascript" src="js/tooltipster-discovery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
 
 </head>
 <style>
@@ -105,7 +107,7 @@
 
     #actions_status {
         position: absolute;
-        left: 5vh;
+        left: 5.5vh;
         top: 87vh;
         font-size: 14pt;
     }
@@ -121,6 +123,17 @@
         height: 4.5vh;
     }
 
+    .tooltip {
+        font-family: 'Marcellus SC', serif;
+        color: yellow !important;
+    }
+
+    .action_list {
+        text-align:left;
+        color: yellow;
+        font-family: 'Marcellus SC', serif;
+    }
+
 </style>
 <script>
     var VERTICAL_INCREASE = 7.11;
@@ -131,6 +144,103 @@
     var CHAR_Y = -6;
 
     var MOVEMENT = 6;
+    var ACTION_MENU_VISIBLE = false;
+
+    function activateActionsOptionsTooltipster() {
+        var $character = $('#character_icon');
+        if (ACTION_MENU_VISIBLE) {
+            clearActiveTooltipsters();
+            return;
+        }
+
+        //Quick-Left
+        $character.tooltipster({
+            theme: 'tooltipster-borderless',
+            animation: 'grow',
+            trigger: 'click',
+            side: 'left',
+            content: $('<span class="tooltip">Quick Action</span>'),
+            multiple: true,
+            interactive: true,
+            functionReady: function(instance, helper){
+                // the nested tooltip must be initialized once the first tooltip is open, that's why we do this inside functionReady()
+                instance.content().tooltipster({
+                    theme: 'tooltipster-borderless',
+                    content: 'I am a nested tooltip!',
+                    distance: 0,
+                    side: 'bottom'
+                });
+            },
+            functionAfter: function(instance, helper) {
+                this.destroy();
+                ACTION_MENU_VISIBLE = false; //only needed once
+            }
+        });
+
+        //Move-Top
+        $character.tooltipster({
+            theme: 'tooltipster-borderless',
+            animation: 'grow',
+            trigger: 'click',
+            side: 'top',
+            content: $('<span class="tooltip">Move</span>'),
+            multiple: true,
+            interactive: true,
+            functionAfter: function(instance, helper) {
+                this.destroy();
+            }
+        });
+
+        //Standard-Right
+        $character.tooltipster({
+            theme: 'tooltipster-borderless',
+            animation: 'grow',
+            trigger: 'click',
+            side: 'right',
+            content: $('<span class="tooltip">Standard Action</span>'),
+            multiple: true,
+            interactive: true,
+            functionReady: function(instance, helper) {
+                // the nested tooltip must be initialized once the first tooltip is open, that's why we do this inside functionReady()
+                instance.content().tooltipster({
+                    theme: 'tooltipster-borderless',
+                    content: getStandardActions(),
+                    distance: 0,
+                    side: 'bottom'
+                });
+            },
+            functionAfter: function(instance, helper) {
+                this.destroy();
+            }
+        });
+
+        var instances = $.tooltipster.instances($character);
+        for (var i = 0; i < instances.length; i++) {
+            instances[i].open();
+        }
+        ACTION_MENU_VISIBLE = true;
+    }
+
+    function clearActiveTooltipsters() {
+        var $character = $('#character_icon');
+        var current_instances = $.tooltipster.instances($character);
+        for (var j = 0; j < current_instances.length; j++) {
+            current_instances[j].close();
+        }
+    }
+
+    function getStandardActions() {
+        var list = document.createElement("ul");
+        var item1 = document.createElement("li");
+        var item2 = document.createElement("li");
+
+        item1.innerText = "Item 1";
+        item2.innerText = "Item 2";
+        list.appendChild(item1);
+        list.appendChild(item2);
+        list.classList.add("action_list");
+        return list;
+    }
 
     document.addEventListener('keydown', function(event) {
         //left
@@ -287,6 +397,7 @@
                 char_icon.style.top = (parseFloat(current_top + VERTICAL_INCREASE)) + "vh";
                 break;
         }
+        clearActiveTooltipsters();
         arrow_button_down(direction);
         document.getElementById("movement_remaining").innerText = movementRemaining();
     }
@@ -314,7 +425,7 @@
     <div id="board_container">
         <img id="board_border" src="img/game_board.png">
         <img id="current_board" src="img/board1.png">
-        <div id="character_icon">
+        <div id="character_icon" onclick="activateActionsOptionsTooltipster()">
             <img src="img/char_icon.jpg" style="width:6.85vh; height:6.85vh;">
         </div>
         <div id="actions_status" class="body_font">
@@ -359,5 +470,24 @@
             <div class="ability_score"><span>L: </span><span id="ability_l">10 (+0)</span></div>
         </div>
     </div>
+
+    <!--<span id="quick_action" class="tooltip">Quick Action</span>-->
+    <div class="tooltip_templates" style="display: none;">
+        <div id="action_option_content">
+            <div id="action_option">
+                <img src="" id="power_icon">
+                <span id="tooltip_power_name"></span>
+                <p id="tooltip_power_description"></p>
+            </div>
+        </div>
+        <div id="action_list_content">
+            <div id="action_list">
+                <ul>
+                    <li>List option</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
