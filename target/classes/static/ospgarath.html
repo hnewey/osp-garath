@@ -125,13 +125,27 @@
 
     .tooltip {
         font-family: 'Marcellus SC', serif;
-        color: yellow !important;
+        color: yellow;
+        cursor: default;
+    }
+
+    .tooltip:hover {
+        text-shadow: 0 0 5px yellow;
     }
 
     .action_list {
-        text-align:left;
+        text-align:center;
         color: yellow;
         font-family: 'Marcellus SC', serif;
+        cursor: default;
+    }
+
+    .action:hover {
+        text-shadow: 0 0 5px yellow;
+    }
+
+    .hidden {
+        display: none;
     }
 
 </style>
@@ -145,6 +159,7 @@
 
     var MOVEMENT = 6;
     var ACTION_MENU_VISIBLE = false;
+    var CLICK_TO_MOVE = false;
 
     function activateActionsOptionsTooltipster() {
         var $character = $('#character_icon');
@@ -166,9 +181,11 @@
                 // the nested tooltip must be initialized once the first tooltip is open, that's why we do this inside functionReady()
                 instance.content().tooltipster({
                     theme: 'tooltipster-borderless',
-                    content: 'I am a nested tooltip!',
+                    content: getQuickActions(),
                     distance: 0,
-                    side: 'bottom'
+                    side: 'bottom',
+                    interactive: true,
+                    trigger: 'click'
                 });
             },
             functionAfter: function(instance, helper) {
@@ -183,7 +200,7 @@
             animation: 'grow',
             trigger: 'click',
             side: 'top',
-            content: $('<span class="tooltip">Move</span>'),
+            content: $('<span class="tooltip" onclick="showPossibleMovements()">Move</span>'),
             multiple: true,
             interactive: true,
             functionAfter: function(instance, helper) {
@@ -206,7 +223,9 @@
                     theme: 'tooltipster-borderless',
                     content: getStandardActions(),
                     distance: 0,
-                    side: 'bottom'
+                    side: 'bottom',
+                    interactive: true,
+                    trigger: 'click'
                 });
             },
             functionAfter: function(instance, helper) {
@@ -230,16 +249,33 @@
     }
 
     function getStandardActions() {
-        var list = document.createElement("ul");
-        var item1 = document.createElement("li");
-        var item2 = document.createElement("li");
+        var actionContainer = document.createElement("div");
+        var action1 = document.createElement("p");
+        var action2 = document.createElement("p");
 
-        item1.innerText = "Item 1";
-        item2.innerText = "Item 2";
-        list.appendChild(item1);
-        list.appendChild(item2);
-        list.classList.add("action_list");
-        return list;
+        action1.innerText = "Attack";
+        action2.innerText = "Pass";
+        actionContainer.appendChild(action1);
+        actionContainer.appendChild(action2);
+        action1.classList.add("action");
+        action2.classList.add("action");
+        actionContainer.classList.add("action_list");
+        return actionContainer;
+    }
+
+    function getQuickActions() {
+        var actionContainer = document.createElement("div");
+        var action1 = document.createElement("p");
+        var action2 = document.createElement("p");
+
+        action1.innerText = "Equip Item";
+        action2.innerText = "Search Body";
+        actionContainer.appendChild(action1);
+        actionContainer.appendChild(action2);
+        action1.classList.add("action");
+        action2.classList.add("action");
+        actionContainer.classList.add("action_list");
+        return actionContainer;
     }
 
     document.addEventListener('keydown', function(event) {
@@ -261,7 +297,7 @@
         }
     });
 
-    document.addEventListener('keyup', function(event){
+    document.addEventListener('keyup', function(event) {
         //left
         if (event.keyCode === 37) {
             arrow_button_up("left");
@@ -361,11 +397,11 @@
     }
 
     function moveCharacter(direction) {
-        var char_icon = document.getElementById("character_icon"),
-            style = window.getComputedStyle(char_icon);
+        // var char_icon = document.getElementById("character_icon"),
+        //     style = window.getComputedStyle(char_icon);
 
-        var current_left = getViewHeight(style.getPropertyValue('left'));
-        var current_top = getViewHeight(style.getPropertyValue('top'));
+        // var current_left = getViewHeight(style.getPropertyValue('left'));
+        // var current_top = getViewHeight(style.getPropertyValue('top'));
 
         switch (direction) {
             case "left":
@@ -373,30 +409,27 @@
                     return;
                 }
                 CHAR_X--;
-                char_icon.style.left = (parseFloat(current_left - HORIZONTAL_INCREASE)) + "vh";
                 break;
             case "up":
                 if (!canMoveUp()) {
                     return;
                 }
                 CHAR_Y++;
-                char_icon.style.top = (parseFloat(current_top - VERTICAL_INCREASE)) + "vh";
                 break;
             case "right":
                 if (!canMoveRight()) {
                     return;
                 }
                 CHAR_X++;
-                char_icon.style.left = (parseFloat(current_left + HORIZONTAL_INCREASE)) + "vh";
                 break;
             case "down":
                 if (!canMoveDown()) {
                     return;
                 }
                 CHAR_Y--;
-                char_icon.style.top = (parseFloat(current_top + VERTICAL_INCREASE)) + "vh";
                 break;
         }
+        placeCharacter(CHAR_X, CHAR_Y);
         clearActiveTooltipsters();
         arrow_button_down(direction);
         document.getElementById("movement_remaining").innerText = movementRemaining();
@@ -413,11 +446,97 @@
     }
 
     function arrow_clicked(direction) {
+        if (CLICK_TO_MOVE) {
+            hidePossibleMovements();
+            CLICK_TO_MOVE = false;
+        }
         moveCharacter(direction);
     }
 
     function arrow_released(direction) {
         arrow_button_up(direction);
+    }
+
+    function getViewPortPositionLeft(x) {
+        return 47.2 + (HORIZONTAL_INCREASE * x);
+    }
+
+    function getViewPortPositionTop(y) {
+        return 46.94 - (VERTICAL_INCREASE * y);
+    }
+
+    function placeCharacter(x, y) {
+        var char_icon = document.getElementById("character_icon");
+        char_icon.style.left = (parseFloat(getViewPortPositionLeft(x))) + "vh";
+        char_icon.style.top = (parseFloat(getViewPortPositionTop(y))) + "vh";
+        CHAR_X = x;
+        CHAR_Y = y;
+    }
+
+    $(document).ready(function() {
+        var container = document.getElementById("box_overlays_container");
+
+        for (var i = -6; i <= 6; i++) {
+            for (var j = -6; j <= 6; j++) {
+                if (Math.abs(i) + Math.abs(j) > 9) {
+                    continue;
+                }
+                var div = document.createElement("div");
+                div.id = i + "," + j;
+                div.style.position = "absolute";
+                div.style.left = parseFloat(getViewPortPositionLeft(i)) + "vh";
+                div.style.top = parseFloat(getViewPortPositionTop(j)) + "vh";
+                div.classList.add("hidden");
+                var img = document.createElement("img");
+                img.src = "img/blue_square.jpg";
+                img.style = "width: 7.2vh; height: auto; opacity: .7;";
+                img.setAttribute("onclick", "clickToMove(" + i + ", " + j + ")");
+                div.appendChild(img);
+                container.appendChild(div);
+            }
+        }
+    });
+
+    function showPossibleMovements() {
+        for (var i = -6; i <= 6; i++) {
+            for (var j = -6; j <= 6; j++) {
+                if (Math.abs(i) + Math.abs(j) > 9) {
+                    continue;
+                }
+                if (i === CHAR_X && j === CHAR_Y) {
+                    continue;
+                }
+                if (movementSpeedRemaining(i, j)) {
+                    var box = document.getElementById(i + "," + j);
+                    box.classList.remove("hidden");
+                }
+            }
+        }
+        CLICK_TO_MOVE = true;
+    }
+
+    function hidePossibleMovements() {
+        for (var i = -6; i <= 6; i++) {
+            for (var j = -6; j <= 6; j++) {
+                if (Math.abs(i) + Math.abs(j) > 9) {
+                    continue;
+                }
+                var box = document.getElementById(i + "," + j);
+                box.classList.add("hidden");
+            }
+        }
+        CLICK_TO_MOVE = false;
+    }
+
+    function clickToMove(x, y) {
+        if (!CLICK_TO_MOVE) {
+            return;
+        }
+        placeCharacter(x, y);
+        CHAR_X = x;
+        CHAR_Y = y;
+        hidePossibleMovements();
+        document.getElementById("movement_remaining").innerText = movementRemaining();
     }
 
 </script>
@@ -447,6 +566,7 @@
                 </tr>
             </table>
         </div>
+        <div id="box_overlays_container"></div>
     </div>
     <div id="character_info" style="display: inline-flex;">
         <img src="img/char_border2.png" style="width:10vh;height:13vh;">

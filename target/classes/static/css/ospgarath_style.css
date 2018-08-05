@@ -10,3 +10,7 @@ body {
 .body_font {
     font-family: 'Philosopher', sans-serif;
 }
+
+.hidden {
+    display: none;
+}
