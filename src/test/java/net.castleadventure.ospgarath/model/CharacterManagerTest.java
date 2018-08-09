@@ -7,7 +7,7 @@ import org.junit.Test;
 public class CharacterManagerTest {
 
     @Test
-    public void getStewardTest() {
+    public void getStewardTest() throws Exception {
         Character steward = CharacterManager.createRandomSteward();
         System.out.println(steward.toString());
     }

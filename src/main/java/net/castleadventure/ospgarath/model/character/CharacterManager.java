@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CharacterManager {
 
-    public static Character createRandomSteward() {
+    public static Character createRandomSteward() throws Exception {
         ClassType classType;
         do {
             classType = ClassType.getClassType(Dice.d24());
@@ -45,7 +45,7 @@ public class CharacterManager {
         return steward;
     }
 
-    public static List<Character> createRandomStewards(Integer amount) {
+    public static List<Character> createRandomStewards(Integer amount) throws Exception {
         List<Character> stewards = new ArrayList<>();
         for (int i = 0; i < amount; i++) {
             stewards.add(createRandomSteward());

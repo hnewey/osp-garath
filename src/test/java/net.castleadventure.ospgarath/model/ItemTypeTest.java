@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TestItemType {
+public class ItemTypeTest {
 
     private double testIterations = 10000000;
 

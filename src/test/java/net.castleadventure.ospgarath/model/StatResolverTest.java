@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class TestStatResolver {
+public class StatResolverTest {
 
     private static final int GET_CLASS_TIMES_TO_RUN = 5;
 

@@ -5,6 +5,7 @@ import net.castleadventure.ospgarath.game.Dice;
 import net.castleadventure.ospgarath.model.ability.power.Power;
 import net.castleadventure.ospgarath.model.ability.power.PowerManager;
 import net.castleadventure.ospgarath.model.character.condition.*;
+import net.castleadventure.ospgarath.model.character.race.MovementManager;
 import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
@@ -40,6 +41,10 @@ public class Character {
 
     private List<Power> powers;
 
+    private List<Space> possibleMovements;
+    private List<Space> blockedMovements;
+    private Space characterPosition;
+
     @JsonIgnore
     private PlayerEquippedItems playerEquippedItems;
     @JsonIgnore
@@ -57,7 +62,7 @@ public class Character {
         powers = new ArrayList<>();
     }
 
-    public Character(Integer s, Integer q, Integer i, Integer l, Integer e, Integer m) {
+    public Character(Integer s, Integer q, Integer i, Integer l, Integer e, Integer m) throws Exception {
         strength = new Stat(s);
         quickness = new Stat(q);
         intelligence = new Stat(i);
@@ -65,6 +70,9 @@ public class Character {
         endurance = e;
         movement = m;
         defense = q;
+
+        characterPosition = new Space(0, -6);
+        updatePossibleMovements();
 
         damageTaken = 0;
         maxDamage = calcMaxDamage();
@@ -115,10 +123,17 @@ public class Character {
         }
     }
 
-    public void endTurn() {
+    public void endTurn(Space newCharacterPosition) {
         for (NegativeCondition condition : negativeConditions) {
             condition.endTurn();
         }
+        this.characterPosition = newCharacterPosition;
+        updatePossibleMovements();
+    }
+
+    private void updatePossibleMovements() {
+        this.possibleMovements = MovementManager.getInstance().possibleMovements(this.characterPosition, this.movement);
+        this.blockedMovements = MovementManager.getInstance().blockedMovements();
     }
 
     public void sustainCondition(Integer index) {
@@ -303,6 +318,18 @@ public class Character {
         return negativeConditions;
     }
 
+    public List<Space> getPossibleMovements() {
+        return possibleMovements;
+    }
+
+    public List<Space> getBlockedMovements() {
+        return blockedMovements;
+    }
+
+    public Space getCharacterPosition() {
+        return characterPosition;
+    }
+
     //-----------------------------------------------------------
     // Setters
     //-----------------------------------------------------------
@@ -383,5 +410,13 @@ public class Character {
 
     public void setCharacterClass(ClassType characterClass) {
         this.characterClass = characterClass;
+    }
+
+    public void setPossibleMovements(List<Space> possibleMovements) {
+        this.possibleMovements = possibleMovements;
+    }
+
+    public void setCharacterPosition(Space characterPosition) {
+        this.characterPosition = characterPosition;
     }
 }

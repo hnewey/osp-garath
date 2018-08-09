@@ -11,7 +11,7 @@ import java.io.IOException;
 @SpringBootApplication
 public class OspGarathApplication {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         SpringApplication.run(OspGarathApplication.class, args);
 
         System.out.println("\n");

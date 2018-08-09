@@ -1,4 +1,4 @@
-package net.castleadventure.ospgarath.web;
+package net.castleadventure.ospgarath.web.controller;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import net.castleadventure.ospgarath.game.GameState;
@@ -94,7 +94,7 @@ public class CharacterCreationController {
 
     @RequestMapping(value = "/class/steward/{amount}", method = RequestMethod.GET)
     public ResponseEntity<List<Character>> getSteward(
-            @PathVariable ("amount") Integer amount) {
+            @PathVariable ("amount") Integer amount) throws Exception {
         return ResponseEntity.ok().body(CharacterManager.createRandomStewards(3));
     }
 

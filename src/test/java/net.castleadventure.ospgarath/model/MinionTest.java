@@ -4,7 +4,7 @@ import net.castleadventure.ospgarath.model.monster.Monster;
 import net.castleadventure.ospgarath.model.monster.monsterTypes.Minion;
 import org.junit.Test;
 
-public class TestMinion {
+public class MinionTest {
 
     @Test
     public void minionCreationTest() {

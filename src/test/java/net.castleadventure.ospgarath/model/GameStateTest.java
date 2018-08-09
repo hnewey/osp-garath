@@ -3,7 +3,7 @@ package net.castleadventure.ospgarath.model;
 import net.castleadventure.ospgarath.game.GameState;
 import org.junit.Test;
 
-public class TestGameState {
+public class GameStateTest {
 
     @Test
     public void getDifficultyAdjustment() {

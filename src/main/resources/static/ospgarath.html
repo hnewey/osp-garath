@@ -108,7 +108,7 @@
     #actions_status {
         position: absolute;
         left: 5.5vh;
-        top: 87vh;
+        top: 5vh;
         font-size: 14pt;
     }
 
@@ -148,6 +148,38 @@
         display: none;
     }
 
+    #end_turn_button {
+        text-align: center;
+        background: url("img/button_new2.jpg") no-repeat;
+        color: yellow;
+        font-family: 'Marcellus SC', serif;
+        cursor: default;
+        background-size: contain;
+        outline: none;
+        border: none;
+        font-size: 10pt;
+        width: 14vh;
+        height: 6vh;
+    }
+
+    #end_turn_button:hover {
+        text-shadow: 0 0 5px yellow;
+        box-shadow: 0 0 5px yellow;
+    }
+
+    #end_turn_button:active {
+        background: url("img/button_new_clicked.jpg");
+        background-size: contain;
+        width: 14vh;
+        height: 6vh;
+    }
+
+    #end_turn_container {
+        position: absolute;
+        left: 8vh;
+        top: 89.6vh;
+    }
+
 </style>
 <script>
     var VERTICAL_INCREASE = 7.11;
@@ -157,9 +189,13 @@
     var CHAR_X = 0;
     var CHAR_Y = -6;
 
+    var BASE_MOVEMENT = 6;
     var MOVEMENT = 6;
     var ACTION_MENU_VISIBLE = false;
     var CLICK_TO_MOVE = false;
+
+    var ENEMIES = [{'position': {'x':0, 'y':1}}];
+    var OFF_LIMIT_SQUARES = [];
 
     function activateActionsOptionsTooltipster() {
         var $character = $('#character_icon');
@@ -279,6 +315,7 @@
     }
 
     document.addEventListener('keydown', function(event) {
+        hidePossibleMovements();
         //left
         if (event.keyCode === 37) {
             moveCharacter("left");
@@ -329,6 +366,8 @@
     }
 
     function canMoveLeft() {
+        if (!checkObstacles(CHAR_X-1, CHAR_Y) || !checkEnemies(CHAR_X-1, CHAR_Y))
+            return false;
         if (!movementSpeedRemaining(CHAR_X-1, CHAR_Y))
             return false;
         if (CHAR_X === -6)
@@ -343,6 +382,8 @@
     }
 
     function canMoveRight() {
+        if (!checkObstacles(CHAR_X+1, CHAR_Y) || !checkEnemies(CHAR_X+1, CHAR_Y))
+            return false;
         if (!movementSpeedRemaining(CHAR_X+1, CHAR_Y))
             return false;
         if (CHAR_X === 6)
@@ -357,6 +398,8 @@
     }
 
     function canMoveUp() {
+        if (!checkObstacles(CHAR_X, CHAR_Y+1) || !checkEnemies(CHAR_X, CHAR_Y+1))
+            return false;
         if (!movementSpeedRemaining(CHAR_X, CHAR_Y+1))
             return false;
         if (CHAR_Y === 6)
@@ -371,6 +414,8 @@
     }
 
     function canMoveDown() {
+        if (!checkObstacles(CHAR_X, CHAR_Y-1) || !checkEnemies(CHAR_X, CHAR_Y-1))
+            return false;
         if (!movementSpeedRemaining(CHAR_X, CHAR_Y-1))
             return false;
         if (CHAR_Y === -6)
@@ -388,6 +433,12 @@
         var vert = Math.abs(possible_y - START_Y);
         var hor = Math.abs(possible_x - START_X);
         return ((vert+hor) <= MOVEMENT);
+    }
+
+    function movementSpeedRemainingPlusOne(possible_x, possible_y) {
+        var vert = Math.abs(possible_y - START_Y);
+        var hor = Math.abs(possible_x - START_X);
+        return ((vert+hor) <= MOVEMENT+1);
     }
 
     function movementRemaining() {
@@ -432,7 +483,7 @@
         placeCharacter(CHAR_X, CHAR_Y);
         clearActiveTooltipsters();
         arrow_button_down(direction);
-        document.getElementById("movement_remaining").innerText = movementRemaining();
+        updateMovementRemaining();
     }
 
     function arrow_button_down(direction) {
@@ -466,53 +517,155 @@
     }
 
     function placeCharacter(x, y) {
+        if (!checkObstacles(x, y) || !checkEnemies(x, y)) {
+            return false;
+        }
         var char_icon = document.getElementById("character_icon");
         char_icon.style.left = (parseFloat(getViewPortPositionLeft(x))) + "vh";
         char_icon.style.top = (parseFloat(getViewPortPositionTop(y))) + "vh";
         CHAR_X = x;
         CHAR_Y = y;
+        return true;
     }
 
+
+    function getBoardSpaces() {
+        $.get("game/board/spaces", function (data, status) {
+
+        });
+    }
+
+    //create box overlay images
     $(document).ready(function() {
         var container = document.getElementById("box_overlays_container");
 
-        for (var i = -6; i <= 6; i++) {
-            for (var j = -6; j <= 6; j++) {
-                if (Math.abs(i) + Math.abs(j) > 9) {
-                    continue;
-                }
+        $.get("game/board/spaces", function (data, status) {
+            for (var i = 0; i < data.length; i++) {
+                var x, y, space;
+                space = data[i];
+                x = space.x;
+                y = space.y;
+
                 var div = document.createElement("div");
-                div.id = i + "," + j;
+                div.id = x + "," + y;
                 div.style.position = "absolute";
-                div.style.left = parseFloat(getViewPortPositionLeft(i)) + "vh";
-                div.style.top = parseFloat(getViewPortPositionTop(j)) + "vh";
+                div.style.left = parseFloat(getViewPortPositionLeft(x)) + "vh";
+                div.style.top = parseFloat(getViewPortPositionTop(y)) + "vh";
                 div.classList.add("hidden");
                 var img = document.createElement("img");
-                img.src = "img/blue_square.jpg";
+                setSquareColor(space.spaceInfo, img);
+                img.id = "img" + x + "," + y;
                 img.style = "width: 7.2vh; height: auto; opacity: .7;";
-                img.setAttribute("onclick", "clickToMove(" + i + ", " + j + ")");
+                img.setAttribute("onclick", "clickToMove(" + x + ", " + y + ")");
                 div.appendChild(img);
                 container.appendChild(div);
             }
-        }
+        });
     });
 
+    function setSquareColor(spaceInfo, img) {
+        switch (spaceInfo) {
+            case "FREE":
+                img.src = "img/blue_square.jpg";
+                break;
+            case "OCCUPIED":
+                img.src = "img/red_square.jpg";
+                break;
+            case "OBSTACLE":
+                img.src = "img/gray_square.jpg";
+                break;
+            case "INTERACTION":
+                img.src = "img/purple_square.jpg";
+                break;
+        }
+    }
+
     function showPossibleMovements() {
-        for (var i = -6; i <= 6; i++) {
-            for (var j = -6; j <= 6; j++) {
-                if (Math.abs(i) + Math.abs(j) > 9) {
-                    continue;
-                }
-                if (i === CHAR_X && j === CHAR_Y) {
-                    continue;
-                }
-                if (movementSpeedRemaining(i, j)) {
-                    var box = document.getElementById(i + "," + j);
-                    box.classList.remove("hidden");
-                }
+        $.get("move/possible", function (data, status) {
+            for (var i = 0; i < data.length; i++) {
+                var x, y, space;
+                space = data[i];
+                x = space.x;
+                y = space.y;
+
+                var box = document.getElementById(x + "," + y);
+                box.classList.remove("hidden");
+            }
+            CLICK_TO_MOVE = true;
+        });
+
+        $.get("move/blocked", function (data, status) {
+            for (var i = 0; i < data.length; i++) {
+                var x, y, space;
+                space = data[i];
+                x = space.x;
+                y = space.y;
+
+                var box = document.getElementById(x + "," + y);
+                box.classList.remove("hidden");
+            }
+        });
+
+            // for (var i = -6; i <= 6; i++) {
+            // for (var j = -6; j <= 6; j++) {
+            //     if (Math.abs(i) + Math.abs(j) > 9) {
+            //         continue;
+            //     }
+            //     if (i === CHAR_X && j === CHAR_Y) {
+            //         continue;
+            //     }
+            //     if (movementSpeedRemaining(i, j)) {
+            //         var box = document.getElementById(i + "," + j);
+            //         box.classList.remove("hidden");
+            //         var img = document.getElementById("img" + i + "," + j);
+            //         if (!checkObstacles(i, j)) {
+            //             img.src = "img/gray_square.jpg";
+            //         }
+            //         else if (!checkEnemies(i, j)) {
+            //             img.src = "img/red_square.jpg";
+            //         }
+            //         else {
+            //             img.src = "img/blue_square.jpg";
+            //         }
+            //     }
+            //     if (movementSpeedRemainingPlusOne(i, j)) {
+            //         if (!checkEnemies(i, j)) {
+            //             var box2 = document.getElementById(i + "," + j);
+            //             box2.classList.remove("hidden");
+            //             var img2 = document.getElementById("img" + i + "," + j);
+            //             img2.src = "img/red_square.jpg";
+            //         }
+            //     }
+            // }
+        // }
+    }
+
+    function checkObstacles(x, y) {
+        for (i = 0; i < OFF_LIMIT_SQUARES.length; i++) {
+            var square = OFF_LIMIT_SQUARES[i];
+            if (square.x === x && square.y === y) {
+                return false;
             }
         }
-        CLICK_TO_MOVE = true;
+        return true;
+    }
+
+    function checkEnemies(x, y) {
+        for (var i = 0; i < ENEMIES.length; i++) {
+            var enemy = ENEMIES[i];
+            if (enemy.position.x === x && enemy.position.y === y) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function clearBoxColor(img) {
+        img.classList.remove("red");
+        img.classList.remove("blue");
+        img.classList.remove("green");
+        img.classList.remove("purple");
+        img.classList.remove("gray");
     }
 
     function hidePossibleMovements() {
@@ -523,6 +676,7 @@
                 }
                 var box = document.getElementById(i + "," + j);
                 box.classList.add("hidden");
+                clearBoxColor(document.getElementById("img" + i + "," + j));
             }
         }
         CLICK_TO_MOVE = false;
@@ -532,11 +686,25 @@
         if (!CLICK_TO_MOVE) {
             return;
         }
-        placeCharacter(x, y);
+        if (!placeCharacter(x, y)) {
+            return;
+        }
         CHAR_X = x;
         CHAR_Y = y;
         hidePossibleMovements();
+        updateMovementRemaining();
+    }
+
+    function updateMovementRemaining() {
         document.getElementById("movement_remaining").innerText = movementRemaining();
+    }
+
+    function endTurn() {
+        //TODO: send info to back end
+        START_X = CHAR_X;
+        START_Y = CHAR_Y;
+        MOVEMENT = BASE_MOVEMENT;
+        updateMovementRemaining();
     }
 
 </script>
@@ -548,9 +716,12 @@
             <img src="img/char_icon.jpg" style="width:6.85vh; height:6.85vh;">
         </div>
         <div id="actions_status" class="body_font">
-            <span>Movement: <span id="movement_remaining">6</span></span><br>
+            <span>Mov: <span id="movement_remaining">6</span></span><br>
             <span>Quick: <span id="quick_action_description">unused</span></span><br>
-            <span>Standard: <span id="std_action_description">unused</span></span><br>
+            <span>Std: <span id="std_action_description">unused</span></span><br>
+        </div>
+        <div id="end_turn_container">
+            <button id="end_turn_button" onclick="endTurn()">End Turn</button>
         </div>
         <div id="movement_arrows">
             <table>
