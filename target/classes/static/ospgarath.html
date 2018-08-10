@@ -21,7 +21,11 @@
         background: url("img/game_background2.jpg"), no-repeat;
         -webkit-background-size: 100%;
         background-size: 100%;
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
     }
+
     #board_container {
         position: absolute;
         top: 50%;
@@ -84,14 +88,14 @@
 
     #end_overlay {
         position: absolute;
-        font-size: 10pt;
+        font-size: 1.8vh;
         left: 13vh;
         top: 15.1vh;
     }
 
     #exp_overlay {
         position: absolute;
-        font-size: 10pt;
+        font-size: 1.8vh;
         left: 14vh;
         top: 18.5vh;
     }
@@ -103,13 +107,14 @@
         width: 6.85vh;
         height: 6.5vh;
         box-shadow: 0 2px 15px 3px black;
+        z-index: 100;
     }
 
     #actions_status {
         position: absolute;
         left: 5.5vh;
         top: 5vh;
-        font-size: 14pt;
+        font-size: 2.2vh;
     }
 
     #movement_arrows {
@@ -157,7 +162,7 @@
         background-size: contain;
         outline: none;
         border: none;
-        font-size: 10pt;
+        font-size: 1.8vh;
         width: 14vh;
         height: 6vh;
     }
@@ -184,18 +189,59 @@
 <script>
     var VERTICAL_INCREASE = 7.11;
     var HORIZONTAL_INCREASE = 7.15;
-    var START_X = 0;
-    var START_Y = -6;
     var CHAR_X = 0;
     var CHAR_Y = -6;
 
-    var BASE_MOVEMENT = 6;
-    var MOVEMENT = 6;
     var ACTION_MENU_VISIBLE = false;
     var CLICK_TO_MOVE = false;
 
-    var ENEMIES = [{'position': {'x':0, 'y':1}}];
+    var ENEMIES = [];
     var OFF_LIMIT_SQUARES = [];
+
+    var BOARD = [];
+    var CHAR_POSSIBLE_MOVES = [];
+    var CHAR_BLOCKED_MOVES = [];
+    var CHARACTER;
+
+    var MOVE_USED = false;
+    var QUICK_USED = false;
+    var STD_USED = false;
+
+    var QUICK_ACTIONS;
+    var STD_ACTIONS;
+
+    var QUICK_ACTIONS_VALID = false;
+    var STD_ACTIONS_VALID = false;
+
+    var POLLING_INTERVAL;
+    var TIMEOUT = 30000;
+    var TIMEOUT_ID;
+    var POLLING_ACTIVE = false;
+
+    function startTimer() {
+        TIMEOUT_ID = window.setTimeout(setInactive, TIMEOUT);
+        startPolling();
+    }
+
+    function setInactive() {
+        POLLING_ACTIVE = false;
+        window.clearTimeout(TIMEOUT);
+        endPolling();
+    }
+
+    function resetTimer() {
+        window.clearTimeout(TIMEOUT);
+        startTimer();
+    }
+
+    function setupTimers() {
+        document.addEventListener("mousemove", resetTimer, false);
+        document.addEventListener("mousedown", resetTimer, false);
+        document.addEventListener("keypress", resetTimer, false);
+        document.addEventListener("touchmove", resetTimer, false);
+
+        startTimer();
+    }
 
     function activateActionsOptionsTooltipster() {
         var $character = $('#character_icon');
@@ -205,75 +251,118 @@
         }
 
         //Quick-Left
-        $character.tooltipster({
-            theme: 'tooltipster-borderless',
-            animation: 'grow',
-            trigger: 'click',
-            side: 'left',
-            content: $('<span class="tooltip">Quick Action</span>'),
-            multiple: true,
-            interactive: true,
-            functionReady: function(instance, helper){
-                // the nested tooltip must be initialized once the first tooltip is open, that's why we do this inside functionReady()
-                instance.content().tooltipster({
-                    theme: 'tooltipster-borderless',
-                    content: getQuickActions(),
-                    distance: 0,
-                    side: 'bottom',
-                    interactive: true,
-                    trigger: 'click'
-                });
-            },
-            functionAfter: function(instance, helper) {
-                this.destroy();
-                ACTION_MENU_VISIBLE = false; //only needed once
-            }
-        });
+        if (!QUICK_USED) {
+            $character.tooltipster({
+                theme: 'tooltipster-borderless',
+                animation: 'grow',
+                trigger: 'click',
+                side: 'left',
+                content: $('<span class="tooltip">Quick Action</span>'),
+                multiple: true,
+                interactive: true,
+                functionReady: function (instance, helper) {
+                    // the nested tooltip must be initialized once the first tooltip is open, that's why we do this inside functionReady()
+                    instance.content().tooltipster({
+                        theme: 'tooltipster-borderless',
+                        content: QUICK_ACTIONS,
+                        distance: 0,
+                        side: 'bottom',
+                        interactive: true,
+                        trigger: 'click'
+                    });
+                },
+                functionAfter: function (instance, helper) {
+                    this.destroy();
+                    ACTION_MENU_VISIBLE = false; //only needed once
+                }
+            });
+        }
 
         //Move-Top
-        $character.tooltipster({
-            theme: 'tooltipster-borderless',
-            animation: 'grow',
-            trigger: 'click',
-            side: 'top',
-            content: $('<span class="tooltip" onclick="showPossibleMovements()">Move</span>'),
-            multiple: true,
-            interactive: true,
-            functionAfter: function(instance, helper) {
-                this.destroy();
-            }
-        });
+        if (!MOVE_USED) {
+            $character.tooltipster({
+                theme: 'tooltipster-borderless',
+                animation: 'grow',
+                trigger: 'click',
+                side: 'top',
+                content: $('<span class="tooltip" onclick="showMovementTree()">Move</span>'),
+                multiple: true,
+                interactive: true,
+                functionAfter: function (instance, helper) {
+                    this.destroy();
+                }
+            });
+        }
 
         //Standard-Right
-        $character.tooltipster({
-            theme: 'tooltipster-borderless',
-            animation: 'grow',
-            trigger: 'click',
-            side: 'right',
-            content: $('<span class="tooltip">Standard Action</span>'),
-            multiple: true,
-            interactive: true,
-            functionReady: function(instance, helper) {
-                // the nested tooltip must be initialized once the first tooltip is open, that's why we do this inside functionReady()
-                instance.content().tooltipster({
-                    theme: 'tooltipster-borderless',
-                    content: getStandardActions(),
-                    distance: 0,
-                    side: 'bottom',
-                    interactive: true,
-                    trigger: 'click'
-                });
-            },
-            functionAfter: function(instance, helper) {
-                this.destroy();
-            }
-        });
+        if (!STD_USED) {
+            $character.tooltipster({
+                theme: 'tooltipster-borderless',
+                animation: 'grow',
+                trigger: 'click',
+                side: 'right',
+                content: $('<span class="tooltip">Standard Action</span>'),
+                multiple: true,
+                interactive: true,
+                functionReady: function (instance, helper) {
+                    // the nested tooltip must be initialized once the first tooltip is open, that's why we do this inside functionReady()
+                    instance.content().tooltipster({
+                        theme: 'tooltipster-borderless',
+                        content: STD_ACTIONS,
+                        distance: 0,
+                        side: 'bottom',
+                        interactive: true,
+                        trigger: 'click'
+                    });
+                },
+                functionAfter: function (instance, helper) {
+                    this.destroy();
+                }
+            });
+        }
 
         var instances = $.tooltipster.instances($character);
         for (var i = 0; i < instances.length; i++) {
             instances[i].open();
         }
         ACTION_MENU_VISIBLE = true;
+    }
+
+    function pollData() {
+        //update character on server
+        post("game/character", CHARACTER, function(){});
+
+        //get possible quick actions from server if necessary
+        if (!QUICK_ACTIONS_VALID) {
+            getQuickActions();
+            QUICK_ACTIONS_VALID = true;
+        }
+
+        //get possible standard actions from server if necessary
+        if (!STD_ACTIONS_VALID) {
+            getStandardActions();
+            STD_ACTIONS_VALID = true;
+        }
+    }
+
+    function startPolling() {
+        if (POLLING_ACTIVE) {
+            return;
+        }
+        POLLING_INTERVAL = setInterval(function () {
+            pollData();
+        }, 2000);
+        POLLING_ACTIVE = true;
+    }
+
+    function endPolling() {
+        clearInterval(POLLING_INTERVAL);
+    }
+
+    //called whenever the character moves or something on the board changes
+    function invalidateActionLists() {
+        QUICK_ACTIONS_VALID = false;
+        STD_ACTIONS_VALID = false;
     }
 
     function clearActiveTooltipsters() {
@@ -285,227 +374,29 @@
     }
 
     function getStandardActions() {
-        var actionContainer = document.createElement("div");
-        var action1 = document.createElement("p");
-        var action2 = document.createElement("p");
-
-        action1.innerText = "Attack";
-        action2.innerText = "Pass";
-        actionContainer.appendChild(action1);
-        actionContainer.appendChild(action2);
-        action1.classList.add("action");
-        action2.classList.add("action");
-        actionContainer.classList.add("action_list");
-        return actionContainer;
+        post("/game/standardActions", CHARACTER, function (data, status) {
+            STD_ACTIONS = handleActions(data);
+        });
     }
 
     function getQuickActions() {
+        post("/game/quickActions", CHARACTER, function(data, status) {
+            QUICK_ACTIONS = handleActions(data);
+        });
+    }
+
+    function handleActions(data) {
         var actionContainer = document.createElement("div");
-        var action1 = document.createElement("p");
-        var action2 = document.createElement("p");
-
-        action1.innerText = "Equip Item";
-        action2.innerText = "Search Body";
-        actionContainer.appendChild(action1);
-        actionContainer.appendChild(action2);
-        action1.classList.add("action");
-        action2.classList.add("action");
+        actionContainer.id = "quick_action_list";
         actionContainer.classList.add("action_list");
+        for (var i = 0; i < data.length; i++) {
+            var action = document.createElement("p");
+            action.innerText = data[i];
+            action.classList.add("action");
+            actionContainer.appendChild(action);
+        }
+        // document.getElementById("board_container").appendChild(actionContainer);
         return actionContainer;
-    }
-
-    document.addEventListener('keydown', function(event) {
-        hidePossibleMovements();
-        //left
-        if (event.keyCode === 37) {
-            moveCharacter("left");
-        }
-        //up
-        if (event.keyCode === 38) {
-            moveCharacter("up");
-        }
-        //right
-        if (event.keyCode === 39) {
-            moveCharacter("right");
-        }
-        //down
-        if (event.keyCode === 40) {
-            moveCharacter("down");
-        }
-    });
-
-    document.addEventListener('keyup', function(event) {
-        //left
-        if (event.keyCode === 37) {
-            arrow_button_up("left");
-        }
-        //up
-        if (event.keyCode === 38) {
-            arrow_button_up("up");
-        }
-        //right
-        if (event.keyCode === 39) {
-            arrow_button_up("right");
-        }
-        //down
-        if (event.keyCode === 40) {
-            arrow_button_up("down");
-        }
-
-    });
-
-    function getViewHeight(input) {
-        var split = input.split('px');
-        var pixels = split[0];
-
-        return pixelsToViewHeight(pixels);
-    }
-
-    function pixelsToViewHeight(pixels) {
-        return parseFloat((pixels/ $(window).height()) / 0.01);
-    }
-
-    function canMoveLeft() {
-        if (!checkObstacles(CHAR_X-1, CHAR_Y) || !checkEnemies(CHAR_X-1, CHAR_Y))
-            return false;
-        if (!movementSpeedRemaining(CHAR_X-1, CHAR_Y))
-            return false;
-        if (CHAR_X === -6)
-            return false;
-        if (CHAR_X === -5 && Math.abs(CHAR_Y) === 4)
-            return false;
-        if (CHAR_X === -4 && Math.abs(CHAR_Y) === 5)
-            return false;
-        if (CHAR_X === -3 && Math.abs(CHAR_Y) === 6)
-            return false;
-        return true;
-    }
-
-    function canMoveRight() {
-        if (!checkObstacles(CHAR_X+1, CHAR_Y) || !checkEnemies(CHAR_X+1, CHAR_Y))
-            return false;
-        if (!movementSpeedRemaining(CHAR_X+1, CHAR_Y))
-            return false;
-        if (CHAR_X === 6)
-            return false;
-        if (CHAR_X === 5 && Math.abs(CHAR_Y) === 4)
-            return false;
-        if (CHAR_X === 4 && Math.abs(CHAR_Y) === 5)
-            return false;
-        if (CHAR_X === 3 && Math.abs(CHAR_Y) === 6)
-            return false;
-        return true;
-    }
-
-    function canMoveUp() {
-        if (!checkObstacles(CHAR_X, CHAR_Y+1) || !checkEnemies(CHAR_X, CHAR_Y+1))
-            return false;
-        if (!movementSpeedRemaining(CHAR_X, CHAR_Y+1))
-            return false;
-        if (CHAR_Y === 6)
-            return false;
-        if (CHAR_Y === 5 && Math.abs(CHAR_X) === 4)
-            return false;
-        if (CHAR_Y === 4 && Math.abs(CHAR_X) === 5)
-            return false;
-        if (CHAR_Y === 3 && Math.abs(CHAR_X) === 6)
-            return false;
-        return true;
-    }
-
-    function canMoveDown() {
-        if (!checkObstacles(CHAR_X, CHAR_Y-1) || !checkEnemies(CHAR_X, CHAR_Y-1))
-            return false;
-        if (!movementSpeedRemaining(CHAR_X, CHAR_Y-1))
-            return false;
-        if (CHAR_Y === -6)
-            return false;
-        if (CHAR_Y === -5 && Math.abs(CHAR_X) === 4)
-            return false;
-        if (CHAR_Y === -4 && Math.abs(CHAR_X) === 5)
-            return false;
-        if (CHAR_Y === -3 && Math.abs(CHAR_X) === 6)
-            return false;
-        return true;
-    }
-
-    function movementSpeedRemaining(possible_x, possible_y) {
-        var vert = Math.abs(possible_y - START_Y);
-        var hor = Math.abs(possible_x - START_X);
-        return ((vert+hor) <= MOVEMENT);
-    }
-
-    function movementSpeedRemainingPlusOne(possible_x, possible_y) {
-        var vert = Math.abs(possible_y - START_Y);
-        var hor = Math.abs(possible_x - START_X);
-        return ((vert+hor) <= MOVEMENT+1);
-    }
-
-    function movementRemaining() {
-        var vert = Math.abs(CHAR_Y - START_Y);
-        var hor = Math.abs(CHAR_X - START_X);
-        return MOVEMENT - (vert+hor);
-    }
-
-    function moveCharacter(direction) {
-        // var char_icon = document.getElementById("character_icon"),
-        //     style = window.getComputedStyle(char_icon);
-
-        // var current_left = getViewHeight(style.getPropertyValue('left'));
-        // var current_top = getViewHeight(style.getPropertyValue('top'));
-
-        switch (direction) {
-            case "left":
-                if (!canMoveLeft()) {
-                    return;
-                }
-                CHAR_X--;
-                break;
-            case "up":
-                if (!canMoveUp()) {
-                    return;
-                }
-                CHAR_Y++;
-                break;
-            case "right":
-                if (!canMoveRight()) {
-                    return;
-                }
-                CHAR_X++;
-                break;
-            case "down":
-                if (!canMoveDown()) {
-                    return;
-                }
-                CHAR_Y--;
-                break;
-        }
-        placeCharacter(CHAR_X, CHAR_Y);
-        clearActiveTooltipsters();
-        arrow_button_down(direction);
-        updateMovementRemaining();
-    }
-
-    function arrow_button_down(direction) {
-        var arrow_button = document.getElementById(direction + "_arrow");
-        arrow_button.src = "img/" + direction + "_button_pressed.jpg";
-    }
-
-    function arrow_button_up(direction) {
-        var arrow_button = document.getElementById(direction + "_arrow");
-        arrow_button.src = "img/" + direction + "_button.jpg";
-    }
-
-    function arrow_clicked(direction) {
-        if (CLICK_TO_MOVE) {
-            hidePossibleMovements();
-            CLICK_TO_MOVE = false;
-        }
-        moveCharacter(direction);
-    }
-
-    function arrow_released(direction) {
-        arrow_button_up(direction);
     }
 
     function getViewPortPositionLeft(x) {
@@ -516,8 +407,8 @@
         return 46.94 - (VERTICAL_INCREASE * y);
     }
 
-    function placeCharacter(x, y) {
-        if (!checkObstacles(x, y) || !checkEnemies(x, y)) {
+    function moveCharacter(x, y) {
+        if (!checkObstacles(x, y)) {
             return false;
         }
         var char_icon = document.getElementById("character_icon");
@@ -525,21 +416,66 @@
         char_icon.style.top = (parseFloat(getViewPortPositionTop(y))) + "vh";
         CHAR_X = x;
         CHAR_Y = y;
+
+        actionUsed("movement");
+        invalidateActionLists();
         return true;
     }
 
+    function actionUsed(type) {
+        switch(type) {
+            case "movement":
+                movementUsed();
+                break;
+            case "quick":
+                quickUsed();
+                break;
+            case "standard":
+                standardUsed();
+        }
+        document.getElementById(type).style.color = "gray";
+        pollData();
+    }
 
-    function getBoardSpaces() {
-        $.get("game/board/spaces", function (data, status) {
+    function movementUsed() {
+        //update character position
+        CHARACTER.characterPosition.x = CHAR_X;
+        CHARACTER.characterPosition.y = CHAR_Y;
 
+        MOVE_USED = true;
+        activateActionsOptionsTooltipster();
+    }
+
+    function quickUsed() {
+        QUICK_USED = true;
+    }
+
+    function standardUsed() {
+        STD_USED = true;
+    }
+
+    //create box overlay images and get character movement tree
+    $(document).ready(function() {
+        updateBoard();
+        queryCharacter();
+        queryPossibleMoves(false);
+        queryBlockedMoves(false);
+        startPolling();
+        setupTimers();
+    });
+
+    function queryCharacter() {
+        $.get("game/character", function (data, status) {
+            CHARACTER = data;
+            pollData();
         });
     }
 
-    //create box overlay images
-    $(document).ready(function() {
+    function updateBoard() {
         var container = document.getElementById("box_overlays_container");
 
         $.get("game/board/spaces", function (data, status) {
+            BOARD = data;
             for (var i = 0; i < data.length; i++) {
                 var x, y, space;
                 space = data[i];
@@ -561,7 +497,7 @@
                 container.appendChild(div);
             }
         });
-    });
+    }
 
     function setSquareColor(spaceInfo, img) {
         switch (spaceInfo) {
@@ -580,92 +516,72 @@
         }
     }
 
-    function showPossibleMovements() {
+    function showMovementTree() {
+        clearActiveTooltipsters();
+        if (CHAR_POSSIBLE_MOVES.length === 0) {
+            queryPossibleMoves(true);
+        }
+        else {
+            updatePossibleMoves(CHAR_POSSIBLE_MOVES);
+        }
+
+        if (CHAR_BLOCKED_MOVES.length === 0) {
+            queryBlockedMoves(true);
+        }
+        else {
+            updateBlockedMoves(CHAR_BLOCKED_MOVES);
+        }
+    }
+
+    function queryPossibleMoves(update) {
         $.get("move/possible", function (data, status) {
-            for (var i = 0; i < data.length; i++) {
-                var x, y, space;
-                space = data[i];
-                x = space.x;
-                y = space.y;
-
-                var box = document.getElementById(x + "," + y);
-                box.classList.remove("hidden");
-            }
-            CLICK_TO_MOVE = true;
+            CHAR_POSSIBLE_MOVES = data;
+            if (update)
+                updatePossibleMoves(data);
         });
+    }
 
+    function queryBlockedMoves(update) {
         $.get("move/blocked", function (data, status) {
-            for (var i = 0; i < data.length; i++) {
-                var x, y, space;
-                space = data[i];
-                x = space.x;
-                y = space.y;
-
-                var box = document.getElementById(x + "," + y);
-                box.classList.remove("hidden");
-            }
+            CHAR_BLOCKED_MOVES = data;
+            if (update)
+                updateBlockedMoves(data);
         });
+    }
 
-            // for (var i = -6; i <= 6; i++) {
-            // for (var j = -6; j <= 6; j++) {
-            //     if (Math.abs(i) + Math.abs(j) > 9) {
-            //         continue;
-            //     }
-            //     if (i === CHAR_X && j === CHAR_Y) {
-            //         continue;
-            //     }
-            //     if (movementSpeedRemaining(i, j)) {
-            //         var box = document.getElementById(i + "," + j);
-            //         box.classList.remove("hidden");
-            //         var img = document.getElementById("img" + i + "," + j);
-            //         if (!checkObstacles(i, j)) {
-            //             img.src = "img/gray_square.jpg";
-            //         }
-            //         else if (!checkEnemies(i, j)) {
-            //             img.src = "img/red_square.jpg";
-            //         }
-            //         else {
-            //             img.src = "img/blue_square.jpg";
-            //         }
-            //     }
-            //     if (movementSpeedRemainingPlusOne(i, j)) {
-            //         if (!checkEnemies(i, j)) {
-            //             var box2 = document.getElementById(i + "," + j);
-            //             box2.classList.remove("hidden");
-            //             var img2 = document.getElementById("img" + i + "," + j);
-            //             img2.src = "img/red_square.jpg";
-            //         }
-            //     }
-            // }
-        // }
+    function updatePossibleMoves(data) {
+        for (var i = 0; i < data.length; i++) {
+            var x, y, space;
+            space = data[i];
+            x = space.x;
+            y = space.y;
+
+            var box = document.getElementById(x + "," + y);
+            box.classList.remove("hidden");
+        }
+        CLICK_TO_MOVE = true;
+    }
+
+    function updateBlockedMoves(data) {
+        for (var i = 0; i < data.length; i++) {
+            var x, y, space;
+            space = data[i];
+            x = space.x;
+            y = space.y;
+
+            var box = document.getElementById(x + "," + y);
+            box.classList.remove("hidden");
+        }
     }
 
     function checkObstacles(x, y) {
-        for (i = 0; i < OFF_LIMIT_SQUARES.length; i++) {
-            var square = OFF_LIMIT_SQUARES[i];
+        for (i = 0; i < CHAR_BLOCKED_MOVES.length; i++) {
+            var square = CHAR_BLOCKED_MOVES[i];
             if (square.x === x && square.y === y) {
                 return false;
             }
         }
         return true;
-    }
-
-    function checkEnemies(x, y) {
-        for (var i = 0; i < ENEMIES.length; i++) {
-            var enemy = ENEMIES[i];
-            if (enemy.position.x === x && enemy.position.y === y) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    function clearBoxColor(img) {
-        img.classList.remove("red");
-        img.classList.remove("blue");
-        img.classList.remove("green");
-        img.classList.remove("purple");
-        img.classList.remove("gray");
     }
 
     function hidePossibleMovements() {
@@ -676,7 +592,7 @@
                 }
                 var box = document.getElementById(i + "," + j);
                 box.classList.add("hidden");
-                clearBoxColor(document.getElementById("img" + i + "," + j));
+                // clearBoxColor(document.getElementById("img" + i + "," + j));
             }
         }
         CLICK_TO_MOVE = false;
@@ -686,25 +602,45 @@
         if (!CLICK_TO_MOVE) {
             return;
         }
-        if (!placeCharacter(x, y)) {
+        if (!moveCharacter(x, y)) {
             return;
         }
         CHAR_X = x;
         CHAR_Y = y;
         hidePossibleMovements();
-        updateMovementRemaining();
-    }
-
-    function updateMovementRemaining() {
-        document.getElementById("movement_remaining").innerText = movementRemaining();
     }
 
     function endTurn() {
-        //TODO: send info to back end
-        START_X = CHAR_X;
-        START_Y = CHAR_Y;
-        MOVEMENT = BASE_MOVEMENT;
-        updateMovementRemaining();
+        endPolling();
+        resetVariables();
+        post("game/endTurn", CHARACTER, function(data, status){
+            startPolling();
+        });
+    }
+
+    function resetVariables() {
+        //reset movement tree to force update from server
+        CHAR_POSSIBLE_MOVES = [];
+        CHAR_BLOCKED_MOVES = [];
+
+        //reset actions
+        MOVE_USED = false;
+        QUICK_USED = false;
+        STD_USED = false;
+        document.getElementById("movement").style.color = "yellow";
+        document.getElementById("quick").style.color = "yellow";
+        document.getElementById("standard").style.color = "yellow";
+    }
+
+    function post(url, body, callback) {
+        $.ajax({
+            url:url,
+            type:"POST",
+            data:JSON.stringify(body),
+            contentType:"application/json; charset=utf-8",
+            dataType:"json",
+            success: callback
+        });
     }
 
 </script>
@@ -716,9 +652,10 @@
             <img src="img/char_icon.jpg" style="width:6.85vh; height:6.85vh;">
         </div>
         <div id="actions_status" class="body_font">
-            <span>Mov: <span id="movement_remaining">6</span></span><br>
-            <span>Quick: <span id="quick_action_description">unused</span></span><br>
-            <span>Std: <span id="std_action_description">unused</span></span><br>
+            <span><b><u>Available Actions</u></b></span><br>
+            <span id="movement">Movement</span><br>
+            <span id="quick">Quick</span><br>
+            <span id="standard">Standard</span><br>
         </div>
         <div id="end_turn_container">
             <button id="end_turn_button" onclick="endTurn()">End Turn</button>
@@ -742,9 +679,10 @@
     <div id="character_info" style="display: inline-flex;">
         <img src="img/char_border2.png" style="width:10vh;height:13vh;">
         <div id="char_name_container" class="header_font" style="margin-left:1vh;">
-            <span id="char_name" style="font-size: 16pt;">New Character</span><br>
-            <span id="player_name">Player Name</span><br><br>
-            <span id="race_class">Race - Class</span>
+            <span id="char_name" style="font-size: 2.7vh;">New Character</span><br>
+            <span id="player_name" style="font-size: 2.2vh">Player Name</span>
+            <div style="height:3vh;"></div>
+            <span id="race_class" style="font-size: 2.2vh">Race - Class</span>
         </div>
     </div>
     <div id="abilities_container" class="body_font" style="padding-left: 1vh;display: grid;">
@@ -754,7 +692,7 @@
         <img id="experience" src="img/exp_bar_fill.png">
         <span id="end_overlay">Endurance</span>
         <span id="exp_overlay">Level: <span id="char_level">1</span></span>
-        <div style="position: absolute; left:2vh; top:22vh;">
+        <div style="position: absolute; left:2vh; top:22vh;font-size: 2.2vh">
             <div class="ability_score"><span>S: </span><span id="ability_s">10 (+0)</span></div>
             <div class="ability_score"><span>Q: </span><span id="ability_q">10 (+0)</span></div>
             <div class="ability_score"><span>I: </span><span id="ability_i">10 (+0)</span></div>

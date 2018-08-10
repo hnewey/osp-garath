@@ -9,7 +9,9 @@ public class Stat {
     private Integer rollModifier;
     private Map<String, Integer> modifiers = new HashMap<>();
 
-    public Stat(Integer value) {
+    public Stat(){}
+
+    Stat(Integer value) {
         this.value = value;
         this.rollModifier = calcRollModifier(this.value);
     }

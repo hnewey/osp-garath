@@ -1,29 +1,21 @@
-package net.castleadventure.ospgarath.model.character.race;
+package net.castleadventure.ospgarath.model.character;
 
 import net.castleadventure.ospgarath.game.Board;
 import net.castleadventure.ospgarath.game.SpaceInfo;
-import net.castleadventure.ospgarath.model.character.Space;
+import net.castleadventure.ospgarath.game.Space;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MovementManager {
 
-    private static MovementManager instance;
     private List<Space> possibleMovements;
     private List<Space> blockedMovements;
     private Space startingPosition;
     private Board board;
 
-    private MovementManager() {
+    public MovementManager() {
         this.board = Board.getInstance();
-    }
-
-    public static MovementManager getInstance() {
-        if (instance == null) {
-            instance = new MovementManager();
-        }
-        return instance;
     }
 
     public List<Space> possibleMovements(Space startingPosition, int movementSpeed) {
@@ -71,9 +63,6 @@ public class MovementManager {
                 blockedMovements.add(position);
             }
             return false; //don't traverse routes blocked by obstacles or other characters
-        }
-        if (position.equals(this.startingPosition)) {
-            return false; //don't include starting position as a viable movement
         }
         if (!possibleMovements.contains(position)) {
             possibleMovements.add(position);

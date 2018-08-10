@@ -73,6 +73,12 @@ public class StatResolverTest {
         assert(possibleClasses.contains("LIQS"));
     }
     @Test
+    public void fourEqualStatsLoadTest() {
+        for (int i = 0; i < 500000; i++) {
+            fourEqualStatsTest();
+        }
+    }
+    @Test
     public void twoEqualStatsAtBottomTest() {
         StatResolver.setStatMapping(10, 8, 6, 6);
         List<String> possibleClasses = StatResolver.generatePossibleClasses();

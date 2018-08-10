@@ -2,10 +2,10 @@ package net.castleadventure.ospgarath.model.character;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import net.castleadventure.ospgarath.game.Dice;
+import net.castleadventure.ospgarath.game.Space;
 import net.castleadventure.ospgarath.model.ability.power.Power;
 import net.castleadventure.ospgarath.model.ability.power.PowerManager;
 import net.castleadventure.ospgarath.model.character.condition.*;
-import net.castleadventure.ospgarath.model.character.race.MovementManager;
 import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
@@ -45,13 +45,15 @@ public class Character {
     private List<Space> blockedMovements;
     private Space characterPosition;
 
+    private MovementManager movementManager = new MovementManager();
+
     @JsonIgnore
     private PlayerEquippedItems playerEquippedItems;
     @JsonIgnore
     private PlayerInventory playerInventory;
 
-    private List<PositiveCondition> positiveConditions;
-    private List<NegativeCondition> negativeConditions;
+    private List<PositiveCondition> positiveConditions = new ArrayList<>();
+    private List<NegativeCondition> negativeConditions = new ArrayList<>();
 
     public Character() {
         damageTaken = 0;
@@ -123,17 +125,16 @@ public class Character {
         }
     }
 
-    public void endTurn(Space newCharacterPosition) {
+    public void endTurn() {
         for (NegativeCondition condition : negativeConditions) {
             condition.endTurn();
         }
-        this.characterPosition = newCharacterPosition;
         updatePossibleMovements();
     }
 
     private void updatePossibleMovements() {
-        this.possibleMovements = MovementManager.getInstance().possibleMovements(this.characterPosition, this.movement);
-        this.blockedMovements = MovementManager.getInstance().blockedMovements();
+        this.possibleMovements = movementManager.possibleMovements(this.characterPosition, this.movement);
+        this.blockedMovements = movementManager.blockedMovements();
     }
 
     public void sustainCondition(Integer index) {
@@ -216,6 +217,14 @@ public class Character {
             return 1;
         else
             return 0;
+    }
+
+    public List<String> getQuickActions() {
+        return ActionManager.getQuickActions(this.characterPosition);
+    }
+
+    public List<String> getStandardActions() {
+        return ActionManager.getStandardActions(this.characterPosition);
     }
 
 

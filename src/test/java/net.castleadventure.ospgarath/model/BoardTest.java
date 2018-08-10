@@ -1,7 +1,7 @@
 package net.castleadventure.ospgarath.model;
 
 import net.castleadventure.ospgarath.game.Board;
-import net.castleadventure.ospgarath.model.character.Space;
+import net.castleadventure.ospgarath.game.Space;
 import org.junit.Test;
 
 public class BoardTest {

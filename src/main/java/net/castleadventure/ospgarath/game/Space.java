@@ -1,6 +1,4 @@
-package net.castleadventure.ospgarath.model.character;
-
-import net.castleadventure.ospgarath.game.SpaceInfo;
+package net.castleadventure.ospgarath.game;
 
 public class Space {
 

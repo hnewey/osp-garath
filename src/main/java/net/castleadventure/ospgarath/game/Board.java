@@ -1,7 +1,5 @@
 package net.castleadventure.ospgarath.game;
 
-import net.castleadventure.ospgarath.model.character.Space;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +25,27 @@ public class Board {
 
                 if (x==6 && y==3) {
                     spaces[x][y].setSpaceInfo(SpaceInfo.OCCUPIED);
+                }
+                if (x==2 && y==2) {
+                    spaces[x][y].setSpaceInfo(SpaceInfo.OBSTACLE);
+                }
+                if (x==3 && y==2) {
+                    spaces[x][y].setSpaceInfo(SpaceInfo.OBSTACLE);
+                }
+                if (x==4 && y==2) {
+                    spaces[x][y].setSpaceInfo(SpaceInfo.OBSTACLE);
+                }
+                if (x==7 && y==2) {
+                    spaces[x][y].setSpaceInfo(SpaceInfo.OBSTACLE);
+                }
+                if (x==8 && y==2) {
+                    spaces[x][y].setSpaceInfo(SpaceInfo.OBSTACLE);
+                }
+                if (x==9 && y==2) {
+                    spaces[x][y].setSpaceInfo(SpaceInfo.OBSTACLE);
+                }
+                if (x==10 && y==2) {
+                    spaces[x][y].setSpaceInfo(SpaceInfo.OBSTACLE);
                 }
             }
         }
