@@ -33,8 +33,8 @@ public class GameController {
 
     @RequestMapping (value = "/endTurn", method = RequestMethod.POST)
     public ResponseEntity endTurn(@RequestBody Character character) {
-        character.endTurn();
         GameState.getInstance().setCharacter(character);
+        character.endTurn();
         return ResponseEntity.noContent().build();
     }
 

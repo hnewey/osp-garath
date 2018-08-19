@@ -43,7 +43,7 @@ public class Character {
 
     private List<Space> possibleMovements;
     private List<Space> blockedMovements;
-    private Space characterPosition;
+    private Space position;
 
     private MovementManager movementManager = new MovementManager();
 
@@ -73,7 +73,7 @@ public class Character {
         movement = m;
         defense = q;
 
-        characterPosition = new Space(0, -6);
+        position = new Space(0, -6);
         updatePossibleMovements();
 
         damageTaken = 0;
@@ -129,11 +129,10 @@ public class Character {
         for (NegativeCondition condition : negativeConditions) {
             condition.endTurn();
         }
-        updatePossibleMovements();
     }
 
     private void updatePossibleMovements() {
-        this.possibleMovements = movementManager.possibleMovements(this.characterPosition, this.movement);
+        this.possibleMovements = movementManager.possibleMovements(this.position, this.movement);
         this.blockedMovements = movementManager.blockedMovements();
     }
 
@@ -220,11 +219,11 @@ public class Character {
     }
 
     public List<String> getQuickActions() {
-        return ActionManager.getQuickActions(this.characterPosition);
+        return ActionManager.getQuickActions(this.position);
     }
 
     public List<String> getStandardActions() {
-        return ActionManager.getStandardActions(this.characterPosition);
+        return ActionManager.getStandardActions(this.position);
     }
 
 
@@ -328,15 +327,15 @@ public class Character {
     }
 
     public List<Space> getPossibleMovements() {
-        return possibleMovements;
+        return movementManager.possibleMovements(this.position, this.movement);
     }
 
     public List<Space> getBlockedMovements() {
         return blockedMovements;
     }
 
-    public Space getCharacterPosition() {
-        return characterPosition;
+    public Space getPosition() {
+        return position;
     }
 
     //-----------------------------------------------------------
@@ -425,7 +424,7 @@ public class Character {
         this.possibleMovements = possibleMovements;
     }
 
-    public void setCharacterPosition(Space characterPosition) {
-        this.characterPosition = characterPosition;
+    public void setPosition(Space position) {
+        this.position = position;
     }
 }

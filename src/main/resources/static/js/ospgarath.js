@@ -213,3 +213,19 @@ function arrow_released(direction) {
 function updateMovementRemaining() {
     document.getElementById("movement_remaining").innerText = movementRemaining();
 }
+
+//----------Arrow keys div------------//
+// <div id="movement_arrows">
+//     <table>
+//     <tr>
+//     <td></td>
+//     <td><img id="up_arrow" class="arrows" draggable="false" src="img/up_button.jpg" onmousedown="arrow_clicked('up')" onmouseup="arrow_released('up')"> </td>
+//     <td></td>
+//     </tr>
+//     <tr>
+//     <td><img id="left_arrow" class="arrows" draggable="false" src="img/left_button.jpg" onmousedown="arrow_clicked('left')" onmouseup="arrow_released('left')"></td>
+//     <td><img id="down_arrow" class="arrows" draggable="false" src="img/down_button.jpg" onmousedown="arrow_clicked('down')" onmouseup="arrow_released('down')"></td>
+//     <td><img id="right_arrow" class="arrows" draggable="false" src="img/right_button.jpg" onmousedown="arrow_clicked('right')" onmouseup="arrow_released('right')"></td>
+//     </tr>
+//     </table>
+//</div>

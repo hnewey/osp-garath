@@ -28,9 +28,10 @@ public final class GameState implements Serializable{
 
     private Boolean finalChallengeUnlocked = false;
 
-    private static GameState instance;
+    //eager singleton instantiation
+    private static GameState instance = new GameState();
 
-    private GameState() throws Exception {
+    private GameState() {
         this.difficulty = 0.0f;
         this.floor = 1;
         this.roomNum = 0;
@@ -39,13 +40,6 @@ public final class GameState implements Serializable{
     }
 
     public static GameState getInstance() {
-        if (instance == null) {
-            try {
-                instance = new GameState();
-            } catch (Exception e) {
-                System.err.println("Error getting Game State instance");
-            }
-        }
         return instance;
     }
 

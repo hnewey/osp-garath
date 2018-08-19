@@ -110,6 +110,15 @@
         z-index: 100;
     }
 
+    #enemy_icon {
+        position: absolute;
+        left: 47.2vh;
+        top: 68.27vh;
+        width: 6.85vh;
+        height: 6.5vh;
+        box-shadow: 0 2px 15px 3px black;
+    }
+
     #actions_status {
         position: absolute;
         left: 5.5vh;
@@ -218,6 +227,8 @@
     var TIMEOUT_ID;
     var POLLING_ACTIVE = false;
 
+    var NESTED_TOOLTIPS = [];
+
     function startTimer() {
         TIMEOUT_ID = window.setTimeout(setInactive, TIMEOUT);
         startPolling();
@@ -268,7 +279,10 @@
                         distance: 0,
                         side: 'bottom',
                         interactive: true,
-                        trigger: 'click'
+                        trigger: 'click',
+                        functionReady: function (instance, helper) {
+                            NESTED_TOOLTIPS.push(instance);
+                        }
                     });
                 },
                 functionAfter: function (instance, helper) {
@@ -312,7 +326,10 @@
                         distance: 0,
                         side: 'bottom',
                         interactive: true,
-                        trigger: 'click'
+                        trigger: 'click',
+                        functionReady: function (instance, helper) {
+                            NESTED_TOOLTIPS.push(instance);
+                        }
                     });
                 },
                 functionAfter: function (instance, helper) {
@@ -368,24 +385,41 @@
     function clearActiveTooltipsters() {
         var $character = $('#character_icon');
         var current_instances = $.tooltipster.instances($character);
+
+        for (var i = 0; i < NESTED_TOOLTIPS.length; i++) {
+            NESTED_TOOLTIPS[i].close();
+        }
         for (var j = 0; j < current_instances.length; j++) {
+            // clearNestedTooltipsters($.tooltipster.instances(current_instances[j]));
             current_instances[j].close();
+        }
+        NESTED_TOOLTIPS = [];
+        ACTION_MENU_VISIBLE = false;
+    }
+
+    function clearNestedTooltipsters(instances) {
+        if (instances === null || instances.length === 0) {
+            return;
+        }
+        for (var i = 0; i < instances.length; i++) {
+            clearNestedTooltipsters($.tooltipster.instances(instances[i]));
+            instances[i].close();
         }
     }
 
     function getStandardActions() {
         post("/game/standardActions", CHARACTER, function (data, status) {
-            STD_ACTIONS = handleActions(data);
+            STD_ACTIONS = createActionList(data, "standard");
         });
     }
 
     function getQuickActions() {
         post("/game/quickActions", CHARACTER, function(data, status) {
-            QUICK_ACTIONS = handleActions(data);
+            QUICK_ACTIONS = createActionList(data, "Quick");
         });
     }
 
-    function handleActions(data) {
+    function createActionList(data, type) {
         var actionContainer = document.createElement("div");
         actionContainer.id = "quick_action_list";
         actionContainer.classList.add("action_list");
@@ -393,11 +427,21 @@
             var action = document.createElement("p");
             action.innerText = data[i];
             action.classList.add("action");
+            action.setAttribute("onclick", "handleAction('"+data[i].replace(" ", "")+"', '"+type+"')");
             actionContainer.appendChild(action);
         }
-        // document.getElementById("board_container").appendChild(actionContainer);
         return actionContainer;
     }
+
+    function handleAction(action, type) {
+        clearActiveTooltipsters();
+        actionUsed(type);
+    }
+
+    function equip_item() {
+    }
+
+
 
     function getViewPortPositionLeft(x) {
         return 47.2 + (HORIZONTAL_INCREASE * x);
@@ -423,6 +467,7 @@
     }
 
     function actionUsed(type) {
+        type = type.toLowerCase();
         switch(type) {
             case "movement":
                 movementUsed();
@@ -592,7 +637,6 @@
                 }
                 var box = document.getElementById(i + "," + j);
                 box.classList.add("hidden");
-                // clearBoxColor(document.getElementById("img" + i + "," + j));
             }
         }
         CLICK_TO_MOVE = false;
@@ -616,6 +660,7 @@
         post("game/endTurn", CHARACTER, function(data, status){
             startPolling();
         });
+        ACTION_MENU_VISIBLE = false;
     }
 
     function resetVariables() {
@@ -651,6 +696,9 @@
         <div id="character_icon" onclick="activateActionsOptionsTooltipster()">
             <img src="img/char_icon.jpg" style="width:6.85vh; height:6.85vh;">
         </div>
+        <div id="enemy_icon">
+            <img src="img/enemy_sample.jpg" style="width:6.85vh; height:6.85vh;">
+        </div>
         <div id="actions_status" class="body_font">
             <span><b><u>Available Actions</u></b></span><br>
             <span id="movement">Movement</span><br>
@@ -659,20 +707,6 @@
         </div>
         <div id="end_turn_container">
             <button id="end_turn_button" onclick="endTurn()">End Turn</button>
-        </div>
-        <div id="movement_arrows">
-            <table>
-                <tr>
-                    <td></td>
-                    <td><img id="up_arrow" class="arrows" draggable="false" src="img/up_button.jpg" onmousedown="arrow_clicked('up')" onmouseup="arrow_released('up')"> </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td><img id="left_arrow" class="arrows" draggable="false" src="img/left_button.jpg" onmousedown="arrow_clicked('left')" onmouseup="arrow_released('left')"></td>
-                    <td><img id="down_arrow" class="arrows" draggable="false" src="img/down_button.jpg" onmousedown="arrow_clicked('down')" onmouseup="arrow_released('down')"></td>
-                    <td><img id="right_arrow" class="arrows" draggable="false" src="img/right_button.jpg" onmousedown="arrow_clicked('right')" onmouseup="arrow_released('right')"></td>
-                </tr>
-            </table>
         </div>
         <div id="box_overlays_container"></div>
     </div>
