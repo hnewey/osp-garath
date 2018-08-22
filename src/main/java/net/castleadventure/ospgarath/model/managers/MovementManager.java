@@ -1,4 +1,4 @@
-package net.castleadventure.ospgarath.model.character;
+package net.castleadventure.ospgarath.model.managers;
 
 import net.castleadventure.ospgarath.game.Board;
 import net.castleadventure.ospgarath.game.SpaceInfo;
@@ -9,8 +9,12 @@ import java.util.List;
 
 public class MovementManager {
 
-    private List<Space> possibleMovements;
-    private List<Space> blockedMovements;
+    //Character information
+    private Space characterPosition;
+
+
+    private List<Space> possibleMovements = new ArrayList<>();
+    private List<Space> blockedMovements = new ArrayList<>();
     private Space startingPosition;
     private Board board;
 
@@ -26,6 +30,8 @@ public class MovementManager {
         return this.possibleMovements;
     }
 
+    //blocked movements only make sense in the context of possibleMovements
+    // so this is only refreshed when possible movements is refreshed
     public List<Space> blockedMovements() {
         return this.blockedMovements;
     }

@@ -66,7 +66,7 @@
         height: 3vh;
     }
 
-    #health {
+    #endurance {
         position: absolute;
         left: 2.45vh;
         top: 15vh;
@@ -102,8 +102,8 @@
 
     #character_icon {
         position: absolute;
-        left: 47.2vh;
-        top: 89.6vh;
+        /*left: 47.2vh;*/
+        /*top: 89.6vh;*/
         width: 6.85vh;
         height: 6.5vh;
         box-shadow: 0 2px 15px 3px black;
@@ -200,6 +200,8 @@
     var HORIZONTAL_INCREASE = 7.15;
     var CHAR_X = 0;
     var CHAR_Y = -6;
+
+    var GAME_STATE;
 
     var ACTION_MENU_VISIBLE = false;
     var CLICK_TO_MOVE = false;
@@ -345,35 +347,18 @@
         ACTION_MENU_VISIBLE = true;
     }
 
-    function pollData() {
-        //update character on server
-        post("game/character", CHARACTER, function(){});
-
-        //get possible quick actions from server if necessary
-        if (!QUICK_ACTIONS_VALID) {
-            getQuickActions();
-            QUICK_ACTIONS_VALID = true;
-        }
-
-        //get possible standard actions from server if necessary
-        if (!STD_ACTIONS_VALID) {
-            getStandardActions();
-            STD_ACTIONS_VALID = true;
-        }
-    }
-
     function startPolling() {
-        if (POLLING_ACTIVE) {
-            return;
-        }
-        POLLING_INTERVAL = setInterval(function () {
-            pollData();
-        }, 2000);
-        POLLING_ACTIVE = true;
+        // if (POLLING_ACTIVE) {
+        //     return;
+        // }
+        // POLLING_INTERVAL = setInterval(function () {
+        //     pollData();
+        // }, 2000);
+        // POLLING_ACTIVE = true;
     }
 
     function endPolling() {
-        clearInterval(POLLING_INTERVAL);
+        // clearInterval(POLLING_INTERVAL);
     }
 
     //called whenever the character moves or something on the board changes
@@ -451,6 +436,7 @@
         return 46.94 - (VERTICAL_INCREASE * y);
     }
 
+    //use a character's movement to move to a space
     function moveCharacter(x, y) {
         if (!checkObstacles(x, y)) {
             return false;
@@ -464,6 +450,18 @@
         actionUsed("movement");
         invalidateActionLists();
         return true;
+    }
+
+    //directly place the character's icon on a space without using their movement
+    function placeCharacter(x, y) {
+        if (!checkObstacles(x, y)) {
+            return false;
+        }
+        var char_icon = document.getElementById("character_icon");
+        char_icon.style.left = (parseFloat(getViewPortPositionLeft(x))) + "vh";
+        char_icon.style.top = (parseFloat(getViewPortPositionTop(y))) + "vh";
+        CHAR_X = x;
+        CHAR_Y = y;
     }
 
     function actionUsed(type) {
@@ -484,11 +482,14 @@
 
     function movementUsed() {
         //update character position
-        CHARACTER.characterPosition.x = CHAR_X;
-        CHARACTER.characterPosition.y = CHAR_Y;
+        CHARACTER.position.x = CHAR_X;
+        CHARACTER.position.y = CHAR_Y;
 
         MOVE_USED = true;
-        activateActionsOptionsTooltipster();
+        var position = {x: CHAR_X, y: CHAR_Y};
+        post("game/move", position, function(data, status) {
+            activateActionsOptionsTooltipster();
+        });
     }
 
     function quickUsed() {
@@ -499,15 +500,106 @@
         STD_USED = true;
     }
 
+    function pollData() {
+        //update character on server
+        // post("game/character", CHARACTER, function(){});
+
+        //get possible quick actions from server if necessary
+        if (!QUICK_ACTIONS_VALID) {
+            getQuickActions();
+            QUICK_ACTIONS_VALID = true;
+        }
+
+        //get possible standard actions from server if necessary
+        if (!STD_ACTIONS_VALID) {
+            getStandardActions();
+            STD_ACTIONS_VALID = true;
+        }
+    }
+
     //create box overlay images and get character movement tree
     $(document).ready(function() {
-        updateBoard();
-        queryCharacter();
-        queryPossibleMoves(false);
-        queryBlockedMoves(false);
-        startPolling();
-        setupTimers();
+        createBoard();
+        getState();
+        // queryCharacter();
+        // queryPossibleMoves(false);
+        // queryBlockedMoves(false);
+        // startPolling();
+        // setupTimers();
     });
+
+    function getState() {
+        $.get("game/state", function(data, status) {
+            GAME_STATE = data;
+            readState();
+            //TODO: start polling
+        });
+    }
+
+    function readState() {
+        //TODO: detect changes. Most animations come on changes (enemy defeated, char moved, new negative condition, etc)
+        readCharacterState(GAME_STATE.character);
+        //TODO: read enemy states, objects, room info, etc
+    }
+
+    function readCharacterState(state) {
+        CHARACTER = state;
+        //TODO: add animation moving character from previous position to new position
+        placeCharacter(state.position.x, state.position.y);
+
+        QUICK_ACTIONS = createActionList(state.quickActions, "Quick");
+        STD_ACTIONS = createActionList(state.standardActions, "Standard");
+
+        CHAR_POSSIBLE_MOVES = state.possibleMovements;
+        CHAR_BLOCKED_MOVES = state.blockedMovements;
+
+        setAllCharacterData(state); //TODO: optimize so it's only read once
+
+    }
+
+    function setAllCharacterData(state) {
+        setCharacterInfo(state);
+        setCharacterAttributes(state);
+        setCharacterHealthbar(state);
+        setCharacterExperience(state);
+    }
+
+    function setCharacterInfo(state) {
+        document.getElementById("race_class").innerText = state.characterRace + " - " + state.characterClass;
+        document.getElementById("char_name").innerText = state.name;
+        document.getElementById("player_name").innerText = state.playerName;
+
+        //TODO: show positive/negative conditions on character
+    }
+
+    function setCharacterAttributes(state) {
+        var s = state.strength.value;
+        var q = state.quickness.value;
+        var i = state.intelligence.value;
+        var l = state.leadership.value;
+
+        var s_mod = state.strength.rollModifier;
+        var q_mod = state.quickness.rollModifier;
+        var i_mod = state.intelligence.rollModifier;
+        var l_mod = state.leadership.rollModifier;
+
+        document.getElementById("ability_s").innerText = s + " (" + (s_mod > 0 ? "+":"-") + s_mod + ")";
+        document.getElementById("ability_q").innerText = q + " (" + (q_mod > 0 ? "+":"-") + q_mod + ")";
+        document.getElementById("ability_i").innerText = i + " (" + (i_mod > 0 ? "+":"-") + i_mod + ")";
+        document.getElementById("ability_l").innerText = l + " (" + (l_mod > 0 ? "+":"-") + l_mod + ")";
+    }
+
+    function setCharacterHealthbar(state) {
+        fillHealthBar(state.endurance, state.damageTaken);
+    }
+
+    function setCharacterExperience(state) {
+        //TODO: fillExpBar(state.lvl, state.experience);
+    }
+
+    function fillHealthBar(end, damage) {
+
+    }
 
     function queryCharacter() {
         $.get("game/character", function (data, status) {
@@ -516,7 +608,7 @@
         });
     }
 
-    function updateBoard() {
+    function createBoard() {
         var container = document.getElementById("box_overlays_container");
 
         $.get("game/board/spaces", function (data, status) {
@@ -654,11 +746,17 @@
         hidePossibleMovements();
     }
 
+    function startTurn() {
+        //auto-roll for sustaining conditions
+    }
+
     function endTurn() {
         endPolling();
         resetVariables();
         post("game/endTurn", CHARACTER, function(data, status){
             startPolling();
+            //move npc's
+            startTurn();
         });
         ACTION_MENU_VISIBLE = false;
     }
@@ -722,7 +820,7 @@
     <div id="abilities_container" class="body_font" style="padding-left: 1vh;display: grid;">
         <img src="img/health_bar.png" class="attribute_bar" style="left:2vh; top:14.6vh;">
         <img src="img/health_bar.png" class="attribute_bar" style="left:2vh; top:17.9vh;">
-        <img id="health" src="img/health_bar_fill.png">
+        <img id="endurance" src="img/health_bar_fill.png">
         <img id="experience" src="img/exp_bar_fill.png">
         <span id="end_overlay">Endurance</span>
         <span id="exp_overlay">Level: <span id="char_level">1</span></span>

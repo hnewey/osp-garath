@@ -13,18 +13,18 @@ public class GameRunner {
     public static void start() throws IOException {
         gameRunner = new GameRunner();
         GameState gameState = GameState.getInstance();
+        gameState.printState();
+        gameState.printRoomInfo();
 
-        while(true) {
-            gameState.printState();
-            gameState.printRoomInfo();
-
-            Integer nextRoom = Integer.valueOf(gameState.getInput());
-            if (nextRoom == 0) {
-                gameState.enterPreviousRoom();
-            }
-            else {
-                gameState.enterNextRoom(nextRoom - 1);
-            }
-        }
+//        while(true) {
+//
+//            Integer nextRoom = Integer.valueOf(gameState.getInput());
+//            if (nextRoom == 0) {
+//                gameState.enterPreviousRoom();
+//            }
+//            else {
+//                gameState.enterNextRoom(nextRoom - 1);
+//            }
+//        }
     }
 }
