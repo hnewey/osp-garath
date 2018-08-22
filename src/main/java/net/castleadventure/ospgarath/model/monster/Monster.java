@@ -1,10 +1,15 @@
 package net.castleadventure.ospgarath.model.monster;
 
+import net.castleadventure.ospgarath.game.Space;
 import net.castleadventure.ospgarath.model.ability.power.Power;
+import net.castleadventure.ospgarath.model.managers.MovementManager;
+import net.castleadventure.ospgarath.model.character.condition.NegativeCondition;
+import net.castleadventure.ospgarath.model.character.condition.PositiveCondition;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.Item;
 import net.castleadventure.ospgarath.game.GameState;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -34,10 +39,30 @@ public abstract class Monster {
     protected List<Item> equippedItems;
     protected List<Item> inventory;
 
+    protected List<NegativeCondition> negativeConditions = new ArrayList<>();
+    protected List<PositiveCondition> positiveConditions = new ArrayList<>();
+
+    protected Space position;
+    protected MovementManager movementManager;
+
     protected GameState gameState;
 
     public Monster() {
         gameState = GameState.getInstance();
+        movementManager = new MovementManager();
+    }
+
+    public void startTurn() {
+        //TODO: Here's where the magical AI will work
+
+        //for now, they just end their turn immediately
+        endTurn();
+    }
+
+    public void endTurn() {
+        for (NegativeCondition condition : negativeConditions) {
+            condition.endTurn();
+        }
     }
 
     protected void copyStats(Monster monsterToCopy) {
@@ -82,6 +107,14 @@ public abstract class Monster {
 
     public int getEndurance() {
         return endurance;
+    }
+
+    public Space getPosition() {
+        return position;
+    }
+
+    public void setPosition(Space position) {
+        this.position = position;
     }
 
     @Override

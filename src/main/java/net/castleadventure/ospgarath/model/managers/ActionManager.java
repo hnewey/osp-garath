@@ -1,4 +1,4 @@
-package net.castleadventure.ospgarath.model.character;
+package net.castleadventure.ospgarath.model.managers;
 
 import net.castleadventure.ospgarath.game.Space;
 import net.castleadventure.ospgarath.model.action.QuickAction;

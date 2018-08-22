@@ -1,5 +1,7 @@
 package net.castleadventure.ospgarath.model.character.race;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public enum Race {
         this.description = description;
     }
 
+    @JsonValue
     public String getRace() {
         return race;
     }
@@ -64,5 +67,10 @@ public enum Race {
             }
         }
         throw new IllegalArgumentException();
+    }
+
+    @Override
+    public String toString() {
+        return this.race;
     }
 }

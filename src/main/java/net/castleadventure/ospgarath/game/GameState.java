@@ -2,6 +2,7 @@ package net.castleadventure.ospgarath.game;
 
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
 import net.castleadventure.ospgarath.model.item.PlayerInventory;
+import net.castleadventure.ospgarath.model.monster.Monster;
 import net.castleadventure.ospgarath.model.room.Room;
 import net.castleadventure.ospgarath.model.room.TowerIntro;
 import net.castleadventure.ospgarath.model.character.Character;
@@ -22,6 +23,7 @@ public final class GameState implements Serializable{
     private Integer roomNum;
     private List<String> mistakesMade;
     private Character character;
+    private List<Monster> enemies;
 
     private Room currentRoom;
     private Room previousRoom;
@@ -36,6 +38,7 @@ public final class GameState implements Serializable{
         this.floor = 1;
         this.roomNum = 0;
         this.mistakesMade = new ArrayList<>();
+        this.enemies = new ArrayList<>();
         this.currentRoom = new TowerIntro();
     }
 
@@ -59,11 +62,28 @@ public final class GameState implements Serializable{
         previousRoom = null;
     }
 
-    public String getInput() throws IOException {
-        System.out.println("Awaiting Input:");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        return br.readLine();
+    public void endCharacterTurn() {
+        character.endTurn();
+
+        //take turn for each current enemy
+        for (Monster enemy : enemies) {
+            enemy.startTurn();
+        }
     }
+
+    public void characterAttack(Space space) {
+        //TODO: We need a way to return what happened as a result of the action to display to the user
+        for (Monster enemy : enemies) {
+            if (enemy.getPosition().equals(space)) {
+                if (this.character.basicAttack() >= enemy.getQuickness()) {
+                    //cause enemy to take damage
+//                    enemy.takeDamage
+                }
+            }
+        }
+    }
+
+
 
     //---------------------------------------------------------------------------------------------
     // Getters and Setters

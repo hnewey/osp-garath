@@ -3,6 +3,7 @@ package net.castleadventure.ospgarath;
 import net.castleadventure.ospgarath.model.character.Character;
 import net.castleadventure.ospgarath.game.GameRunner;
 import net.castleadventure.ospgarath.game.GameState;
+import net.castleadventure.ospgarath.model.character.race.Race;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,11 +16,14 @@ public class OspGarathApplication {
         SpringApplication.run(OspGarathApplication.class, args);
 
         System.out.println("\n");
-        System.out.println("Enter Player's Stats:");
+        System.out.println("Game started...");
 
         Character playerCharacter = new Character(15, 15, 15, 15, 8, 6);
+        playerCharacter.setName("Lahod");
+        playerCharacter.setPlayerName("hnewey");
+        playerCharacter.setCharacterRace(Race.HALF_ELF);
 
         GameState.getInstance().setCharacter(playerCharacter);
-        GameRunner.start();
+//        GameRunner.start();
     }
 }

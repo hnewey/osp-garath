@@ -10,6 +10,10 @@ import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
 import net.castleadventure.ospgarath.model.item.PlayerInventory;
+import net.castleadventure.ospgarath.model.managers.ActionManager;
+import net.castleadventure.ospgarath.model.managers.ConditionManager;
+import net.castleadventure.ospgarath.model.managers.EquipmentManager;
+import net.castleadventure.ospgarath.model.managers.MovementManager;
 import net.castleadventure.ospgarath.model.monster.StatResolver;
 import org.json.JSONObject;
 
@@ -27,41 +31,37 @@ public class Character {
     private Integer movement;
     private Integer defense;
 
-    private Integer damageTaken;
     private Integer maxDamage;
-    private Integer attackDice;
+    private Integer damageTaken = 0;
+    private Integer attackDice = 1;
 
-    private Boolean conscious;
+    private Boolean conscious = true;
 
     private ClassType characterClass;
     private Race characterRace;
     private Gender gender;
 
     private String name;
+    private String playerName;
 
-    private List<Power> powers;
+    private List<Power> powers = new ArrayList<>();
 
-    private List<Space> possibleMovements;
-    private List<Space> blockedMovements;
     private Space position;
 
     private MovementManager movementManager = new MovementManager();
+    private ActionManager actionManager = new ActionManager();
+    private ConditionManager conditionManager = new ConditionManager();
+    private EquipmentManager equipmentManager = new EquipmentManager();
 
     @JsonIgnore
-    private PlayerEquippedItems playerEquippedItems;
+    private PlayerEquippedItems playerEquippedItems = new PlayerEquippedItems();
     @JsonIgnore
-    private PlayerInventory playerInventory;
+    private PlayerInventory playerInventory = new PlayerInventory();
 
     private List<PositiveCondition> positiveConditions = new ArrayList<>();
     private List<NegativeCondition> negativeConditions = new ArrayList<>();
 
     public Character() {
-        damageTaken = 0;
-        attackDice = 1;
-        conscious = true;
-        playerEquippedItems = new PlayerEquippedItems();
-        playerInventory = new PlayerInventory();
-        powers = new ArrayList<>();
     }
 
     public Character(Integer s, Integer q, Integer i, Integer l, Integer e, Integer m) throws Exception {
@@ -74,30 +74,10 @@ public class Character {
         defense = q;
 
         position = new Space(0, -6);
-        updatePossibleMovements();
-
-        damageTaken = 0;
+        movementManager.possibleMovements(position, movement);
         maxDamage = calcMaxDamage();
-        attackDice = 1;
-
-        conscious = true;
-
-        playerEquippedItems = new PlayerEquippedItems();
-        playerInventory = new PlayerInventory();
 
         characterClass = StatResolver.getClass(s, q, i, l);
-        powers = new ArrayList<>();
-    }
-
-    public void setDefaultValues() {
-        defense = quickness.getValue();
-        damageTaken = 0;
-        maxDamage = calcMaxDamage();
-        attackDice = 1;
-        conscious = true;
-        playerEquippedItems = new PlayerEquippedItems();
-        playerInventory = new PlayerInventory();
-        characterClass = StatResolver.getClass(strength.getValue(), quickness.getValue(), intelligence.getValue(), leadership.getValue());
         powers = new ArrayList<>();
     }
 
@@ -131,11 +111,6 @@ public class Character {
         }
     }
 
-    private void updatePossibleMovements() {
-        this.possibleMovements = movementManager.possibleMovements(this.position, this.movement);
-        this.blockedMovements = movementManager.blockedMovements();
-    }
-
     public void sustainCondition(Integer index) {
         Condition condition = positiveConditions.get(index);
         if (Dice.d20() < condition.getRollRequired()) {
@@ -166,18 +141,14 @@ public class Character {
             }
         }
         else {
-            for (int i = 0; i < attackDice; i++) {
-                Integer attack = Dice.d20();
-                if (attackRoll == null) {
-                    attackRoll = attack;
-                }
-                if (attack < attackRoll) {
-                    attackRoll = attack;
-                }
-            }
+            attackRoll = Dice.d20();
         }
         attackRoll += strength.getRollModifier();
         return attackRoll;
+    }
+
+    public Integer rollDamage() {
+        return Dice.dynamic(maxDamage);
     }
 
     public void takeDamage(Integer damage) {
@@ -286,6 +257,10 @@ public class Character {
         return name;
     }
 
+    public String getPlayerName() {
+        return playerName;
+    }
+
     public Integer getDamageTaken() {
         return damageTaken;
     }
@@ -331,7 +306,7 @@ public class Character {
     }
 
     public List<Space> getBlockedMovements() {
-        return blockedMovements;
+        return movementManager.blockedMovements();
     }
 
     public Space getPosition() {
@@ -416,15 +391,16 @@ public class Character {
         this.name = name;
     }
 
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
     public void setCharacterClass(ClassType characterClass) {
         this.characterClass = characterClass;
     }
 
-    public void setPossibleMovements(List<Space> possibleMovements) {
-        this.possibleMovements = possibleMovements;
-    }
-
     public void setPosition(Space position) {
         this.position = position;
+        movementManager.possibleMovements(this.position, this.movement);
     }
 }

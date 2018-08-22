@@ -2,17 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54051d29-35e7-497e-8776-2029d38b5ba6" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/ActionResult.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/ConditionManager.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/EquipmentManager.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/OspGarathApplication.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/OspGarathApplication.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameRunner.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameRunner.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameState.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameState.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/ActionManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/ActionManager.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/MovementManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/MovementManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/Race.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/Race.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/Monster.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/Monster.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/GameController.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/GameController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ospgarath.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ospgarath.js" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/MovementController.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/MovementController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" afterPath="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/OspGarathApplication.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/OspGarathApplication.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/GameRunner.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/GameRunner.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/GameState.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/GameState.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/Character.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/Character.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/race/Race.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/race/Race.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/Monster.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/Monster.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/web/controller/GameController.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/web/controller/GameController.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/web/controller/MovementController.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/web/controller/MovementController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/ospgarath.js" afterPath="$PROJECT_DIR$/target/classes/static/js/ospgarath.js" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/ospgarath.html" afterPath="$PROJECT_DIR$/target/classes/static/ospgarath.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,54 +53,44 @@
       <file leaf-file-name="ospgarath.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/ospgarath.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="527" column="66" lean-forward="false" selection-start-line="527" selection-start-column="66" selection-end-line="527" selection-end-column="66" />
+            <state relative-caret-position="495">
+              <caret line="610" column="27" lean-forward="false" selection-start-line="610" selection-start-column="27" selection-end-line="610" selection-end-column="27" />
               <folding>
-                <element signature="e#5138#5231#0" expanded="false" />
-                <element signature="e#5260#5359#0" expanded="false" />
-                <element signature="e#5387#5454#0" expanded="false" />
-                <element signature="e#5483#5780#0" expanded="false" />
-                <element signature="e#5831#9253#0" expanded="false" />
-                <element signature="e#9279#9742#0" expanded="false" />
-                <element signature="e#9772#9965#0" expanded="false" />
-                <element signature="e#9993#10041#0" expanded="false" />
-                <element signature="e#10156#10235#0" expanded="false" />
-                <element signature="e#12258#12314#0" expanded="false" />
-                <element signature="e#12355#12410#0" expanded="false" />
-                <element signature="e#12445#12877#0" expanded="false" />
-                <element signature="e#15638#16088#0" expanded="false" />
-                <element signature="e#16122#16511#0" expanded="false" />
-                <element signature="e#16553#16736#0" expanded="false" />
-                <element signature="e#16777#16957#0" expanded="false" />
-                <element signature="e#17346#17624#0" expanded="false" />
-                <element signature="e#17660#17900#0" expanded="false" />
-                <element signature="e#17939#18295#0" expanded="false" />
-                <element signature="e#18328#18534#0" expanded="false" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#5149#5242#0" expanded="false" />
+                <element signature="e#5271#5370#0" expanded="false" />
+                <element signature="e#5398#5465#0" expanded="false" />
+                <element signature="e#5842#9264#0" expanded="false" />
+                <element signature="e#9702#9781#0" expanded="false" />
+                <element signature="e#10372#10642#0" expanded="false" />
+                <element signature="e#10678#10834#0" expanded="false" />
+                <element signature="e#10867#11018#0" expanded="false" />
+                <element signature="e#11062#11615#0" expanded="false" />
+                <element signature="e#11657#11725#0" expanded="false" />
+                <element signature="e#11753#11760#0" expanded="false" />
+                <element signature="e#11804#11860#0" expanded="false" />
+                <element signature="e#11901#11956#0" expanded="false" />
+                <element signature="e#15668#15824#0" expanded="false" />
+                <element signature="e#15863#16190#0" expanded="false" />
+                <element signature="e#16235#17026#0" expanded="false" />
+                <element signature="e#17070#17136#0" expanded="false" />
+                <element signature="e#17181#17245#0" expanded="false" />
+                <element signature="e#17287#17295#0" expanded="false" />
+                <element signature="e#17327#17458#0" expanded="false" />
+                <element signature="e#17487#18600#0" expanded="false" />
+                <element signature="e#18646#19096#0" expanded="false" />
+                <element signature="e#19130#19519#0" expanded="false" />
+                <element signature="e#19561#19744#0" expanded="false" />
+                <element signature="e#19785#19965#0" expanded="false" />
+                <element signature="e#20006#20314#0" expanded="false" />
+                <element signature="e#20354#20632#0" expanded="false" />
+                <element signature="e#20668#20908#0" expanded="false" />
+                <element signature="e#20947#21303#0" expanded="false" />
+                <element signature="e#21336#21542#0" expanded="false" />
+                <element signature="e#21569#21622#0" expanded="false" />
+                <element signature="e#21647#21893#0" expanded="false" />
+                <element signature="e#21925#22364#0" expanded="false" />
+                <element signature="e#22405#22644#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MovementController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/MovementController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -96,67 +98,19 @@
       <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state relative-caret-position="361">
+              <caret line="83" column="61" lean-forward="false" selection-start-line="83" selection-start-column="61" selection-end-line="83" selection-end-column="61" />
               <folding>
-                <element signature="e#785#786#0" expanded="true" />
-                <element signature="e#845#846#0" expanded="true" />
-                <element signature="e#955#956#0" expanded="true" />
-                <element signature="e#1016#1017#0" expanded="true" />
-                <element signature="e#1157#1158#0" expanded="true" />
-                <element signature="e#1220#1221#0" expanded="true" />
-                <element signature="e#1656#1657#0" expanded="true" />
-                <element signature="e#1706#1707#0" expanded="true" />
-                <element signature="e#1864#1865#0" expanded="true" />
-                <element signature="e#1917#1918#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ospgarath.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ospgarath.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="230" column="8" lean-forward="false" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="8" />
-              <folding>
-                <element signature="e#144#494#0" expanded="false" />
-                <element signature="e#549#879#0" expanded="false" />
-                <element signature="n#!!block;n#canMoveLeft#0" expanded="false" />
-                <element signature="n#!!block;n#canMoveRight#0" expanded="false" />
-                <element signature="n#!!block;n#canMoveUp#0" expanded="false" />
-                <element signature="n#!!block;n#canMoveDown#0" expanded="false" />
-                <element signature="n#!!block;n#movementSpeedRemaining#0" expanded="false" />
-                <element signature="n#!!block;n#movementSpeedRemainingPlusOne#0" expanded="false" />
-                <element signature="n#!!block;n#movementRemaining#0" expanded="false" />
-                <element signature="n#!!block;n#moveCharacter#0" expanded="false" />
-                <element signature="n#!!block;n#arrow_button_down#0" expanded="false" />
-                <element signature="n#!!block;n#arrow_button_up#0" expanded="false" />
-                <element signature="n#!!block;n#arrow_clicked#0" expanded="false" />
-                <element signature="n#!!block;n#arrow_released#0" expanded="false" />
-                <element signature="n#!!block;n#updateMovementRemaining#0" expanded="false" />
-                <element signature="e#4627#4667#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-              <folding>
-                <element signature="method#sustainCondition#0;class#Character#0" expanded="false" />
-                <element signature="method#resistCondition#0;class#Character#0" expanded="false" />
-                <element signature="method#takeDamage#0;class#Character#0" expanded="false" />
-                <element signature="method#isDetermined#0;class#Character#0" expanded="false" />
-                <element signature="method#calcMaxDamage#0;class#Character#0" expanded="false" />
-                <element signature="e#7276#7277#0" expanded="true" />
-                <element signature="e#7343#7344#0" expanded="true" />
-                <element signature="e#7391#7392#0" expanded="true" />
-                <element signature="e#7461#7462#0" expanded="true" />
-                <element signature="method#getHighestStat#0;class#Character#0" expanded="false" />
+                <element signature="e#866#867#0" expanded="true" />
+                <element signature="e#926#927#0" expanded="true" />
+                <element signature="e#1238#1239#0" expanded="true" />
+                <element signature="e#1299#1300#0" expanded="true" />
+                <element signature="e#1440#1441#0" expanded="true" />
+                <element signature="e#1503#1504#0" expanded="true" />
+                <element signature="e#2408#2409#0" expanded="true" />
+                <element signature="e#2458#2459#0" expanded="true" />
+                <element signature="e#2616#2617#0" expanded="true" />
+                <element signature="e#2669#2670#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -165,11 +119,117 @@
       <file leaf-file-name="GameState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+            <state relative-caret-position="582">
+              <caret line="81" column="13" lean-forward="true" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
               <folding>
-                <element signature="e#1269#1270#0" expanded="true" />
-                <element signature="e#1300#1301#0" expanded="true" />
+                <element signature="e#1406#1407#0" expanded="true" />
+                <element signature="e#1437#1438#0" expanded="true" />
+                <element signature="e#2831#2832#0" expanded="true" />
+                <element signature="e#2873#2874#0" expanded="true" />
+                <element signature="e#2912#2913#0" expanded="true" />
+                <element signature="e#2944#2945#0" expanded="true" />
+                <element signature="e#2988#2989#0" expanded="true" />
+                <element signature="e#3057#3058#0" expanded="true" />
+                <element signature="e#3093#3094#0" expanded="true" />
+                <element signature="e#3126#3127#0" expanded="true" />
+                <element signature="e#3177#3178#0" expanded="true" />
+                <element signature="e#3221#3222#0" expanded="true" />
+                <element signature="e#3275#3276#0" expanded="true" />
+                <element signature="e#3318#3319#0" expanded="true" />
+                <element signature="e#3351#3352#0" expanded="true" />
+                <element signature="e#3379#3380#0" expanded="true" />
+                <element signature="e#3422#3423#0" expanded="true" />
+                <element signature="e#3456#3457#0" expanded="true" />
+                <element signature="e#3491#3492#0" expanded="true" />
+                <element signature="e#3521#3522#0" expanded="true" />
+                <element signature="e#3568#3569#0" expanded="true" />
+                <element signature="e#3606#3607#0" expanded="true" />
+                <element signature="e#3642#3643#0" expanded="true" />
+                <element signature="e#3676#3677#0" expanded="true" />
+                <element signature="e#3721#3722#0" expanded="true" />
+                <element signature="e#3756#3757#0" expanded="true" />
+                <element signature="e#3818#3819#0" expanded="true" />
+                <element signature="e#3866#3867#0" expanded="true" />
+                <element signature="method#addMistakeMade#0;class#GameState#0" expanded="false" />
+                <element signature="e#4104#4105#0" expanded="true" />
+                <element signature="e#4149#4150#0" expanded="true" />
+                <element signature="method#setFinalChallengeUnlocked#0;class#GameState#0" expanded="false" />
+                <element signature="e#4792#4793#0" expanded="true" />
+                <element signature="e#4850#4851#0" expanded="true" />
+                <element signature="e#4898#4899#0" expanded="true" />
+                <element signature="e#4948#4949#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionResult.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/ActionResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Monster.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/Monster.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1136">
+              <caret line="111" column="32" lean-forward="false" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
+              <folding>
+                <element signature="method#copyStats#0;class#Monster#0" expanded="false" />
+                <element signature="e#3435#3436#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/ActionManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MovementManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/MovementManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <folding>
+                <element signature="e#1158#1159#0" expanded="true" />
+                <element signature="e#1202#1203#0" expanded="true" />
+                <element signature="method#addPosition#0;class#MovementManager#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="69" column="35" lean-forward="false" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+              <folding>
+                <element signature="method#Character#0;class#Character#0" expanded="false" />
+                <element signature="method#createFromJson#0;class#Character#0" expanded="false" />
+                <element signature="method#startTurn#0;class#Character#0" expanded="false" />
+                <element signature="method#endTurn#0;class#Character#0" expanded="false" />
+                <element signature="method#sustainCondition#0;class#Character#0" expanded="false" />
+                <element signature="method#resistCondition#0;class#Character#0" expanded="false" />
+                <element signature="method#basicAttack#0;class#Character#0" expanded="false" />
+                <element signature="method#takeDamage#0;class#Character#0" expanded="false" />
+                <element signature="method#isDetermined#0;class#Character#0" expanded="false" />
+                <element signature="method#calcMaxDamage#0;class#Character#0" expanded="false" />
+                <element signature="method#getHighestStat#0;class#Character#0" expanded="false" />
+                <element signature="e#8982#8983#0" expanded="true" />
+                <element signature="e#9039#9040#0" expanded="true" />
+                <element signature="method#updateStats#0;class#Character#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -191,15 +251,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>game_button</find>
-      <find>movementSpeedRemainingPlusOne</find>
-      <find>canMoveLeft</find>
-      <find>blue_square</find>
-      <find>checkObstacles</find>
-      <find>showPossibleMovements</find>
-      <find>showMovementTree</find>
-      <find>red</find>
-      <find>checkEnemies</find>
       <find>queryPossibleMoves</find>
       <find>json</find>
       <find>post</find>
@@ -219,8 +270,17 @@
       <find>CHAR_POSSIBLE_MOVES</find>
       <find>updateBoard</find>
       <find>CHARACTER</find>
-      <find>queryCharacter</find>
       <find>characterP</find>
+      <find>updatePossibleMoves</find>
+      <find>Awaiting</find>
+      <find>moveCharacter</find>
+      <find>character_icon</find>
+      <find>@Json</find>
+      <find>Enter P</find>
+      <find>/class/validate</find>
+      <find>enemy_icon</find>
+      <find>queryCharacter</find>
+      <find>clickToMove</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -243,12 +303,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Wolf.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Horse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Pony.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Beast.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/BeastManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/beast/PackAnimal.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Dice.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/NPCNames.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/NPCName.java" />
@@ -259,7 +313,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/champion/ChampionManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/CharacterCreationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/ClassType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/Race.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/RacialPowersManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/PowerManager.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
@@ -272,7 +325,6 @@
         <option value="$PROJECT_DIR$/src/test/java/net.castleadventure.ospgarath/model/TestBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/controller/MovementController.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/RoomController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/OspGarathApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/CharacterManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/CharacterCreationController.java" />
         <option value="$PROJECT_DIR$/src/test/java/net.castleadventure.ospgarath/model/CharacterManagerTest.java" />
@@ -286,14 +338,22 @@
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Space.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/QuickAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/StdAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/StandardAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/ActionManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/ospgarath.js" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameState.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameRunner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/Race.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/OspGarathApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/MovementController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/Monster.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/ActionType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/StandardAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/ActionResult.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/ActionManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/MovementManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java" />
       </list>
     </option>
   </component>
@@ -310,10 +370,11 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="853" />
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="822" />
+    <option name="width" value="1707" />
+    <option name="height" value="1001" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -483,8 +544,28 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ospgarath" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="character" type="462c0819:PsiDirectoryNode" />
-              <item name="race" type="462c0819:PsiDirectoryNode" />
+              <item name="managers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OspGarath" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ospgarath" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="monster" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OspGarath" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ospgarath" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="monster" type="462c0819:PsiDirectoryNode" />
+              <item name="monsterTypes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
@@ -805,7 +886,7 @@
       <workItem from="1529366066405" duration="256904000" />
       <workItem from="1531927797155" duration="77191000" />
       <workItem from="1533681692189" duration="36204000" />
-      <workItem from="1534054818706" duration="10261000" />
+      <workItem from="1534054818706" duration="26120000" />
     </task>
     <servers />
   </component>
@@ -842,10 +923,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="627489000" />
+    <option name="totallyTimeSpent" value="643348000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="822" extended-state="6" />
+    <frame x="853" y="23" width="1707" height="1001" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -858,20 +939,21 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13617606" sideWeight="0.49713877" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30242825" sideWeight="0.49713877" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32671082" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19536424" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19532324" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29399142" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24684684" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560706" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -879,7 +961,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32671082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -890,7 +971,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="90" />
+      <option name="time" value="94" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -904,75 +985,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/main_menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/button1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/opening_sequence.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="87" column="38" lean-forward="false" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/Power.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/ClassType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding>
-            <element signature="e#4130#4131#0" expanded="false" />
-            <element signature="e#4186#4187#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/lang/Enum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="237" column="0" lean-forward="false" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.14.RELEASE/spring-web-4.3.14.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="213" column="0" lean-forward="false" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/champion/ChampionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/ability/power/racialPowers/RacialPowersManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1000,6 +1012,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,6 +1204,66 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1500">
           <caret line="193" column="12" lean-forward="false" selection-start-line="193" selection-start-column="1" selection-end-line="193" selection-end-column="12" />
+          <folding>
+            <element signature="e#6#28#0" expanded="false" />
+            <element signature="e#223#562#0" expanded="false" />
+            <element signature="e#597#721#0" expanded="false" />
+            <element signature="e#752#778#0" expanded="false" />
+            <element signature="e#813#919#0" expanded="false" />
+            <element signature="e#1307#1395#0" expanded="false" />
+            <element signature="e#1427#1511#0" expanded="false" />
+            <element signature="e#1627#1745#0" expanded="false" />
+            <element signature="e#1767#1803#0" expanded="false" />
+            <element signature="e#1826#1900#0" expanded="false" />
+            <element signature="e#1923#1997#0" expanded="false" />
+            <element signature="e#2239#2272#0" expanded="false" />
+            <element signature="e#2290#2377#0" expanded="false" />
+            <element signature="e#2392#2413#0" expanded="false" />
+            <element signature="e#2670#2697#0" expanded="false" />
+            <element signature="e#2711#2997#0" expanded="false" />
+            <element signature="e#3017#3053#0" expanded="false" />
+            <element signature="e#3067#3151#0" expanded="false" />
+            <element signature="e#3167#3190#0" expanded="false" />
+            <element signature="e#3209#3229#0" expanded="false" />
+            <element signature="e#3254#3290#0" expanded="false" />
+            <element signature="e#3312#3332#0" expanded="false" />
+            <element signature="e#3360#3392#0" expanded="false" />
+            <element signature="e#3409#3471#0" expanded="false" />
+            <element signature="e#3880#3916#0" expanded="false" />
+            <element signature="e#3933#3988#0" expanded="false" />
+            <element signature="e#4005#4025#0" expanded="false" />
+            <element signature="e#4207#4431#0" expanded="false" />
+            <element signature="e#4449#4485#0" expanded="false" />
+            <element signature="e#4506#4542#0" expanded="false" />
+            <element signature="e#4872#4895#0" expanded="false" />
+            <element signature="e#4908#4937#0" expanded="false" />
+            <element signature="e#4956#4992#0" expanded="false" />
+            <element signature="e#5010#5046#0" expanded="false" />
+            <element signature="e#5060#5129#0" expanded="false" />
+            <element signature="e#5142#5226#0" expanded="false" />
+            <element signature="e#5240#5324#0" expanded="false" />
+            <element signature="e#5345#5399#0" expanded="false" />
+            <element signature="e#5412#5434#0" expanded="false" />
+            <element signature="e#5452#5455#0" expanded="false" />
+            <element signature="e#5474#5478#0" expanded="false" />
+            <element signature="e#5707#5765#0" expanded="false" />
+            <element signature="e#5778#5824#0" expanded="false" />
+            <element signature="e#5838#5946#0" expanded="false" />
+            <element signature="e#5954#6035#0" expanded="false" />
+            <element signature="e#6053#6057#0" expanded="false" />
+            <element signature="e#6412#6448#0" expanded="false" />
+            <element signature="e#6470#6545#0" expanded="false" />
+            <element signature="e#6951#6987#0" expanded="false" />
+            <element signature="e#7001#7025#0" expanded="false" />
+            <element signature="e#7048#7097#0" expanded="false" />
+            <element signature="e#7116#7145#0" expanded="false" />
+            <element signature="e#7167#7200#0" expanded="false" />
+            <element signature="e#7225#7258#0" expanded="false" />
+            <element signature="e#7266#7313#0" expanded="false" />
+            <element signature="e#7318#7363#0" expanded="false" />
+            <element signature="e#7382#7518#0" expanded="false" />
+            <element signature="e#7528#7550#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1216,14 +1289,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/CharacterManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="50" column="35" lean-forward="false" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/net.castleadventure.ospgarath/model/CharacterManagerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1231,26 +1296,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/SpaceInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="42" lean-forward="false" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/OspGarathApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/net.castleadventure.ospgarath/model/StatResolverTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="76" column="34" lean-forward="false" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1259,27 +1309,6 @@
         <state relative-caret-position="825">
           <caret line="57" column="32" lean-forward="true" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/CharacterCreationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="154" column="104" lean-forward="false" selection-start-line="154" selection-start-column="73" selection-end-line="154" selection-end-column="104" />
-          <folding>
-            <element signature="method#getClassRestrictions#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#getClassPowers#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#getSteward#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#getRaces#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#getRaceDescription#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#getRacialTraits#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#getRacialPowers#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#getHalfElfChoicePowers#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#isClassValid#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#areRaceAndClassValid#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#getViper#0;class#CharacterCreationController#0" expanded="false" />
-            <element signature="method#getBeastPowers#0;class#CharacterCreationController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1292,60 +1321,6 @@
             <element signature="method#removeModifier#0;class#Stat#0" expanded="false" />
             <element signature="method#calcRollModifier#0;class#Stat#0" expanded="false" />
             <element signature="method#sumModifiers#0;class#Stat#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2267#2268#0" expanded="true" />
-            <element signature="e#2339#2340#0" expanded="true" />
-            <element signature="e#2375#2376#0" expanded="true" />
-            <element signature="e#2404#2405#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/MovementManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="e#906#907#0" expanded="false" />
-            <element signature="e#950#951#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Space.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/Race.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="65" column="45" lean-forward="false" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/QuickAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#393#394#0" expanded="false" />
-            <element signature="e#429#430#0" expanded="false" />
-            <element signature="e#475#476#0" expanded="false" />
-            <element signature="e#509#510#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1375,33 +1350,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/StandardAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/room/TowerIntro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        <state relative-caret-position="90">
+          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.14.RELEASE/spring-web-4.3.14.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/characterClass/ClassType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="56" column="13" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/Race.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
           <folding>
-            <element signature="e#480#481#0" expanded="false" />
-            <element signature="e#516#517#0" expanded="false" />
-            <element signature="e#562#563#0" expanded="false" />
-            <element signature="e#596#597#0" expanded="false" />
+            <element signature="e#3769#3770#0" expanded="false" />
+            <element signature="e#3801#3802#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/ActionManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/OspGarathApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="285">
+          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterTypes/BaseMonster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/MovementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/char_creation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="1347" column="23" lean-forward="false" selection-start-line="1347" selection-start-column="16" selection-end-line="1347" selection-end-column="23" />
+        <state relative-caret-position="218">
+          <caret line="1349" column="0" lean-forward="true" selection-start-line="1349" selection-start-column="0" selection-end-line="1349" selection-end-column="0" />
           <folding>
             <element signature="n#!!block;n#activiateHalfElfTooltipster#0" expanded="false" />
             <element signature="n#!!block;n#activateRacialTooltipster#0" expanded="false" />
@@ -1517,110 +1536,263 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/room/TowerIntro.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        <state relative-caret-position="433">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/MovementController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/CharacterCreationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="1009">
+          <caret line="140" column="44" lean-forward="false" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="44" />
+          <folding>
+            <element signature="method#getClassRestrictions#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#getClassPowers#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#getSteward#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#getRaces#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#getRaceDescription#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#getRacialTraits#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#getRacialPowers#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#getHalfElfChoicePowers#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#areRaceAndClassValid#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#getViper#0;class#CharacterCreationController#0" expanded="false" />
+            <element signature="method#getBeastPowers#0;class#CharacterCreationController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Space.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/SpaceInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="42" lean-forward="false" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="83" column="61" lean-forward="false" selection-start-line="83" selection-start-column="61" selection-end-line="83" selection-end-column="61" />
+          <folding>
+            <element signature="e#866#867#0" expanded="true" />
+            <element signature="e#926#927#0" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1299#1300#0" expanded="true" />
+            <element signature="e#1440#1441#0" expanded="true" />
+            <element signature="e#1503#1504#0" expanded="true" />
+            <element signature="e#2408#2409#0" expanded="true" />
+            <element signature="e#2458#2459#0" expanded="true" />
+            <element signature="e#2616#2617#0" expanded="true" />
+            <element signature="e#2669#2670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/Monster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1136">
+          <caret line="111" column="32" lean-forward="false" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
+          <folding>
+            <element signature="method#copyStats#0;class#Monster#0" expanded="false" />
+            <element signature="e#3435#3436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/StandardAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/ActionType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/QuickAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/CharacterManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="50" column="35" lean-forward="false" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/ConditionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/EquipmentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/MovementManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1202#1203#0" expanded="true" />
+            <element signature="method#addPosition#0;class#MovementManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/ActionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="69" column="35" lean-forward="false" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+          <folding>
+            <element signature="method#Character#0;class#Character#0" expanded="false" />
+            <element signature="method#createFromJson#0;class#Character#0" expanded="false" />
+            <element signature="method#startTurn#0;class#Character#0" expanded="false" />
+            <element signature="method#endTurn#0;class#Character#0" expanded="false" />
+            <element signature="method#sustainCondition#0;class#Character#0" expanded="false" />
+            <element signature="method#resistCondition#0;class#Character#0" expanded="false" />
+            <element signature="method#basicAttack#0;class#Character#0" expanded="false" />
+            <element signature="method#takeDamage#0;class#Character#0" expanded="false" />
+            <element signature="method#isDetermined#0;class#Character#0" expanded="false" />
+            <element signature="method#calcMaxDamage#0;class#Character#0" expanded="false" />
+            <element signature="method#getHighestStat#0;class#Character#0" expanded="false" />
+            <element signature="e#8982#8983#0" expanded="true" />
+            <element signature="e#9039#9040#0" expanded="true" />
+            <element signature="method#updateStats#0;class#Character#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/ActionResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        <state relative-caret-position="582">
+          <caret line="81" column="13" lean-forward="true" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
           <folding>
-            <element signature="e#1269#1270#0" expanded="true" />
-            <element signature="e#1300#1301#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="e#785#786#0" expanded="true" />
-            <element signature="e#845#846#0" expanded="true" />
-            <element signature="e#955#956#0" expanded="true" />
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1157#1158#0" expanded="true" />
-            <element signature="e#1220#1221#0" expanded="true" />
-            <element signature="e#1656#1657#0" expanded="true" />
-            <element signature="e#1706#1707#0" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
-            <element signature="e#1917#1918#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="45" column="26" lean-forward="false" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-          <folding>
-            <element signature="method#sustainCondition#0;class#Character#0" expanded="false" />
-            <element signature="method#resistCondition#0;class#Character#0" expanded="false" />
-            <element signature="method#takeDamage#0;class#Character#0" expanded="false" />
-            <element signature="method#isDetermined#0;class#Character#0" expanded="false" />
-            <element signature="method#calcMaxDamage#0;class#Character#0" expanded="false" />
-            <element signature="e#7276#7277#0" expanded="true" />
-            <element signature="e#7343#7344#0" expanded="true" />
-            <element signature="e#7391#7392#0" expanded="true" />
-            <element signature="e#7461#7462#0" expanded="true" />
-            <element signature="method#getHighestStat#0;class#Character#0" expanded="false" />
+            <element signature="e#1406#1407#0" expanded="true" />
+            <element signature="e#1437#1438#0" expanded="true" />
+            <element signature="e#2831#2832#0" expanded="true" />
+            <element signature="e#2873#2874#0" expanded="true" />
+            <element signature="e#2912#2913#0" expanded="true" />
+            <element signature="e#2944#2945#0" expanded="true" />
+            <element signature="e#2988#2989#0" expanded="true" />
+            <element signature="e#3057#3058#0" expanded="true" />
+            <element signature="e#3093#3094#0" expanded="true" />
+            <element signature="e#3126#3127#0" expanded="true" />
+            <element signature="e#3177#3178#0" expanded="true" />
+            <element signature="e#3221#3222#0" expanded="true" />
+            <element signature="e#3275#3276#0" expanded="true" />
+            <element signature="e#3318#3319#0" expanded="true" />
+            <element signature="e#3351#3352#0" expanded="true" />
+            <element signature="e#3379#3380#0" expanded="true" />
+            <element signature="e#3422#3423#0" expanded="true" />
+            <element signature="e#3456#3457#0" expanded="true" />
+            <element signature="e#3491#3492#0" expanded="true" />
+            <element signature="e#3521#3522#0" expanded="true" />
+            <element signature="e#3568#3569#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
+            <element signature="e#3642#3643#0" expanded="true" />
+            <element signature="e#3676#3677#0" expanded="true" />
+            <element signature="e#3721#3722#0" expanded="true" />
+            <element signature="e#3756#3757#0" expanded="true" />
+            <element signature="e#3818#3819#0" expanded="true" />
+            <element signature="e#3866#3867#0" expanded="true" />
+            <element signature="method#addMistakeMade#0;class#GameState#0" expanded="false" />
+            <element signature="e#4104#4105#0" expanded="true" />
+            <element signature="e#4149#4150#0" expanded="true" />
+            <element signature="method#setFinalChallengeUnlocked#0;class#GameState#0" expanded="false" />
+            <element signature="e#4792#4793#0" expanded="true" />
+            <element signature="e#4850#4851#0" expanded="true" />
+            <element signature="e#4898#4899#0" expanded="true" />
+            <element signature="e#4948#4949#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/ospgarath.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="527" column="66" lean-forward="false" selection-start-line="527" selection-start-column="66" selection-end-line="527" selection-end-column="66" />
+        <state relative-caret-position="495">
+          <caret line="610" column="27" lean-forward="false" selection-start-line="610" selection-start-column="27" selection-end-line="610" selection-end-column="27" />
           <folding>
-            <element signature="e#5138#5231#0" expanded="false" />
-            <element signature="e#5260#5359#0" expanded="false" />
-            <element signature="e#5387#5454#0" expanded="false" />
-            <element signature="e#5483#5780#0" expanded="false" />
-            <element signature="e#5831#9253#0" expanded="false" />
-            <element signature="e#9279#9742#0" expanded="false" />
-            <element signature="e#9772#9965#0" expanded="false" />
-            <element signature="e#9993#10041#0" expanded="false" />
-            <element signature="e#10156#10235#0" expanded="false" />
-            <element signature="e#12258#12314#0" expanded="false" />
-            <element signature="e#12355#12410#0" expanded="false" />
-            <element signature="e#12445#12877#0" expanded="false" />
-            <element signature="e#15638#16088#0" expanded="false" />
-            <element signature="e#16122#16511#0" expanded="false" />
-            <element signature="e#16553#16736#0" expanded="false" />
-            <element signature="e#16777#16957#0" expanded="false" />
-            <element signature="e#17346#17624#0" expanded="false" />
-            <element signature="e#17660#17900#0" expanded="false" />
-            <element signature="e#17939#18295#0" expanded="false" />
-            <element signature="e#18328#18534#0" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#5149#5242#0" expanded="false" />
+            <element signature="e#5271#5370#0" expanded="false" />
+            <element signature="e#5398#5465#0" expanded="false" />
+            <element signature="e#5842#9264#0" expanded="false" />
+            <element signature="e#9702#9781#0" expanded="false" />
+            <element signature="e#10372#10642#0" expanded="false" />
+            <element signature="e#10678#10834#0" expanded="false" />
+            <element signature="e#10867#11018#0" expanded="false" />
+            <element signature="e#11062#11615#0" expanded="false" />
+            <element signature="e#11657#11725#0" expanded="false" />
+            <element signature="e#11753#11760#0" expanded="false" />
+            <element signature="e#11804#11860#0" expanded="false" />
+            <element signature="e#11901#11956#0" expanded="false" />
+            <element signature="e#15668#15824#0" expanded="false" />
+            <element signature="e#15863#16190#0" expanded="false" />
+            <element signature="e#16235#17026#0" expanded="false" />
+            <element signature="e#17070#17136#0" expanded="false" />
+            <element signature="e#17181#17245#0" expanded="false" />
+            <element signature="e#17287#17295#0" expanded="false" />
+            <element signature="e#17327#17458#0" expanded="false" />
+            <element signature="e#17487#18600#0" expanded="false" />
+            <element signature="e#18646#19096#0" expanded="false" />
+            <element signature="e#19130#19519#0" expanded="false" />
+            <element signature="e#19561#19744#0" expanded="false" />
+            <element signature="e#19785#19965#0" expanded="false" />
+            <element signature="e#20006#20314#0" expanded="false" />
+            <element signature="e#20354#20632#0" expanded="false" />
+            <element signature="e#20668#20908#0" expanded="false" />
+            <element signature="e#20947#21303#0" expanded="false" />
+            <element signature="e#21336#21542#0" expanded="false" />
+            <element signature="e#21569#21622#0" expanded="false" />
+            <element signature="e#21647#21893#0" expanded="false" />
+            <element signature="e#21925#22364#0" expanded="false" />
+            <element signature="e#22405#22644#0" expanded="false" />
           </folding>
         </state>
       </provider>
