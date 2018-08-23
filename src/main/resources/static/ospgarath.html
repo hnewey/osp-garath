@@ -194,6 +194,131 @@
         top: 89.6vh;
     }
 
+    .turn_banner {
+        position: absolute;
+        margin: auto;
+        top: 43.8vh;
+        width: 100%;
+    }
+
+    .banner_words {
+        position: absolute;
+        left: 1vh;
+        top: 1.7vh;
+        font-family: 'Marcellus SC', serif;
+        text-shadow: 0 0 40px yellow;
+        font-size: 24pt;
+    }
+
+    #start_banner_gradient {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+20,2989d8+50,1e5799+80&0+0,0.8+15,1+19,1+81,0.8+85,0+100;Blue+Two+Sided+Transparent */
+        background: -moz-linear-gradient(top, rgba(30,87,153,0) 0%, rgba(30,87,153,0.8) 15%, rgba(30,87,153,1) 19%, rgba(30,87,153,1) 20%, rgba(41,137,216,1) 50%, rgba(30,87,153,1) 80%, rgba(30,87,153,1) 81%, rgba(30,87,153,0.8) 85%, rgba(30,87,153,0) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(30,87,153,0) 0%,rgba(30,87,153,0.8) 15%,rgba(30,87,153,1) 19%,rgba(30,87,153,1) 20%,rgba(41,137,216,1) 50%,rgba(30,87,153,1) 80%,rgba(30,87,153,1) 81%,rgba(30,87,153,0.8) 85%,rgba(30,87,153,0) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(30,87,153,0.8) 15%,rgba(30,87,153,1) 19%,rgba(30,87,153,1) 20%,rgba(41,137,216,1) 50%,rgba(30,87,153,1) 80%,rgba(30,87,153,1) 81%,rgba(30,87,153,0.8) 85%,rgba(30,87,153,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', endColorstr='#001e5799',GradientType=0 ); /* IE6-9 */
+        height: 12vh;
+    }
+
+    #start_banner_content {
+        position: relative;
+        top: 1.7vh;
+    }
+
+    .slide_animation {
+        left: 0;
+        -webkit-animation-duration: 500ms;
+        animation-duration: 500ms;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .slide_right {
+        -webkit-animation-name: slideRight;
+        animation-name: slideRight;
+    }
+
+    .fade_in {
+        opacity: 0;
+        -webkit-animation-duration: 200ms;
+        animation-duration: 200ms;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+    }
+
+    .fade_out {
+        opacity: 100;
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-delay: 2s;
+        animation-delay: 2s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-name: fadeOut;
+        animation-name: fadeOut;
+    }
+
+    .fade_in_out {
+        opacity: 0;
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-name: fadeInOut;
+        animation-name: fadeInOut;
+    }
+
+    @-webkit-keyframes slideRight {
+        0% {left: 0;}
+        100% {left: 85vh;}
+    }
+
+    @keyframes slideRight {
+        0% {left: 0;}
+        100% {left: 85vh;}
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
+
+    @keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeOut {
+        100% {opacity: 1;}
+        0% {opacity: 0;}
+    }
+
+    @keyframes fadeOut {
+        100% {opacity: 1;}
+        0% {opacity: 0;}
+    }
+
+   @-webkit-keyframes fadeInOut {
+        0% {opacity: 0;}
+        5% {opacity: 100;}
+        85% {opacity: 100;}
+        100% {opacity: 0;}
+    }
+
+    @keyframes fadeInOut {
+        0% {opacity: 0;}
+        5% {opacity: 100;}
+        85% {opacity: 100;}
+        100% {opacity: 0;}
+    }
+
 </style>
 <script>
     var VERTICAL_INCREASE = 7.11;
@@ -347,20 +472,6 @@
         ACTION_MENU_VISIBLE = true;
     }
 
-    function startPolling() {
-        // if (POLLING_ACTIVE) {
-        //     return;
-        // }
-        // POLLING_INTERVAL = setInterval(function () {
-        //     pollData();
-        // }, 2000);
-        // POLLING_ACTIVE = true;
-    }
-
-    function endPolling() {
-        // clearInterval(POLLING_INTERVAL);
-    }
-
     //called whenever the character moves or something on the board changes
     function invalidateActionLists() {
         QUICK_ACTIONS_VALID = false;
@@ -392,17 +503,17 @@
         }
     }
 
-    function getStandardActions() {
-        post("/game/standardActions", CHARACTER, function (data, status) {
-            STD_ACTIONS = createActionList(data, "standard");
-        });
-    }
+    // function getStandardActions() {
+    //     post("/game/standardActions", CHARACTER, function (data, status) {
+    //         STD_ACTIONS = createActionList(data, "standard");
+    //     });
+    // }
 
-    function getQuickActions() {
-        post("/game/quickActions", CHARACTER, function(data, status) {
-            QUICK_ACTIONS = createActionList(data, "Quick");
-        });
-    }
+    // function getQuickActions() {
+    //     post("/game/quickActions", CHARACTER, function(data, status) {
+    //         QUICK_ACTIONS = createActionList(data, "Quick");
+    //     });
+    // }
 
     function createActionList(data, type) {
         var actionContainer = document.createElement("div");
@@ -500,39 +611,59 @@
         STD_USED = true;
     }
 
-    function pollData() {
-        //update character on server
-        // post("game/character", CHARACTER, function(){});
-
-        //get possible quick actions from server if necessary
-        if (!QUICK_ACTIONS_VALID) {
-            getQuickActions();
-            QUICK_ACTIONS_VALID = true;
-        }
-
-        //get possible standard actions from server if necessary
-        if (!STD_ACTIONS_VALID) {
-            getStandardActions();
-            STD_ACTIONS_VALID = true;
-        }
-    }
-
     //create box overlay images and get character movement tree
     $(document).ready(function() {
+        startGame();
+    });
+
+    function startGame() {
         createBoard();
         getState();
+
         // queryCharacter();
         // queryPossibleMoves(false);
         // queryBlockedMoves(false);
         // startPolling();
         // setupTimers();
-    });
+    }
+
+    function startPolling() {
+        // if (POLLING_ACTIVE) {
+        //     return;
+        // }
+        // POLLING_INTERVAL = setInterval(function () {
+        //     pollData();
+        // }, 2000);
+        // POLLING_ACTIVE = true;
+    }
+
+    function endPolling() {
+        // clearInterval(POLLING_INTERVAL);
+    }
+
+    function pollData() {
+        //update and read game state
+        // getState();
+
+        //get possible quick actions from server if necessary
+        // if (!QUICK_ACTIONS_VALID) {
+        //     getQuickActions();
+        //     QUICK_ACTIONS_VALID = true;
+        // }
+        //
+        // //get possible standard actions from server if necessary
+        // if (!STD_ACTIONS_VALID) {
+        //     getStandardActions();
+        //     STD_ACTIONS_VALID = true;
+        // }
+    }
 
     function getState() {
+        // endPolling();
         $.get("game/state", function(data, status) {
             GAME_STATE = data;
             readState();
-            //TODO: start polling
+            // startPolling();
         });
     }
 
@@ -751,14 +882,24 @@
     }
 
     function endTurn() {
+        var endTurnBanner = document.getElementById("start_turn_banner");
+        var endTurnBannerContent = document.getElementById("start_banner_content");
+        endTurnBanner.classList.add("fade_in_out");
+        endTurnBannerContent.classList.add("slide_animation");
+        endTurnBannerContent.classList.add("slide_right");
         endPolling();
         resetVariables();
         post("game/endTurn", CHARACTER, function(data, status){
-            startPolling();
+            // startPolling();
             //move npc's
+            npcTurns();
             startTurn();
         });
         ACTION_MENU_VISIBLE = false;
+    }
+
+    function npcTurns() {
+
     }
 
     function resetVariables() {
@@ -850,5 +991,17 @@
         </div>
     </div>
 
+    <div id="end_turn_banner" class="hidden turn_banner">
+        <img src="img/turn_banner.png">
+        <span id="end_turn_banner_words" class="banner_words">Enemy Turn</span>
+    </div>
+    <div id="start_turn_banner" class="turn_banner" style="opacity: 0;">
+        <div id="start_banner_gradient">
+            <div id="start_banner_content">
+                <!--<img src="img/turn_banner.png">-->
+                <span id="start_turn_banner_words" class="banner_words"><i><span id="player_name_banner">Lahod</span>'s Turn</i></span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
