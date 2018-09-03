@@ -2,105 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54051d29-35e7-497e-8776-2029d38b5ba6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/FollowerCharacter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/PlayerCharacter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/StatType.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/css/animation.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/net.castleadventure.ospgarath/model/DiceTest.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/OspGarathApplication.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/OspGarathApplication.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/factory/MonsterFactory.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/factory/MonsterFactory.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Dice.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Dice.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameState.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/GameState.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Space.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Space.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/ActionResult.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/action/ActionResult.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/CharacterManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/CharacterManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Stat.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Stat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Immobilized.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Immobilized.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/PositiveCondition.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/PositiveCondition.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Slowed.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Slowed.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Staggered.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Staggered.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Steadied.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/Steadied.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/ActionManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/managers/ActionManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/Monster.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/Monster.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/MonsterLevel.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/MonsterLevel.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/StatResolver.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/StatResolver.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Bear.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Bear.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Beast.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Beast.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/BeastManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/BeastManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Bird.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Bird.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Cat.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Cat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Dog.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Dog.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Falcon.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Falcon.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Horse.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Horse.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Pony.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Pony.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Viper.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Viper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Weasel.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Weasel.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/beast/Wolf.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/beast/Wolf.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterBehavior/AttackBehavior.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterBehavior/AttackBehavior.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterBehavior/DefendBehavior.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterBehavior/DefendBehavior.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterBehavior/HideBehavior.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterBehavior/HideBehavior.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterBehavior/MonsterBehavior.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterBehavior/MonsterBehavior.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterBehavior/RiddleBehavior.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterBehavior/RiddleBehavior.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterTypes/BaseMonster.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterTypes/BaseMonster.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterTypes/Captain.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterTypes/Captain.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterTypes/Minion.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterTypes/Minion.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterTypes/Trooper.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterTypes/Trooper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/monsterTypes/Villain.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/monster/monsterTypes/Villain.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/room/Room.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/room/Room.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/room/baseRooms/RedRoom.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/room/baseRooms/RedRoom.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/CharacterCreationController.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/CharacterCreationController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/GameController.java" afterPath="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/web/controller/GameController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/ospgarath_style.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/ospgarath_style.css" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" afterPath="$PROJECT_DIR$/src/main/resources/static/ospgarath.html" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net.castleadventure.ospgarath/model/MinionTest.java" afterPath="$PROJECT_DIR$/src/test/java/net.castleadventure.ospgarath/model/MinionTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net.castleadventure.ospgarath/model/StatResolverTest.java" afterPath="$PROJECT_DIR$/src/test/java/net.castleadventure.ospgarath/model/StatResolverTest.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/OspGarathApplication.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/OspGarathApplication.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/factory/MonsterFactory$1.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/factory/MonsterFactory$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/factory/MonsterFactory.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/factory/MonsterFactory.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/Dice.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/Dice.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/GameState.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/GameState.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/Space.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/game/Space.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/Character.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/Character.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/CharacterManager.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/CharacterManager.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/Stat.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/Stat.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/condition/Immobilized.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/condition/Immobilized.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/condition/Slowed.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/condition/Slowed.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/condition/Staggered.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/condition/Staggered.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/condition/Steadied.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/character/condition/Steadied.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/Monster.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/MonsterLevel.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/StatResolver.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Bear.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Beast.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/BeastManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Bird.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Cat.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Dog.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Falcon.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Horse.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Pony.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Viper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Weasel.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/beast/Wolf.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterBehavior/AttackBehavior.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterBehavior/DefendBehavior.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterBehavior/HideBehavior.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterBehavior/MonsterBehavior.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterBehavior/RiddleBehavior.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterTypes/BaseMonster.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterTypes/Captain.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterTypes/Minion.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterTypes/Trooper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/monster/monsterTypes/Villain.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/room/Room.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/room/Room.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/room/baseRooms/RedRoom.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/model/room/baseRooms/RedRoom.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/web/controller/CharacterCreationController.class" afterPath="$PROJECT_DIR$/target/classes/net/castleadventure/ospgarath/web/controller/CharacterCreationController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/ospgarath_style.css" afterPath="$PROJECT_DIR$/target/classes/static/css/ospgarath_style.css" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/ospgarath.html" afterPath="$PROJECT_DIR$/target/classes/static/ospgarath.html" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/net/castleadventure/ospgarath/model/MinionTest.class" afterPath="$PROJECT_DIR$/target/test-classes/net/castleadventure/ospgarath/model/MinionTest.class" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/net/castleadventure/ospgarath/model/StatResolverTest.class" afterPath="$PROJECT_DIR$/target/test-classes/net/castleadventure/ospgarath/model/StatResolverTest.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -292,17 +194,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerCharacter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerCharacter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/PlayerCharacter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="50" column="9" lean-forward="false" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+            <state relative-caret-position="436">
+              <caret line="53" column="28" lean-forward="true" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#661#662#0" expanded="true" />
                 <element signature="e#700#701#0" expanded="true" />
                 <element signature="method#createFromJson#0;class#PlayerCharacter#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -385,7 +297,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Space.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/race/MovementManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/monster/StatResolver.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Board.java" />
@@ -436,6 +347,7 @@
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/condition/PositiveCondition.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/Character.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/PlayerCharacter.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -656,36 +568,6 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OspGarath" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OspGarath" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OspGarath" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OspGarath" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OspGarath" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -976,7 +858,7 @@
       <workItem from="1531927797155" duration="77191000" />
       <workItem from="1533681692189" duration="36204000" />
       <workItem from="1534054818706" duration="35499000" />
-      <workItem from="1535389442430" duration="14270000" />
+      <workItem from="1535389442430" duration="14565000" />
     </task>
     <servers />
   </component>
@@ -1013,7 +895,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="666997000" />
+    <option name="totallyTimeSpent" value="667292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="0" />
@@ -1075,13 +957,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/char_creation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="1349" column="0" lean-forward="true" selection-start-line="1349" selection-start-column="0" selection-end-line="1349" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/game/Board.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
@@ -1730,14 +1605,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/castleadventure/ospgarath/model/character/PlayerCharacter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="50" column="9" lean-forward="false" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+        <state relative-caret-position="436">
+          <caret line="53" column="28" lean-forward="true" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#661#662#0" expanded="true" />
             <element signature="e#700#701#0" expanded="true" />
             <element signature="method#createFromJson#0;class#PlayerCharacter#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
