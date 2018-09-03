@@ -5,6 +5,7 @@
     <title>Osp-Garath</title>
 
     <link rel="stylesheet" href="css/ospgarath_style.css">
+    <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/rpg-awesome.css">
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
@@ -16,185 +17,6 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
 
 </head>
-<style>
-    body {
-        background: url("img/game_background2.jpg"), no-repeat;
-        -webkit-background-size: 100%;
-        background-size: 100%;
-        margin: 0;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    #board_container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 101vh;
-        height: 100vh;
-        margin-top: -50vh;
-        margin-left: -50vh;
-        /*-webkit-box-shadow: 0px 0px 50px black;*/
-        /*-moz-box-shadow: 0px 0px 50px black ;*/
-        /*box-shadow: 0px 0px 50px black ;*/
-    }
-
-    #board_border {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 101vh;
-        height: 100vh;
-        margin-top: -50vh;
-        margin-left: -50vh;
-    }
-
-    #current_board {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 92vh;
-        height: 92vh;
-        margin-top: -45.75vh;
-        margin-left: -45.75vh;
-        box-shadow: 0 0 50px white;
-    }
-
-    .attribute_bar {
-        position: absolute;
-        width: 30vh;
-        height: 3vh;
-    }
-
-    #endurance {
-        position: absolute;
-        left: 2.45vh;
-        top: 15vh;
-        width: 29.3vh;
-        height: 2.3vh;
-    }
-
-    #experience {
-        position: absolute;
-        left: 2.45vh;
-        top: 18.3vh;
-        width: 29.3vh;
-        height: 2.4vh;
-    }
-
-    .ability_score {
-        padding-left: .5vh;
-    }
-
-    #end_overlay {
-        position: absolute;
-        font-size: 1.8vh;
-        left: 13vh;
-        top: 15.1vh;
-    }
-
-    #exp_overlay {
-        position: absolute;
-        font-size: 1.8vh;
-        left: 14vh;
-        top: 18.5vh;
-    }
-
-    #character_icon {
-        position: absolute;
-        /*left: 47.2vh;*/
-        /*top: 89.6vh;*/
-        width: 6.85vh;
-        height: 6.5vh;
-        box-shadow: 0 2px 15px 3px black;
-        z-index: 100;
-    }
-
-    #enemy_icon {
-        position: absolute;
-        left: 47.2vh;
-        top: 68.27vh;
-        width: 6.85vh;
-        height: 6.5vh;
-        box-shadow: 0 2px 15px 3px black;
-    }
-
-    #actions_status {
-        position: absolute;
-        left: 5.5vh;
-        top: 5vh;
-        font-size: 2.2vh;
-    }
-
-    #movement_arrows {
-        position: absolute;
-        left: 78vh;
-        top: 85vh;
-    }
-
-    .arrows {
-        width: 4.5vh;
-        height: 4.5vh;
-    }
-
-    .tooltip {
-        font-family: 'Marcellus SC', serif;
-        color: yellow;
-        cursor: default;
-    }
-
-    .tooltip:hover {
-        text-shadow: 0 0 5px yellow;
-    }
-
-    .action_list {
-        text-align:center;
-        color: yellow;
-        font-family: 'Marcellus SC', serif;
-        cursor: default;
-    }
-
-    .action:hover {
-        text-shadow: 0 0 5px yellow;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    #end_turn_button {
-        text-align: center;
-        background: url("img/button_new2.jpg") no-repeat;
-        color: yellow;
-        font-family: 'Marcellus SC', serif;
-        cursor: default;
-        background-size: contain;
-        outline: none;
-        border: none;
-        font-size: 1.8vh;
-        width: 14vh;
-        height: 6vh;
-    }
-
-    #end_turn_button:hover {
-        text-shadow: 0 0 5px yellow;
-        box-shadow: 0 0 5px yellow;
-    }
-
-    #end_turn_button:active {
-        background: url("img/button_new_clicked.jpg");
-        background-size: contain;
-        width: 14vh;
-        height: 6vh;
-    }
-
-    #end_turn_container {
-        position: absolute;
-        left: 8vh;
-        top: 89.6vh;
-    }
-
-</style>
 <script>
     var VERTICAL_INCREASE = 7.11;
     var HORIZONTAL_INCREASE = 7.15;
@@ -347,20 +169,6 @@
         ACTION_MENU_VISIBLE = true;
     }
 
-    function startPolling() {
-        // if (POLLING_ACTIVE) {
-        //     return;
-        // }
-        // POLLING_INTERVAL = setInterval(function () {
-        //     pollData();
-        // }, 2000);
-        // POLLING_ACTIVE = true;
-    }
-
-    function endPolling() {
-        // clearInterval(POLLING_INTERVAL);
-    }
-
     //called whenever the character moves or something on the board changes
     function invalidateActionLists() {
         QUICK_ACTIONS_VALID = false;
@@ -375,33 +183,10 @@
             NESTED_TOOLTIPS[i].close();
         }
         for (var j = 0; j < current_instances.length; j++) {
-            // clearNestedTooltipsters($.tooltipster.instances(current_instances[j]));
             current_instances[j].close();
         }
         NESTED_TOOLTIPS = [];
         ACTION_MENU_VISIBLE = false;
-    }
-
-    function clearNestedTooltipsters(instances) {
-        if (instances === null || instances.length === 0) {
-            return;
-        }
-        for (var i = 0; i < instances.length; i++) {
-            clearNestedTooltipsters($.tooltipster.instances(instances[i]));
-            instances[i].close();
-        }
-    }
-
-    function getStandardActions() {
-        post("/game/standardActions", CHARACTER, function (data, status) {
-            STD_ACTIONS = createActionList(data, "standard");
-        });
-    }
-
-    function getQuickActions() {
-        post("/game/quickActions", CHARACTER, function(data, status) {
-            QUICK_ACTIONS = createActionList(data, "Quick");
-        });
     }
 
     function createActionList(data, type) {
@@ -425,7 +210,6 @@
 
     function equip_item() {
     }
-
 
 
     function getViewPortPositionLeft(x) {
@@ -500,39 +284,59 @@
         STD_USED = true;
     }
 
-    function pollData() {
-        //update character on server
-        // post("game/character", CHARACTER, function(){});
-
-        //get possible quick actions from server if necessary
-        if (!QUICK_ACTIONS_VALID) {
-            getQuickActions();
-            QUICK_ACTIONS_VALID = true;
-        }
-
-        //get possible standard actions from server if necessary
-        if (!STD_ACTIONS_VALID) {
-            getStandardActions();
-            STD_ACTIONS_VALID = true;
-        }
-    }
-
     //create box overlay images and get character movement tree
     $(document).ready(function() {
+        startGame();
+    });
+
+    function startGame() {
         createBoard();
         getState();
+
         // queryCharacter();
         // queryPossibleMoves(false);
         // queryBlockedMoves(false);
         // startPolling();
         // setupTimers();
-    });
+    }
+
+    function startPolling() {
+        // if (POLLING_ACTIVE) {
+        //     return;
+        // }
+        // POLLING_INTERVAL = setInterval(function () {
+        //     pollData();
+        // }, 2000);
+        // POLLING_ACTIVE = true;
+    }
+
+    function endPolling() {
+        // clearInterval(POLLING_INTERVAL);
+    }
+
+    function pollData() {
+        //update and read game state
+        // getState();
+
+        //get possible quick actions from server if necessary
+        // if (!QUICK_ACTIONS_VALID) {
+        //     getQuickActions();
+        //     QUICK_ACTIONS_VALID = true;
+        // }
+        //
+        // //get possible standard actions from server if necessary
+        // if (!STD_ACTIONS_VALID) {
+        //     getStandardActions();
+        //     STD_ACTIONS_VALID = true;
+        // }
+    }
 
     function getState() {
+        // endPolling();
         $.get("game/state", function(data, status) {
             GAME_STATE = data;
             readState();
-            //TODO: start polling
+            // startPolling();
         });
     }
 
@@ -751,14 +555,48 @@
     }
 
     function endTurn() {
+        createEndTurnBanner();
         endPolling();
         resetVariables();
         post("game/endTurn", CHARACTER, function(data, status){
-            startPolling();
+            // startPolling();
             //move npc's
+            npcTurns();
             startTurn();
         });
         ACTION_MENU_VISIBLE = false;
+    }
+
+    function npcTurns() {
+
+    }
+
+    function createEndTurnBanner() {
+        var endTurnBanner = document.getElementById("start_turn_banner");
+        var endTurnBannerContent = document.getElementById("start_banner_content");
+        endTurnBanner.classList.remove("hidden");
+        endTurnBanner.classList.add("fade_in_out");
+        endTurnBannerContent.classList.add("slide_animation");
+        endTurnBannerContent.classList.add("slide_right");
+
+        var banner = $('#start_turn_banner');
+        banner.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
+            if (e.target === banner[0]) {
+                // this is your completion event!
+                banner.addClass("hidden");
+            }
+        });
+        // endTurnBanner.addEventListener("animationiteration", function() {endTurnBanner.classList.add("hidden")}, false);
+        // endTurnBanner.addEventListener("webkitAnimationIteration", function() {endTurnBanner.classList.add("hidden")}, false);
+    }
+
+    function removeEndTurnBanner() {
+        var endTurnBanner = document.getElementById("start_turn_banner");
+        // var endTurnBannerContent = document.getElementById("start_banner_content");
+        // endTurnBanner.classList.remove("fade_in_out");
+        // endTurnBannerContent.classList.remove("slide_animation");
+        // endTurnBannerContent.classList.remove("slide_right");
+        endTurnBanner.classList.add("hidden");
     }
 
     function resetVariables() {
@@ -850,5 +688,17 @@
         </div>
     </div>
 
+    <div id="end_turn_banner" class="hidden turn_banner">
+        <img src="img/turn_banner.png">
+        <span id="end_turn_banner_words" class="banner_words">Enemy Turn</span>
+    </div>
+    <div id="start_turn_banner" class="turn_banner hidden">
+        <div id="start_banner_gradient">
+            <div id="start_banner_content">
+                <!--<img src="img/turn_banner.png">-->
+                <span id="start_turn_banner_words" class="banner_words"><i><span id="player_name_banner">Lahod</span>'s Turn</i></span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

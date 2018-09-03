@@ -37,4 +37,8 @@ public class Dice {
     public static Integer dynamic(Integer input) {
         return random.nextInt(input) + 1;
     }
+
+    public static Integer dRange(Integer lower, Integer upper) {
+        return random.nextInt((upper - lower)+1) + lower;
+    }
 }

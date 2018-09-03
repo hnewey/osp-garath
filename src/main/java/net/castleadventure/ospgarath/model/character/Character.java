@@ -14,37 +14,36 @@ import net.castleadventure.ospgarath.model.managers.ActionManager;
 import net.castleadventure.ospgarath.model.managers.ConditionManager;
 import net.castleadventure.ospgarath.model.managers.EquipmentManager;
 import net.castleadventure.ospgarath.model.managers.MovementManager;
-import net.castleadventure.ospgarath.model.monster.StatResolver;
+import net.castleadventure.ospgarath.model.character.monster.StatResolver;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Character {
+public abstract class Character {
 
-    private Stat strength;
-    private Stat quickness;
-    private Stat intelligence;
-    private Stat leadership;
+    protected Stat strength;
+    protected Stat quickness;
+    protected Stat intelligence;
+    protected Stat leadership;
 
-    private Integer endurance;
-    private Integer movement;
-    private Integer defense;
+    protected Stat endurance;
+    protected Stat movement;
+    protected Stat defense;
 
-    private Integer maxDamage;
-    private Integer damageTaken = 0;
-    private Integer attackDice = 1;
+    protected Integer maxDamage;
+    protected Integer damageTaken = 0;
+    protected Integer attackDice = 1;
 
-    private Boolean conscious = true;
+    protected Boolean conscious = true;
 
-    private ClassType characterClass;
-    private Race characterRace;
-    private Gender gender;
+    protected ClassType characterClass;
+    protected Race characterRace;
+    protected Gender gender;
 
-    private String name;
-    private String playerName;
+    protected String name;
 
-    private List<Power> powers = new ArrayList<>();
+    protected List<Power> powers = new ArrayList<>();
 
     private Space position;
 
@@ -54,62 +53,45 @@ public class Character {
     private EquipmentManager equipmentManager = new EquipmentManager();
 
     @JsonIgnore
-    private PlayerEquippedItems playerEquippedItems = new PlayerEquippedItems();
+    protected PlayerEquippedItems playerEquippedItems = new PlayerEquippedItems();
     @JsonIgnore
-    private PlayerInventory playerInventory = new PlayerInventory();
+    protected PlayerInventory playerInventory = new PlayerInventory();
 
-    private List<PositiveCondition> positiveConditions = new ArrayList<>();
-    private List<NegativeCondition> negativeConditions = new ArrayList<>();
+    protected List<PositiveCondition> positiveConditions = new ArrayList<>();
+    protected List<NegativeCondition> negativeConditions = new ArrayList<>();
+
+
+    //--------------------------------------
+    //Constructors
+    //--------------------------------------
 
     public Character() {
     }
 
-    public Character(Integer s, Integer q, Integer i, Integer l, Integer e, Integer m) throws Exception {
+    public Character(Integer s, Integer q, Integer i, Integer l, Integer e, Integer m) {
         strength = new Stat(s);
         quickness = new Stat(q);
         intelligence = new Stat(i);
         leadership = new Stat(l);
-        endurance = e;
-        movement = m;
-        defense = q;
+        endurance = new Stat(e);
+        movement = new Stat(m);
+        defense = new Stat(q);
 
         position = new Space(0, -6);
-        movementManager.possibleMovements(position, movement);
+        movementManager.possibleMovements(position, movement.getValue());
         maxDamage = calcMaxDamage();
 
         characterClass = StatResolver.getClass(s, q, i, l);
         powers = new ArrayList<>();
     }
 
-    public static Character createFromJson(net.minidev.json.JSONObject json) throws Exception {
-        JSONObject newJson = new JSONObject(json.toString());
-        JSONObject abilities = newJson.getJSONObject("abilities");
-        Integer s = abilities.getInt("strength"), q = abilities.getInt("quickness"), i = abilities.getInt("intelligence"),
-                l = abilities.getInt("leadership"), e = abilities.getInt("endurance"), m = abilities.getInt("movement");
-        Character character = new Character(s, q, i, l, e, m);
-        character.setCharacterClass(ClassType.getClassByName(abilities.getString("class")));
-        character.setCharacterRace(Race.getRace(abilities.getString("race")));
+    //--------------------------------------
+    //Generalized Character methods
+    //--------------------------------------
 
-        String[] powers = newJson.getJSONArray("powers").getString(0).split(",");
-        String className = character.getCharacterClass().getClassName();
-        for (String power : powers) {
-            character.addPower(PowerManager.getClassPower(className, power.trim()));
-        }
-        return character;
-    }
+    public abstract void startTurn();
 
-    public void startTurn() {
-        List<PositiveCondition> tempConditions = positiveConditions;
-        for (PositiveCondition condition : tempConditions) {
-            condition.startTurn();
-        }
-    }
-
-    public void endTurn() {
-        for (NegativeCondition condition : negativeConditions) {
-            condition.endTurn();
-        }
-    }
+    public abstract void endTurn();
 
     public void sustainCondition(Integer index) {
         Condition condition = positiveConditions.get(index);
@@ -127,7 +109,7 @@ public class Character {
         }
     }
 
-    public Integer basicAttack() {
+    public Integer basicAttack(Character target) {
         Integer attackRoll = null;
         if (isDetermined()) {
             for (int i = 0; i < attackDice; i++) {
@@ -144,6 +126,10 @@ public class Character {
             attackRoll = Dice.d20();
         }
         attackRoll += strength.getRollModifier();
+
+        if (attackRoll >= target.getDefense().getValue()) {
+            target.takeDamage(rollDamage());
+        }
         return attackRoll;
     }
 
@@ -153,7 +139,7 @@ public class Character {
 
     public void takeDamage(Integer damage) {
         this.damageTaken += damage;
-        if (damageTaken >= endurance) {
+        if (damageTaken >= endurance.getValue()) {
             conscious = false;
         }
     }
@@ -197,48 +183,6 @@ public class Character {
         return ActionManager.getStandardActions(this.position);
     }
 
-
-    //-----------------------------------------------------------
-    // Getters
-    //-----------------------------------------------------------
-
-
-    public Stat getStrength() {
-        return strength;
-    }
-
-    public Stat getQuickness() {
-        return quickness;
-    }
-
-    public Stat getIntelligence() {
-        return intelligence;
-    }
-
-    public Stat getLeadership() {
-        return leadership;
-    }
-
-    public Integer getEndurance() {
-        return endurance;
-    }
-
-    public Integer getMovement() {
-        return movement;
-    }
-
-    public Integer getDefense() {
-        return defense;
-    }
-
-    public Integer getMaxDamage() {
-        return maxDamage;
-    }
-
-    public ClassType getCharacterClass() {
-        return characterClass;
-    }
-
     public Stat getHighestStat() {
         String sequence = characterClass.getClassCombo();
         switch (sequence.charAt(0)) {
@@ -253,154 +197,212 @@ public class Character {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    public Integer getDamageTaken() {
-        return damageTaken;
-    }
-
-    public Integer getAttackDice() {
-        return attackDice;
-    }
-
-    public Boolean getConscious() {
-        return conscious;
-    }
-
-    public Race getCharacterRace() {
-        return characterRace;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public List<Power> getPowers() {
-        return powers;
-    }
-
-    public PlayerEquippedItems getPlayerEquippedItems() {
-        return playerEquippedItems;
-    }
-
-    public PlayerInventory getPlayerInventory() {
-        return playerInventory;
-    }
-
-    public List<PositiveCondition> getPositiveConditions() {
-        return positiveConditions;
-    }
-
-    public List<NegativeCondition> getNegativeConditions() {
-        return negativeConditions;
-    }
-
     public List<Space> getPossibleMovements() {
-        return movementManager.possibleMovements(this.position, this.movement);
+        return movementManager.possibleMovements(this.position, this.movement.getValue());
     }
 
     public List<Space> getBlockedMovements() {
         return movementManager.blockedMovements();
     }
 
-    public Space getPosition() {
-        return position;
+
+
+    //--------------------------------------
+    //Abstract Methods
+    //--------------------------------------
+    public abstract String getPlayerName();
+    public abstract void setPlayerName(String playerName);
+
+
+    //--------------------------------------
+    //Getters and Setters
+    //--------------------------------------
+
+    public Stat getStrength() {
+        return strength;
     }
-
-    //-----------------------------------------------------------
-    // Setters
-    //-----------------------------------------------------------
-
-    public void updateStats() {
-        strength.setValue(strength.getValue());
-        quickness.setValue(quickness.getValue());
-        intelligence.setValue(intelligence.getValue());
-        leadership.setValue(leadership.getValue());
-        playerEquippedItems.addEffects();
-        for (Condition condition : positiveConditions) {
-            condition.doEffect();
+    public void setStrength(Stat strength) {
+        this.strength = strength;
+    }
+    public void modifyStat(StatType stat, Integer change, String reason) {
+        switch (stat) {
+            case STRENGTH:
+                strength.addModifier(change, reason);
+                break;
+            case QUICKNESS:
+                quickness.addModifier(change, reason);
+                break;
+            case INTELLIGENCE:
+                intelligence.addModifier(change, reason);
+                break;
+            case LEADERSHIP:
+                leadership.addModifier(change, reason);
+                break;
+            case MOVEMENT:
+                movement.addModifier(change, reason);
+                break;
+            case ENDURANCE:
+                endurance.addModifier(change, reason);
+                break;
+            case DEFENSE:
+                defense.addModifier(change, reason);
         }
-        for (Condition condition : negativeConditions) {
-            condition.doEffect();
-        }
     }
 
-    public void changeStatPermanent(Stat stat, Integer value) {
-        stat.changePermanent(value);
+    public Stat getQuickness() {
+        return quickness;
+    }
+    public void setQuickness(Stat quickness) {
+        this.quickness = quickness;
     }
 
-    public void addStatModifier(Stat stat, Integer value, String reason) {
-        stat.addModifier(value, reason);
+    public Stat getIntelligence() {
+        return intelligence;
+    }
+    public void setIntelligence(Stat intelligence) {
+        this.intelligence = intelligence;
     }
 
-    public void removeStatModifier(Stat stat, String reason) {
-        stat.removeModifier(reason);
+    public Stat getLeadership() {
+        return leadership;
+    }
+    public void setLeadership(Stat leadership) {
+        this.leadership = leadership;
     }
 
-    public void changeEndurance(Integer change) {
-        endurance += change;
+    public Stat getEndurance() {
+        return endurance;
+    }
+    public void setEndurance(Stat endurance) {
+        this.endurance = endurance;
     }
 
-    public void changeMovement(Integer change) {
-        movement += change;
+    public Stat getMovement() {
+        return movement;
+    }
+    public void setMovement(Stat movement) {
+        this.movement = movement;
+    }
+    public void halfMovement(String change) {
+        modifyStat(StatType.MOVEMENT, movement.getValue()/2, change);
+    }
+    public void resetMovement() {
+        movement.clearModifiers();
     }
 
-    public void changeDefense(Integer change) {
-        defense += change;
+    public Stat getDefense() {
+        return defense;
+    }
+    public void setDefense(Stat defense) {
+        this.defense = defense;
     }
 
+    public Integer getMaxDamage() {
+        return maxDamage;
+    }
+    public void setMaxDamage(Integer maxDamage) {
+        this.maxDamage = maxDamage;
+    }
     public void changeMaxDamage(Integer change) {
         this.maxDamage += change;
     }
 
-    public void changeAttackDice(Integer change) {
-        this.attackDice += change;
+    public ClassType getCharacterClass() {
+        return characterClass;
     }
-
-    public void halfMovement() {
-        this.movement /= 2;
-    }
-
-    public void resetMovement() {
-        this.movement = 6;
-    }
-
-    public void setMovement(Integer movement) {
-        this.movement = movement;
-    }
-
-    public void setCharacterRace(Race characterRace) {
-        this.characterRace = characterRace;
-    }
-
-    public void addPower(Power power) {
-        this.powers.add(power);
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
     public void setCharacterClass(ClassType characterClass) {
         this.characterClass = characterClass;
     }
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getDamageTaken() {
+        return damageTaken;
+    }
+    public void setDamageTaken(Integer damageTaken) {
+        this.damageTaken = damageTaken;
+    }
+
+    public Integer getAttackDice() {
+        return attackDice;
+    }
+    public void setAttackDice(Integer attackDice) {
+        this.attackDice = attackDice;
+    }
+    public void changeAttackDice(Integer change) {
+        this.attackDice += change;
+    }
+
+    public Boolean getIsConscious() {
+        return conscious;
+    }
+    public void setConscious(Boolean conscious) {
+        this.conscious = conscious;
+    }
+
+    public Race getCharacterRace() {
+        return characterRace;
+    }
+    public void setCharacterRace(Race characterRace) {
+        this.characterRace = characterRace;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public List<Power> getPowers() {
+        return powers;
+    }
+    public void setPowers(List<Power> powers) {
+        this.powers = powers;
+    }
+    public void addPower(Power power) {
+        this.powers.add(power);
+    }
+
+    public PlayerEquippedItems getPlayerEquippedItems() {
+        return playerEquippedItems;
+    }
+    public void setPlayerEquippedItems(PlayerEquippedItems playerEquippedItems) {
+        this.playerEquippedItems = playerEquippedItems;
+    }
+
+    public PlayerInventory getPlayerInventory() {
+        return playerInventory;
+    }
+    public void setPlayerInventory(PlayerInventory playerInventory) {
+        this.playerInventory = playerInventory;
+    }
+
+    public List<PositiveCondition> getPositiveConditions() {
+        return positiveConditions;
+    }
+    public void setPositiveConditions(List<PositiveCondition> positiveConditions) {
+        this.positiveConditions = positiveConditions;
+    }
+
+    public List<NegativeCondition> getNegativeConditions() {
+        return negativeConditions;
+    }
+    public void setNegativeConditions(List<NegativeCondition> negativeConditions) {
+        this.negativeConditions = negativeConditions;
+    }
+
+    public Space getPosition() {
+        return position;
+    }
     public void setPosition(Space position) {
         this.position = position;
-        movementManager.possibleMovements(this.position, this.movement);
+        movementManager.possibleMovements(this.position, this.movement.getValue());
     }
+
 }

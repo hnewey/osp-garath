@@ -8,7 +8,7 @@ public abstract class PositiveCondition extends Condition{
         this.rollRequired = 0;
     }
 
-    public void startTurn() {
+    public void maintain() {
         this.rollRequired += 5;
         if (rollRequired > 20) {
             rollRequired = 20;

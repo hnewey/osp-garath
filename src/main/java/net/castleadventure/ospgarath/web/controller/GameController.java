@@ -5,6 +5,7 @@ import net.castleadventure.ospgarath.game.GameState;
 import net.castleadventure.ospgarath.game.SpaceInfo;
 import net.castleadventure.ospgarath.model.character.Character;
 import net.castleadventure.ospgarath.game.Space;
+import net.castleadventure.ospgarath.model.character.PlayerCharacter;
 import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,12 +36,12 @@ public class GameController {
     }
 
     @RequestMapping (value = "/character", method = RequestMethod.POST)
-    public void updateCharacter(@RequestBody Character character) {
+    public void updateCharacter(@RequestBody PlayerCharacter character) {
         GameState.getInstance().setCharacter(character);
     }
 
     @RequestMapping (value = "/endTurn", method = RequestMethod.POST)
-    public ResponseEntity endTurn(@RequestBody Character character) {
+    public ResponseEntity endTurn(@RequestBody PlayerCharacter character) {
         GameState.getInstance().setCharacter(character);
         GameState.getInstance().endCharacterTurn();
 //        character.endTurn();
@@ -58,12 +59,12 @@ public class GameController {
     }
 
     @RequestMapping (value = "/quickActions", method = RequestMethod.POST)
-    public List<String> getQuickActions(@RequestBody Character character) {
+    public List<String> getQuickActions(@RequestBody PlayerCharacter character) {
         return character.getQuickActions();
     }
 
     @RequestMapping (value = "/standardActions", method = RequestMethod.POST)
-    public List<String> getStandardActions(@RequestBody Character character) {
+    public List<String> getStandardActions(@RequestBody PlayerCharacter character) {
         return character.getStandardActions();
     }
 

@@ -1,14 +1,15 @@
 package net.castleadventure.ospgarath.factory;
 
-import net.castleadventure.ospgarath.model.monster.*;
-import net.castleadventure.ospgarath.model.monster.monsterTypes.Captain;
-import net.castleadventure.ospgarath.model.monster.monsterTypes.Minion;
-import net.castleadventure.ospgarath.model.monster.monsterTypes.Trooper;
-import net.castleadventure.ospgarath.model.monster.monsterTypes.Villain;
+import net.castleadventure.ospgarath.model.character.Character;
+import net.castleadventure.ospgarath.model.character.monster.*;
+import net.castleadventure.ospgarath.model.character.monster.monsterTypes.Captain;
+import net.castleadventure.ospgarath.model.character.monster.monsterTypes.Minion;
+import net.castleadventure.ospgarath.model.character.monster.monsterTypes.Trooper;
+import net.castleadventure.ospgarath.model.character.monster.monsterTypes.Villain;
 
 public final class MonsterFactory {
 
-    public static Monster getMonster(MonsterLevel monsterLevel) throws Exception {
+    public static Character getMonster(MonsterLevel monsterLevel) throws Exception {
         Monster createdMonster;
         switch (monsterLevel) {
             case MINION: createdMonster = new Minion();
@@ -27,10 +28,10 @@ public final class MonsterFactory {
         }
         createdMonster.adjustStats();
         createdMonster.setClassType(StatResolver.getClass(
-                createdMonster.getStrength(),
-                createdMonster.getQuickness(),
-                createdMonster.getIntelligence(),
-                createdMonster.getLeadership()));
+                createdMonster.getStrength().getValue(),
+                createdMonster.getQuickness().getValue(),
+                createdMonster.getIntelligence().getValue(),
+                createdMonster.getLeadership().getValue()));
         return createdMonster;
     }
 

@@ -9,9 +9,9 @@ public class Space {
     public Space() {
     }
 
-    public Space(int x, int y) throws Exception {
+    public Space(int x, int y) {
         if (Math.abs(x) + Math.abs(y) > 9) {
-            throw new Exception("Invalid position");
+            System.err.println("Invalid position");
         }
         this.x = x;
         this.y = y;

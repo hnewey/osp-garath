@@ -1,35 +1,27 @@
 package net.castleadventure.ospgarath.web.controller;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import net.castleadventure.ospgarath.game.GameState;
 import net.castleadventure.ospgarath.model.ability.power.Power;
 import net.castleadventure.ospgarath.model.ability.power.PowerManager;
 import net.castleadventure.ospgarath.model.character.Character;
 import net.castleadventure.ospgarath.model.character.CharacterManager;
+import net.castleadventure.ospgarath.model.character.PlayerCharacter;
 import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.character.race.RaceManager;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.characterClass.ClassDescription;
 import net.castleadventure.ospgarath.model.characterClass.trait.SelectedRaceAndClass;
 import net.castleadventure.ospgarath.model.characterClass.trait.TraitManager;
-import net.castleadventure.ospgarath.model.monster.StatResolver;
-import net.castleadventure.ospgarath.model.monster.beast.Beast;
-import net.castleadventure.ospgarath.model.monster.beast.BeastManager;
-import net.castleadventure.ospgarath.model.monster.beast.Pony;
-import net.castleadventure.ospgarath.model.monster.beast.Viper;
-import org.json.JSONArray;
+import net.castleadventure.ospgarath.model.character.monster.StatResolver;
+import net.castleadventure.ospgarath.model.character.beast.Beast;
+import net.castleadventure.ospgarath.model.character.beast.BeastManager;
+import net.castleadventure.ospgarath.model.character.beast.Viper;
 import org.json.JSONException;
-import org.json.JSONObject;
-import net.minidev.json.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServlet;
-import javax.ws.rs.GET;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping( value =  "" )
@@ -44,7 +36,7 @@ public class CharacterCreationController {
         }
         Character newCharacter;
         try {
-            newCharacter = Character.createFromJson(json);
+            newCharacter = PlayerCharacter.createFromJson(json);
         } catch (JSONException e) {
             throw new Exception(String.format("Invalid json for character creation provided: %s", json.toString()));
         }
