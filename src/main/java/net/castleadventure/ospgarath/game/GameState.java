@@ -2,7 +2,7 @@ package net.castleadventure.ospgarath.game;
 
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
 import net.castleadventure.ospgarath.model.item.PlayerInventory;
-import net.castleadventure.ospgarath.model.monster.Monster;
+import net.castleadventure.ospgarath.model.character.monster.Monster;
 import net.castleadventure.ospgarath.model.room.Room;
 import net.castleadventure.ospgarath.model.room.TowerIntro;
 import net.castleadventure.ospgarath.model.character.Character;
@@ -75,10 +75,10 @@ public final class GameState implements Serializable{
         //TODO: We need a way to return what happened as a result of the action to display to the user
         for (Monster enemy : enemies) {
             if (enemy.getPosition().equals(space)) {
-                if (this.character.basicAttack() >= enemy.getQuickness()) {
+//                if (this.character.basicAttack() >= enemy.getQuickness()) {
                     //cause enemy to take damage
 //                    enemy.takeDamage
-                }
+//                }
             }
         }
     }

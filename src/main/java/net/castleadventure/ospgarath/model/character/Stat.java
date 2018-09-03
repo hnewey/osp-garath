@@ -11,17 +11,17 @@ public class Stat {
 
     public Stat(){}
 
-    Stat(Integer value) {
+    public Stat(Integer value) {
         this.value = value;
         this.rollModifier = calcRollModifier(this.value);
     }
 
-    public Stat(String value) throws Exception {
+    public Stat(String value) {
         try {
             this.value = Integer.valueOf(value);
             this.rollModifier = calcRollModifier(this.value);
         } catch (IllegalArgumentException e) {
-            throw new Exception("Invalid ability stat input");
+            System.out.println("Invalid stat input");
         }
     }
 
@@ -52,6 +52,13 @@ public class Stat {
     public Integer getRollModifier() {
         return rollModifier;
     }
+
+    public void clearModifiers() {
+        modifiers.clear();
+    }
+
+
+    //private methods
 
     private void resetRollModifier() {
         rollModifier = calcRollModifier(value);

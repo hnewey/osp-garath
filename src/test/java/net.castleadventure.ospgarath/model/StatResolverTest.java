@@ -1,7 +1,7 @@
 package net.castleadventure.ospgarath.model;
 
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
-import net.castleadventure.ospgarath.model.monster.StatResolver;
+import net.castleadventure.ospgarath.model.character.monster.StatResolver;
 import org.junit.Test;
 
 import java.util.List;
@@ -74,7 +74,7 @@ public class StatResolverTest {
     }
     @Test
     public void fourEqualStatsLoadTest() {
-        for (int i = 0; i < 500000; i++) {
+        for (int i = 0; i < 5000; i++) {
             fourEqualStatsTest();
         }
     }

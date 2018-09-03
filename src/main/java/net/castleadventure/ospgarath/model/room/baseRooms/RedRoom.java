@@ -1,7 +1,7 @@
 package net.castleadventure.ospgarath.model.room.baseRooms;
 
 import net.castleadventure.ospgarath.factory.MonsterFactory;
-import net.castleadventure.ospgarath.model.monster.MonsterLevel;
+import net.castleadventure.ospgarath.model.character.monster.MonsterLevel;
 import net.castleadventure.ospgarath.model.room.Room;
 import net.castleadventure.ospgarath.model.room.RoomType;
 

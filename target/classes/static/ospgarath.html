@@ -5,6 +5,7 @@
     <title>Osp-Garath</title>
 
     <link rel="stylesheet" href="css/ospgarath_style.css">
+    <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/rpg-awesome.css">
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
@@ -16,310 +17,6 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
 
 </head>
-<style>
-    body {
-        background: url("img/game_background2.jpg"), no-repeat;
-        -webkit-background-size: 100%;
-        background-size: 100%;
-        margin: 0;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    #board_container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 101vh;
-        height: 100vh;
-        margin-top: -50vh;
-        margin-left: -50vh;
-        /*-webkit-box-shadow: 0px 0px 50px black;*/
-        /*-moz-box-shadow: 0px 0px 50px black ;*/
-        /*box-shadow: 0px 0px 50px black ;*/
-    }
-
-    #board_border {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 101vh;
-        height: 100vh;
-        margin-top: -50vh;
-        margin-left: -50vh;
-    }
-
-    #current_board {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 92vh;
-        height: 92vh;
-        margin-top: -45.75vh;
-        margin-left: -45.75vh;
-        box-shadow: 0 0 50px white;
-    }
-
-    .attribute_bar {
-        position: absolute;
-        width: 30vh;
-        height: 3vh;
-    }
-
-    #endurance {
-        position: absolute;
-        left: 2.45vh;
-        top: 15vh;
-        width: 29.3vh;
-        height: 2.3vh;
-    }
-
-    #experience {
-        position: absolute;
-        left: 2.45vh;
-        top: 18.3vh;
-        width: 29.3vh;
-        height: 2.4vh;
-    }
-
-    .ability_score {
-        padding-left: .5vh;
-    }
-
-    #end_overlay {
-        position: absolute;
-        font-size: 1.8vh;
-        left: 13vh;
-        top: 15.1vh;
-    }
-
-    #exp_overlay {
-        position: absolute;
-        font-size: 1.8vh;
-        left: 14vh;
-        top: 18.5vh;
-    }
-
-    #character_icon {
-        position: absolute;
-        /*left: 47.2vh;*/
-        /*top: 89.6vh;*/
-        width: 6.85vh;
-        height: 6.5vh;
-        box-shadow: 0 2px 15px 3px black;
-        z-index: 100;
-    }
-
-    #enemy_icon {
-        position: absolute;
-        left: 47.2vh;
-        top: 68.27vh;
-        width: 6.85vh;
-        height: 6.5vh;
-        box-shadow: 0 2px 15px 3px black;
-    }
-
-    #actions_status {
-        position: absolute;
-        left: 5.5vh;
-        top: 5vh;
-        font-size: 2.2vh;
-    }
-
-    #movement_arrows {
-        position: absolute;
-        left: 78vh;
-        top: 85vh;
-    }
-
-    .arrows {
-        width: 4.5vh;
-        height: 4.5vh;
-    }
-
-    .tooltip {
-        font-family: 'Marcellus SC', serif;
-        color: yellow;
-        cursor: default;
-    }
-
-    .tooltip:hover {
-        text-shadow: 0 0 5px yellow;
-    }
-
-    .action_list {
-        text-align:center;
-        color: yellow;
-        font-family: 'Marcellus SC', serif;
-        cursor: default;
-    }
-
-    .action:hover {
-        text-shadow: 0 0 5px yellow;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    #end_turn_button {
-        text-align: center;
-        background: url("img/button_new2.jpg") no-repeat;
-        color: yellow;
-        font-family: 'Marcellus SC', serif;
-        cursor: default;
-        background-size: contain;
-        outline: none;
-        border: none;
-        font-size: 1.8vh;
-        width: 14vh;
-        height: 6vh;
-    }
-
-    #end_turn_button:hover {
-        text-shadow: 0 0 5px yellow;
-        box-shadow: 0 0 5px yellow;
-    }
-
-    #end_turn_button:active {
-        background: url("img/button_new_clicked.jpg");
-        background-size: contain;
-        width: 14vh;
-        height: 6vh;
-    }
-
-    #end_turn_container {
-        position: absolute;
-        left: 8vh;
-        top: 89.6vh;
-    }
-
-    .turn_banner {
-        position: absolute;
-        margin: auto;
-        top: 43.8vh;
-        width: 100%;
-    }
-
-    .banner_words {
-        position: absolute;
-        left: 1vh;
-        top: 1.7vh;
-        font-family: 'Marcellus SC', serif;
-        text-shadow: 0 0 40px yellow;
-        font-size: 24pt;
-    }
-
-    #start_banner_gradient {
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+20,2989d8+50,1e5799+80&0+0,0.8+15,1+19,1+81,0.8+85,0+100;Blue+Two+Sided+Transparent */
-        background: -moz-linear-gradient(top, rgba(30,87,153,0) 0%, rgba(30,87,153,0.8) 15%, rgba(30,87,153,1) 19%, rgba(30,87,153,1) 20%, rgba(41,137,216,1) 50%, rgba(30,87,153,1) 80%, rgba(30,87,153,1) 81%, rgba(30,87,153,0.8) 85%, rgba(30,87,153,0) 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(top, rgba(30,87,153,0) 0%,rgba(30,87,153,0.8) 15%,rgba(30,87,153,1) 19%,rgba(30,87,153,1) 20%,rgba(41,137,216,1) 50%,rgba(30,87,153,1) 80%,rgba(30,87,153,1) 81%,rgba(30,87,153,0.8) 85%,rgba(30,87,153,0) 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(30,87,153,0.8) 15%,rgba(30,87,153,1) 19%,rgba(30,87,153,1) 20%,rgba(41,137,216,1) 50%,rgba(30,87,153,1) 80%,rgba(30,87,153,1) 81%,rgba(30,87,153,0.8) 85%,rgba(30,87,153,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', endColorstr='#001e5799',GradientType=0 ); /* IE6-9 */
-        height: 12vh;
-    }
-
-    #start_banner_content {
-        position: relative;
-        top: 1.7vh;
-    }
-
-    .slide_animation {
-        left: 0;
-        -webkit-animation-duration: 500ms;
-        animation-duration: 500ms;
-        -webkit-animation-delay: 0s;
-        animation-delay: 0s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-    }
-
-    .slide_right {
-        -webkit-animation-name: slideRight;
-        animation-name: slideRight;
-    }
-
-    .fade_in {
-        opacity: 0;
-        -webkit-animation-duration: 200ms;
-        animation-duration: 200ms;
-        -webkit-animation-delay: 0s;
-        animation-delay: 0s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-        -webkit-animation-name: fadeIn;
-        animation-name: fadeIn;
-    }
-
-    .fade_out {
-        opacity: 100;
-        -webkit-animation-duration: 2s;
-        animation-duration: 2s;
-        -webkit-animation-delay: 2s;
-        animation-delay: 2s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-        -webkit-animation-name: fadeOut;
-        animation-name: fadeOut;
-    }
-
-    .fade_in_out {
-        opacity: 0;
-        -webkit-animation-duration: 2s;
-        animation-duration: 2s;
-        -webkit-animation-delay: 0s;
-        animation-delay: 0s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-        -webkit-animation-name: fadeInOut;
-        animation-name: fadeInOut;
-    }
-
-    @-webkit-keyframes slideRight {
-        0% {left: 0;}
-        100% {left: 85vh;}
-    }
-
-    @keyframes slideRight {
-        0% {left: 0;}
-        100% {left: 85vh;}
-    }
-
-    @-webkit-keyframes fadeIn {
-        0% {opacity: 0;}
-        100% {opacity: 1;}
-    }
-
-    @keyframes fadeIn {
-        0% {opacity: 0;}
-        100% {opacity: 1;}
-    }
-
-    @-webkit-keyframes fadeOut {
-        100% {opacity: 1;}
-        0% {opacity: 0;}
-    }
-
-    @keyframes fadeOut {
-        100% {opacity: 1;}
-        0% {opacity: 0;}
-    }
-
-   @-webkit-keyframes fadeInOut {
-        0% {opacity: 0;}
-        5% {opacity: 100;}
-        85% {opacity: 100;}
-        100% {opacity: 0;}
-    }
-
-    @keyframes fadeInOut {
-        0% {opacity: 0;}
-        5% {opacity: 100;}
-        85% {opacity: 100;}
-        100% {opacity: 0;}
-    }
-
-</style>
 <script>
     var VERTICAL_INCREASE = 7.11;
     var HORIZONTAL_INCREASE = 7.15;
@@ -486,34 +183,11 @@
             NESTED_TOOLTIPS[i].close();
         }
         for (var j = 0; j < current_instances.length; j++) {
-            // clearNestedTooltipsters($.tooltipster.instances(current_instances[j]));
             current_instances[j].close();
         }
         NESTED_TOOLTIPS = [];
         ACTION_MENU_VISIBLE = false;
     }
-
-    function clearNestedTooltipsters(instances) {
-        if (instances === null || instances.length === 0) {
-            return;
-        }
-        for (var i = 0; i < instances.length; i++) {
-            clearNestedTooltipsters($.tooltipster.instances(instances[i]));
-            instances[i].close();
-        }
-    }
-
-    // function getStandardActions() {
-    //     post("/game/standardActions", CHARACTER, function (data, status) {
-    //         STD_ACTIONS = createActionList(data, "standard");
-    //     });
-    // }
-
-    // function getQuickActions() {
-    //     post("/game/quickActions", CHARACTER, function(data, status) {
-    //         QUICK_ACTIONS = createActionList(data, "Quick");
-    //     });
-    // }
 
     function createActionList(data, type) {
         var actionContainer = document.createElement("div");
@@ -536,7 +210,6 @@
 
     function equip_item() {
     }
-
 
 
     function getViewPortPositionLeft(x) {
@@ -879,20 +552,10 @@
 
     function startTurn() {
         //auto-roll for sustaining conditions
-        var endTurnBanner = document.getElementById("start_turn_banner");
-        var endTurnBannerContent = document.getElementById("start_banner_content");
-        endTurnBanner.classList.remove("fade_in_out");
-        endTurnBannerContent.classList.remove("slide_animation");
-        endTurnBannerContent.classList.remove("slide_right");
-
     }
 
     function endTurn() {
-        var endTurnBanner = document.getElementById("start_turn_banner");
-        var endTurnBannerContent = document.getElementById("start_banner_content");
-        endTurnBanner.classList.add("fade_in_out");
-        endTurnBannerContent.classList.add("slide_animation");
-        endTurnBannerContent.classList.add("slide_right");
+        createEndTurnBanner();
         endPolling();
         resetVariables();
         post("game/endTurn", CHARACTER, function(data, status){
@@ -906,6 +569,34 @@
 
     function npcTurns() {
 
+    }
+
+    function createEndTurnBanner() {
+        var endTurnBanner = document.getElementById("start_turn_banner");
+        var endTurnBannerContent = document.getElementById("start_banner_content");
+        endTurnBanner.classList.remove("hidden");
+        endTurnBanner.classList.add("fade_in_out");
+        endTurnBannerContent.classList.add("slide_animation");
+        endTurnBannerContent.classList.add("slide_right");
+
+        var banner = $('#start_turn_banner');
+        banner.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
+            if (e.target === banner[0]) {
+                // this is your completion event!
+                banner.addClass("hidden");
+            }
+        });
+        // endTurnBanner.addEventListener("animationiteration", function() {endTurnBanner.classList.add("hidden")}, false);
+        // endTurnBanner.addEventListener("webkitAnimationIteration", function() {endTurnBanner.classList.add("hidden")}, false);
+    }
+
+    function removeEndTurnBanner() {
+        var endTurnBanner = document.getElementById("start_turn_banner");
+        // var endTurnBannerContent = document.getElementById("start_banner_content");
+        // endTurnBanner.classList.remove("fade_in_out");
+        // endTurnBannerContent.classList.remove("slide_animation");
+        // endTurnBannerContent.classList.remove("slide_right");
+        endTurnBanner.classList.add("hidden");
     }
 
     function resetVariables() {
@@ -1001,7 +692,7 @@
         <img src="img/turn_banner.png">
         <span id="end_turn_banner_words" class="banner_words">Enemy Turn</span>
     </div>
-    <div id="start_turn_banner" class="turn_banner" style="opacity: 0;">
+    <div id="start_turn_banner" class="turn_banner hidden">
         <div id="start_banner_gradient">
             <div id="start_banner_content">
                 <!--<img src="img/turn_banner.png">-->

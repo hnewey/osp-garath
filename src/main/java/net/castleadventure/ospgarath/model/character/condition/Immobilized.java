@@ -1,11 +1,13 @@
 package net.castleadventure.ospgarath.model.character.condition;
 
 import net.castleadventure.ospgarath.game.GameState;
+import net.castleadventure.ospgarath.model.character.StatType;
 
 public class Immobilized extends NegativeCondition {
     @Override
     public void doEffect() {
-        GameState.getInstance().getCharacter().setMovement(0);
+        Integer currentMovement = GameState.getInstance().getCharacter().getMovement().getValue();
+        GameState.getInstance().getCharacter().modifyStat(StatType.MOVEMENT, currentMovement*-1, "Immobilized");
     }
 
     @Override

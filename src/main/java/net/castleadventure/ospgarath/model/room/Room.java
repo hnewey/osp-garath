@@ -1,7 +1,8 @@
 package net.castleadventure.ospgarath.model.room;
 
 import net.castleadventure.ospgarath.factory.RoomFactory;
-import net.castleadventure.ospgarath.model.monster.Monster;
+import net.castleadventure.ospgarath.model.character.Character;
+import net.castleadventure.ospgarath.model.character.monster.Monster;
 import net.castleadventure.ospgarath.model.trap.Trap;
 import net.castleadventure.ospgarath.game.GameState;
 
@@ -15,7 +16,7 @@ public abstract class Room {
     protected RoomSecret roomSecret;
     protected String imageSrc;
     protected List<Trap> traps;
-    protected List<Monster> monsters;
+    protected List<Character> monsters;
     protected String roomIntro;
     protected List<RoomEval> roomEvals;
     protected Integer numConnectingRooms;
@@ -71,11 +72,11 @@ public abstract class Room {
         this.traps = traps;
     }
 
-    public List<Monster> getMonsters() {
+    public List<Character> getMonsters() {
         return monsters;
     }
 
-    public void setMonsters(List<Monster> monsters) {
+    public void setMonsters(List<Character> monsters) {
         this.monsters = monsters;
     }
 
