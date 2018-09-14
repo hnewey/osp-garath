@@ -170,7 +170,9 @@
     }
 
     //called whenever the character moves or something on the board changes
-    function invalidateActionLists() {
+    function updateActionLists() {
+        clearActiveTooltipsters();
+        // activateActionsOptionsTooltipster();
         QUICK_ACTIONS_VALID = false;
         STD_ACTIONS_VALID = false;
     }
@@ -232,7 +234,6 @@
         CHAR_Y = y;
 
         actionUsed("movement");
-        invalidateActionLists();
         return true;
     }
 
@@ -272,7 +273,8 @@
         MOVE_USED = true;
         var position = {x: CHAR_X, y: CHAR_Y};
         post("game/move", position, function(data, status) {
-            activateActionsOptionsTooltipster();
+            // activateActionsOptionsTooltipster();
+            getActions();
         });
     }
 
@@ -309,11 +311,9 @@
         // }, 2000);
         // POLLING_ACTIVE = true;
     }
-
     function endPolling() {
         // clearInterval(POLLING_INTERVAL);
     }
-
     function pollData() {
         //update and read game state
         // getState();
@@ -338,11 +338,23 @@
             readState();
             // startPolling();
         });
+        getActions();
+    }
+
+    function getActions() {
+        $.get("game/quickActions", function(data, status) {
+            QUICK_ACTIONS = createActionList(data, "Quick");
+            updateActionLists();
+        });
+        $.get("game/standardActions", function(data, status) {
+            STD_ACTIONS = createActionList(data, "Standard");
+            updateActionLists();
+        });
     }
 
     function readState() {
         //TODO: detect changes. Most animations come on changes (enemy defeated, char moved, new negative condition, etc)
-        readCharacterState(GAME_STATE.character);
+        readCharacterState(GAME_STATE.playerCharacter);
         //TODO: read enemy states, objects, room info, etc
     }
 
@@ -351,8 +363,8 @@
         //TODO: add animation moving character from previous position to new position
         placeCharacter(state.position.x, state.position.y);
 
-        QUICK_ACTIONS = createActionList(state.quickActions, "Quick");
-        STD_ACTIONS = createActionList(state.standardActions, "Standard");
+        // QUICK_ACTIONS = createActionList(state.quickActions, "Quick");
+        // STD_ACTIONS = createActionList(state.standardActions, "Standard");
 
         CHAR_POSSIBLE_MOVES = state.possibleMovements;
         CHAR_BLOCKED_MOVES = state.blockedMovements;
@@ -454,6 +466,8 @@
             case "INTERACTION":
                 img.src = "img/purple_square.jpg";
                 break;
+            case "DOOR":
+                img.src = "img/purple_square.jpg";
         }
     }
 

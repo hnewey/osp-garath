@@ -18,6 +18,7 @@ public class EntryRoom extends Room {
                 "diminutive nature of the building from outside. Four large pillars reach to the ceiling, surrounding a number \n" +
                 "of small pedestals in the center of the room. As you approach, you notice different items on each \n" +
                 "pedestal. You see the following: " + starterItemsToString();
+        initializeRoom();
     }
 
     @Override

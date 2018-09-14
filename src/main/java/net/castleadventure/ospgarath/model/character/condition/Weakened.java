@@ -10,9 +10,13 @@ public class Weakened extends NegativeCondition {
     private Integer weakenedAmount;
     private String reason = "Weakened";
 
+    public Weakened() {
+        this.conditionType = Type.WEAKENED;
+    }
+
     @Override
     public void doEffect() {
-        effectedStat = GameState.getInstance().getCharacter().getHighestStat();
+        effectedStat = GameState.getInstance().getPlayerCharacter().getHighestStat();
 
         weakenedAmount = Dice.d3() + Dice.d3();
         effectedStat.addModifier(weakenedAmount * -1, reason);

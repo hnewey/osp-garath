@@ -38,17 +38,11 @@ public class PlayerCharacter extends Character {
 
     @Override
     public void startTurn() {
-        List<PositiveCondition> tempConditions = positiveConditions;
-        for (PositiveCondition condition : tempConditions) {
-            condition.maintain();
-        }
+        conditionManager.maintainConditions();
     }
 
     @Override
     public void endTurn() {
-        for (NegativeCondition condition : negativeConditions) {
-            condition.endTurn();
-        }
     }
 
     public String getPlayerName() {

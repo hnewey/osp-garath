@@ -52,29 +52,33 @@ public final class RoomFactory {
      * the player will only find advanced rooms
      * @return RoomType
      */
-    public static Room generateRoom() {
+    public static Room generateRoom(Room currentRoom) {
         boolean advancedRoom = shouldCreateAdvancedRoom();
         int roomType = new Random().nextInt(3) + 1;
+
+        Room newRoom;
         if (!advancedRoom) {
             switch (roomType) {
                 case 1:
-                    return new BlueRoom();
+                    newRoom = new BlueRoom();
                 case 2:
-                    return new RedRoom();
+                    newRoom = new RedRoom();
                 default:
-                    return new YellowRoom();
+                    newRoom = new YellowRoom();
             }
         }
         else {
             switch (roomType) {
                 case 1:
-                    return new GreenRoom();
+                    newRoom = new GreenRoom();
                 case 2:
-                    return new OrangeRoom();
+                    newRoom = new OrangeRoom();
                 default:
-                    return new PurpleRoom();
+                    newRoom = new PurpleRoom();
             }
         }
+        newRoom.setPreviousRoom(currentRoom);
+        return newRoom;
     }
 
     private static boolean shouldCreateAdvancedRoom() {

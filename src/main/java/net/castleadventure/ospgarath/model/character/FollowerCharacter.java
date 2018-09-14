@@ -7,6 +7,16 @@ public class FollowerCharacter extends Character {
     }
 
     @Override
+    public void startTurn() {
+
+    }
+
+    @Override
+    public void endTurn() {
+
+    }
+
+    @Override
     public String getPlayerName() {
         return null;
     }

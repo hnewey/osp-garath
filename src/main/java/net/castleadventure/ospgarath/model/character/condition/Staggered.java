@@ -8,14 +8,18 @@ public class Staggered extends NegativeCondition {
 
     private Integer changeAmount;
 
+    public Staggered() {
+        this.conditionType = Type.STAGGERED;
+    }
+
     @Override
     public void doEffect() {
         changeAmount = Dice.d2() + Dice.d2();
-        GameState.getInstance().getCharacter().modifyStat(StatType.DEFENSE, changeAmount * -1, "Staggered");
+        GameState.getInstance().getPlayerCharacter().modifyStat(StatType.DEFENSE, changeAmount * -1, "Staggered");
     }
 
     @Override
     public void endEffect() {
-        GameState.getInstance().getCharacter().modifyStat(StatType.DEFENSE, changeAmount, "Staggered ended");
+        GameState.getInstance().getPlayerCharacter().modifyStat(StatType.DEFENSE, changeAmount, "Staggered ended");
     }
 }

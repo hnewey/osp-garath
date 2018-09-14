@@ -19,10 +19,10 @@ public class MovementManager {
     private Board board;
 
     public MovementManager() {
-        this.board = Board.getInstance();
     }
 
     public List<Space> possibleMovements(Space startingPosition, int movementSpeed) {
+        this.board = Board.getInstance();
         this.possibleMovements = new ArrayList<>();
         this.blockedMovements = new ArrayList<>();
         this.startingPosition = startingPosition;
@@ -64,7 +64,7 @@ public class MovementManager {
         if (position == null) {
             return false; //position will be null when trying to get an invalid space
         }
-        if (!position.getSpaceInfo().equals(SpaceInfo.FREE)) {
+        if (!position.getSpaceInfo().equals(SpaceInfo.FREE) && !position.getSpaceInfo().equals(SpaceInfo.DOOR)) {
             if (!blockedMovements.contains(position)) {
                 blockedMovements.add(position);
             }

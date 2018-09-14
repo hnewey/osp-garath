@@ -15,7 +15,7 @@ public class RoomTest {
     public void newRoom_test() throws Exception {
         List<Room> rooms = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
-            rooms.add(RoomFactory.generateRoom());
+            rooms.add(RoomFactory.generateRoom(null));
         }
         assert(rooms.size() == 50);
     }

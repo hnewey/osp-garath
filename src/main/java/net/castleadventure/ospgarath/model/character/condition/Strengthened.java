@@ -10,9 +10,13 @@ public class Strengthened extends PositiveCondition {
     private Integer strengthenedAmount;
     private String reason = "Strengthened";
 
+    public Strengthened() {
+        this.conditionType = Type.STRENGTHENED;
+    }
+
     @Override
     public void doEffect() {
-        effectedStat = GameState.getInstance().getCharacter().getHighestStat();
+        effectedStat = GameState.getInstance().getPlayerCharacter().getHighestStat();
 
         strengthenedAmount = Dice.d3() + Dice.d3();
         effectedStat.addModifier(strengthenedAmount, reason);

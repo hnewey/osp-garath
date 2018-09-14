@@ -8,14 +8,18 @@ public class Steadied extends PositiveCondition {
 
     private Integer changeAmount;
 
+    public Steadied() {
+        this.conditionType = Type.STEADIED;
+    }
+
     @Override
     public void doEffect() {
         changeAmount = Dice.d2() + Dice.d2();
-        GameState.getInstance().getCharacter().modifyStat(StatType.DEFENSE, changeAmount, "Steadied");
+        GameState.getInstance().getPlayerCharacter().modifyStat(StatType.DEFENSE, changeAmount, "Steadied");
     }
 
     @Override
     public void endEffect() {
-        GameState.getInstance().getCharacter().modifyStat(StatType.DEFENSE, changeAmount * -1, "Steadied ended");
+        GameState.getInstance().getPlayerCharacter().modifyStat(StatType.DEFENSE, changeAmount * -1, "Steadied ended");
     }
 }

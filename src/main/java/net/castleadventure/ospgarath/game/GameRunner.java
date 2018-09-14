@@ -1,5 +1,7 @@
 package net.castleadventure.ospgarath.game;
 
+import net.castleadventure.ospgarath.model.room.EntryRoom;
+
 import java.io.IOException;
 
 public class GameRunner {
@@ -13,6 +15,8 @@ public class GameRunner {
     public static void start() throws IOException {
         gameRunner = new GameRunner();
         GameState gameState = GameState.getInstance();
+        gameState.setCurrentRoom(new EntryRoom());
+        gameState.initBoard();
         gameState.printState();
         gameState.printRoomInfo();
 

@@ -7,6 +7,7 @@ public enum StandardAction {
     SPECIAL_ATTACK("Special Attack"),
     EVALUATE_ENEMY("Evaluate Enemy"),
     EVALUATE_AREA("Evaluate Area"),
+    ENTER_ROOM("Enter Room"),
     SEARCH_BODY("Search Body"),
     SEARCH_CONTAINER("Search Container"),
     EXCHANGE_ITEM("Exchange Item"),

@@ -5,7 +5,7 @@ import net.castleadventure.ospgarath.factory.RoomFactory;
 public class TowerIntro extends Room {
 
     public TowerIntro() {
-        connectingRooms.add(new EntryRoom());
+        connectingRooms.put(0, new EntryRoom());
         roomIntro = "You stand before a rundown tower facing a young man in a gray cloak, his hood pulled up to slightly \n" +
                 "obscure his face. \"You have chosen to face the Grim Trials of Osp-Garath\" he says in a voice that \n" +
                 "sounds far too old to belong to him. \"The Salt Sisters will now test you to see if you are worthy to \n" +

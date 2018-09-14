@@ -40,7 +40,7 @@ public class CharacterCreationController {
         } catch (JSONException e) {
             throw new Exception(String.format("Invalid json for character creation provided: %s", json.toString()));
         }
-        GameState.getInstance().setCharacter(newCharacter);
+        GameState.getInstance().setPlayerCharacter(newCharacter);
     }
 
 //    @RequestMapping(value = "/character/create")

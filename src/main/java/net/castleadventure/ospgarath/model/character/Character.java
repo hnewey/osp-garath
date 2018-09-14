@@ -4,18 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import net.castleadventure.ospgarath.game.Dice;
 import net.castleadventure.ospgarath.game.Space;
 import net.castleadventure.ospgarath.model.ability.power.Power;
-import net.castleadventure.ospgarath.model.ability.power.PowerManager;
 import net.castleadventure.ospgarath.model.character.condition.*;
 import net.castleadventure.ospgarath.model.character.race.Race;
 import net.castleadventure.ospgarath.model.characterClass.ClassType;
 import net.castleadventure.ospgarath.model.item.PlayerEquippedItems;
 import net.castleadventure.ospgarath.model.item.PlayerInventory;
-import net.castleadventure.ospgarath.model.managers.ActionManager;
+import net.castleadventure.ospgarath.model.action.ActionManager;
 import net.castleadventure.ospgarath.model.managers.ConditionManager;
 import net.castleadventure.ospgarath.model.managers.EquipmentManager;
 import net.castleadventure.ospgarath.model.managers.MovementManager;
 import net.castleadventure.ospgarath.model.character.monster.StatResolver;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,17 +46,13 @@ public abstract class Character {
     private Space position;
 
     private MovementManager movementManager = new MovementManager();
-    private ActionManager actionManager = new ActionManager();
-    private ConditionManager conditionManager = new ConditionManager();
-    private EquipmentManager equipmentManager = new EquipmentManager();
+    protected ConditionManager conditionManager = new ConditionManager();
+    protected EquipmentManager equipmentManager = new EquipmentManager();
 
     @JsonIgnore
     protected PlayerEquippedItems playerEquippedItems = new PlayerEquippedItems();
     @JsonIgnore
     protected PlayerInventory playerInventory = new PlayerInventory();
-
-    protected List<PositiveCondition> positiveConditions = new ArrayList<>();
-    protected List<NegativeCondition> negativeConditions = new ArrayList<>();
 
 
     //--------------------------------------
@@ -93,22 +87,6 @@ public abstract class Character {
 
     public abstract void endTurn();
 
-    public void sustainCondition(Integer index) {
-        Condition condition = positiveConditions.get(index);
-        if (Dice.d20() < condition.getRollRequired()) {
-            condition.endEffect();
-            positiveConditions.remove(index.intValue());
-        }
-    }
-
-    public void resistCondition(Integer index) {
-        Condition condition = negativeConditions.get(index);
-        if (Dice.d20() >= condition.getRollRequired()) {
-            condition.endEffect();
-            negativeConditions.remove(index.intValue());
-        }
-    }
-
     public Integer basicAttack(Character target) {
         Integer attackRoll = null;
         if (isDetermined()) {
@@ -133,7 +111,7 @@ public abstract class Character {
         return attackRoll;
     }
 
-    public Integer rollDamage() {
+    private Integer rollDamage() {
         return Dice.dynamic(maxDamage);
     }
 
@@ -145,19 +123,7 @@ public abstract class Character {
     }
 
     private boolean isDetermined() {
-        int positive = 0;
-        int negative = 0;
-        for (Condition condition : positiveConditions) {
-            if (condition instanceof Determined) {
-                positive++;
-            }
-        }
-        for (Condition condition : negativeConditions) {
-            if (condition instanceof Hampered) {
-                negative++;
-            }
-        }
-        return positive > negative;
+        return conditionManager.isDetermined();
     }
 
     private Integer calcMaxDamage() {
@@ -173,14 +139,6 @@ public abstract class Character {
             return 1;
         else
             return 0;
-    }
-
-    public List<String> getQuickActions() {
-        return ActionManager.getQuickActions(this.position);
-    }
-
-    public List<String> getStandardActions() {
-        return ActionManager.getStandardActions(this.position);
     }
 
     public Stat getHighestStat() {
@@ -384,17 +342,10 @@ public abstract class Character {
     }
 
     public List<PositiveCondition> getPositiveConditions() {
-        return positiveConditions;
+        return conditionManager.getPositiveConditions();
     }
-    public void setPositiveConditions(List<PositiveCondition> positiveConditions) {
-        this.positiveConditions = positiveConditions;
-    }
-
     public List<NegativeCondition> getNegativeConditions() {
-        return negativeConditions;
-    }
-    public void setNegativeConditions(List<NegativeCondition> negativeConditions) {
-        this.negativeConditions = negativeConditions;
+        return conditionManager.getNegativeConditions();
     }
 
     public Space getPosition() {

@@ -27,22 +27,22 @@ public class GameController {
     @RequestMapping (value = "/state", method = RequestMethod.GET)
     public GameState getState() {
         GameState instance = GameState.getInstance();
-        return GameState.getInstance();
+        return GameState.getInstance();//.getGameState();
     }
 
     @RequestMapping (value = "/character", method = RequestMethod.GET)
     public Character getCharacter() {
-        return GameState.getInstance().getCharacter();
+        return GameState.getInstance().getPlayerCharacter();
     }
 
     @RequestMapping (value = "/character", method = RequestMethod.POST)
     public void updateCharacter(@RequestBody PlayerCharacter character) {
-        GameState.getInstance().setCharacter(character);
+        GameState.getInstance().setPlayerCharacter(character);
     }
 
     @RequestMapping (value = "/endTurn", method = RequestMethod.POST)
     public ResponseEntity endTurn(@RequestBody PlayerCharacter character) {
-        GameState.getInstance().setCharacter(character);
+        GameState.getInstance().setPlayerCharacter(character);
         GameState.getInstance().endCharacterTurn();
 //        character.endTurn();
         return ResponseEntity.noContent().build();
@@ -54,18 +54,18 @@ public class GameController {
         Integer y = jsonObject.optInt("y");
         Space space = new Space(x, y);
 
-        GameState.getInstance().getCharacter().setPosition(space);
+        GameState.getInstance().getPlayerCharacter().setPosition(space);
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping (value = "/quickActions", method = RequestMethod.POST)
-    public List<String> getQuickActions(@RequestBody PlayerCharacter character) {
-        return character.getQuickActions();
+    @RequestMapping (value = "/quickActions", method = RequestMethod.GET)
+    public List<String> getQuickActions() {
+        return GameState.getInstance().getQuickActions();
     }
 
-    @RequestMapping (value = "/standardActions", method = RequestMethod.POST)
-    public List<String> getStandardActions(@RequestBody PlayerCharacter character) {
-        return character.getStandardActions();
+    @RequestMapping (value = "/standardActions", method = RequestMethod.GET)
+    public List<String> getStandardActions() {
+        return GameState.getInstance().getStandardActions();
     }
 
     @RequestMapping (value = "/attack", method = RequestMethod.POST)
